@@ -5,7 +5,7 @@ SOL_SEMP_PASS: "admin"                                    # SEMP API password
 SOL_SEMP_MSG_VPN: "default"                               # Message VPN (default: default)
 
 # Solace messaging configuration (for consuming state)
-SOL_STATE_BROKER_URL: "tcp://host.docker.internal:55554"  # Broker SMF(S) URL
+SOL_STATE_BROKER_URL: "tcp://host.docker.internal:55555"  # Broker SMF(S) URL
 SOL_STATE_MSG_VPN: "default"                              # Message VPN
 SOL_STATE_USERNAME: "another-user"                        # Username for consuming state
 SOL_STATE_PASSWORD: "solace-dsemp-agent"                  # Password for consuming state

@@ -1,0 +1,56 @@
+# Solace SEMP broker configuration (for managing resources)
+SOL_SEMP_BROKER_URL: "http://host.docker.internal:8080"   # Broker SEMP API URL
+SOL_SEMP_USER: "admin"                                    # SEMP API username
+SOL_SEMP_PASS: "admin"                                    # SEMP API password
+SOL_SEMP_MSG_VPN: "default"                               # Message VPN (default: default)
+
+# Solace messaging configuration (for consuming state)
+SOL_STATE_BROKER_URL: "tcp://host.docker.internal:55554"  # Broker SMF(S) URL
+SOL_STATE_MSG_VPN: "default"                              # Message VPN
+SOL_STATE_USERNAME: "another-user"                        # Username for consuming state
+SOL_STATE_PASSWORD: "solace-dsemp-agent"                  # Password for consuming state
+SOL_STATE_TOPIC: "config/my-broker/target-state"          # Topic to consume state from
+SOL_RECONNECT_INTERVAL: "5s"                              # Duration string (e.g., "5s", "1m", "500ms")
+
+# AES key for substitution of sensitive fields
+SOL_AES_KEY: "ThisIsMyNewSuperSecure32ByteKey!"           # AES key for decryption (must be 16, 24, or 32 bytes for AES-128, AES-192, or AES-256)
+
+# Management options
+SOL_MANAGE_QUEUES: true                                   # Manage queues
+SOL_MANAGE_ACL_PROFILES: true                             # Manage ACL profiles
+SOL_MANAGE_CLIENT_USERNAMES: true                         # Manage client usernames
+SOL_MANAGE_CLIENT_PROFILES: true                          # Manage client profiles
+SOL_MANAGE_BRIDGES: true                                  # Manage bridges
+SOL_MANAGE_DMR_BRIDGES: true                              # Manage DMR bridges
+SOL_MANAGE_BRIDGE_REMOTE_MSG_VPNS: true                   # Manage bridge remote message VPNs
+SOL_MANAGE_JNDI_CONNECTION_FACTORIES: true                # Manage JNDI connection factories
+SOL_MANAGE_JNDI_QUEUES: true                              # Manage JNDI queues
+SOL_MANAGE_JNDI_TOPICS: true                              # Manage JNDI topics
+SOL_MANAGE_PROXIES: true                                  # Manage proxies
+SOL_MANAGE_QUEUE_TEMPLATES: true                          # Manage queue templates
+SOL_MANAGE_TOPIC_ENDPOINTS: true                          # Manage topic endpoints
+SOL_MANAGE_TOPIC_ENDPOINT_TEMPLATES: true                 # Manage topic endpoint templates
+SOL_MANAGE_MSG_VPNS: true                                 # Manage message VPN
+
+# Other
+SOL_DRYRUN: false                                         # Only show changes, do not apply (true/false)
+LOGLEVEL: 4                                               # Logrus log level (0=panic, 1=fatal, 2=error, 3=warn, 4=info, 5=debug, 6=trace)
+
+# Status reporting (optional)
+SOL_STATUS_WEBHOOK_ENABLED: false                                                         # Enable status webhook
+SOL_STATUS_WEBHOOK_URL: "http://host.docker.internal:9000/TOPIC/config/my-broker/status"  # Optional: HTTP(S) endpoint to send status JSON after each run
+SOL_STATUS_WEBHOOK_USER: "another-user"                                                   # Optional: HTTP Basic Auth username for status webhook
+SOL_STATUS_WEBHOOK_PASS: "solace-dsemp-agent"                                             # Optional: HTTP Basic Auth password for status webhook
+
+SOL_STATUS_MESSAGE_ENABLED: true                                           # Enable status message publishing
+SOL_STATUS_MESSAGE_BROKER_URL: "tcp://host.docker.internal:55555"          # Broker URL for publishing status message
+SOL_STATUS_MESSAGE_TOPIC: "config/my-broker/status"                        # Topic to publish status message to
+SOL_STATUS_MESSAGE_BROKER_USER: "another-user"                             # Username for publishing status message
+SOL_STATUS_MESSAGE_BROKER_PASS: "solace-dsemp-agent"                       # Password for publishing status message
+SOL_STATUS_MESSAGE_MSG_VPN: "default"                                      # Message VPN for publishing status message
+
+SOL_STATUS_EXTRA_FIELDS:                                                   # Optional: custom key/values to include in status message
+  countrycode: "de"
+  locationid: "1234"
+  hostname: "de1234.mysolacebroker.tld"
+

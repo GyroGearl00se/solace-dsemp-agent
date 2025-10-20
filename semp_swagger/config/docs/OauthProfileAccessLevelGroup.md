@@ -1,0 +1,13 @@
+# OauthProfileAccessLevelGroup
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Description** | **string** | A description for the group.  The minimum access scope/level required to retrieve this attribute is \&quot;global/read-only\&quot;. The minimum access scope/level required to change this attribute is \&quot;global/read-write\&quot;. Changes to this attribute are synchronized to HA mates via config-sync. The default value is &#x60;\&quot;\&quot;&#x60;. | [optional] [default to null]
+**GlobalAccessLevel** | **string** | The global access level for this group.  The minimum access scope/level required to retrieve this attribute is \&quot;global/read-only\&quot;. The minimum access scope/level required to change this attribute is \&quot;global/admin\&quot;. Changes to this attribute are synchronized to HA mates via config-sync. The default value is &#x60;\&quot;none\&quot;&#x60;. The allowed values and their meaning are:  &lt;pre&gt; \&quot;none\&quot; - User has no access to global data. \&quot;read-only\&quot; - User has read-only access to global data. \&quot;mesh-manager\&quot; - User has read-write access to global data required to administer this broker as a member of a mesh of brokers. \&quot;read-write\&quot; - User has read-write access to most global data. \&quot;admin\&quot; - User has read-write access to all global data. &lt;/pre&gt;  | [optional] [default to null]
+**GroupName** | **string** | The name of the group.  The minimum access scope/level required to retrieve this attribute is \&quot;global/read-only\&quot;. | [optional] [default to null]
+**MsgVpnAccessLevel** | **string** | The default message VPN access level for this group.  The minimum access scope/level required to retrieve this attribute is \&quot;global/read-only\&quot;. The minimum access scope/level required to change this attribute is \&quot;global/read-write\&quot;. Changes to this attribute are synchronized to HA mates via config-sync. The default value is &#x60;\&quot;none\&quot;&#x60;. The allowed values and their meaning are:  &lt;pre&gt; \&quot;none\&quot; - User has no access to a Message VPN. \&quot;read-only\&quot; - User has read-only access to a Message VPN. \&quot;read-write\&quot; - User has read-write access to most Message VPN settings. &lt;/pre&gt;  | [optional] [default to null]
+**OauthProfileName** | **string** | The name of the OAuth profile.  The minimum access scope/level required to retrieve this attribute is \&quot;global/read-only\&quot;. | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

@@ -1,0 +1,220 @@
+{
+  "version": "1.1",
+  "msgVpns": [
+    {
+      "msgVpnName": "default",
+      "enabled": true,
+      "maxClientCount": 1000,
+      "maxMsgSpoolUsage": 1500,
+      "defaultClientProfileName": "default",
+      "defaultAclProfileName": "default",
+      "defaultTopicEndpointTemplateName": "my-topic-endpoint-template"
+    }
+  ],
+  "queues": [
+    {
+      "queueName": "my-queue-1",
+      "accessType": "exclusive",
+      "maxMsgSpoolUsage": 1000,
+      "permission": "consume",
+      "ingressEnabled": true,
+      "egressEnabled": true,
+      "queueSubscriptions": [
+        "my/topic/1",
+        "my/topic/111"
+      ]
+    },
+    {
+      "queueName": "my-queue-2",
+      "accessType": "non-exclusive",
+      "maxMsgSpoolUsage": 2000,
+      "permission": "modify-topic",
+      "ingressEnabled": true,
+      "egressEnabled": true,
+      "queueSubscriptions": [
+        "my/topic/2",
+        "my/topic/222"
+      ]
+    }
+  ],
+  "aclProfiles": [
+    {
+      "aclProfileName": "my-acl-profile",
+      "clientConnectDefaultAction": "allow",
+      "publishTopicDefaultAction": "disallow",
+      "subscribeTopicDefaultAction": "disallow",
+      "publishExceptions": [
+        {
+          "publishExceptionTopic": "my/restricted/>",
+          "topicSyntax": "smf"
+        },
+        {
+          "publishExceptionTopic": "my/restricted2/>",
+          "topicSyntax": "mqtt"
+        }
+      ],
+      "subscribeExceptions": [
+        {
+          "subscribeExceptionTopic": "my/private/>",
+          "topicSyntax": "smf"
+        }
+      ]
+    }
+  ],
+  "clientUsernames": [
+    {
+      "clientUsername": "my-user",
+      "enabled": true,
+      "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "clientProfileName": "my-client-profile",
+      "aclProfileName": "my-acl-profile"
+    },
+    {
+      "clientUsername": "another-user",
+      "enabled": true,
+      "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "clientProfileName": "default",
+      "aclProfileName": "default"
+    }
+  ],
+  "clientProfiles": [
+    {
+      "clientProfileName": "my-client-profile",
+      "allowGuaranteedMsgSendEnabled": true,
+      "allowGuaranteedMsgReceiveEnabled": true,
+      "maxConnectionCountPerClientUsername": 10,
+      "maxEgressFlowCount": 100,
+      "maxIngressFlowCount": 100,
+      "maxSubscriptionCount": 100
+    }
+  ],
+  "bridges": [
+    {
+      "bridgeName": "my-bridge",
+      "bridgeVirtualRouter": "auto",
+      "enabled": true,
+      "remoteAuthenticationBasicClientUsername": "bridge-user",
+      "remoteAuthenticationBasicPassword": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "remoteConnectionRetryCount": 0,
+      "remoteConnectionRetryDelay": 3,
+      "remoteDeliverToOnePriority": "p1"
+    }
+  ],
+  "bridgeRemoteMsgVpns": [
+    {
+      "bridgeName": "my-bridge",
+      "bridgeVirtualRouter": "auto",
+      "remoteMsgVpnName": "remote-vpn",
+      "remoteMsgVpnLocation": "192.168.1.100:55555",
+      "remoteMsgVpnInterface": "eth0",
+      "enabled": true,
+      "queueBinding": "bridge-queue",
+      "clientUsername": "bridge-remote-user",
+      "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "compressedDataEnabled": true,
+      "tlsEnabled": true,
+      "connectOrder": 1
+    }
+  ],
+  "dmrBridges": [
+    {
+      "remoteNodeName": "my-dmr-node",
+      "remoteMsgVpnName": "remote-dmr-vpn"
+    }
+  ],
+  "jndiConnectionFactories": [
+    {
+      "connectionFactoryName": "my-connection-factory",
+      "enabled": true,
+      "allowDuplicateClientIdEnabled": false,
+      "clientDescription": "My JNDI Connection Factory",
+      "directTransportEnabled": true,
+      "dtoReceiveOverrideEnabled": false,
+      "dtoSendEnabled": true,
+      "dynamicEndpointCreateDurableEnabled": true,
+      "messagingDefaultDeliveryMode": "persistent",
+      "messagingDefaultDmqEligibleEnabled": true,
+      "messagingDefaultEndpointPermission": "consume",
+      "transportCompressionLevel": 1,
+      "transportTlsEnabled": true
+    }
+  ],
+  "jndiQueues": [
+    {
+      "queueName": "my-jndi-queue",
+      "physicalName": "my-queue-1"
+    },
+    {
+      "queueName": "another-jndi-queue",
+      "physicalName": "my-queue-2"
+    }
+  ],
+  "jndiTopics": [
+    {
+      "topicName": "my-jndi-topic",
+      "physicalName": "my/topic/1"
+    },
+    {
+      "topicName": "another-jndi-topic",
+      "physicalName": "my/topic/2"
+    }
+  ],
+  "proxies": [
+    {
+      "proxyName": "my-proxy",
+      "enabled": true,
+      "authenticationBasicUsername": "proxyUsername",
+      "authenticationBasicPassword": "proxyPassword",
+      "authenticationScheme": "basic",
+      "host": "my-proxy-server.local",
+      "port": 8080,
+      "proxyType": "http"
+    }
+  ],
+  "queueTemplates": [
+    {
+      "queueTemplateName": "my-queue-template",
+      "accessType": "exclusive",
+      "maxMsgSpoolUsage": 100,
+      "permission": "consume",
+      "maxBindCount": 1000,
+      "maxDeliveredUnackedMsgsPerFlow": 10000,
+      "maxMsgSize": 10000000,
+      "maxRedeliveryCount": 0,
+      "maxTtl": 0,
+      "rejectMsgToSenderOnDiscardBehavior": "when-queue-enabled",
+      "respectTtlEnabled": true
+    }
+  ],
+  "topicEndpoints": [
+    {
+      "topicEndpointName": "my-topic-endpoint",
+      "accessType": "exclusive",
+      "maxMsgSpoolUsage": 100,
+      "permission": "consume",
+      "maxBindCount": 1000,
+      "maxDeliveredUnackedMsgsPerFlow": 10000,
+      "maxMsgSize": 10000000,
+      "maxRedeliveryCount": 0,
+      "maxTtl": 0,
+      "rejectMsgToSenderOnDiscardBehavior": "when-topic-endpoint-enabled",
+      "respectTtlEnabled": true,
+      "topicSubscriptionPattern": "my/topic/>"
+    }
+  ],
+  "topicEndpointsTemplates": [
+    {
+      "topicEndpointTemplateName": "my-topic-endpoint-template",
+      "accessType": "exclusive",
+      "maxMsgSpoolUsage": 100,
+      "permission": "consume",
+      "maxBindCount": 1000,
+      "maxDeliveredUnackedMsgsPerFlow": 10000,
+      "maxMsgSize": 10000000,
+      "maxRedeliveryCount": 0,
+      "maxTtl": 0,
+      "rejectMsgToSenderOnDiscardBehavior": "when-topic-endpoint-enabled",
+      "respectTtlEnabled": true
+    }
+  ]
+}

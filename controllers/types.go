@@ -38,7 +38,7 @@ type GenericCRUDHandler struct {
 }
 
 // ProcessState handles the CRUD operations for a resource type
-func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.APIClient, msgVpn string, dryRun bool) []config.Error {
+func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.APIClient, msgVpn string, dryRun bool, method string) []config.Error {
 
 	var errors []config.Error
 
@@ -85,100 +85,103 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 		}
 	}
 
-	// Process CREATE and UPDATE operations
-	for id, stateObj := range stateMap {
-		if brokerObj, exists := brokerMap[id]; !exists {
-			// CREATE
-			if dryRun {
-				logrus.WithFields(logrus.Fields{
-					"category":  h.ResourceType,
-					"operation": "CREATE",
-					"id":        id,
-				}).Info("[DRY RUN] Would create resource")
-			} else {
-				logrus.WithFields(logrus.Fields{
-					"category":  h.ResourceType,
-					"operation": "CREATE",
-					"id":        id,
-				}).Info("Creating new resource")
-				if err := h.Controller.Create(ctx, client, msgVpn, stateObj); err != nil {
-					logrus.WithFields(logrus.Fields{
-						"category": h.ResourceType,
-						"error":    err,
-						"id":       id,
-					}).Error("Failed to create resource")
-					errors = append(errors, config.Error{
-						Category:   h.ResourceType,
-						ResourceID: id,
-						Action:     "CREATE",
-						Message:    err.Error(),
-					})
-					continue
-				}
-			}
-
-		} else {
-			// Check if UPDATE is needed
-			if needsUpdate(brokerObj, stateObj) {
+	if method == "upsert" || method == "crud" {
+		// Process CREATE and UPDATE operations
+		for id, stateObj := range stateMap {
+			if brokerObj, exists := brokerMap[id]; !exists {
+				// CREATE
 				if dryRun {
 					logrus.WithFields(logrus.Fields{
 						"category":  h.ResourceType,
-						"operation": "UPDATE",
+						"operation": "CREATE",
 						"id":        id,
-					}).Info("[DRY RUN] Would update resource")
+					}).Info("[DRY RUN] Would create resource")
 				} else {
 					logrus.WithFields(logrus.Fields{
 						"category":  h.ResourceType,
-						"operation": "UPDATE",
+						"operation": "CREATE",
 						"id":        id,
-					}).Info("Updating existing resource")
-					if err := h.Controller.Update(ctx, client, msgVpn, stateObj); err != nil {
+					}).Info("Creating new resource")
+					if err := h.Controller.Create(ctx, client, msgVpn, stateObj); err != nil {
 						logrus.WithFields(logrus.Fields{
 							"category": h.ResourceType,
 							"error":    err,
 							"id":       id,
-						}).Error("Failed to update resource")
+						}).Error("Failed to create resource")
 						errors = append(errors, config.Error{
 							Category:   h.ResourceType,
 							ResourceID: id,
-							Action:     "UPDATE",
+							Action:     "CREATE",
 							Message:    err.Error(),
 						})
 						continue
 					}
 				}
+
+			} else {
+				// Check if UPDATE is needed
+				if needsUpdate(brokerObj, stateObj) {
+					if dryRun {
+						logrus.WithFields(logrus.Fields{
+							"category":  h.ResourceType,
+							"operation": "UPDATE",
+							"id":        id,
+						}).Info("[DRY RUN] Would update resource")
+					} else {
+						logrus.WithFields(logrus.Fields{
+							"category":  h.ResourceType,
+							"operation": "UPDATE",
+							"id":        id,
+						}).Info("Updating existing resource")
+						if err := h.Controller.Update(ctx, client, msgVpn, stateObj); err != nil {
+							logrus.WithFields(logrus.Fields{
+								"category": h.ResourceType,
+								"error":    err,
+								"id":       id,
+							}).Error("Failed to update resource")
+							errors = append(errors, config.Error{
+								Category:   h.ResourceType,
+								ResourceID: id,
+								Action:     "UPDATE",
+								Message:    err.Error(),
+							})
+							continue
+						}
+					}
+				}
 			}
 		}
 	}
-
-	// Process DELETE operations
-	for id := range brokerMap {
-		if _, exists := stateMap[id]; !exists {
-			if dryRun {
-				logrus.WithFields(logrus.Fields{
-					"category":  h.ResourceType,
-					"operation": "DELETE",
-					"id":        id,
-				}).Info("[DRY RUN] Would delete resource")
-			} else {
-				logrus.WithFields(logrus.Fields{
-					"category":  h.ResourceType,
-					"operation": "DELETE",
-					"id":        id,
-				}).Info("Deleting resource not in state")
-				if err := h.Controller.Delete(ctx, client, msgVpn, id); err != nil {
+	if method == "delete" || method == "crud" {
+		// Process DELETE operations
+		for id := range brokerMap {
+			if _, exists := stateMap[id]; !exists {
+				if dryRun {
 					logrus.WithFields(logrus.Fields{
-						"category": h.ResourceType,
-						"error":    err,
-						"id":       id,
-					}).Error("Failed to delete resource")
-					errors = append(errors, config.Error{
-						Category:   h.ResourceType,
-						ResourceID: id,
-						Action:     "DELETE",
-						Message:    err.Error(),
-					})
-					continue
+						"category":  h.ResourceType,
+						"operation": "DELETE",
+						"id":        id,
+					}).Info("[DRY RUN] Would delete resource")
+				} else {
+					logrus.WithFields(logrus.Fields{
+						"category":  h.ResourceType,
+						"operation": "DELETE",
+						"id":        id,
+					}).Info("Deleting resource not in state")
+					if err := h.Controller.Delete(ctx, client, msgVpn, id); err != nil {
+						logrus.WithFields(logrus.Fields{
+							"category": h.ResourceType,
+							"error":    err,
+							"id":       id,
+						}).Error("Failed to delete resource")
+						errors = append(errors, config.Error{
+							Category:   h.ResourceType,
+							ResourceID: id,
+							Action:     "DELETE",
+							Message:    err.Error(),
+						})
+						continue
+					}
 				}
 			}
 		}

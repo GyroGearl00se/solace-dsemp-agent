@@ -149,9 +149,9 @@ func main() {
 				}
 				errorList = append(errorList, errs...)
 			}
-
+			var queueHandler, queueSubscriptionHandler, aclHandler, aclPublishHandler, aclSubscribeHandler, clientUsernameHandler, clientProfileHandler, bridgeHandler, bridgeRemoteMsgVpnHandler, dmrBridgeHandler, jndiConnectionFactoryHandler, jndiQueueHandler, jndiTopicHandler, proxyHandler, queueTemplateHandler, topicEndpointHandler, topicEndpointTemplateHandler, msgVpnHandler *controllers.GenericCRUDHandler
 			if manageQueues {
-				queueHandler := &controllers.GenericCRUDHandler{
+				queueHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Queue",
 					Controller:   &controllers.QueueController{},
 					GetState: func() []interface{} {
@@ -163,14 +163,13 @@ func main() {
 						return result
 					},
 				}
-				collect("queues", queueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 
 				// Process subscriptions for each queue
 				for _, queue := range state.Queues {
 					currentQueue := queue
 
 					if len(currentQueue.QueueSubscriptions) > 0 {
-						queueSubscriptionHandler := &controllers.GenericCRUDHandler{
+						queueSubscriptionHandler = &controllers.GenericCRUDHandler{
 							ResourceType: "QueueSubscription",
 							Controller:   &controllers.QueueSubscriptionController{QueueName: currentQueue.QueueName},
 							GetState: func() []interface{} {
@@ -184,13 +183,13 @@ func main() {
 								return subscriptions
 							},
 						}
-						collect(fmt.Sprintf("queue subscriptions for %s", currentQueue.QueueName), queueSubscriptionHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
+						collect(fmt.Sprintf("queue subscriptions for %s", currentQueue.QueueName), queueSubscriptionHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
 					}
 				}
 			}
 
 			if manageACLProfiles {
-				aclHandler := &controllers.GenericCRUDHandler{
+				aclHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "ACL Profile",
 					Controller:   &controllers.ACLProfileController{},
 					GetState: func() []interface{} {
@@ -201,7 +200,6 @@ func main() {
 						return result
 					},
 				}
-				collect("acl-profiles", aclHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 
 				// Process ACL Profile Publish and Subscribe Exceptions for each ACL Profile
 				for _, aclProfile := range state.ACLProfiles {
@@ -209,7 +207,7 @@ func main() {
 
 					// Handle Publish Exceptions
 					if len(currentProfile.PublishExceptions) > 0 {
-						aclPublishHandler := &controllers.GenericCRUDHandler{
+						aclPublishHandler = &controllers.GenericCRUDHandler{
 							ResourceType: "ACL Profile Publish Exception",
 							Controller:   &controllers.ACLProfileExceptionController{IsPublishException: true, AclProfileName: currentProfile.AclProfileName},
 							GetState: func() []interface{} {
@@ -224,12 +222,12 @@ func main() {
 								return exceptions
 							},
 						}
-						collect(fmt.Sprintf("acl-profile publish exceptions for %s", currentProfile.AclProfileName), aclPublishHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
+						collect(fmt.Sprintf("acl-profile publish exceptions for %s", currentProfile.AclProfileName), aclPublishHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
 					}
 
 					// Handle Subscribe Exceptions
 					if len(currentProfile.SubscribeExceptions) > 0 {
-						aclSubscribeHandler := &controllers.GenericCRUDHandler{
+						aclSubscribeHandler = &controllers.GenericCRUDHandler{
 							ResourceType: "ACL Profile Subscribe Exception",
 							Controller:   &controllers.ACLProfileExceptionController{IsPublishException: false, AclProfileName: currentProfile.AclProfileName},
 							GetState: func() []interface{} {
@@ -244,13 +242,13 @@ func main() {
 								return exceptions
 							},
 						}
-						collect(fmt.Sprintf("acl-profile subscribe exceptions for %s", currentProfile.AclProfileName), aclSubscribeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
+						collect(fmt.Sprintf("acl-profile subscribe exceptions for %s", currentProfile.AclProfileName), aclSubscribeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
 					}
 				}
 			}
 
 			if manageClientUsernames {
-				clientUsernameHandler := &controllers.GenericCRUDHandler{
+				clientUsernameHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Client Username",
 					Controller:   &controllers.ClientUsernameController{},
 					GetState: func() []interface{} {
@@ -261,11 +259,10 @@ func main() {
 						return result
 					},
 				}
-				collect("client-usernames", clientUsernameHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageClientProfiles {
-				clientProfileHandler := &controllers.GenericCRUDHandler{
+				clientProfileHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Client Profile",
 					Controller:   &controllers.ClientProfileController{},
 					GetState: func() []interface{} {
@@ -276,11 +273,10 @@ func main() {
 						return result
 					},
 				}
-				collect("client-profiles", clientProfileHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageBridges {
-				bridgeHandler := &controllers.GenericCRUDHandler{
+				bridgeHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Bridge",
 					Controller:   &controllers.BridgeController{},
 					GetState: func() []interface{} {
@@ -291,11 +287,10 @@ func main() {
 						return result
 					},
 				}
-				collect("bridges", bridgeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageBridgeRemoteMsgVpns {
-				bridgeRemoteMsgVpnHandler := &controllers.GenericCRUDHandler{
+				bridgeRemoteMsgVpnHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Bridge Remote Msg VPN",
 					Controller:   &controllers.BridgeRemoteMsgVpnController{},
 					GetState: func() []interface{} {
@@ -306,11 +301,10 @@ func main() {
 						return result
 					},
 				}
-				collect("bridge-remote-msg-vpns", bridgeRemoteMsgVpnHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageDMRBridges {
-				dmrBridgeHandler := &controllers.GenericCRUDHandler{
+				dmrBridgeHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "DMR Bridge",
 					Controller:   &controllers.DmrBridgeController{},
 					GetState: func() []interface{} {
@@ -321,11 +315,10 @@ func main() {
 						return result
 					},
 				}
-				collect("dmr-bridges", dmrBridgeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageJndiConnectionFactories {
-				jndiConnectionFactoryHandler := &controllers.GenericCRUDHandler{
+				jndiConnectionFactoryHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "JNDI Connection Factory",
 					Controller:   &controllers.JndiConnectionFactoryController{},
 					GetState: func() []interface{} {
@@ -336,11 +329,10 @@ func main() {
 						return result
 					},
 				}
-				collect("jndi-connection-factories", jndiConnectionFactoryHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageJndiQueues {
-				jndiQueueHandler := &controllers.GenericCRUDHandler{
+				jndiQueueHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "JNDI Queue",
 					Controller:   &controllers.JndiQueueController{},
 					GetState: func() []interface{} {
@@ -351,11 +343,10 @@ func main() {
 						return result
 					},
 				}
-				collect("jndi-queues", jndiQueueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageJndiTopics {
-				jndiTopicHandler := &controllers.GenericCRUDHandler{
+				jndiTopicHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "JNDI Topic",
 					Controller:   &controllers.JndiTopicController{},
 					GetState: func() []interface{} {
@@ -366,11 +357,10 @@ func main() {
 						return result
 					},
 				}
-				collect("jndi-topics", jndiTopicHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageProxies {
-				proxyHandler := &controllers.GenericCRUDHandler{
+				proxyHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Proxy",
 					Controller:   &controllers.ProxyController{},
 					GetState: func() []interface{} {
@@ -381,11 +371,10 @@ func main() {
 						return result
 					},
 				}
-				collect("proxies", proxyHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageQueueTemplates {
-				queueTemplateHandler := &controllers.GenericCRUDHandler{
+				queueTemplateHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Queue Template",
 					Controller:   &controllers.QueueTemplateController{},
 					GetState: func() []interface{} {
@@ -396,11 +385,10 @@ func main() {
 						return result
 					},
 				}
-				collect("queue-templates", queueTemplateHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageTopicEndpoints {
-				topicEndpointHandler := &controllers.GenericCRUDHandler{
+				topicEndpointHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Topic Endpoint",
 					Controller:   &controllers.TopicEndpointController{},
 					GetState: func() []interface{} {
@@ -411,11 +399,10 @@ func main() {
 						return result
 					},
 				}
-				collect("topic-endpoints", topicEndpointHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageTopicEndpointTemplates {
-				topicEndpointTemplateHandler := &controllers.GenericCRUDHandler{
+				topicEndpointTemplateHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Topic Endpoint Template",
 					Controller:   &controllers.TopicEndpointTemplateController{},
 					GetState: func() []interface{} {
@@ -426,11 +413,10 @@ func main() {
 						return result
 					},
 				}
-				collect("topic-endpoint-templates", topicEndpointTemplateHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
 
 			if manageMsgVpns {
-				msgVpnHandler := &controllers.GenericCRUDHandler{
+				msgVpnHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "MsgVpn",
 					Controller:   &controllers.MsgVpnController{},
 					GetState: func() []interface{} {
@@ -441,8 +427,103 @@ func main() {
 						return result
 					},
 				}
-				collect("msg-vpns", msgVpnHandler.ProcessState(ctx, sempClient, msgVPN, dryRun))
 			}
+
+			// Delete resources that are present on the broker but not in the desired state
+			if manageJndiConnectionFactories {
+				collect("jndi-connection-factories", jndiConnectionFactoryHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageJndiQueues {
+				collect("jndi-queues", jndiQueueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageJndiTopics {
+				collect("jndi-topics", jndiTopicHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageBridgeRemoteMsgVpns {
+				collect("bridge-remote-msg-vpns", bridgeRemoteMsgVpnHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageBridges {
+				collect("bridges", bridgeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageDMRBridges {
+				collect("dmr-bridges", dmrBridgeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageQueues {
+				collect("queues", queueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageTopicEndpoints {
+				collect("topic-endpoints", topicEndpointHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageQueueTemplates {
+				collect("queue-templates", queueTemplateHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageTopicEndpointTemplates {
+				collect("topic-endpoint-templates", topicEndpointTemplateHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageClientUsernames {
+				collect("client-usernames", clientUsernameHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageACLProfiles {
+				collect("acl-profiles", aclHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageClientProfiles {
+				collect("client-profiles", clientProfileHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageProxies {
+				collect("proxies", proxyHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+			if manageMsgVpns {
+				collect("msg-vpns", msgVpnHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+			}
+
+			// Upsert resources that are in the desired state
+			if manageMsgVpns {
+				collect("msg-vpns", msgVpnHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageACLProfiles {
+				collect("acl-profiles", aclHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageClientProfiles {
+				collect("client-profiles", clientProfileHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageClientUsernames {
+				collect("client-usernames", clientUsernameHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageQueueTemplates {
+				collect("queue-templates", queueTemplateHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageTopicEndpointTemplates {
+				collect("topic-endpoint-templates", topicEndpointTemplateHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageQueues {
+				collect("queues", queueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageTopicEndpoints {
+				collect("topic-endpoints", topicEndpointHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageBridges {
+				collect("bridges", bridgeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageBridgeRemoteMsgVpns {
+				collect("bridge-remote-msg-vpns", bridgeRemoteMsgVpnHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageDMRBridges {
+				collect("dmr-bridges", dmrBridgeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageJndiConnectionFactories {
+				collect("jndi-connection-factories", jndiConnectionFactoryHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageJndiQueues {
+				collect("jndi-queues", jndiQueueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageJndiTopics {
+				collect("jndi-topics", jndiTopicHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+			if manageProxies {
+				collect("proxies", proxyHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+			}
+
+			// Send status report
 
 			if viper.GetBool("SOL_STATUS_WEBHOOK_ENABLED") || viper.GetBool("SOL_STATUS_MESSAGE_ENABLED") {
 				logrus.WithField("category", "Statusreport").Infof("collected errors: %+v", errorList)

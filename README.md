@@ -29,15 +29,14 @@ The agent operates in a continuous reconciliation loop:
 5.  **Apply Changes**: The agent executes the necessary `CREATE`, `UPDATE`, and `DELETE` operations on the broker to align its configuration with the target state.
 6.  **Statusreport**: After the run, it sends a success or failure report to a configured webhook or Solace topic.
 
-### ⚠️ <span style="color:orange">Any managed resource which is not declared in a targetState will be deleted! (Except for System resources having a '#' prefix or equals to 'default'). </span>
+### ⚠️ <span style="color:orange">Any managed resource which is not declared in a targetState will be deleted! (Except for System resources having a '#' prefix or equals to 'default', or resources matching whitelist patterns). </span>
 
 If you're not sure about the outcome of your targetState, consider using `SOL_DRYRUN: true` first.
 
 
-
 ## 🚀 Getting Started
 
-### 1. Configuration
+### ⚙️ Configuration
 
 The agent is configured using a `config.yaml` file or environment variables (environment variables always take precedence).
 
@@ -63,7 +62,7 @@ SOL_MANAGE_QUEUES: true
 SOL_MANAGE_ACL_PROFILES: true
 ```
 
-### 2. 📝 Define Target State
+### 📝 Define Target State
 
 Create a JSON file (`targetstate.json`) that defines the resources you want to manage.
 
@@ -91,7 +90,41 @@ Create a JSON file (`targetstate.json`) that defines the resources you want to m
 }
 ```
 
-### 3. 🐳 Run the Agent
+### 🛡️ Resource Whitelisting
+
+You can define patterns to protect specific resources from being managed (and thus deleted) by the agent, even if they're not declared in the target state. This is useful for resources that are dynamically created by applications or that you want to manage outside of the agent's control.
+
+Add a `whitelistPatterns` section to your `targetstate.json`:
+
+```json
+{
+  "whitelistPatterns": {
+    "queuePatterns": [
+      "client/*",        // Matches any queue under client/
+      "temp/>",          // Matches temp/ and all subpaths recursively
+      "app/[0-9]*"       // Matches app/ followed by any number
+    ],
+    "topicEndpointPatterns": [
+      "dynamic/*/*",     // Matches two levels under dynamic/
+      "temp/>"          // Matches temp/ and all subpaths recursively
+    ]
+  }
+}
+```
+
+Pattern types:
+- `*` matches any sequence of characters within a segment (except '/')
+- `/>` matches the prefix and all subpaths recursively
+- `[...]` matches any character within the brackets
+- `[!...]` matches any character not in the brackets
+
+Examples:
+- `client/*` → matches: `client/app1`, `client/app2`, but not `client/app1/queue`
+- `temp/>` → matches: `temp/a`, `temp/a/b`, `temp/a/b/c`
+- `app/[0-9]*` → matches: `app/123`, `app/456`, but not `app/abc`
+
+
+### 🐳 Run the Agent
 
 A `Dockerimage` is provided to run the agent in a container.
 
@@ -117,7 +150,7 @@ docker run --rm -it \
 
 The agent will start and wait for a target state message on the `config/my-broker/target-state` topic.
 
-### 4. 📨 Publish the Target State
+### 📨 Publish the Target State
 
 Use a tool like `curl` or a Solace client library to publish the content of your `targetstate.json` to the configured topic. The `Makefile` provides a convenience target for this.
 
@@ -170,7 +203,11 @@ For sensitive data like passwords in your `targetstate.json`, you can use placeh
       ]
     }
     ```
+    To encrypt sensitive data like passwords you can use the provided AESEncryptor:
 
+    ```
+    go run aesencryptor/main.go
+    ```
 ### 💼 Supported Solace Objects
 
 The agent supports managing a wide range of Solace resources:

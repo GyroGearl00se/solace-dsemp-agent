@@ -149,7 +149,9 @@ func main() {
 				}
 				errorList = append(errorList, errs...)
 			}
+
 			var queueHandler, queueSubscriptionHandler, aclHandler, aclPublishHandler, aclSubscribeHandler, clientUsernameHandler, clientProfileHandler, bridgeHandler, bridgeRemoteMsgVpnHandler, dmrBridgeHandler, jndiConnectionFactoryHandler, jndiQueueHandler, jndiTopicHandler, proxyHandler, queueTemplateHandler, topicEndpointHandler, topicEndpointTemplateHandler, msgVpnHandler *controllers.GenericCRUDHandler
+
 			if manageQueues {
 				queueHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Queue",
@@ -165,29 +167,6 @@ func main() {
 						return result
 					},
 				}
-
-				// Process subscriptions for each queue
-				for _, queue := range state.Queues {
-					currentQueue := queue
-
-					if len(currentQueue.QueueSubscriptions) > 0 {
-						queueSubscriptionHandler = &controllers.GenericCRUDHandler{
-							ResourceType: "QueueSubscription",
-							Controller:   &controllers.QueueSubscriptionController{QueueName: currentQueue.QueueName},
-							GetState: func() []interface{} {
-								subscriptions := make([]interface{}, len(currentQueue.QueueSubscriptions))
-								for i, subTopic := range currentQueue.QueueSubscriptions {
-									subscriptions[i] = swagger.MsgVpnQueueSubscription{
-										SubscriptionTopic: subTopic,
-										QueueName:         currentQueue.QueueName,
-									}
-								}
-								return subscriptions
-							},
-						}
-						collect(fmt.Sprintf("queue subscriptions for %s", currentQueue.QueueName), queueSubscriptionHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
-					}
-				}
 			}
 
 			if manageACLProfiles {
@@ -201,51 +180,6 @@ func main() {
 						}
 						return result
 					},
-				}
-
-				// Process ACL Profile Publish and Subscribe Exceptions for each ACL Profile
-				for _, aclProfile := range state.ACLProfiles {
-					currentProfile := aclProfile
-
-					// Handle Publish Exceptions
-					if len(currentProfile.PublishExceptions) > 0 {
-						aclPublishHandler = &controllers.GenericCRUDHandler{
-							ResourceType: "ACL Profile Publish Exception",
-							Controller:   &controllers.ACLProfileExceptionController{IsPublishException: true, AclProfileName: currentProfile.AclProfileName},
-							GetState: func() []interface{} {
-								exceptions := make([]interface{}, len(currentProfile.PublishExceptions))
-								for i, ex := range currentProfile.PublishExceptions {
-									exceptions[i] = swagger.MsgVpnAclProfilePublishException{
-										AclProfileName:        currentProfile.AclProfileName,
-										PublishExceptionTopic: ex.PublishExceptionTopic,
-										TopicSyntax:           ex.TopicSyntax,
-									}
-								}
-								return exceptions
-							},
-						}
-						collect(fmt.Sprintf("acl-profile publish exceptions for %s", currentProfile.AclProfileName), aclPublishHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
-					}
-
-					// Handle Subscribe Exceptions
-					if len(currentProfile.SubscribeExceptions) > 0 {
-						aclSubscribeHandler = &controllers.GenericCRUDHandler{
-							ResourceType: "ACL Profile Subscribe Exception",
-							Controller:   &controllers.ACLProfileExceptionController{IsPublishException: false, AclProfileName: currentProfile.AclProfileName},
-							GetState: func() []interface{} {
-								exceptions := make([]interface{}, len(currentProfile.SubscribeExceptions))
-								for i, ex := range currentProfile.SubscribeExceptions {
-									exceptions[i] = swagger.MsgVpnAclProfileSubscribeException{
-										AclProfileName:          currentProfile.AclProfileName,
-										SubscribeExceptionTopic: ex.SubscribeExceptionTopic,
-										TopicSyntax:             ex.TopicSyntax,
-									}
-								}
-								return exceptions
-							},
-						}
-						collect(fmt.Sprintf("acl-profile subscribe exceptions for %s", currentProfile.AclProfileName), aclSubscribeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
-					}
 				}
 			}
 
@@ -486,6 +420,50 @@ func main() {
 			}
 			if manageACLProfiles {
 				collect("acl-profiles", aclHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+				// Process ACL Profile Publish and Subscribe Exceptions for each ACL Profile
+				for _, aclProfile := range state.ACLProfiles {
+					currentProfile := aclProfile
+
+					// Handle Publish Exceptions
+					if len(currentProfile.PublishExceptions) > 0 {
+						aclPublishHandler = &controllers.GenericCRUDHandler{
+							ResourceType: "ACL Profile Publish Exception",
+							Controller:   &controllers.ACLProfileExceptionController{IsPublishException: true, AclProfileName: currentProfile.AclProfileName},
+							GetState: func() []interface{} {
+								exceptions := make([]interface{}, len(currentProfile.PublishExceptions))
+								for i, ex := range currentProfile.PublishExceptions {
+									exceptions[i] = swagger.MsgVpnAclProfilePublishException{
+										AclProfileName:        currentProfile.AclProfileName,
+										PublishExceptionTopic: ex.PublishExceptionTopic,
+										TopicSyntax:           ex.TopicSyntax,
+									}
+								}
+								return exceptions
+							},
+						}
+						collect(fmt.Sprintf("acl-profile publish exceptions for %s", currentProfile.AclProfileName), aclPublishHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+					}
+
+					// Handle Subscribe Exceptions
+					if len(currentProfile.SubscribeExceptions) > 0 {
+						aclSubscribeHandler = &controllers.GenericCRUDHandler{
+							ResourceType: "ACL Profile Subscribe Exception",
+							Controller:   &controllers.ACLProfileExceptionController{IsPublishException: false, AclProfileName: currentProfile.AclProfileName},
+							GetState: func() []interface{} {
+								exceptions := make([]interface{}, len(currentProfile.SubscribeExceptions))
+								for i, ex := range currentProfile.SubscribeExceptions {
+									exceptions[i] = swagger.MsgVpnAclProfileSubscribeException{
+										AclProfileName:          currentProfile.AclProfileName,
+										SubscribeExceptionTopic: ex.SubscribeExceptionTopic,
+										TopicSyntax:             ex.TopicSyntax,
+									}
+								}
+								return exceptions
+							},
+						}
+						collect(fmt.Sprintf("acl-profile subscribe exceptions for %s", currentProfile.AclProfileName), aclSubscribeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+					}
+				}
 			}
 			if manageClientProfiles {
 				collect("client-profiles", clientProfileHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
@@ -501,6 +479,28 @@ func main() {
 			}
 			if manageQueues {
 				collect("queues", queueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+				// Process subscriptions for each queue
+				for _, queue := range state.Queues {
+					currentQueue := queue
+
+					if len(currentQueue.QueueSubscriptions) > 0 {
+						queueSubscriptionHandler = &controllers.GenericCRUDHandler{
+							ResourceType: "QueueSubscription",
+							Controller:   &controllers.QueueSubscriptionController{QueueName: currentQueue.QueueName},
+							GetState: func() []interface{} {
+								subscriptions := make([]interface{}, len(currentQueue.QueueSubscriptions))
+								for i, subTopic := range currentQueue.QueueSubscriptions {
+									subscriptions[i] = swagger.MsgVpnQueueSubscription{
+										SubscriptionTopic: subTopic,
+										QueueName:         currentQueue.QueueName,
+									}
+								}
+								return subscriptions
+							},
+						}
+						collect(fmt.Sprintf("queue subscriptions for %s", currentQueue.QueueName), queueSubscriptionHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+					}
+				}
 			}
 			if manageTopicEndpoints {
 				collect("topic-endpoints", topicEndpointHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))

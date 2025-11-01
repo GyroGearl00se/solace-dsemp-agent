@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	"net/url"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
 )
@@ -29,12 +30,14 @@ func (c *JndiQueueController) Get(ctx context.Context, client *swagger.APIClient
 
 func (c *JndiQueueController) Update(ctx context.Context, client *swagger.APIClient, msgVpn string, obj interface{}) error {
 	queue := obj.(swagger.MsgVpnJndiQueue)
-	_, _, err := client.JndiApi.UpdateMsgVpnJndiQueue(ctx, queue, msgVpn, queue.QueueName, nil)
+	encodedQueueName := url.PathEscape(queue.QueueName)
+	_, _, err := client.JndiApi.UpdateMsgVpnJndiQueue(ctx, queue, msgVpn, encodedQueueName, nil)
 	return err
 }
 
 func (c *JndiQueueController) Delete(ctx context.Context, client *swagger.APIClient, msgVpn string, identifier string) error {
-	_, _, err := client.JndiApi.DeleteMsgVpnJndiQueue(ctx, msgVpn, identifier)
+	encodedIdentifier := url.PathEscape(identifier)
+	_, _, err := client.JndiApi.DeleteMsgVpnJndiQueue(ctx, msgVpn, encodedIdentifier)
 	return err
 }
 

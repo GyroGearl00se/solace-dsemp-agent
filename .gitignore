@@ -39,5 +39,4 @@ vendor/
 # Docker/Devcontainer
 .devcontainer/.env
 
-/aesencryptor
 sol-dsemp-agent

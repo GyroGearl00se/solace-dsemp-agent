@@ -13,12 +13,14 @@ type QueueSubscriptionController struct {
 
 func (c *QueueSubscriptionController) Create(ctx context.Context, client *swagger.APIClient, msgVpn string, obj interface{}) error {
 	sub := obj.(swagger.MsgVpnQueueSubscription)
-	_, _, err := client.QueueApi.CreateMsgVpnQueueSubscription(ctx, sub, msgVpn, c.QueueName, nil)
+	encodedQueueName := url.PathEscape(c.QueueName)
+	_, _, err := client.QueueApi.CreateMsgVpnQueueSubscription(ctx, sub, msgVpn, encodedQueueName, nil)
 	return err
 }
 
 func (c *QueueSubscriptionController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.QueueApi.GetMsgVpnQueueSubscriptions(ctx, msgVpn, c.QueueName, nil)
+	encodedQueueName := url.PathEscape(c.QueueName)
+	resp, _, err := client.QueueApi.GetMsgVpnQueueSubscriptions(ctx, msgVpn, encodedQueueName, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +38,8 @@ func (c *QueueSubscriptionController) Update(ctx context.Context, client *swagge
 }
 
 func (c *QueueSubscriptionController) Delete(ctx context.Context, client *swagger.APIClient, msgVpn string, identifier string) error {
-	_, _, err := client.QueueApi.DeleteMsgVpnQueueSubscription(ctx, msgVpn, c.QueueName, identifier)
+	encodedQueueName := url.PathEscape(c.QueueName)
+	_, _, err := client.QueueApi.DeleteMsgVpnQueueSubscription(ctx, msgVpn, encodedQueueName, identifier)
 	return err
 }
 

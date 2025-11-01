@@ -2,11 +2,14 @@ package controllers
 
 import (
 	"context"
+	"net/url"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
 )
 
-type QueueController struct{}
+type QueueController struct {
+	WhitelistPatterns []string
+}
 
 func (c *QueueController) Create(ctx context.Context, client *swagger.APIClient, msgVpn string, obj interface{}) error {
 	queue := obj.(swagger.MsgVpnQueue)
@@ -30,12 +33,14 @@ func (c *QueueController) Get(ctx context.Context, client *swagger.APIClient, ms
 func (c *QueueController) Update(ctx context.Context, client *swagger.APIClient, msgVpn string, obj interface{}) error {
 	queue := obj.(swagger.MsgVpnQueue)
 	queue.MsgVpnName = msgVpn
-	_, _, err := client.QueueApi.UpdateMsgVpnQueue(ctx, queue, msgVpn, queue.QueueName, nil)
+	encodedQueueName := url.PathEscape(queue.QueueName)
+	_, _, err := client.QueueApi.UpdateMsgVpnQueue(ctx, queue, msgVpn, encodedQueueName, nil)
 	return err
 }
 
 func (c *QueueController) Delete(ctx context.Context, client *swagger.APIClient, msgVpn string, identifier string) error {
-	_, _, err := client.QueueApi.DeleteMsgVpnQueue(ctx, msgVpn, identifier)
+	encodedIdentifier := url.PathEscape(identifier)
+	_, _, err := client.QueueApi.DeleteMsgVpnQueue(ctx, msgVpn, encodedIdentifier)
 	return err
 }
 
@@ -45,7 +50,10 @@ func (c *QueueController) GetIdentifier(obj interface{}) string {
 
 func (c *QueueController) ShouldManage(obj interface{}) bool {
 	if queue, ok := obj.(swagger.MsgVpnQueue); ok {
-		return !isSystemResource(queue.QueueName)
+		if isSystemResource(queue.QueueName) || isWhitelisted(queue.QueueName, c.WhitelistPatterns) {
+			return false
+		}
+		return true
 	}
 	return false
 }

@@ -39,6 +39,7 @@ type TargetState struct {
 	TopicEndpoints          []swagger.MsgVpnTopicEndpoint         `json:"topicEndpoints"`
 	TopicEndpointsTemplates []swagger.MsgVpnTopicEndpointTemplate `json:"topicEndpointsTemplates"`
 	Version                 string                                `json:"version"`
+	WhitelistPatterns       WhitelistPatterns                     `json:"whitelistPatterns"`
 }
 
 // QueueWithSubscriptions is a custom struct that combines an Queue and its subscriptions.
@@ -73,6 +74,12 @@ type SolaceConfig struct {
 	Username string
 	Password string
 	Topic    string
+}
+
+// WhitelistPatterns allows specifying patterns for whitelisting resources
+type WhitelistPatterns struct {
+	QueuePatterns         []string `json:"queuePatterns"`
+	TopicEndpointPatterns []string `json:"topicEndpointPatterns"`
 }
 
 // NewDefaultSolaceConfig creates a new SolaceConfig with default values

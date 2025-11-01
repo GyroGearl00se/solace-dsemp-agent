@@ -153,7 +153,9 @@ func main() {
 			if manageQueues {
 				queueHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Queue",
-					Controller:   &controllers.QueueController{},
+					Controller: &controllers.QueueController{
+						WhitelistPatterns: state.WhitelistPatterns.QueuePatterns,
+					},
 					GetState: func() []interface{} {
 						// Extract the swagger.MsgVpnQueue from our custom struct
 						result := make([]interface{}, len(state.Queues))
@@ -390,7 +392,9 @@ func main() {
 			if manageTopicEndpoints {
 				topicEndpointHandler = &controllers.GenericCRUDHandler{
 					ResourceType: "Topic Endpoint",
-					Controller:   &controllers.TopicEndpointController{},
+					Controller: &controllers.TopicEndpointController{
+						WhitelistPatterns: state.WhitelistPatterns.TopicEndpointPatterns,
+					},
 					GetState: func() []interface{} {
 						result := make([]interface{}, len(state.TopicEndpoints))
 						for i, te := range state.TopicEndpoints {

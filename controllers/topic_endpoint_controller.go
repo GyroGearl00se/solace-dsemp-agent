@@ -2,11 +2,14 @@ package controllers
 
 import (
 	"context"
+	"net/url"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
 )
 
-type TopicEndpointController struct{}
+type TopicEndpointController struct {
+	WhitelistPatterns []string
+}
 
 func (c *TopicEndpointController) Create(ctx context.Context, client *swagger.APIClient, msgVpn string, obj interface{}) error {
 	endpoint := obj.(swagger.MsgVpnTopicEndpoint)
@@ -29,12 +32,14 @@ func (c *TopicEndpointController) Get(ctx context.Context, client *swagger.APICl
 
 func (c *TopicEndpointController) Update(ctx context.Context, client *swagger.APIClient, msgVpn string, obj interface{}) error {
 	endpoint := obj.(swagger.MsgVpnTopicEndpoint)
-	_, _, err := client.TopicEndpointApi.UpdateMsgVpnTopicEndpoint(ctx, endpoint, msgVpn, endpoint.TopicEndpointName, nil)
+	encodedName := url.PathEscape(endpoint.TopicEndpointName)
+	_, _, err := client.TopicEndpointApi.UpdateMsgVpnTopicEndpoint(ctx, endpoint, msgVpn, encodedName, nil)
 	return err
 }
 
 func (c *TopicEndpointController) Delete(ctx context.Context, client *swagger.APIClient, msgVpn string, identifier string) error {
-	_, _, err := client.TopicEndpointApi.DeleteMsgVpnTopicEndpoint(ctx, msgVpn, identifier)
+	encodedIdentifier := url.PathEscape(identifier)
+	_, _, err := client.TopicEndpointApi.DeleteMsgVpnTopicEndpoint(ctx, msgVpn, encodedIdentifier)
 	return err
 }
 
@@ -44,7 +49,10 @@ func (c *TopicEndpointController) GetIdentifier(obj interface{}) string {
 
 func (c *TopicEndpointController) ShouldManage(obj interface{}) bool {
 	if endpoint, ok := obj.(swagger.MsgVpnTopicEndpoint); ok {
-		return !isSystemResource(endpoint.TopicEndpointName)
+		if isSystemResource(endpoint.TopicEndpointName) || isWhitelisted(endpoint.TopicEndpointName, c.WhitelistPatterns) {
+			return false
+		}
+		return true
 	}
 	return false
 }

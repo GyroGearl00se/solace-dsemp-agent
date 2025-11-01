@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	"path"
 	"reflect"
 	"strings"
 
@@ -12,11 +13,28 @@ import (
 
 // isSystemResource checks if a resource name is a system resource (starts with #)
 func isSystemResource(name string) bool {
-	if strings.HasPrefix(name, "#") {
-		return true
-	} else {
-		return false
+	return strings.HasPrefix(name, "#")
+}
+
+// isWhitelisted checks if a resource name matches any of the given patterns
+func isWhitelisted(name string, patterns []string) bool {
+	for _, pattern := range patterns {
+		// Handle recursive matching with />
+		if strings.HasSuffix(pattern, "/>") {
+			prefix := strings.TrimSuffix(pattern, "/>")
+			if strings.HasPrefix(name, prefix) {
+				return true
+			}
+			continue
+		}
+
+		// Standard pattern matching
+		matched, err := path.Match(pattern, name)
+		if err == nil && matched {
+			return true
+		}
 	}
+	return false
 }
 
 // Controller defines the interface that resource controllers must implement

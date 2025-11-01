@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"fmt"
+	"net/url"
 	"strings"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
@@ -69,12 +70,12 @@ func (c *ACLProfileExceptionController) Delete(ctx context.Context, client *swag
 		return fmt.Errorf("invalid identifier format, expected 'topicSyntax:topic', got '%s'", identifier)
 	}
 	topicSyntax, topic := parts[0], parts[1]
-
+	encodedTopicName := url.PathEscape(topic)
 	if c.IsPublishException {
-		_, _, err := client.AclProfileApi.DeleteMsgVpnAclProfilePublishException(ctx, msgVpn, c.AclProfileName, topicSyntax, topic)
+		_, _, err := client.AclProfileApi.DeleteMsgVpnAclProfilePublishException(ctx, msgVpn, c.AclProfileName, topicSyntax, encodedTopicName)
 		return err
 	} else {
-		_, _, err := client.AclProfileApi.DeleteMsgVpnAclProfileSubscribeException(ctx, msgVpn, c.AclProfileName, topicSyntax, topic)
+		_, _, err := client.AclProfileApi.DeleteMsgVpnAclProfileSubscribeException(ctx, msgVpn, c.AclProfileName, topicSyntax, encodedTopicName)
 		return err
 	}
 }

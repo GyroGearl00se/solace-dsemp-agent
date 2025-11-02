@@ -1,6 +1,6 @@
 # Solace Declarative SEMP Agent (solace-dsemp-agent)
 
-[![Go Version](https://img.shields.io/badge/go-1.24+-blue.svg)](https://golang.org) 
+[![Go Version](https://img.shields.io/badge/go-1.25.3-blue.svg)](https://golang.org) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **`solace-dsemp-agent`** is a Go application for declaratively managing Solace PubSub+ brokers. It acts as a lightweight agent that reconciles the broker's configuration with a desired target state, embracing GitOps and "Configuration-as-Code" principles for Solace.

@@ -206,7 +206,7 @@ For sensitive data like passwords in your `targetstate.json`, you can use placeh
     To encrypt sensitive data like passwords you can use the provided AESEncryptor:
 
     ```
-    go run aesencryptor/main.go
+    go run aesencryptor/main.go encrypt
     ```
 ### 💼 Supported Solace Objects
 

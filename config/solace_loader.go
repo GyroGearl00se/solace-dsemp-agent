@@ -284,21 +284,26 @@ func decryptAESCBCBase64(cipherBase64, keyText string) (string, error) {
 		return "", fmt.Errorf("invalid AES key size: %d bytes. Must be 16, 24, or 32", len(key))
 	}
 
-	// Use zero IV
-	iv := bytes.Repeat([]byte{0}, aes.BlockSize)
-
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return "", err
 	}
 
-	if len(cipherData)%aes.BlockSize != 0 {
+	if len(cipherData) < aes.BlockSize {
+		return "", fmt.Errorf("ciphertext too short")
+	}
+
+	// Extract IV from the beginning of the ciphertext
+	iv := cipherData[:aes.BlockSize]
+	ciphertext := cipherData[aes.BlockSize:]
+
+	if len(ciphertext)%aes.BlockSize != 0 {
 		return "", fmt.Errorf("ciphertext is not a multiple of the block size")
 	}
 
 	mode := cipher.NewCBCDecrypter(block, iv)
-	plaintext := make([]byte, len(cipherData))
-	mode.CryptBlocks(plaintext, cipherData)
+	plaintext := make([]byte, len(ciphertext))
+	mode.CryptBlocks(plaintext, ciphertext)
 
 	plaintext, err = pkcs7Unpad(plaintext)
 	if err != nil {

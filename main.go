@@ -15,6 +15,7 @@ import (
 	"github.com/GyroGearl00se/solace-dsemp-agent/config"
 	"github.com/GyroGearl00se/solace-dsemp-agent/controllers"
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/GyroGearl00se/solace-dsemp-agent/semplegacy"
 )
 
 func main() {
@@ -558,7 +559,14 @@ func main() {
 
 func sendStatusReport(success bool, errors []config.Error, state *config.TargetState) {
 	const category = "Statusreport"
+
+	brokerURL := viper.GetString("SOL_SEMP_BROKER_URL")
+	sempUser := viper.GetString("SOL_SEMP_USER")
+	sempPass := viper.GetString("SOL_SEMP_PASS")
+	brokerVersion := semplegacy.GetBrokerVersion(brokerURL, sempUser, sempPass)
+
 	extraFields := viper.GetStringMapString("SOL_STATUS_EXTRA_FIELDS")
+
 	logrus.WithField("category", category).Infof("sending status, success=%v, errors=%d", success, len(errors))
 	msg := map[string]interface{}{
 		"timestamp":     time.Now().UTC().Format(time.RFC3339),
@@ -566,6 +574,10 @@ func sendStatusReport(success bool, errors []config.Error, state *config.TargetS
 		"errors":        nil,
 		"configVersion": state.Version,
 	}
+	if brokerVersion != "" {
+		msg["brokerVersion"] = brokerVersion
+	}
+
 	if len(errors) > 0 {
 		msg["errors"] = errors
 	}

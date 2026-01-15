@@ -4,7 +4,7 @@ go 1.25.5
 
 require (
 	github.com/antihax/optional v1.0.0
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.9.4
 	github.com/spf13/viper v1.21.0
 	golang.org/x/oauth2 v0.34.0
 )

@@ -68,11 +68,13 @@ type ACLProfileWithExceptions struct {
 
 // SolaceConfig stores the configuration for the Solace messaging client
 type SolaceConfig struct {
-	URL      string
-	VPN      string
-	Username string
-	Password string
-	Topic    string
+	URL            string
+	VPN            string
+	Username       string
+	Password       string
+	Topic          string
+	TrustStorePath string
+	ValidateCert   bool
 }
 
 // WhitelistPatterns allows specifying patterns for whitelisting resources
@@ -113,9 +115,26 @@ func (sc *SolaceClient) Connect() error {
 		config.TransportLayerPropertyReconnectionAttempts:             -1,
 		config.TransportLayerPropertyReconnectionAttemptsWaitInterval: 500,
 		config.ClientPropertyName:                                     "solace-dsemp-agent",
+		config.TransportLayerSecurityPropertyTrustStorePath:           sc.config.TrustStorePath,
 	}
 
-	messagingService, err := messaging.NewMessagingServiceBuilder().FromConfigurationProvider(brokerConfig).Build()
+	transportSecurityStrategy := config.NewTransportSecurityStrategy().
+		WithExcludedProtocols(
+			config.TransportSecurityProtocolTLSv1,
+			config.TransportSecurityProtocolTLSv1_1,
+			config.TransportSecurityProtocolSSLv3)
+
+	if sc.config.ValidateCert {
+		transportSecurityStrategy = transportSecurityStrategy.
+			WithCertificateValidation(true, true, sc.config.TrustStorePath, "")
+	} else {
+		transportSecurityStrategy = transportSecurityStrategy.
+			WithoutCertificateValidation()
+	}
+
+	messagingService, err := messaging.NewMessagingServiceBuilder().FromConfigurationProvider(brokerConfig).
+		WithTransportSecurityStrategy(transportSecurityStrategy).
+		Build()
 	if err != nil {
 		return fmt.Errorf("failed to build messaging service: %v", err)
 	}

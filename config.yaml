@@ -12,6 +12,9 @@ SOL_STATE_PASSWORD: "solace-dsemp-agent"                  # Password for consumi
 SOL_STATE_TOPIC: "config/my-broker/target-state"          # Topic to consume state from
 SOL_RECONNECT_INTERVAL: "5s"                              # Duration string (e.g., "5s", "1m", "500ms")
 
+# Optional TLS configuration
+SOL_TRUST_STORE_PATH: "/path/to/truststore"               # Optional: path to trust store
+SOL_VALIDATE_CERT: true
 # AES key for substitution of sensitive fields
 SOL_AES_KEY: "ThisIsMyNewSuperSecure32ByteKey!"           # AES key for decryption (must be 16, 24, or 32 bytes for AES-128, AES-192, or AES-256)
 

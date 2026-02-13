@@ -6,16 +6,33 @@ import (
 	"solace.dev/go/messaging/pkg/solace/resource"
 )
 
-func SendStatusMessage(success bool, payload []byte, brokerURL, topic, brokerUser, brokerPass, msgVpn string) error {
+func SendStatusMessage(success bool, payload []byte, brokerURL, topic, brokerUser, brokerPass, msgVpn string, validateCert bool, trustStorePath string) error {
 
 	brokerConfig := config.ServicePropertyMap{
-		config.TransportLayerPropertyHost:                brokerURL,
-		config.ServicePropertyVPNName:                    msgVpn,
-		config.AuthenticationPropertySchemeBasicPassword: brokerPass,
-		config.AuthenticationPropertySchemeBasicUserName: brokerUser,
+		config.TransportLayerPropertyHost:                   brokerURL,
+		config.ServicePropertyVPNName:                       msgVpn,
+		config.AuthenticationPropertySchemeBasicPassword:    brokerPass,
+		config.AuthenticationPropertySchemeBasicUserName:    brokerUser,
+		config.TransportLayerSecurityPropertyTrustStorePath: trustStorePath,
 	}
 
-	messagingService, err := messaging.NewMessagingServiceBuilder().FromConfigurationProvider(brokerConfig).Build()
+	transportSecurityStrategy := config.NewTransportSecurityStrategy().
+		WithExcludedProtocols(
+			config.TransportSecurityProtocolTLSv1,
+			config.TransportSecurityProtocolTLSv1_1,
+			config.TransportSecurityProtocolSSLv3)
+
+	if validateCert {
+		transportSecurityStrategy = transportSecurityStrategy.
+			WithCertificateValidation(true, true, trustStorePath, "")
+	} else {
+		transportSecurityStrategy = transportSecurityStrategy.
+			WithoutCertificateValidation()
+	}
+
+	messagingService, err := messaging.NewMessagingServiceBuilder().FromConfigurationProvider(brokerConfig).
+		WithTransportSecurityStrategy(transportSecurityStrategy).
+		Build()
 
 	if err != nil {
 		panic(err)

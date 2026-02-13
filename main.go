@@ -3,10 +3,13 @@ package main
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/url"
+	"os"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -50,6 +53,9 @@ func main() {
 	solaceConfig.Username = viper.GetString("SOL_STATE_USERNAME")
 	solaceConfig.Password = viper.GetString("SOL_STATE_PASSWORD")
 	solaceConfig.Topic = viper.GetString("SOL_STATE_TOPIC")
+	solaceConfig.TrustStorePath = viper.GetString("SOL_TRUST_STORE_PATH")
+	viper.SetDefault("SOL_VALIDATE_CERT", true)
+	solaceConfig.ValidateCert = viper.GetBool("SOL_VALIDATE_CERT")
 	viper.SetDefault("SOL_RECONNECT_INTERVAL", "5")
 	reconnectInterval, _ := time.ParseDuration(viper.GetString("SOL_RECONNECT_INTERVAL"))
 
@@ -557,13 +563,46 @@ func main() {
 	select {}
 }
 
+// createHTTPClient creates an HTTP client with optional TLS certificate validation
+func createHTTPClient(validateCert bool, trustStorePath string) (*http.Client, error) {
+	tlsConfig := &tls.Config{
+		InsecureSkipVerify: !validateCert,
+	}
+
+	// If certificate validation is enabled and a trust store path is provided
+	if validateCert && trustStorePath != "" {
+		certData, err := os.ReadFile(trustStorePath)
+		if err != nil {
+			return nil, fmt.Errorf("failed to read trust store: %v", err)
+		}
+
+		certPool := x509.NewCertPool()
+		if !certPool.AppendCertsFromPEM(certData) {
+			return nil, fmt.Errorf("failed to parse trust store certificates")
+		}
+
+		tlsConfig.RootCAs = certPool
+	}
+
+	transport := &http.Transport{
+		TLSClientConfig: tlsConfig,
+	}
+
+	return &http.Client{
+		Transport: transport,
+		Timeout:   10 * time.Second,
+	}, nil
+}
+
 func sendStatusReport(success bool, errors []config.Error, state *config.TargetState) {
 	const category = "Statusreport"
 
 	brokerURL := viper.GetString("SOL_SEMP_BROKER_URL")
 	sempUser := viper.GetString("SOL_SEMP_USER")
 	sempPass := viper.GetString("SOL_SEMP_PASS")
-	brokerVersion := semplegacy.GetBrokerVersion(brokerURL, sempUser, sempPass)
+	validateCert := viper.GetBool("SOL_VALIDATE_CERT")
+	trustStorePath := viper.GetString("SOL_TRUST_STORE_PATH")
+	brokerVersion := semplegacy.GetBrokerVersion(brokerURL, sempUser, sempPass, validateCert, trustStorePath)
 
 	extraFields := viper.GetStringMapString("SOL_STATUS_EXTRA_FIELDS")
 
@@ -597,7 +636,11 @@ func sendStatusReport(success bool, errors []config.Error, state *config.TargetS
 
 		logrus.WithField("category", category).Infof("Starting WEBHOOK")
 
-		client := &http.Client{Timeout: 10 * time.Second}
+		client, err := createHTTPClient(validateCert, trustStorePath)
+		if err != nil {
+			logrus.WithField("category", category).Errorf("Failed to create HTTP client: %v", err)
+			return
+		}
 
 		req, err := http.NewRequest("POST", webhookURL, bytes.NewBuffer(body))
 		if err != nil {
@@ -636,7 +679,7 @@ func sendStatusReport(success bool, errors []config.Error, state *config.TargetS
 			return
 		}
 
-		if err := config.SendStatusMessage(success, body, brokerURL, topic, brokerUser, brokerPass, msgVpn); err != nil {
+		if err := config.SendStatusMessage(success, body, brokerURL, topic, brokerUser, brokerPass, msgVpn, validateCert, trustStorePath); err != nil {
 			logrus.WithField("category", category).Errorf("Failed to send status message: %v", err)
 			return
 		}

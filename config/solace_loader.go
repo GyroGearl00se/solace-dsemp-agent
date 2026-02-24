@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
 	"reflect"
 	"regexp"
 	"time"
@@ -107,6 +108,18 @@ const category = "Solace state consumer"
 
 // Connect establishes a connection to Solace broker
 func (sc *SolaceClient) Connect() error {
+	path := sc.config.TrustStorePath
+	if sc.config.ValidateCert && sc.config.TrustStorePath != "" {
+		fileInfo, err := os.Stat(sc.config.TrustStorePath)
+		if err != nil {
+			return fmt.Errorf("certificate path does not exist: %w", err)
+		}
+		if !fileInfo.IsDir() {
+			path = filepath.Dir(path)
+		} else {
+			path = sc.config.TrustStorePath
+		}
+	}
 	brokerConfig := config.ServicePropertyMap{
 		config.TransportLayerPropertyHost:                             sc.config.URL,
 		config.ServicePropertyVPNName:                                 sc.config.VPN,
@@ -115,7 +128,6 @@ func (sc *SolaceClient) Connect() error {
 		config.TransportLayerPropertyReconnectionAttempts:             -1,
 		config.TransportLayerPropertyReconnectionAttemptsWaitInterval: 500,
 		config.ClientPropertyName:                                     "solace-dsemp-agent",
-		config.TransportLayerSecurityPropertyTrustStorePath:           sc.config.TrustStorePath,
 	}
 
 	transportSecurityStrategy := config.NewTransportSecurityStrategy().
@@ -125,8 +137,12 @@ func (sc *SolaceClient) Connect() error {
 			config.TransportSecurityProtocolSSLv3)
 
 	if sc.config.ValidateCert {
-		transportSecurityStrategy = transportSecurityStrategy.
-			WithCertificateValidation(true, true, sc.config.TrustStorePath, "")
+		if sc.config.TrustStorePath != "" {
+			brokerConfig[config.TransportLayerSecurityPropertyTrustStorePath] = path
+
+			transportSecurityStrategy = transportSecurityStrategy.
+				WithCertificateValidation(true, true, path, "")
+		}
 	} else {
 		transportSecurityStrategy = transportSecurityStrategy.
 			WithoutCertificateValidation()

@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -120,6 +121,21 @@ func main() {
 	swaggerConf.Host = swaggerConfHost.Hostname()
 	swaggerConf.BasePath = brokerURL + "/SEMP/v2/config"
 	swaggerConf.Scheme = swaggerConfHost.Scheme
+	certPool := x509.NewCertPool()
+	if solaceConfig.TrustStorePath != "" {
+		if err := LoadCertificates(solaceConfig.TrustStorePath, certPool); err != nil {
+			logrus.WithField("category", "Config").Fatalf("Failed to load certificates: %v", err)
+		}
+	}
+	swaggerConf.HTTPClient = &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: !solaceConfig.ValidateCert,
+				RootCAs:            certPool,
+			},
+		},
+		Timeout: 10 * time.Second,
+	}
 
 	ctx := context.WithValue(context.Background(), swagger.ContextBasicAuth, swagger.BasicAuth{
 		UserName: sempUser,
@@ -538,7 +554,7 @@ func main() {
 
 			if viper.GetBool("SOL_STATUS_WEBHOOK_ENABLED") || viper.GetBool("SOL_STATUS_MESSAGE_ENABLED") {
 				logrus.WithField("category", "Statusreport").Infof("collected errors: %+v", errorList)
-				sendStatusReport(!hadError, errorList, state)
+				sendStatusReport(!hadError, errorList, state, certPool)
 			}
 		}
 
@@ -563,24 +579,68 @@ func main() {
 	select {}
 }
 
+// loadCertificates loads certificates from a file or directory
+func LoadCertificates(path string, certPool *x509.CertPool) error {
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		return fmt.Errorf("certificate path does not exist: %w", err)
+	}
+
+	if fileInfo.IsDir() {
+		// Load all .pem and .crt files from the directory
+		files, err := os.ReadDir(path)
+		if err != nil {
+			return fmt.Errorf("failed to read directory: %w", err)
+		}
+
+		certsLoaded := 0
+		for _, file := range files {
+			if file.IsDir() {
+				continue
+			}
+			ext := filepath.Ext(file.Name())
+			if ext == ".pem" || ext == ".crt" {
+				certPath := filepath.Join(path, file.Name())
+				certData, err := os.ReadFile(certPath)
+				if err != nil {
+					logrus.WithField("category", "Config").Warnf("Failed to read certificate file %s: %v", certPath, err)
+					continue
+				}
+				if !certPool.AppendCertsFromPEM(certData) {
+					logrus.WithField("category", "Config").Warnf("Failed to parse certificates from %s", certPath)
+					continue
+				}
+				certsLoaded++
+			}
+		}
+		if certsLoaded == 0 {
+			logrus.WithField("category", "Config").Warnf("No .pem or .crt files found in directory: %s", path)
+		} else {
+			logrus.WithField("category", "Config").Infof("Loaded %d certificate(s) from %s", certsLoaded, path)
+		}
+	} else {
+		// Load single file
+		certData, err := os.ReadFile(path)
+		if err != nil {
+			return fmt.Errorf("failed to read certificate file: %w", err)
+		}
+		if !certPool.AppendCertsFromPEM(certData) {
+			return fmt.Errorf("failed to parse certificates from file")
+		}
+		logrus.WithField("category", "Config").Infof("Loaded certificate(s) from %s", path)
+	}
+
+	return nil
+}
+
 // createHTTPClient creates an HTTP client with optional TLS certificate validation
-func createHTTPClient(validateCert bool, trustStorePath string) (*http.Client, error) {
+func createHTTPClient(validateCert bool, certPool *x509.CertPool) (*http.Client, error) {
 	tlsConfig := &tls.Config{
 		InsecureSkipVerify: !validateCert,
 	}
 
 	// If certificate validation is enabled and a trust store path is provided
-	if validateCert && trustStorePath != "" {
-		certData, err := os.ReadFile(trustStorePath)
-		if err != nil {
-			return nil, fmt.Errorf("failed to read trust store: %v", err)
-		}
-
-		certPool := x509.NewCertPool()
-		if !certPool.AppendCertsFromPEM(certData) {
-			return nil, fmt.Errorf("failed to parse trust store certificates")
-		}
-
+	if validateCert && certPool == nil {
 		tlsConfig.RootCAs = certPool
 	}
 
@@ -594,7 +654,7 @@ func createHTTPClient(validateCert bool, trustStorePath string) (*http.Client, e
 	}, nil
 }
 
-func sendStatusReport(success bool, errors []config.Error, state *config.TargetState) {
+func sendStatusReport(success bool, errors []config.Error, state *config.TargetState, certPool *x509.CertPool) {
 	const category = "Statusreport"
 
 	brokerURL := viper.GetString("SOL_SEMP_BROKER_URL")
@@ -602,10 +662,10 @@ func sendStatusReport(success bool, errors []config.Error, state *config.TargetS
 	sempPass := viper.GetString("SOL_SEMP_PASS")
 	validateCert := viper.GetBool("SOL_VALIDATE_CERT")
 	trustStorePath := viper.GetString("SOL_TRUST_STORE_PATH")
-	brokerVersion := semplegacy.GetBrokerVersion(brokerURL, sempUser, sempPass, validateCert, trustStorePath)
+	brokerVersion := semplegacy.GetBrokerVersion(brokerURL, sempUser, sempPass, validateCert, certPool)
 
 	extraFields := viper.GetStringMapString("SOL_STATUS_EXTRA_FIELDS")
-
+	logrus.WithField("category", "debug").Infof("brokerVersion=%v", brokerVersion)
 	logrus.WithField("category", category).Infof("sending status, success=%v, errors=%d", success, len(errors))
 	msg := map[string]interface{}{
 		"timestamp":     time.Now().UTC().Format(time.RFC3339),
@@ -636,7 +696,7 @@ func sendStatusReport(success bool, errors []config.Error, state *config.TargetS
 
 		logrus.WithField("category", category).Infof("Starting WEBHOOK")
 
-		client, err := createHTTPClient(validateCert, trustStorePath)
+		client, err := createHTTPClient(validateCert, certPool)
 		if err != nil {
 			logrus.WithField("category", category).Errorf("Failed to create HTTP client: %v", err)
 			return

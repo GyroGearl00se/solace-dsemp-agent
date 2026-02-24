@@ -7,13 +7,12 @@ import (
 	"encoding/xml"
 	"io"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/sirupsen/logrus"
 )
 
-func GetBrokerVersion(brokerURL, sempUser, sempPass string, validateCert bool, trustStorePath string) string {
+func GetBrokerVersion(brokerURL, sempUser, sempPass string, validateCert bool, certPool *x509.CertPool) string {
 	const category = "Statusreport"
 
 	sempURL := brokerURL + "/SEMP"
@@ -32,18 +31,7 @@ func GetBrokerVersion(brokerURL, sempUser, sempPass string, validateCert bool, t
 		InsecureSkipVerify: !validateCert,
 	}
 
-	if validateCert && trustStorePath != "" {
-		certData, err := os.ReadFile(trustStorePath)
-		if err != nil {
-			logrus.WithField("category", category).Errorf("Failed to read trust store: %v", err)
-			return ""
-		}
-
-		certPool := x509.NewCertPool()
-		if !certPool.AppendCertsFromPEM(certData) {
-			logrus.WithField("category", category).Errorf("Failed to parse trust store certificates")
-			return ""
-		}
+	if validateCert && certPool != nil {
 
 		tlsConfig.RootCAs = certPool
 	}

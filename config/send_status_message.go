@@ -1,19 +1,33 @@
 package config
 
 import (
+	"fmt"
+	"os"
+	"path/filepath"
+
 	"solace.dev/go/messaging"
 	"solace.dev/go/messaging/pkg/solace/config"
 	"solace.dev/go/messaging/pkg/solace/resource"
 )
 
 func SendStatusMessage(success bool, payload []byte, brokerURL, topic, brokerUser, brokerPass, msgVpn string, validateCert bool, trustStorePath string) error {
-
+	path := trustStorePath
+	if validateCert && trustStorePath != "" {
+		fileInfo, err := os.Stat(trustStorePath)
+		if err != nil {
+			return fmt.Errorf("certificate path does not exist: %w", err)
+		}
+		if !fileInfo.IsDir() {
+			path = filepath.Dir(path)
+		} else {
+			path = trustStorePath
+		}
+	}
 	brokerConfig := config.ServicePropertyMap{
-		config.TransportLayerPropertyHost:                   brokerURL,
-		config.ServicePropertyVPNName:                       msgVpn,
-		config.AuthenticationPropertySchemeBasicPassword:    brokerPass,
-		config.AuthenticationPropertySchemeBasicUserName:    brokerUser,
-		config.TransportLayerSecurityPropertyTrustStorePath: trustStorePath,
+		config.TransportLayerPropertyHost:                brokerURL,
+		config.ServicePropertyVPNName:                    msgVpn,
+		config.AuthenticationPropertySchemeBasicPassword: brokerPass,
+		config.AuthenticationPropertySchemeBasicUserName: brokerUser,
 	}
 
 	transportSecurityStrategy := config.NewTransportSecurityStrategy().
@@ -23,8 +37,11 @@ func SendStatusMessage(success bool, payload []byte, brokerURL, topic, brokerUse
 			config.TransportSecurityProtocolSSLv3)
 
 	if validateCert {
-		transportSecurityStrategy = transportSecurityStrategy.
-			WithCertificateValidation(true, true, trustStorePath, "")
+		if trustStorePath != "" {
+			brokerConfig[config.TransportLayerSecurityPropertyTrustStorePath] = path
+			transportSecurityStrategy = transportSecurityStrategy.
+				WithCertificateValidation(true, true, path, "")
+		}
 	} else {
 		transportSecurityStrategy = transportSecurityStrategy.
 			WithoutCertificateValidation()

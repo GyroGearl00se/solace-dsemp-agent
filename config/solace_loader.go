@@ -220,9 +220,15 @@ func (sc *SolaceClient) Disconnect() error {
 
 // handleMessage processes incoming messages
 func (sc *SolaceClient) handleMessage(msg message.InboundMessage) {
-	payload, ok := msg.GetPayloadAsBytes()
-	if !ok {
-		logrus.WithField("category", category).Error("Failed to get payload as bytes")
+	var payload []byte
+
+	// Try to get payload as string first, fallback to bytes
+	if payloadStr, ok := msg.GetPayloadAsString(); ok {
+		payload = []byte(payloadStr)
+	} else if payloadBytes, ok := msg.GetPayloadAsBytes(); ok {
+		payload = payloadBytes
+	} else {
+		logrus.WithField("category", category).Error("Failed to get payload as string or bytes")
 		return
 	}
 

@@ -668,10 +668,10 @@ func sendStatusReport(success bool, errors []config.Error, state *config.TargetS
 	logrus.WithField("category", "debug").Infof("brokerVersion=%v", brokerVersion)
 	logrus.WithField("category", category).Infof("sending status, success=%v, errors=%d", success, len(errors))
 	msg := map[string]interface{}{
-		"timestamp":     time.Now().UTC().Format(time.RFC3339),
-		"success":       success,
-		"errors":        nil,
-		"configVersion": state.Version,
+		"timestamp":          time.Now().UTC().Format(time.RFC3339),
+		"success":            success,
+		"errors":             nil,
+		"targetstateversion": state.Version,
 	}
 	if brokerVersion != "" {
 		msg["brokerVersion"] = brokerVersion

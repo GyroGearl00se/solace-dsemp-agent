@@ -4,6 +4,7 @@ import (
 	"context"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type JndiConnectionFactoryController struct{}
@@ -15,7 +16,7 @@ func (c *JndiConnectionFactoryController) Create(ctx context.Context, client *sw
 }
 
 func (c *JndiConnectionFactoryController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.JndiApi.GetMsgVpnJndiConnectionFactories(ctx, msgVpn, nil)
+	resp, _, err := client.JndiApi.GetMsgVpnJndiConnectionFactories(ctx, msgVpn, &swagger.JndiApiGetMsgVpnJndiConnectionFactoriesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

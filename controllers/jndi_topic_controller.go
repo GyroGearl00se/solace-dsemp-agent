@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type JndiTopicController struct{}
@@ -16,7 +17,7 @@ func (c *JndiTopicController) Create(ctx context.Context, client *swagger.APICli
 }
 
 func (c *JndiTopicController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.JndiApi.GetMsgVpnJndiTopics(ctx, msgVpn, nil)
+	resp, _, err := client.JndiApi.GetMsgVpnJndiTopics(ctx, msgVpn, &swagger.JndiApiGetMsgVpnJndiTopicsOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type QueueTemplateController struct{}
@@ -15,7 +16,7 @@ func (c *QueueTemplateController) Create(ctx context.Context, client *swagger.AP
 }
 
 func (c *QueueTemplateController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.QueueTemplateApi.GetMsgVpnQueueTemplates(ctx, msgVpn, nil)
+	resp, _, err := client.QueueTemplateApi.GetMsgVpnQueueTemplates(ctx, msgVpn, &swagger.QueueTemplateApiGetMsgVpnQueueTemplatesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

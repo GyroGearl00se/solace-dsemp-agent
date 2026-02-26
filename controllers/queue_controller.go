@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type QueueController struct {
@@ -18,7 +19,7 @@ func (c *QueueController) Create(ctx context.Context, client *swagger.APIClient,
 }
 
 func (c *QueueController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.QueueApi.GetMsgVpnQueues(ctx, msgVpn, nil)
+	resp, _, err := client.QueueApi.GetMsgVpnQueues(ctx, msgVpn, &swagger.QueueApiGetMsgVpnQueuesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type DmrBridgeController struct{}
@@ -15,7 +16,7 @@ func (c *DmrBridgeController) Create(ctx context.Context, client *swagger.APICli
 }
 
 func (c *DmrBridgeController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.DmrBridgeApi.GetMsgVpnDmrBridges(ctx, msgVpn, nil)
+	resp, _, err := client.DmrBridgeApi.GetMsgVpnDmrBridges(ctx, msgVpn, &swagger.DmrBridgeApiGetMsgVpnDmrBridgesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

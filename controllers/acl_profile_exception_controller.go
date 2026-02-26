@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type ACLProfileExceptionController struct {
@@ -36,7 +37,7 @@ func (c *ACLProfileExceptionController) Create(ctx context.Context, client *swag
 
 func (c *ACLProfileExceptionController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
 	if c.IsPublishException {
-		resp, _, err := client.AclProfileApi.GetMsgVpnAclProfilePublishExceptions(ctx, msgVpn, c.AclProfileName, nil)
+		resp, _, err := client.AclProfileApi.GetMsgVpnAclProfilePublishExceptions(ctx, msgVpn, c.AclProfileName, &swagger.AclProfileApiGetMsgVpnAclProfilePublishExceptionsOpts{Count: optional.NewInt32(100)})
 		if err != nil {
 			return nil, err
 		}
@@ -46,7 +47,7 @@ func (c *ACLProfileExceptionController) Get(ctx context.Context, client *swagger
 		}
 		return result, nil
 	} else {
-		resp, _, err := client.AclProfileApi.GetMsgVpnAclProfileSubscribeExceptions(ctx, msgVpn, c.AclProfileName, nil)
+		resp, _, err := client.AclProfileApi.GetMsgVpnAclProfileSubscribeExceptions(ctx, msgVpn, c.AclProfileName, &swagger.AclProfileApiGetMsgVpnAclProfileSubscribeExceptionsOpts{Count: optional.NewInt32(100)})
 		if err != nil {
 			return nil, err
 		}

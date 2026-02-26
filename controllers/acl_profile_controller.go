@@ -4,6 +4,7 @@ import (
 	"context"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type ACLProfileController struct{}
@@ -15,7 +16,7 @@ func (c *ACLProfileController) Create(ctx context.Context, client *swagger.APICl
 }
 
 func (c *ACLProfileController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.AclProfileApi.GetMsgVpnAclProfiles(ctx, msgVpn, nil)
+	resp, _, err := client.AclProfileApi.GetMsgVpnAclProfiles(ctx, msgVpn, &swagger.AclProfileApiGetMsgVpnAclProfilesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

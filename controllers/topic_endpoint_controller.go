@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type TopicEndpointController struct {
@@ -18,7 +19,7 @@ func (c *TopicEndpointController) Create(ctx context.Context, client *swagger.AP
 }
 
 func (c *TopicEndpointController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.TopicEndpointApi.GetMsgVpnTopicEndpoints(ctx, msgVpn, nil)
+	resp, _, err := client.TopicEndpointApi.GetMsgVpnTopicEndpoints(ctx, msgVpn, &swagger.TopicEndpointApiGetMsgVpnTopicEndpointsOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

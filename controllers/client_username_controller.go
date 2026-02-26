@@ -4,6 +4,7 @@ import (
 	"context"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type ClientUsernameController struct{}
@@ -15,7 +16,7 @@ func (c *ClientUsernameController) Create(ctx context.Context, client *swagger.A
 }
 
 func (c *ClientUsernameController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.ClientUsernameApi.GetMsgVpnClientUsernames(ctx, msgVpn, nil)
+	resp, _, err := client.ClientUsernameApi.GetMsgVpnClientUsernames(ctx, msgVpn, &swagger.ClientUsernameApiGetMsgVpnClientUsernamesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

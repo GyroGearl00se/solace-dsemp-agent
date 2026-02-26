@@ -4,6 +4,7 @@ import (
 	"context"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/antihax/optional"
 )
 
 type ProxyController struct{}
@@ -15,7 +16,7 @@ func (c *ProxyController) Create(ctx context.Context, client *swagger.APIClient,
 }
 
 func (c *ProxyController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.ProxyApi.GetMsgVpnProxies(ctx, msgVpn, nil)
+	resp, _, err := client.ProxyApi.GetMsgVpnProxies(ctx, msgVpn, &swagger.ProxyApiGetMsgVpnProxiesOpts{Count: optional.NewInt32(100)})
 	if err != nil {
 		return nil, err
 	}

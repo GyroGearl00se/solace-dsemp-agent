@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"time"
 
 	"solace.dev/go/messaging"
 	"solace.dev/go/messaging/pkg/solace/config"
@@ -85,9 +86,11 @@ func SendStatusMessage(success bool, payload []byte, brokerURL, topic, brokerUse
 		panic(publishErr)
 	}
 
-	// fmt.Printf("Published message: %s\n", message)
+	directPublisher.Terminate(1 * time.Second)
+	fmt.Println("\nDirect Publisher Terminated? ", directPublisher.IsTerminated())
 
 	messagingService.Disconnect()
+	fmt.Println("Messaging Service Disconnected? ", !messagingService.IsConnected())
 
 	return nil
 

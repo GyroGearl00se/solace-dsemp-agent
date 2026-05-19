@@ -39,4 +39,4 @@ vendor/
 # Docker/Devcontainer
 .devcontainer/.env
 
-sol-dsemp-agent
+solace-dsemp-agent

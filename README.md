@@ -15,6 +15,7 @@ The agent listens for a target state definition on a Solace topic. When a new st
 - **Event-Driven**: The agent is triggered by publishing a new target state to a Solace topic.
 - **Secret Management**: Securely provide secrets like passwords through environment variables or AES-encrypted strings directly in your state file.
 - **Selective Control**: Enable or disable management for specific resource types (e.g., only manage queues and ACLs).
+- **GitOps & Bootstrapping**: Load the desired target state initially from a local JSON file (e.g., mounted ConfigMap in Kubernetes) and dynamically watch it for modifications.
 - **Status Reporting**: Get feedback on configuration runs via an HTTP webhook or a status message published back to a Solace topic.
 - **Dry-Run Mode**: See what changes would be made without actually applying them.
 
@@ -123,6 +124,32 @@ Examples:
 - `temp/>` → matches: `temp/a`, `temp/a/b`, `temp/a/b/c`
 - `app/[0-9]*` → matches: `app/123`, `app/456`, but not `app/abc`
 
+### 📂 GitOps & Bootstrapping (File-Based Loading)
+
+The agent supports loading the desired state directly from a local JSON file (e.g., via a Kubernetes ConfigMap mount) on startup, with the option to watch this file for real-time updates and apply changes automatically.
+
+To configure file-based loading, add these settings in your `config.yaml` or use their environment variables:
+
+```yaml
+# Enable or disable the file-based state loader
+SOL_INITIAL_STATE_ENABLED: true
+# Path to the desired state JSON file (e.g. mounted ConfigMap)
+SOL_INITIAL_STATE_FILE: "./targetstate.json"
+```
+
+To run in a pure **File-Only (GitOps) mode**, you can disable the SMF messaging state consumer entirely by toggling it off:
+
+```yaml
+# Disable the messaging state consumer
+SOL_STATE_CONSUMER_ENABLED: false
+```
+
+#### 🛡️ Version & Rollback Protection
+To prevent accidentally overwriting a newer configuration (e.g., a state update that was pushed via messaging) with an older config file during a container restart, the agent maintains state persistence directly on the Solace broker inside a dedicated, lightweight metadata queue named `solace-dsemp-agent-metadata`. 
+
+- During bootstrapping, the agent reads the current applied state version from this queue's `Owner` field.
+- The local file will only be applied if its `version` is semantically newer (e.g., `1.0.2` > `1.0.1`) than the version recorded on the broker.
+
 
 ### 🐳 Run the Agent
 
@@ -198,7 +225,7 @@ For sensitive data like passwords in your `targetstate.json`, you can use placeh
       "clientUsernames": [
         {
           "clientUsername": "my-secure-user",
-          "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}"
+          "password": "$aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}"
         }
       ]
     }

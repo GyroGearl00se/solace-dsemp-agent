@@ -74,14 +74,14 @@
     {
       "clientUsername": "my-user",
       "enabled": true,
-      "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "password": "$aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}",
       "clientProfileName": "my-client-profile",
       "aclProfileName": "my-acl-profile"
     },
     {
       "clientUsername": "another-user",
       "enabled": true,
-      "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "password": "$aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}",
       "clientProfileName": "default",
       "aclProfileName": "default"
     }
@@ -103,7 +103,7 @@
       "bridgeVirtualRouter": "auto",
       "enabled": true,
       "remoteAuthenticationBasicClientUsername": "bridge-user",
-      "remoteAuthenticationBasicPassword": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "remoteAuthenticationBasicPassword": "$aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}",
       "remoteConnectionRetryCount": 0,
       "remoteConnectionRetryDelay": 3,
       "remoteDeliverToOnePriority": "p1"
@@ -119,7 +119,7 @@
       "enabled": true,
       "queueBinding": "bridge-queue",
       "clientUsername": "bridge-remote-user",
-      "password": "$aes{mHzBHwp+08JjXnLLfmHyZ5Acw0ecTshvcLoW7AABgdg=}",
+      "password": "$aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}",
       "compressedDataEnabled": true,
       "tlsEnabled": true,
       "connectOrder": 1

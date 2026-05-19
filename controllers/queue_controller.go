@@ -51,6 +51,9 @@ func (c *QueueController) GetIdentifier(obj interface{}) string {
 
 func (c *QueueController) ShouldManage(obj interface{}) bool {
 	if queue, ok := obj.(swagger.MsgVpnQueue); ok {
+		if queue.QueueName == "solace-dsemp-agent-metadata" {
+			return false
+		}
 		if isSystemResource(queue.QueueName) || isWhitelisted(queue.QueueName, c.WhitelistPatterns) {
 			return false
 		}

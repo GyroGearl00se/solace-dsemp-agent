@@ -1,19 +1,24 @@
 # Solace SEMP broker configuration (for managing resources)
-SOL_SEMP_BROKER_URL: "http://host.docker.internal:8080"   # Broker SEMP API URL
+SOL_SEMP_BROKER_URL: "http://localhost:8080"   # Broker SEMP API URL
 SOL_SEMP_USER: "admin"                                    # SEMP API username
 SOL_SEMP_PASS: "admin"                                    # SEMP API password
 SOL_SEMP_MSG_VPN: "default"                               # Message VPN (default: default)
 
 # Solace messaging configuration (for consuming state)
-SOL_STATE_BROKER_URL: "tcp://host.docker.internal:55555"  # Broker SMF(S) URL
+SOL_STATE_CONSUMER_ENABLED: true                         # Enable or disable the messaging state consumer
+SOL_STATE_BROKER_URL: "tcp://localhost:55555"             # Broker SMF(S) URL
 SOL_STATE_MSG_VPN: "default"                              # Message VPN
 SOL_STATE_USERNAME: "another-user"                        # Username for consuming state
 SOL_STATE_PASSWORD: "solace-dsemp-agent"                  # Password for consuming state
 SOL_STATE_TOPIC: "config/my-broker/target-state"          # Topic to consume state from
 SOL_RECONNECT_INTERVAL: "5s"                              # Duration string (e.g., "5s", "1m", "500ms")
 
+# SOL_INITIAL_STATE_FILE
+SOL_INITIAL_STATE_ENABLED: true                          # Enable or disable the file-based state loader
+SOL_INITIAL_STATE_FILE: "./targetstate.json"
+
 # Optional TLS configuration
-SOL_TRUST_STORE_PATH: "/path/to/truststore"               # Optional: path to trust store
+SOL_TRUST_STORE_PATH: "./truststore"                # Optional: path to trust store
 SOL_VALIDATE_CERT: true
 # AES key for substitution of sensitive fields
 SOL_AES_KEY: "ThisIsMyNewSuperSecure32ByteKey!"           # AES key for decryption (must be 16, 24, or 32 bytes for AES-128, AES-192, or AES-256)
@@ -41,12 +46,12 @@ LOGLEVEL: 4                                               # Logrus log level (0=
 
 # Status reporting (optional)
 SOL_STATUS_WEBHOOK_ENABLED: false                                                         # Enable status webhook
-SOL_STATUS_WEBHOOK_URL: "http://host.docker.internal:9000/TOPIC/config/my-broker/status"  # Optional: HTTP(S) endpoint to send status JSON after each run
+SOL_STATUS_WEBHOOK_URL: "http://localhost:9000/TOPIC/config/my-broker/status"  # Optional: HTTP(S) endpoint to send status JSON after each run
 SOL_STATUS_WEBHOOK_USER: "another-user"                                                   # Optional: HTTP Basic Auth username for status webhook
 SOL_STATUS_WEBHOOK_PASS: "solace-dsemp-agent"                                             # Optional: HTTP Basic Auth password for status webhook
 
 SOL_STATUS_MESSAGE_ENABLED: true                                           # Enable status message publishing
-SOL_STATUS_MESSAGE_BROKER_URL: "tcp://host.docker.internal:55555"          # Broker URL for publishing status message
+SOL_STATUS_MESSAGE_BROKER_URL: "tcp://localhost:55555"          # Broker URL for publishing status message
 SOL_STATUS_MESSAGE_TOPIC: "config/my-broker/status"                        # Topic to publish status message to
 SOL_STATUS_MESSAGE_BROKER_USER: "another-user"                             # Username for publishing status message
 SOL_STATUS_MESSAGE_BROKER_PASS: "solace-dsemp-agent"                       # Password for publishing status message

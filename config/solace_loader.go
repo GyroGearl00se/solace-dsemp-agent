@@ -244,7 +244,7 @@ func (sc *SolaceClient) handleMessage(msg message.InboundMessage) {
 	}
 
 	// Process environment variables in the state
-	substituteEnvAndAesStrings(reflect.ValueOf(&state).Elem())
+	SubstituteEnvAndAesStrings(reflect.ValueOf(&state).Elem())
 
 	if sc.messageCallback != nil {
 		sc.messageCallback(&state)
@@ -258,22 +258,22 @@ func (sc *SolaceClient) OnStateReceived(callback func(*TargetState)) {
 var aesPattern = regexp.MustCompile(`^\$aes\{(.+)\}$`)
 var envPattern = regexp.MustCompile(`^\$env\{([A-Za-z_][A-Za-z0-9_]*)\}$`)
 
-func substituteEnvAndAesStrings(v reflect.Value) {
+func SubstituteEnvAndAesStrings(v reflect.Value) {
 	switch v.Kind() {
 	case reflect.Ptr:
 		if !v.IsNil() {
-			substituteEnvAndAesStrings(v.Elem())
+			SubstituteEnvAndAesStrings(v.Elem())
 		}
 	case reflect.Struct:
 		for i := 0; i < v.NumField(); i++ {
 			field := v.Field(i)
 			if field.CanSet() {
-				substituteEnvAndAesStrings(field)
+				SubstituteEnvAndAesStrings(field)
 			}
 		}
 	case reflect.Slice:
 		for i := 0; i < v.Len(); i++ {
-			substituteEnvAndAesStrings(v.Index(i))
+			SubstituteEnvAndAesStrings(v.Index(i))
 		}
 	case reflect.String:
 		str := v.String()

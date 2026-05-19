@@ -11,11 +11,11 @@ The agent listens for a target state definition on a Solace topic. When a new st
 
 ## 🎯 Key Features
 
-- **Declarative Management**: Define your entire broker configuration (queues, ACLs, client profiles, etc.) in a single JSON file.
+- **Declarative Management**: Define your entire broker configuration (queues, ACLs, client profiles, etc.) in a single JSON or YAML file.
 - **Event-Driven**: The agent is triggered by publishing a new target state to a Solace topic.
 - **Secret Management**: Securely provide secrets like passwords through environment variables or AES-encrypted strings directly in your state file.
 - **Selective Control**: Enable or disable management for specific resource types (e.g., only manage queues and ACLs).
-- **GitOps & Bootstrapping**: Load the desired target state initially from a local JSON file (e.g., mounted ConfigMap in Kubernetes) and dynamically watch it for modifications.
+- **GitOps & Bootstrapping**: Load the desired target state initially from a local JSON/YAML file (e.g., mounted ConfigMap in Kubernetes) and dynamically watch it for modifications.
 - **Status Reporting**: Get feedback on configuration runs via an HTTP webhook or a status message published back to a Solace topic.
 - **Dry-Run Mode**: See what changes would be made without actually applying them.
 
@@ -65,7 +65,23 @@ SOL_MANAGE_ACL_PROFILES: true
 
 ### 📝 Define Target State
 
-Create a JSON file (`targetstate.json`) that defines the resources you want to manage.
+Create a JSON or YAML file (`targetstate.json` or `targetstate.yaml`) that defines the resources you want to manage.
+
+**Example `targetstate.yaml` (Recommended):**
+```yaml
+version: 1.0.1
+queues:
+- queueName: my-app-queue
+  accessType: exclusive
+  permission: consume
+  ingressEnabled: true
+  egressEnabled: true
+aclProfiles:
+- aclProfileName: my-app-acl
+  clientConnectDefaultAction: allow
+  publishTopicDefaultAction: disallow
+  subscribeTopicDefaultAction: disallow
+```
 
 **Example `targetstate.json`:**
 ```json
@@ -133,8 +149,8 @@ To configure file-based loading, add these settings in your `config.yaml` or use
 ```yaml
 # Enable or disable the file-based state loader
 SOL_INITIAL_STATE_ENABLED: true
-# Path to the desired state JSON file (e.g. mounted ConfigMap)
-SOL_INITIAL_STATE_FILE: "./targetstate.json"
+# Path to the desired state JSON or YAML file (e.g. mounted ConfigMap)
+SOL_INITIAL_STATE_FILE: "./targetstate.yaml"
 ```
 
 To run in a pure **File-Only (GitOps) mode**, you can disable the SMF messaging state consumer entirely by toggling it off:
@@ -179,18 +195,17 @@ The agent will start and wait for a target state message on the `config/my-broke
 
 ### 📨 Publish the Target State
 
-Use a tool like `curl` or a Solace client library to publish the content of your `targetstate.json` to the configured topic. The `Makefile` provides a convenience target for this.
+Use a tool like `curl` or a Solace client library to publish the content of your `targetstate.yaml` or `targetstate.json` to the configured topic. The `Makefile` provides a convenience target for this.
 
 ```bash
 # Make sure the credentials and topic match your config
-curl -X POST -d @targetstate.json \
+# Note: --data-binary is REQUIRED for YAML files to preserve newlines!
+curl -X POST --data-binary @targetstate.yaml \
   -u my-app-user:my-app-password \
   http://<your-broker-ip>:9000/TOPIC/config/my-broker/target-state
 ```
 
 The agent will receive the message and apply the changes.
-
-
 
 
 ### 🔐 Secret Management

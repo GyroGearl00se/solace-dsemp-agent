@@ -18,6 +18,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"github.com/ghodss/yaml"
 
 	"github.com/GyroGearl00se/solace-dsemp-agent/config"
 	"github.com/GyroGearl00se/solace-dsemp-agent/controllers"
@@ -746,8 +747,8 @@ func processInitialStateFile(ctx context.Context, filePath string, swaggerConf *
 	}
 
 	var state config.TargetState
-	if err := json.Unmarshal(data, &state); err != nil {
-		logrus.WithField("category", category).Errorf("Failed to parse initial state JSON: %v", err)
+	if err := yaml.Unmarshal(data, &state); err != nil {
+		logrus.WithField("category", category).Errorf("Failed to parse initial state file: %v", err)
 		return
 	}
 

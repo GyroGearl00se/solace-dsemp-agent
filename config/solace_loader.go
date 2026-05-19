@@ -4,7 +4,6 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/base64"
-	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -15,6 +14,7 @@ import (
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"github.com/ghodss/yaml"
 	"solace.dev/go/messaging"
 	"solace.dev/go/messaging/pkg/solace"
 	"solace.dev/go/messaging/pkg/solace/config"
@@ -232,14 +232,14 @@ func (sc *SolaceClient) handleMessage(msg message.InboundMessage) {
 		return
 	}
 
-	// Unmarshal directly into TargetState
+	// Unmarshal directly into TargetState (supporting both YAML and JSON)
 	var state TargetState
-	if err := json.Unmarshal(payload, &state); err != nil {
+	if err := yaml.Unmarshal(payload, &state); err != nil {
 		logrus.WithFields(logrus.Fields{
 			"category": category,
 			"error":    err,
 			"payload":  string(payload),
-		}).Error("Failed to unmarshal JSON")
+		}).Error("Failed to unmarshal payload (YAML/JSON)")
 		return
 	}
 

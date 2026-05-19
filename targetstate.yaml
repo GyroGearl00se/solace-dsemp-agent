@@ -1,0 +1,161 @@
+aclProfiles:
+- aclProfileName: my-acl-profile
+  clientConnectDefaultAction: allow
+  publishExceptions:
+  - publishExceptionTopic: my/restricted/>
+    topicSyntax: smf
+  - publishExceptionTopic: my/restricted2/>
+    topicSyntax: mqtt
+  publishTopicDefaultAction: disallow
+  subscribeExceptions:
+  - subscribeExceptionTopic: my/private/>
+    topicSyntax: smf
+  subscribeTopicDefaultAction: disallow
+bridgeRemoteMsgVpns:
+- bridgeName: my-bridge
+  bridgeVirtualRouter: auto
+  clientUsername: bridge-remote-user
+  compressedDataEnabled: true
+  connectOrder: 1
+  enabled: true
+  password: $aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}
+  queueBinding: bridge-queue
+  remoteMsgVpnInterface: eth0
+  remoteMsgVpnLocation: 192.168.1.100:55555
+  remoteMsgVpnName: remote-vpn
+  tlsEnabled: true
+bridges:
+- bridgeName: my-bridge
+  bridgeVirtualRouter: auto
+  enabled: true
+  remoteAuthenticationBasicClientUsername: bridge-user
+  remoteAuthenticationBasicPassword: $aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}
+  remoteConnectionRetryCount: 0
+  remoteConnectionRetryDelay: 3
+  remoteDeliverToOnePriority: p1
+clientProfiles:
+- allowGuaranteedMsgReceiveEnabled: true
+  allowGuaranteedMsgSendEnabled: true
+  clientProfileName: my-client-profile
+  maxConnectionCountPerClientUsername: 10
+  maxEgressFlowCount: 100
+  maxIngressFlowCount: 100
+  maxSubscriptionCount: 100
+clientUsernames:
+- aclProfileName: my-acl-profile
+  clientProfileName: my-client-profile
+  clientUsername: my-user
+  enabled: true
+  password: $aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}
+- aclProfileName: default
+  clientProfileName: default
+  clientUsername: another-user
+  enabled: true
+  password: $aes{qaV2iPmpsLoPwlUt1Gz9k9AMTkIezs59i8rDDg9DxR4UDNv5SpukMRG+iUspsN6q}
+dmrBridges:
+- remoteMsgVpnName: remote-dmr-vpn
+  remoteNodeName: my-dmr-node
+jndiConnectionFactories:
+- allowDuplicateClientIdEnabled: false
+  clientDescription: My JNDI Connection Factory
+  connectionFactoryName: my-connection-factory
+  directTransportEnabled: true
+  dtoReceiveOverrideEnabled: false
+  dtoSendEnabled: true
+  dynamicEndpointCreateDurableEnabled: true
+  enabled: true
+  messagingDefaultDeliveryMode: persistent
+  messagingDefaultDmqEligibleEnabled: true
+  messagingDefaultEndpointPermission: consume
+  transportCompressionLevel: 1
+  transportTlsEnabled: true
+jndiQueues:
+- physicalName: my-queue-1
+  queueName: my-jndi-queue
+- physicalName: my-queue-2
+  queueName: another-jndi-queue
+jndiTopics:
+- physicalName: my/topic/1
+  topicName: my-jndi-topic
+- physicalName: my/topic/2
+  topicName: another-jndi-topic
+msgVpns:
+- defaultAclProfileName: default
+  defaultClientProfileName: default
+  defaultTopicEndpointTemplateName: my-topic-endpoint-template
+  enabled: true
+  maxClientCount: 1000
+  maxMsgSpoolUsage: 1500
+  msgVpnName: default
+proxies:
+- authenticationBasicPassword: proxyPassword
+  authenticationBasicUsername: proxyUsername
+  authenticationScheme: basic
+  enabled: true
+  host: my-proxy-server.local
+  port: 8080
+  proxyName: my-proxy
+  proxyType: http
+queueTemplates:
+- accessType: exclusive
+  maxBindCount: 1000
+  maxDeliveredUnackedMsgsPerFlow: 10000
+  maxMsgSize: 10000000
+  maxMsgSpoolUsage: 100
+  maxRedeliveryCount: 0
+  maxTtl: 0
+  permission: consume
+  queueTemplateName: my-queue-template
+  rejectMsgToSenderOnDiscardBehavior: when-queue-enabled
+  respectTtlEnabled: true
+queues:
+- accessType: exclusive
+  egressEnabled: true
+  ingressEnabled: true
+  maxMsgSpoolUsage: 1000
+  permission: consume
+  queueName: my-queue-1
+  queueSubscriptions:
+  - my/topic/1
+  - my/topic/111
+- accessType: non-exclusive
+  egressEnabled: true
+  ingressEnabled: true
+  maxMsgSpoolUsage: 2000
+  permission: modify-topic
+  queueName: my-queue-2
+  queueSubscriptions:
+  - my/topic/2
+  - my/topic/222
+topicEndpoints:
+- accessType: exclusive
+  maxBindCount: 1000
+  maxDeliveredUnackedMsgsPerFlow: 10000
+  maxMsgSize: 10000000
+  maxMsgSpoolUsage: 100
+  maxRedeliveryCount: 0
+  maxTtl: 0
+  permission: consume
+  rejectMsgToSenderOnDiscardBehavior: when-topic-endpoint-enabled
+  respectTtlEnabled: true
+  topicEndpointName: my-topic-endpoint
+  topicSubscriptionPattern: my/topic/>
+topicEndpointsTemplates:
+- accessType: exclusive
+  maxBindCount: 1000
+  maxDeliveredUnackedMsgsPerFlow: 10000
+  maxMsgSize: 10000000
+  maxMsgSpoolUsage: 100
+  maxRedeliveryCount: 0
+  maxTtl: 0
+  permission: consume
+  rejectMsgToSenderOnDiscardBehavior: when-topic-endpoint-enabled
+  respectTtlEnabled: true
+  topicEndpointTemplateName: my-topic-endpoint-template
+version: "1.2"
+whitelistPatterns:
+  queuePatterns:
+  - foo/*
+  - bar/>
+  topicEndpointPatterns:
+  - foo/*/bar

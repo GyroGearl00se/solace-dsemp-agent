@@ -1,6 +1,6 @@
 # Makefile for solace-dsemp-agent
 
-.PHONY: build clean swagger_semp posttargetstatejson
+.PHONY: build clean swagger_semp posttargetstateyaml
 
 build:
 	go mod tidy
@@ -16,5 +16,5 @@ swagger_semp:
 	docker run --rm --user $(id -u):$(id -g) -v "$(WORKSPACE_LOCALDIR)/spec:/spec" -v "$(WORKSPACE_LOCALDIR)/semp_swagger:/semp_swagger" swaggerapi/swagger-codegen-cli-v3:3.0.71 generate -l go -i /spec/semp-v2-swagger-config.json -o /semp_swagger/config --type-mappings boolean=*bool
 	sudo chown -R $(id -u):$(id -g) semp_swagger/
 
-posttargetstatejson:
-	curl -X POST -d @targetstate.json -u another-user:solace-dsemp-agent http://localhost:9000/TOPIC/config/my-broker/target-state
+posttargetstateyaml:
+	curl -X POST --data-binary @targetstate.yaml -u another-user:solace-dsemp-agent http://localhost:9000/TOPIC/config/my-broker/target-state

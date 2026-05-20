@@ -40,3 +40,4 @@ vendor/
 .devcontainer/.env
 
 solace-dsemp-agent
+dev_notes.md

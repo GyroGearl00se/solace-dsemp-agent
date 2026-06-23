@@ -64,6 +64,10 @@ func main() {
 	viper.SetDefault("SOL_RECONNECT_INTERVAL", "5")
 	reconnectInterval, _ := time.ParseDuration(viper.GetString("SOL_RECONNECT_INTERVAL"))
 
+	// SOL_VERSION_CHECK_ENABLED
+	viper.SetDefault("SOL_VERSION_CHECK_ENABLED", true)
+	versionCheckEnabled := viper.GetBool("SOL_VERSION_CHECK_ENABLED")
+
 	// Viper default for resource management
 	viper.SetDefault("SOL_MANAGE_QUEUES", false)
 	viper.SetDefault("SOL_MANAGE_ACL_PROFILES", false)
@@ -193,8 +197,7 @@ func main() {
 			if err != nil {
 				logrus.WithField("category", "VersionCheck").Errorf("Failed to check broker version: %v", err)
 			}
-
-			if brokerVersion != "" && !isVersionNewer(state.Version, brokerVersion) {
+			if versionCheckEnabled && brokerVersion != "" && !isVersionNewer(state.Version, brokerVersion) {
 				logrus.WithFields(logrus.Fields{
 					"category": "VersionCheck",
 					"state":    state.Version,
@@ -930,8 +933,8 @@ func processInitialStateFile(ctx context.Context, filePath string, swaggerConf *
 		logrus.WithField("category", category).Errorf("Failed to check broker version: %v", err)
 		return
 	}
-
-	if brokerVersion != "" && !isVersionNewer(state.Version, brokerVersion) {
+	versionCheckEnabled := viper.GetBool("SOL_VERSION_CHECK_ENABLED")
+	if versionCheckEnabled && brokerVersion != "" && !isVersionNewer(state.Version, brokerVersion) {
 		logrus.WithFields(logrus.Fields{
 			"category": category,
 			"file":     state.Version,

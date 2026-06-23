@@ -17,6 +17,9 @@ SOL_RECONNECT_INTERVAL: "5s"                              # Duration string (e.g
 SOL_INITIAL_STATE_ENABLED: true                          # Enable or disable the file-based state loader
 SOL_INITIAL_STATE_FILE: "./targetstate.yaml"
 
+# SOL_VERSION_CHECK_ENABLED
+SOL_VERSION_CHECK_ENABLED: true                         # Enable or disable the version check
+
 # Optional TLS configuration
 SOL_TRUST_STORE_PATH: "./truststore"                # Optional: path to trust store
 SOL_VALIDATE_CERT: true

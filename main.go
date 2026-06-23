@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ghodss/yaml"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"github.com/ghodss/yaml"
 
 	"github.com/GyroGearl00se/solace-dsemp-agent/config"
 	"github.com/GyroGearl00se/solace-dsemp-agent/controllers"
@@ -76,6 +76,7 @@ func main() {
 	viper.SetDefault("SOL_MANAGE_JNDI_QUEUES", false)
 	viper.SetDefault("SOL_MANAGE_JNDI_TOPICS", false)
 	viper.SetDefault("SOL_MANAGE_PROXIES", false)
+	viper.SetDefault("SOL_MANAGE_REST_DELIVERY_POINTS", false)
 	viper.SetDefault("SOL_MANAGE_QUEUE_TEMPLATES", false)
 	viper.SetDefault("SOL_MANAGE_TOPIC_ENDPOINTS", false)
 	viper.SetDefault("SOL_MANAGE_TOPIC_ENDPOINT_TEMPLATES", false)
@@ -272,12 +273,13 @@ func reconcileState(ctx context.Context, state *config.TargetState, swaggerConf 
 		manageJndiQueues := viper.GetBool("SOL_MANAGE_JNDI_QUEUES")
 		manageJndiTopics := viper.GetBool("SOL_MANAGE_JNDI_TOPICS")
 		manageProxies := viper.GetBool("SOL_MANAGE_PROXIES")
+		manageRestDeliveryPoints := viper.GetBool("SOL_MANAGE_REST_DELIVERY_POINTS")
 		manageQueueTemplates := viper.GetBool("SOL_MANAGE_QUEUE_TEMPLATES")
 		manageTopicEndpoints := viper.GetBool("SOL_MANAGE_TOPIC_ENDPOINTS")
 		manageTopicEndpointTemplates := viper.GetBool("SOL_MANAGE_TOPIC_ENDPOINT_TEMPLATES")
 		manageMsgVpns := viper.GetBool("SOL_MANAGE_MSG_VPNS")
 
-		var queueHandler, queueSubscriptionHandler, aclHandler, aclPublishHandler, aclSubscribeHandler, clientUsernameHandler, clientProfileHandler, bridgeHandler, bridgeRemoteMsgVpnHandler, dmrBridgeHandler, jndiConnectionFactoryHandler, jndiQueueHandler, jndiTopicHandler, proxyHandler, queueTemplateHandler, topicEndpointHandler, topicEndpointTemplateHandler, msgVpnHandler *controllers.GenericCRUDHandler
+		var queueHandler, queueSubscriptionHandler, aclHandler, aclPublishHandler, aclSubscribeHandler, clientUsernameHandler, clientProfileHandler, bridgeHandler, bridgeRemoteMsgVpnHandler, dmrBridgeHandler, jndiConnectionFactoryHandler, jndiQueueHandler, jndiTopicHandler, proxyHandler, rdpHandler, rdpQueueBindingHandler, rdpRestConsumerHandler, queueTemplateHandler, topicEndpointHandler, topicEndpointTemplateHandler, msgVpnHandler *controllers.GenericCRUDHandler
 
 		if manageQueues {
 			queueHandler = &controllers.GenericCRUDHandler{
@@ -494,7 +496,24 @@ func reconcileState(ctx context.Context, state *config.TargetState, swaggerConf 
 			}
 		}
 
+		if manageRestDeliveryPoints {
+			rdpHandler = &controllers.GenericCRUDHandler{
+				ResourceType: "Rest Delivery Point",
+				Controller:   &controllers.RDPController{},
+				GetState: func() []interface{} {
+					result := make([]interface{}, len(state.RestDeliveryPoints))
+					for i, rdp := range state.RestDeliveryPoints {
+						result[i] = rdp.MsgVpnRestDeliveryPoint
+					}
+					return result
+				},
+			}
+		}
+
 		// Delete resources that are present on the broker but not in the desired state
+		if manageRestDeliveryPoints {
+			collect("rest-delivery-points", rdpHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
+		}
 		if manageJndiConnectionFactories {
 			collect("jndi-connection-factories", jndiConnectionFactoryHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "delete"))
 		}
@@ -652,6 +671,155 @@ func reconcileState(ctx context.Context, state *config.TargetState, swaggerConf 
 		}
 		if manageProxies {
 			collect("proxies", proxyHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+		}
+		if manageRestDeliveryPoints {
+			collect("rest-delivery-points", rdpHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
+
+			for _, rdp := range state.RestDeliveryPoints {
+				currentRdp := rdp
+
+				// Reconcile Queue Bindings for this RDP
+				rdpQueueBindingHandler = &controllers.GenericCRUDHandler{
+					ResourceType: "RDP Queue Binding",
+					Controller:   &controllers.RDPQueueBindingController{RDPName: currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName},
+					GetState: func() []interface{} {
+						if currentRdp.MsgVpnRestDeliveryPointQueueBinding.QueueBindingName == "" {
+							return []interface{}{}
+						}
+						binding := currentRdp.MsgVpnRestDeliveryPointQueueBinding
+						binding.RestDeliveryPointName = currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName
+						return []interface{}{binding}
+					},
+				}
+				collect(fmt.Sprintf("rdp queue bindings for %s", currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName), rdpQueueBindingHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+
+				// Reconcile Request Headers and Protected Request Headers for this Queue Binding
+				if currentRdp.MsgVpnRestDeliveryPointQueueBinding.QueueBindingName != "" {
+					queueBindingName := currentRdp.MsgVpnRestDeliveryPointQueueBinding.QueueBindingName
+					rdpName := currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName
+
+					headerHandler := &controllers.GenericCRUDHandler{
+						ResourceType: "RDP Queue Binding Request Header",
+						Controller:   &controllers.RDPQueueBindingRequestHeaderController{RDPName: rdpName, QueueBindingName: queueBindingName},
+						GetState: func() []interface{} {
+							result := make([]interface{}, len(currentRdp.RequestHeaders))
+							for i, header := range currentRdp.RequestHeaders {
+								header.RestDeliveryPointName = rdpName
+								header.QueueBindingName = queueBindingName
+								result[i] = header
+							}
+							return result
+						},
+					}
+					collect(fmt.Sprintf("rdp queue binding request headers for %s/%s", rdpName, queueBindingName), headerHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+
+					protectedHeaderHandler := &controllers.GenericCRUDHandler{
+						ResourceType: "RDP Queue Binding Protected Request Header",
+						Controller:   &controllers.RDPQueueBindingProtectedRequestHeaderController{RDPName: rdpName, QueueBindingName: queueBindingName},
+						GetState: func() []interface{} {
+							result := make([]interface{}, len(currentRdp.ProtectedRequestHeaders))
+							for i, header := range currentRdp.ProtectedRequestHeaders {
+								header.RestDeliveryPointName = rdpName
+								header.QueueBindingName = queueBindingName
+								result[i] = header
+							}
+							return result
+						},
+					}
+					collect(fmt.Sprintf("rdp queue binding protected request headers for %s/%s", rdpName, queueBindingName), protectedHeaderHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+				}
+
+				// Reconcile Rest Consumers for this RDP
+				rdpRestConsumerHandler = &controllers.GenericCRUDHandler{
+					ResourceType: "RDP Rest Consumer",
+					Controller:   &controllers.RDPRestConsumerController{RDPName: currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName},
+					GetState: func() []interface{} {
+						if currentRdp.MsgVpnRestDeliveryPointRestConsumer.RestConsumerName == "" {
+							return []interface{}{}
+						}
+						consumer := currentRdp.MsgVpnRestDeliveryPointRestConsumer
+						consumer.RestDeliveryPointName = currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName
+						return []interface{}{consumer}
+					},
+				}
+				collect(fmt.Sprintf("rdp rest consumers for %s", currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName), rdpRestConsumerHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+
+				// Reconcile TLS Trusted Common Names for this Rest Consumer
+				if currentRdp.MsgVpnRestDeliveryPointRestConsumer.RestConsumerName != "" {
+					rdpName := currentRdp.MsgVpnRestDeliveryPoint.RestDeliveryPointName
+					restConsumerName := currentRdp.MsgVpnRestDeliveryPointRestConsumer.RestConsumerName
+
+					tlsTrustedCNHandler := &controllers.GenericCRUDHandler{
+						ResourceType: "RDP Rest Consumer TLS Trusted Common Name",
+						Controller:   &controllers.RDPRestConsumerTlsTrustedCommonNameController{RDPName: rdpName, RestConsumerName: restConsumerName},
+						GetState: func() []interface{} {
+							result := make([]interface{}, len(currentRdp.TlsTrustedCommonNames))
+							for i, cn := range currentRdp.TlsTrustedCommonNames {
+								cn.RestDeliveryPointName = rdpName
+								cn.RestConsumerName = restConsumerName
+								result[i] = cn
+							}
+							return result
+						},
+					}
+
+					// Check if there are any TLS Trusted Common Name changes to apply
+					cnErrors := tlsTrustedCNHandler.ProcessState(ctx, sempClient, msgVPN, true, "crud")
+					hasChanges := len(cnErrors) > 0 || len(currentRdp.TlsTrustedCommonNames) > 0
+
+					if hasChanges && !dryRun {
+						// Temporarily disable the REST consumer to allow TLS Trusted Common Name modifications
+						disableBody := swagger.MsgVpnRestDeliveryPointRestConsumer{Enabled: boolPtrPtr(false)}
+						logrus.WithFields(logrus.Fields{
+							"category":     "RDP Rest Consumer",
+							"rdp":          rdpName,
+							"restConsumer": restConsumerName,
+						}).Info("Temporarily disabling REST consumer for TLS Trusted Common Name changes")
+						_, _, err := sempClient.RestDeliveryPointApi.UpdateMsgVpnRestDeliveryPointRestConsumer(ctx, disableBody, msgVPN, rdpName, restConsumerName, nil)
+						if err != nil {
+							logrus.WithFields(logrus.Fields{
+								"category": "RDP Rest Consumer",
+								"error":    err,
+							}).Error("Failed to temporarily disable REST consumer")
+							collect(fmt.Sprintf("rdp rest consumer tls trusted common names for %s/%s", rdpName, restConsumerName), []config.Error{{
+								Category:   "RDP Rest Consumer TLS Trusted Common Name",
+								ResourceID: restConsumerName,
+								Action:     "DISABLE_CONSUMER",
+								Message:    err.Error(),
+							}})
+						} else {
+							// Reconcile TLS Trusted Common Names while consumer is disabled
+							collect(fmt.Sprintf("rdp rest consumer tls trusted common names for %s/%s", rdpName, restConsumerName), tlsTrustedCNHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+
+							// Re-enable the REST consumer if it was enabled in the target state
+							if currentRdp.MsgVpnRestDeliveryPointRestConsumer.Enabled != nil && *currentRdp.MsgVpnRestDeliveryPointRestConsumer.Enabled != nil && **currentRdp.MsgVpnRestDeliveryPointRestConsumer.Enabled {
+								enableBody := swagger.MsgVpnRestDeliveryPointRestConsumer{Enabled: boolPtrPtr(true)}
+								logrus.WithFields(logrus.Fields{
+									"category":     "RDP Rest Consumer",
+									"rdp":          rdpName,
+									"restConsumer": restConsumerName,
+								}).Info("Re-enabling REST consumer after TLS Trusted Common Name changes")
+								_, _, err := sempClient.RestDeliveryPointApi.UpdateMsgVpnRestDeliveryPointRestConsumer(ctx, enableBody, msgVPN, rdpName, restConsumerName, nil)
+								if err != nil {
+									logrus.WithFields(logrus.Fields{
+										"category": "RDP Rest Consumer",
+										"error":    err,
+									}).Error("Failed to re-enable REST consumer")
+									collect(fmt.Sprintf("rdp rest consumer tls trusted common names for %s/%s", rdpName, restConsumerName), []config.Error{{
+										Category:   "RDP Rest Consumer TLS Trusted Common Name",
+										ResourceID: restConsumerName,
+										Action:     "ENABLE_CONSUMER",
+										Message:    err.Error(),
+									}})
+								}
+							}
+						}
+					} else {
+						// Dry run or no changes - just process normally
+						collect(fmt.Sprintf("rdp rest consumer tls trusted common names for %s/%s", rdpName, restConsumerName), tlsTrustedCNHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+					}
+				}
+			}
 		}
 
 		// Send status report

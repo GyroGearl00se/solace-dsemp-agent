@@ -35,6 +35,7 @@ SOL_MANAGE_JNDI_CONNECTION_FACTORIES: true                # Manage JNDI connecti
 SOL_MANAGE_JNDI_QUEUES: true                              # Manage JNDI queues
 SOL_MANAGE_JNDI_TOPICS: true                              # Manage JNDI topics
 SOL_MANAGE_PROXIES: true                                  # Manage proxies
+SOL_MANAGE_REST_DELIVERY_POINTS: true                     # Manage rest delivery points
 SOL_MANAGE_QUEUE_TEMPLATES: true                          # Manage queue templates
 SOL_MANAGE_TOPIC_ENDPOINTS: true                          # Manage topic endpoints
 SOL_MANAGE_TOPIC_ENDPOINT_TEMPLATES: true                 # Manage topic endpoint templates

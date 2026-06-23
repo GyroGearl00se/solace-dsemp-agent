@@ -12,9 +12,9 @@ import (
 	"time"
 
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
+	"github.com/ghodss/yaml"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"github.com/ghodss/yaml"
 	"solace.dev/go/messaging"
 	"solace.dev/go/messaging/pkg/solace"
 	"solace.dev/go/messaging/pkg/solace/config"
@@ -35,6 +35,7 @@ type TargetState struct {
 	JndiQueues              []swagger.MsgVpnJndiQueue             `json:"jndiQueues"`
 	JndiTopics              []swagger.MsgVpnJndiTopic             `json:"jndiTopics"`
 	Proxies                 []swagger.MsgVpnProxy                 `json:"proxies"`
+	RestDeliveryPoints      []RestDeliveryPoints                  `json:"restDeliveryPoints"`
 	QueueTemplates          []swagger.MsgVpnQueueTemplate         `json:"queueTemplates"`
 	TopicEndpoints          []swagger.MsgVpnTopicEndpoint         `json:"topicEndpoints"`
 	TopicEndpointsTemplates []swagger.MsgVpnTopicEndpointTemplate `json:"topicEndpointsTemplates"`
@@ -46,6 +47,23 @@ type TargetState struct {
 type QueueWithSubscriptions struct {
 	swagger.MsgVpnQueue
 	QueueSubscriptions []string `json:"queueSubscriptions,omitempty"`
+}
+
+type RestDeliveryPoints struct {
+	swagger.MsgVpnRestDeliveryPoint
+	RestDeliveryPointQueueBinding `json:"queueBinding,omitempty"`
+	RestDeliveryPointRestConsumer `json:"restConsumer,omitempty"`
+}
+
+type RestDeliveryPointQueueBinding struct {
+	swagger.MsgVpnRestDeliveryPointQueueBinding
+	RequestHeaders          []swagger.MsgVpnRestDeliveryPointQueueBindingRequestHeader          `json:"requestHeaders,omitempty"`
+	ProtectedRequestHeaders []swagger.MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader `json:"protectedRequestHeaders,omitempty"`
+}
+
+type RestDeliveryPointRestConsumer struct {
+	swagger.MsgVpnRestDeliveryPointRestConsumer
+	TlsTrustedCommonNames []swagger.MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName `json:"tlsTrustedCommonNames,omitempty"`
 }
 
 // PublishException represents a publish exception without the parent ACL profile name.

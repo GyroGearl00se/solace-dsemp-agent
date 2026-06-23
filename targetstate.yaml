@@ -127,6 +127,35 @@ queues:
   queueSubscriptions:
   - my/topic/2
   - my/topic/222
+restDeliveryPoints:
+- restDeliveryPointName: my-rdp
+  enabled: true
+  clientProfileName: default
+  service: "REST"
+  vendor: "Custom"
+  queueBinding:
+    gatewayReplaceTargetAuthorityEnabled: false
+    postRequestTarget: "/data/inbound"
+    requestTargetEvaluation: substitution-expressions
+    queueBindingName: my-queue-1
+    requestHeaders:
+    - headerName: "X-Custom-Header"
+      headerValue: "some-value"
+    protectedRequestHeaders:
+    - headerName: "X-API-Key"
+      headerValue: "Secret-Value"
+  restConsumer:
+    enabled: true
+    authenticationScheme: "http-basic"
+    authenticationHttpBasicUsername: "username"
+    authenticationHttpBasicPassword: "password"
+    httpMethod: "post"
+    remoteHost: "example.com"
+    remotePort: 443
+    restConsumerName: "my-rdp-consumer"
+    tlsEnabled: true
+    tlsTrustedCommonNames:
+    - tlsTrustedCommonName: "example.com"
 topicEndpoints:
 - accessType: exclusive
   maxBindCount: 1000

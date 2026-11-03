@@ -5,6 +5,7 @@
 build:
 	go mod tidy
 	go build -o solace-dsemp-agent main.go
+	go build -o aes-encryptor cmd/aesencryptor/main.go
 
 clean:
 	rm -rf build

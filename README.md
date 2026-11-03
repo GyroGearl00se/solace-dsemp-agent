@@ -166,12 +166,26 @@ To prevent accidentally overwriting a newer configuration (e.g., a state update 
 - During bootstrapping, the agent reads the current applied state version from this queue's `Owner` field.
 - The local file will only be applied if its `version` is semantically newer (e.g., `1.0.2` > `1.0.1`) than the version recorded on the broker.
 
+### 🌐 HTTP State Listener
+
+The optional HTTP listener accepts target states with `POST /state` and exposes `GET /health` for liveness checks. Enable it and provide both Basic Auth credentials:
+
+```yaml
+SOL_HTTP_LISTENER_ENABLED: true
+SOL_HTTP_LISTENER_ADDR: ":9001"
+SOL_HTTP_LISTENER_USER: "your-username"
+SOL_HTTP_LISTENER_PASS: "your-password"
+```
+
+Both credentials are required and must not be blank (including whitespace-only values). If either is missing or blank while the listener is enabled, the agent exits with a configuration error instead of starting the listener. For TLS, set `SOL_HTTP_TLS_ENABLED: true` and provide `SOL_HTTP_TLS_CERT_FILE` and `SOL_HTTP_TLS_KEY_FILE`; TLS is recommended because Basic Auth credentials are not encrypted over plain HTTP.
 
 ### 🐳 Run the Agent
 
+#### Docker
+
 A `Dockerimage` is provided to run the agent in a container.
 
-Mount your `config.yaml` file into the container
+Mount your `config.yaml` file into the container:
 ```bash
 docker run --rm -it \
   -v $(pwd)/config.yaml:/app/config.yaml \

@@ -39,6 +39,6 @@ vendor/
 # Docker/Devcontainer
 .devcontainer/.env
 
-aesencryptor
+aes-encryptor
 solace-dsemp-agent
 dev_notes.md

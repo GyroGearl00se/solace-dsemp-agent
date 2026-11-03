@@ -193,7 +193,21 @@ func main() {
 	fileConfigured := initialStateEnabled && initialStateFile != ""
 
 	viper.SetDefault("SOL_HTTP_LISTENER_ENABLED", false)
+	viper.SetDefault("SOL_HTTP_LISTENER_ADDR", ":9001")
 	httpListenerEnabled := viper.GetBool("SOL_HTTP_LISTENER_ENABLED")
+	httpListenerConfig := httplistener.Config{
+		Enabled:     httpListenerEnabled,
+		Address:     viper.GetString("SOL_HTTP_LISTENER_ADDR"),
+		TLSEnabled:  viper.GetBool("SOL_HTTP_TLS_ENABLED"),
+		TLSCertFile: viper.GetString("SOL_HTTP_TLS_CERT_FILE"),
+		TLSKeyFile:  viper.GetString("SOL_HTTP_TLS_KEY_FILE"),
+		Username:    viper.GetString("SOL_HTTP_LISTENER_USER"),
+		Password:    viper.GetString("SOL_HTTP_LISTENER_PASS"),
+		AESKey:      aesKey,
+	}
+	if err := httpListenerConfig.Validate(); err != nil {
+		logrus.WithField("category", "Config").Fatal(err)
+	}
 
 	if !messagingConfigured && !fileConfigured && !httpListenerEnabled {
 		logrus.WithField("category", "Config").Fatal("No active configuration source was provided! Configure messaging, SOL_INITIAL_STATE_FILE, or SOL_HTTP_LISTENER_ENABLED.")
@@ -269,17 +283,7 @@ func main() {
 
 	// 3. Optional HTTP listener
 	if httpListenerEnabled {
-		viper.SetDefault("SOL_HTTP_LISTENER_ADDR", ":9001")
-		httpSrv := httplistener.NewServer(httplistener.Config{
-			Enabled:     true,
-			Address:     viper.GetString("SOL_HTTP_LISTENER_ADDR"),
-			TLSEnabled:  viper.GetBool("SOL_HTTP_TLS_ENABLED"),
-			TLSCertFile: viper.GetString("SOL_HTTP_TLS_CERT_FILE"),
-			TLSKeyFile:  viper.GetString("SOL_HTTP_TLS_KEY_FILE"),
-			Username:    viper.GetString("SOL_HTTP_LISTENER_USER"),
-			Password:    viper.GetString("SOL_HTTP_LISTENER_PASS"),
-			AESKey:      aesKey,
-		}, func(st *state.TargetState) {
+		httpSrv := httplistener.NewServer(httpListenerConfig, func(st *state.TargetState) {
 			applyState("HTTP", st)
 		})
 		go httpSrv.Start(ctx)

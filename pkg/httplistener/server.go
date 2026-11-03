@@ -35,6 +35,14 @@ type Config struct {
 	AESKey      string
 }
 
+// Validate checks the required configuration for an enabled listener.
+func (c Config) Validate() error {
+	if c.Enabled && (strings.TrimSpace(c.Username) == "" || strings.TrimSpace(c.Password) == "") {
+		return fmt.Errorf("HTTP listener requires non-empty SOL_HTTP_LISTENER_USER and SOL_HTTP_LISTENER_PASS")
+	}
+	return nil
+}
+
 // Server is an HTTP server that accepts TargetState payloads via POST.
 type Server struct {
 	cfg      Config
@@ -48,6 +56,11 @@ func NewServer(cfg Config, callback func(*state.TargetState)) *Server {
 
 // Start runs the HTTP server until ctx is cancelled.
 func (s *Server) Start(ctx context.Context) {
+	if err := s.cfg.Validate(); err != nil {
+		logrus.WithField("category", "HTTPListener").Error(err)
+		return
+	}
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("/state", s.handleState)
 	mux.HandleFunc("/health", s.handleHealth)
@@ -163,4 +176,3 @@ func writeError(w http.ResponseWriter, code int, msg string) {
 	w.WriteHeader(code)
 	_ = json.NewEncoder(w).Encode(map[string]string{"error": msg})
 }
-

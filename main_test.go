@@ -1,6 +1,10 @@
 package main
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/GyroGearl00se/solace-dsemp-agent/pkg/reconciler"
+)
 
 func TestIsVersionNewer(t *testing.T) {
 	tests := []struct {
@@ -32,9 +36,9 @@ func TestIsVersionNewer(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		result := isVersionNewer(tt.newVer, tt.currentVer)
+		result := reconciler.IsVersionNewer(tt.newVer, tt.currentVer)
 		if result != tt.expected {
-			t.Errorf("isVersionNewer(%q, %q) = %v; want %v", tt.newVer, tt.currentVer, result, tt.expected)
+			t.Errorf("IsVersionNewer(%q, %q) = %v; want %v", tt.newVer, tt.currentVer, result, tt.expected)
 		}
 	}
 }

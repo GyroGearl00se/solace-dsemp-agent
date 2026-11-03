@@ -5,7 +5,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/GyroGearl00se/solace-dsemp-agent/config"
+	"github.com/GyroGearl00se/solace-dsemp-agent/pkg/state"
 	swagger "github.com/GyroGearl00se/solace-dsemp-agent/semp_swagger/config"
 	"github.com/sirupsen/logrus"
 )
@@ -55,9 +55,9 @@ type GenericCRUDHandler struct {
 }
 
 // ProcessState handles the CRUD operations for a resource type
-func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.APIClient, msgVpn string, dryRun bool, method string) []config.Error {
+func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.APIClient, msgVpn string, dryRun bool, method string) []state.Error {
 
-	var errors []config.Error
+	var errors []state.Error
 
 	// Get current state from broker
 	brokerObjs, err := h.Controller.Get(ctx, client, msgVpn)
@@ -66,7 +66,7 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 			"category": h.ResourceType,
 			"error":    err,
 		}).Error("Failed to get resources from broker")
-		errors = append(errors, config.Error{
+		errors = append(errors, state.Error{
 			Category: h.ResourceType,
 			Action:   "GET",
 			Message:  err.Error(),
@@ -125,7 +125,7 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 							"error":    err,
 							"id":       id,
 						}).Error("Failed to create resource")
-						errors = append(errors, config.Error{
+						errors = append(errors, state.Error{
 							Category:   h.ResourceType,
 							ResourceID: id,
 							Action:     "CREATE",
@@ -156,7 +156,7 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 								"error":    err,
 								"id":       id,
 							}).Error("Failed to update resource")
-							errors = append(errors, config.Error{
+							errors = append(errors, state.Error{
 								Category:   h.ResourceType,
 								ResourceID: id,
 								Action:     "UPDATE",
@@ -191,7 +191,7 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 							"error":    err,
 							"id":       id,
 						}).Error("Failed to delete resource")
-						errors = append(errors, config.Error{
+						errors = append(errors, state.Error{
 							Category:   h.ResourceType,
 							ResourceID: id,
 							Action:     "DELETE",

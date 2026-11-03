@@ -1,4 +1,4 @@
-package config
+package status
 
 import (
 	"fmt"
@@ -87,10 +87,10 @@ func SendStatusMessage(success bool, payload []byte, brokerURL, topic, brokerUse
 	}
 
 	directPublisher.Terminate(1 * time.Second)
-	fmt.Println("\nDirect Publisher Terminated? ", directPublisher.IsTerminated())
+	// fmt.Println("\nDirect Publisher Terminated? ", directPublisher.IsTerminated())
 
 	messagingService.Disconnect()
-	fmt.Println("Messaging Service Disconnected? ", !messagingService.IsConnected())
+	// fmt.Println("Messaging Service Disconnected? ", !messagingService.IsConnected())
 
 	return nil
 

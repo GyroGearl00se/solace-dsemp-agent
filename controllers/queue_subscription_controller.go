@@ -21,15 +21,32 @@ func (c *QueueSubscriptionController) Create(ctx context.Context, client *swagge
 
 func (c *QueueSubscriptionController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
 	encodedQueueName := url.PathEscape(c.QueueName)
-	resp, _, err := client.QueueApi.GetMsgVpnQueueSubscriptions(ctx, msgVpn, encodedQueueName, &swagger.QueueApiGetMsgVpnQueueSubscriptionsOpts{Count: optional.NewInt32(100)})
-	if err != nil {
-		return nil, err
+	var result []interface{}
+	var cursor string
+
+	for {
+		opts := &swagger.QueueApiGetMsgVpnQueueSubscriptionsOpts{
+			Count: optional.NewInt32(100),
+		}
+		if cursor != "" {
+			opts.Cursor = optional.NewString(cursor)
+		}
+
+		resp, _, err := client.QueueApi.GetMsgVpnQueueSubscriptions(ctx, msgVpn, encodedQueueName, opts)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, sub := range resp.Data {
+			result = append(result, sub)
+		}
+
+		if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+			break
+		}
+		cursor = resp.Meta.Paging.CursorQuery
 	}
 
-	result := make([]interface{}, len(resp.Data))
-	for i, sub := range resp.Data {
-		result[i] = sub
-	}
 	return result, nil
 }
 

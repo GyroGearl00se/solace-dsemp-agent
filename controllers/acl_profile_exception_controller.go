@@ -36,24 +36,51 @@ func (c *ACLProfileExceptionController) Create(ctx context.Context, client *swag
 }
 
 func (c *ACLProfileExceptionController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
+	var result []interface{}
+	var cursor string
+
 	if c.IsPublishException {
-		resp, _, err := client.AclProfileApi.GetMsgVpnAclProfilePublishExceptions(ctx, msgVpn, c.AclProfileName, &swagger.AclProfileApiGetMsgVpnAclProfilePublishExceptionsOpts{Count: optional.NewInt32(100)})
-		if err != nil {
-			return nil, err
-		}
-		result := make([]interface{}, len(resp.Data))
-		for i, exception := range resp.Data {
-			result[i] = exception
+		for {
+			opts := &swagger.AclProfileApiGetMsgVpnAclProfilePublishExceptionsOpts{
+				Count: optional.NewInt32(100),
+			}
+			if cursor != "" {
+				opts.Cursor = optional.NewString(cursor)
+			}
+
+			resp, _, err := client.AclProfileApi.GetMsgVpnAclProfilePublishExceptions(ctx, msgVpn, c.AclProfileName, opts)
+			if err != nil {
+				return nil, err
+			}
+			for _, exception := range resp.Data {
+				result = append(result, exception)
+			}
+			if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+				break
+			}
+			cursor = resp.Meta.Paging.CursorQuery
 		}
 		return result, nil
 	} else {
-		resp, _, err := client.AclProfileApi.GetMsgVpnAclProfileSubscribeExceptions(ctx, msgVpn, c.AclProfileName, &swagger.AclProfileApiGetMsgVpnAclProfileSubscribeExceptionsOpts{Count: optional.NewInt32(100)})
-		if err != nil {
-			return nil, err
-		}
-		result := make([]interface{}, len(resp.Data))
-		for i, exception := range resp.Data {
-			result[i] = exception
+		for {
+			opts := &swagger.AclProfileApiGetMsgVpnAclProfileSubscribeExceptionsOpts{
+				Count: optional.NewInt32(100),
+			}
+			if cursor != "" {
+				opts.Cursor = optional.NewString(cursor)
+			}
+
+			resp, _, err := client.AclProfileApi.GetMsgVpnAclProfileSubscribeExceptions(ctx, msgVpn, c.AclProfileName, opts)
+			if err != nil {
+				return nil, err
+			}
+			for _, exception := range resp.Data {
+				result = append(result, exception)
+			}
+			if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+				break
+			}
+			cursor = resp.Meta.Paging.CursorQuery
 		}
 		return result, nil
 	}

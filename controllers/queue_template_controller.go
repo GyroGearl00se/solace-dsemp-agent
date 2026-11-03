@@ -16,15 +16,32 @@ func (c *QueueTemplateController) Create(ctx context.Context, client *swagger.AP
 }
 
 func (c *QueueTemplateController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.QueueTemplateApi.GetMsgVpnQueueTemplates(ctx, msgVpn, &swagger.QueueTemplateApiGetMsgVpnQueueTemplatesOpts{Count: optional.NewInt32(100)})
-	if err != nil {
-		return nil, err
+	var result []interface{}
+	var cursor string
+
+	for {
+		opts := &swagger.QueueTemplateApiGetMsgVpnQueueTemplatesOpts{
+			Count: optional.NewInt32(100),
+		}
+		if cursor != "" {
+			opts.Cursor = optional.NewString(cursor)
+		}
+
+		resp, _, err := client.QueueTemplateApi.GetMsgVpnQueueTemplates(ctx, msgVpn, opts)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, template := range resp.Data {
+			result = append(result, template)
+		}
+
+		if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+			break
+		}
+		cursor = resp.Meta.Paging.CursorQuery
 	}
 
-	result := make([]interface{}, len(resp.Data))
-	for i, template := range resp.Data {
-		result[i] = template
-	}
 	return result, nil
 }
 

@@ -14,6 +14,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/ghodss/yaml"
@@ -236,7 +237,13 @@ func main() {
 	select {}
 }
 
+// reconcileMutex ensures only one reconciliation runs at any given time.
+var reconcileMutex sync.Mutex
+
 func reconcileState(ctx context.Context, state *config.TargetState, swaggerConf *swagger.Configuration, msgVPN string, dryRun bool, certPool *x509.CertPool) (bool, []config.Error) {
+	reconcileMutex.Lock()
+	defer reconcileMutex.Unlock()
+
 	var hadError bool
 	var errorList []config.Error
 
@@ -573,45 +580,41 @@ func reconcileState(ctx context.Context, state *config.TargetState, swaggerConf 
 			for _, aclProfile := range state.ACLProfiles {
 				currentProfile := aclProfile
 
-				// Handle Publish Exceptions
-				if len(currentProfile.PublishExceptions) > 0 {
-					aclPublishHandler = &controllers.GenericCRUDHandler{
-						ResourceType: "ACL Profile Publish Exception",
-						Controller:   &controllers.ACLProfileExceptionController{IsPublishException: true, AclProfileName: currentProfile.AclProfileName},
-						GetState: func() []interface{} {
-							exceptions := make([]interface{}, len(currentProfile.PublishExceptions))
-							for i, ex := range currentProfile.PublishExceptions {
-								exceptions[i] = swagger.MsgVpnAclProfilePublishException{
-									AclProfileName:        currentProfile.AclProfileName,
-									PublishExceptionTopic: ex.PublishExceptionTopic,
-									TopicSyntax:           ex.TopicSyntax,
-								}
+				// Handle Publish Exceptions (run reconciliation even if empty so unmanaged exceptions are pruned)
+				aclPublishHandler = &controllers.GenericCRUDHandler{
+					ResourceType: "ACL Profile Publish Exception",
+					Controller:   &controllers.ACLProfileExceptionController{IsPublishException: true, AclProfileName: currentProfile.AclProfileName},
+					GetState: func() []interface{} {
+						exceptions := make([]interface{}, len(currentProfile.PublishExceptions))
+						for i, ex := range currentProfile.PublishExceptions {
+							exceptions[i] = swagger.MsgVpnAclProfilePublishException{
+								AclProfileName:        currentProfile.AclProfileName,
+								PublishExceptionTopic: ex.PublishExceptionTopic,
+								TopicSyntax:           ex.TopicSyntax,
 							}
-							return exceptions
-						},
-					}
-					collect(fmt.Sprintf("acl-profile publish exceptions for %s", currentProfile.AclProfileName), aclPublishHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+						}
+						return exceptions
+					},
 				}
+				collect(fmt.Sprintf("acl-profile publish exceptions for %s", currentProfile.AclProfileName), aclPublishHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
 
-				// Handle Subscribe Exceptions
-				if len(currentProfile.SubscribeExceptions) > 0 {
-					aclSubscribeHandler = &controllers.GenericCRUDHandler{
-						ResourceType: "ACL Profile Subscribe Exception",
-						Controller:   &controllers.ACLProfileExceptionController{IsPublishException: false, AclProfileName: currentProfile.AclProfileName},
-						GetState: func() []interface{} {
-							exceptions := make([]interface{}, len(currentProfile.SubscribeExceptions))
-							for i, ex := range currentProfile.SubscribeExceptions {
-								exceptions[i] = swagger.MsgVpnAclProfileSubscribeException{
-									AclProfileName:          currentProfile.AclProfileName,
-									SubscribeExceptionTopic: ex.SubscribeExceptionTopic,
-									TopicSyntax:             ex.TopicSyntax,
-								}
+				// Handle Subscribe Exceptions (run reconciliation even if empty so unmanaged exceptions are pruned)
+				aclSubscribeHandler = &controllers.GenericCRUDHandler{
+					ResourceType: "ACL Profile Subscribe Exception",
+					Controller:   &controllers.ACLProfileExceptionController{IsPublishException: false, AclProfileName: currentProfile.AclProfileName},
+					GetState: func() []interface{} {
+						exceptions := make([]interface{}, len(currentProfile.SubscribeExceptions))
+						for i, ex := range currentProfile.SubscribeExceptions {
+							exceptions[i] = swagger.MsgVpnAclProfileSubscribeException{
+								AclProfileName:          currentProfile.AclProfileName,
+								SubscribeExceptionTopic: ex.SubscribeExceptionTopic,
+								TopicSyntax:             ex.TopicSyntax,
 							}
-							return exceptions
-						},
-					}
-					collect(fmt.Sprintf("acl-profile subscribe exceptions for %s", currentProfile.AclProfileName), aclSubscribeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+						}
+						return exceptions
+					},
 				}
+				collect(fmt.Sprintf("acl-profile subscribe exceptions for %s", currentProfile.AclProfileName), aclSubscribeHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
 			}
 		}
 		if manageClientProfiles {
@@ -628,27 +631,25 @@ func reconcileState(ctx context.Context, state *config.TargetState, swaggerConf 
 		}
 		if manageQueues {
 			collect("queues", queueHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "upsert"))
-			// Process subscriptions for each queue
+			// Process subscriptions for each queue (run even if empty so unmanaged subscriptions are pruned)
 			for _, queue := range state.Queues {
 				currentQueue := queue
 
-				if len(currentQueue.QueueSubscriptions) > 0 {
-					queueSubscriptionHandler = &controllers.GenericCRUDHandler{
-						ResourceType: "QueueSubscription",
-						Controller:   &controllers.QueueSubscriptionController{QueueName: currentQueue.QueueName},
-						GetState: func() []interface{} {
-							subscriptions := make([]interface{}, len(currentQueue.QueueSubscriptions))
-							for i, subTopic := range currentQueue.QueueSubscriptions {
-								subscriptions[i] = swagger.MsgVpnQueueSubscription{
-									SubscriptionTopic: subTopic,
-									QueueName:         currentQueue.QueueName,
-								}
+				queueSubscriptionHandler = &controllers.GenericCRUDHandler{
+					ResourceType: "QueueSubscription",
+					Controller:   &controllers.QueueSubscriptionController{QueueName: currentQueue.QueueName},
+					GetState: func() []interface{} {
+						subscriptions := make([]interface{}, len(currentQueue.QueueSubscriptions))
+						for i, subTopic := range currentQueue.QueueSubscriptions {
+							subscriptions[i] = swagger.MsgVpnQueueSubscription{
+								SubscriptionTopic: subTopic,
+								QueueName:         currentQueue.QueueName,
 							}
-							return subscriptions
-						},
-					}
-					collect(fmt.Sprintf("queue subscriptions for %s", currentQueue.QueueName), queueSubscriptionHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
+						}
+						return subscriptions
+					},
 				}
+				collect(fmt.Sprintf("queue subscriptions for %s", currentQueue.QueueName), queueSubscriptionHandler.ProcessState(ctx, sempClient, msgVPN, dryRun, "crud"))
 			}
 		}
 		if manageTopicEndpoints {

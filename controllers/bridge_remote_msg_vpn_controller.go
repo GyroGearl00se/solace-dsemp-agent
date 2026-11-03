@@ -18,14 +18,35 @@ func (c *BridgeRemoteMsgVpnController) Create(ctx context.Context, client *swagg
 }
 
 func (c *BridgeRemoteMsgVpnController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	bridges, _, err := client.BridgeApi.GetMsgVpnBridges(ctx, msgVpn, &swagger.BridgeApiGetMsgVpnBridgesOpts{Count: optional.NewInt32(100)})
-	if err != nil {
-		return nil, fmt.Errorf("failed to get bridges: %v", err)
+	var bridgeList []swagger.MsgVpnBridge
+	var cursor string
+
+	for {
+		opts := &swagger.BridgeApiGetMsgVpnBridgesOpts{
+			Count: optional.NewInt32(100),
+		}
+		if cursor != "" {
+			opts.Cursor = optional.NewString(cursor)
+		}
+
+		bridges, _, err := client.BridgeApi.GetMsgVpnBridges(ctx, msgVpn, opts)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get bridges: %v", err)
+		}
+
+		for _, b := range bridges.Data {
+			bridgeList = append(bridgeList, b)
+		}
+
+		if bridges.Meta == nil || bridges.Meta.Paging == nil || bridges.Meta.Paging.CursorQuery == "" {
+			break
+		}
+		cursor = bridges.Meta.Paging.CursorQuery
 	}
 
 	var result []interface{}
 
-	for _, bridge := range bridges.Data {
+	for _, bridge := range bridgeList {
 		resp, _, err := client.BridgeApi.GetMsgVpnBridgeRemoteMsgVpns(ctx, msgVpn, bridge.BridgeName, bridge.BridgeVirtualRouter, nil)
 		if err != nil {
 			return nil, fmt.Errorf("failed to get remote VPNs for bridge %s/%s: %v", bridge.BridgeName, bridge.BridgeVirtualRouter, err)

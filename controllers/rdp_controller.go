@@ -16,15 +16,32 @@ func (c *RDPController) Create(ctx context.Context, client *swagger.APIClient, m
 }
 
 func (c *RDPController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.RestDeliveryPointApi.GetMsgVpnRestDeliveryPoints(ctx, msgVpn, &swagger.RestDeliveryPointApiGetMsgVpnRestDeliveryPointsOpts{Count: optional.NewInt32(100)})
-	if err != nil {
-		return nil, err
+	var result []interface{}
+	var cursor string
+
+	for {
+		opts := &swagger.RestDeliveryPointApiGetMsgVpnRestDeliveryPointsOpts{
+			Count: optional.NewInt32(100),
+		}
+		if cursor != "" {
+			opts.Cursor = optional.NewString(cursor)
+		}
+
+		resp, _, err := client.RestDeliveryPointApi.GetMsgVpnRestDeliveryPoints(ctx, msgVpn, opts)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, rdp := range resp.Data {
+			result = append(result, rdp)
+		}
+
+		if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+			break
+		}
+		cursor = resp.Meta.Paging.CursorQuery
 	}
 
-	result := make([]interface{}, len(resp.Data))
-	for i, rdp := range resp.Data {
-		result[i] = rdp
-	}
 	return result, nil
 }
 

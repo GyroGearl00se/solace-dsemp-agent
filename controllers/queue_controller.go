@@ -19,15 +19,32 @@ func (c *QueueController) Create(ctx context.Context, client *swagger.APIClient,
 }
 
 func (c *QueueController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.QueueApi.GetMsgVpnQueues(ctx, msgVpn, &swagger.QueueApiGetMsgVpnQueuesOpts{Count: optional.NewInt32(100)})
-	if err != nil {
-		return nil, err
+	var result []interface{}
+	var cursor string
+
+	for {
+		opts := &swagger.QueueApiGetMsgVpnQueuesOpts{
+			Count: optional.NewInt32(100),
+		}
+		if cursor != "" {
+			opts.Cursor = optional.NewString(cursor)
+		}
+
+		resp, _, err := client.QueueApi.GetMsgVpnQueues(ctx, msgVpn, opts)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, queue := range resp.Data {
+			result = append(result, queue)
+		}
+
+		if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+			break
+		}
+		cursor = resp.Meta.Paging.CursorQuery
 	}
 
-	result := make([]interface{}, len(resp.Data))
-	for i, queue := range resp.Data {
-		result[i] = queue
-	}
 	return result, nil
 }
 

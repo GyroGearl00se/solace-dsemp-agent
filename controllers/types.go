@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"path"
-	"reflect"
 	"strings"
 
 	"github.com/GyroGearl00se/solace-dsemp-agent/config"
@@ -138,7 +137,7 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 
 			} else {
 				// Check if UPDATE is needed
-				if needsUpdate(brokerObj, stateObj) {
+				if NeedsUpdate(brokerObj, stateObj) {
 					if dryRun {
 						logrus.WithFields(logrus.Fields{
 							"category":  h.ResourceType,
@@ -209,28 +208,7 @@ func (h *GenericCRUDHandler) ProcessState(ctx context.Context, client *swagger.A
 
 }
 
-// Helper function to check if an update is needed using reflection
+// Helper function to check if an update is needed using reflection (delegates to NeedsUpdate)
 func needsUpdate(broker, state interface{}) bool {
-	stateVal := reflect.ValueOf(state)
-	brokerVal := reflect.ValueOf(broker)
-	typeOf := stateVal.Type()
-
-	for i := 0; i < stateVal.NumField(); i++ {
-		stateField := stateVal.Field(i)
-		fieldName := typeOf.Field(i).Name
-
-		if stateField.IsZero() {
-			continue
-		}
-
-		brokerField := brokerVal.Field(i)
-		if !reflect.DeepEqual(stateField.Interface(), brokerField.Interface()) {
-			logrus.WithFields(logrus.Fields{
-				"field": fieldName,
-				"state": stateField.Interface(),
-			}).Debug("Field different")
-			return true
-		}
-	}
-	return false
+	return NeedsUpdate(broker, state)
 }

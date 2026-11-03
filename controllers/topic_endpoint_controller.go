@@ -19,15 +19,32 @@ func (c *TopicEndpointController) Create(ctx context.Context, client *swagger.AP
 }
 
 func (c *TopicEndpointController) Get(ctx context.Context, client *swagger.APIClient, msgVpn string) ([]interface{}, error) {
-	resp, _, err := client.TopicEndpointApi.GetMsgVpnTopicEndpoints(ctx, msgVpn, &swagger.TopicEndpointApiGetMsgVpnTopicEndpointsOpts{Count: optional.NewInt32(100)})
-	if err != nil {
-		return nil, err
+	var result []interface{}
+	var cursor string
+
+	for {
+		opts := &swagger.TopicEndpointApiGetMsgVpnTopicEndpointsOpts{
+			Count: optional.NewInt32(100),
+		}
+		if cursor != "" {
+			opts.Cursor = optional.NewString(cursor)
+		}
+
+		resp, _, err := client.TopicEndpointApi.GetMsgVpnTopicEndpoints(ctx, msgVpn, opts)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, endpoint := range resp.Data {
+			result = append(result, endpoint)
+		}
+
+		if resp.Meta == nil || resp.Meta.Paging == nil || resp.Meta.Paging.CursorQuery == "" {
+			break
+		}
+		cursor = resp.Meta.Paging.CursorQuery
 	}
 
-	result := make([]interface{}, len(resp.Data))
-	for i, endpoint := range resp.Data {
-		result[i] = endpoint
-	}
 	return result, nil
 }
 

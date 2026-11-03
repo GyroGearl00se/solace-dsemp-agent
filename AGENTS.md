@@ -12,6 +12,7 @@ This document provides a concise architectural overview, operational mental mode
 1. **Target State Ingestion**:
    - **File-based**: Reads a local YAML/JSON file (`SOL_INITIAL_STATE_FILE`, e.g., mounted K8s ConfigMap) and polls it for changes (`pkg/watcher`).
    - **Messaging-based**: Connects to the broker and subscribes to a Solace topic (`SOL_STATE_TOPIC`) listening for JSON/YAML target states (`pkg/messaging`).
+   - **HTTP-based**: Optionally runs an HTTP(S) server (`pkg/httplistener`) accepting `POST /state` with a JSON/YAML TargetState body, protected by mandatory HTTP Basic Auth.
 2. **Version Gating**:
    - Reads the applied version stored in the metadata queue (`solace-dsemp-agent-metadata`, `Owner` field).
    - Skips reconciliation if the incoming target state version is not strictly newer (unless version check is disabled).

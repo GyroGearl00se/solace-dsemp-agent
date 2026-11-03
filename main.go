@@ -11,6 +11,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
+	"github.com/GyroGearl00se/solace-dsemp-agent/pkg/httplistener"
 	"github.com/GyroGearl00se/solace-dsemp-agent/pkg/messaging"
 	"github.com/GyroGearl00se/solace-dsemp-agent/pkg/reconciler"
 	"github.com/GyroGearl00se/solace-dsemp-agent/pkg/semputil"
@@ -191,8 +192,11 @@ func main() {
 	messagingConfigured := stateConsumerEnabled && hasMessaging
 	fileConfigured := initialStateEnabled && initialStateFile != ""
 
-	if !messagingConfigured && !fileConfigured {
-		logrus.WithField("category", "Config").Fatal("No active configuration source was provided! Either configure messaging state consumer or SOL_INITIAL_STATE_FILE.")
+	viper.SetDefault("SOL_HTTP_LISTENER_ENABLED", false)
+	httpListenerEnabled := viper.GetBool("SOL_HTTP_LISTENER_ENABLED")
+
+	if !messagingConfigured && !fileConfigured && !httpListenerEnabled {
+		logrus.WithField("category", "Config").Fatal("No active configuration source was provided! Configure messaging, SOL_INITIAL_STATE_FILE, or SOL_HTTP_LISTENER_ENABLED.")
 	}
 
 	// 1. Initial State File Loader & Watcher
@@ -262,6 +266,25 @@ func main() {
 	}
 
 	logrus.WithField("category", "Lifecycle").Info("Solace DSEMP Agent is active and running.")
+
+	// 3. Optional HTTP listener
+	if httpListenerEnabled {
+		viper.SetDefault("SOL_HTTP_LISTENER_ADDR", ":9001")
+		httpSrv := httplistener.NewServer(httplistener.Config{
+			Enabled:     true,
+			Address:     viper.GetString("SOL_HTTP_LISTENER_ADDR"),
+			TLSEnabled:  viper.GetBool("SOL_HTTP_TLS_ENABLED"),
+			TLSCertFile: viper.GetString("SOL_HTTP_TLS_CERT_FILE"),
+			TLSKeyFile:  viper.GetString("SOL_HTTP_TLS_KEY_FILE"),
+			Username:    viper.GetString("SOL_HTTP_LISTENER_USER"),
+			Password:    viper.GetString("SOL_HTTP_LISTENER_PASS"),
+			AESKey:      aesKey,
+		}, func(st *state.TargetState) {
+			applyState("HTTP", st)
+		})
+		go httpSrv.Start(ctx)
+	}
+
 	<-ctx.Done()
 	logrus.WithField("category", "Lifecycle").Info("Solace DSEMP Agent exited cleanly.")
 }

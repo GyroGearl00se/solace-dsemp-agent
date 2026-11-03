@@ -44,6 +44,15 @@ SOL_MANAGE_TOPIC_ENDPOINTS: true                          # Manage topic endpoin
 SOL_MANAGE_TOPIC_ENDPOINT_TEMPLATES: true                 # Manage topic endpoint templates
 SOL_MANAGE_MSG_VPNS: true                                 # Manage message VPN
 
+# HTTP listener (optional — accepts TargetState via HTTP POST)
+SOL_HTTP_LISTENER_ENABLED: true                          # Enable the HTTP listener
+SOL_HTTP_LISTENER_ADDR: ":9001"                           # Address to listen on (default :9001)
+SOL_HTTP_LISTENER_USER: "dsemp-api"                       # HTTP Basic Auth username (required when listener is enabled)
+SOL_HTTP_LISTENER_PASS: "changeme"                        # HTTP Basic Auth password (required when listener is enabled)
+SOL_HTTP_TLS_ENABLED: false                               # Enable TLS on the HTTP listener
+SOL_HTTP_TLS_CERT_FILE: "/etc/ssl/certs/server.crt"      # Path to TLS certificate (PEM)
+SOL_HTTP_TLS_KEY_FILE: "/etc/ssl/private/server.key"      # Path to TLS private key (PEM)
+
 # Other
 SOL_DRYRUN: false                                         # Only show changes, do not apply (true/false)
 LOGLEVEL: 4                                               # Logrus log level (0=panic, 1=fatal, 2=error, 3=warn, 4=info, 5=debug, 6=trace)

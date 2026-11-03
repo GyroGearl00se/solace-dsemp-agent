@@ -49,7 +49,7 @@ Method | HTTP request | Description
 > DmrClusterResponse CreateDmrCluster(ctx, body, optional)
 Create a Cluster object.
 
-Create a Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x authenticationClientCertContent|||||x||x authenticationClientCertPassword|||||x|| directOnlyEnabled||x||||| dmrClusterName|x|x|x|||| nodeName||||x||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x authenticationClientCertContent|||||x||x authenticationClientCertPassword|||||x|| directOnlyEnabled||x||||| dmrClusterName|x|x|x|||| nodeName||||x||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse CreateDmrClusterCertMatchingRule(ctx, body, dmrClusterName, optional)
 Create a Certificate Matching Rule object.
 
-Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse CreateDmrClusterCertMatchingRuleAttributeFilter(ctx, body, dmrClusterName, ruleName, optional)
 Create a Certificate Matching Rule Attribute Filter object.
 
-Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x filterName|x|x|x| ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x filterName|x|x|x| ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleConditionResponse CreateDmrClusterCertMatchingRuleCondition(ctx, body, dmrClusterName, ruleName, optional)
 Create a Certificate Matching Rule Condition object.
 
-Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| dmrClusterName|x|||x expression||x|| ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| dmrClusterName|x|||x expression||x|| ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse CreateDmrClusterLink(ctx, body, dmrClusterName, optional)
 Create a Link object.
 
-Create a Link object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x|||x||| remoteNodeName|x|x|x||||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Link object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x|||x||| remoteNodeName|x|x|x||||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkAttributeResponse CreateDmrClusterLinkAttribute(ctx, body, dmrClusterName, remoteNodeName, optional)
 Create a Link Attribute object.
 
-Create a Link Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| dmrClusterName|x|||x remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Link Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| dmrClusterName|x|||x remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkRemoteAddressResponse CreateDmrClusterLinkRemoteAddress(ctx, body, dmrClusterName, remoteNodeName, optional)
 Create a Remote Address object.
 
-Create a Remote Address object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x remoteAddress|x|x|x| remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Remote Address object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x remoteAddress|x|x|x| remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkTlsTrustedCommonNameResponse CreateDmrClusterLinkTlsTrustedCommonName(ctx, body, dmrClusterName, remoteNodeName, optional)
 Create a Trusted Common Name object.
 
-Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: dmrClusterName|x|||x|x remoteNodeName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: dmrClusterName|x|||x|x remoteNodeName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrCluster(ctx, dmrClusterName)
 Delete a Cluster object.
 
-Delete a Cluster object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a Cluster object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterCertMatchingRule(ctx, dmrClusterName, ruleName)
 Delete a Certificate Matching Rule object.
 
-Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterCertMatchingRuleAttributeFilter(ctx, dmrClusterName, ruleName, filterName)
 Delete a Certificate Matching Rule Attribute Filter object.
 
-Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterCertMatchingRuleCondition(ctx, dmrClusterName, ruleName, source)
 Delete a Certificate Matching Rule Condition object.
 
-Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -486,7 +486,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLink(ctx, dmrClusterName, remoteNodeName)
 Delete a Link object.
 
-Delete a Link object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a Link object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLinkAttribute(ctx, dmrClusterName, remoteNodeName, attributeName, attributeValue)
 Delete a Link Attribute object.
 
-Delete a Link Attribute object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Link Attribute object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -546,7 +546,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLinkRemoteAddress(ctx, dmrClusterName, remoteNodeName, remoteAddress)
 Delete a Remote Address object.
 
-Delete a Remote Address object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a Remote Address object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLinkTlsTrustedCommonName(ctx, dmrClusterName, remoteNodeName, tlsTrustedCommonName)
 Delete a Trusted Common Name object.
 
-Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -606,7 +606,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse GetDmrCluster(ctx, dmrClusterName, optional)
 Get a Cluster object.
 
-Get a Cluster object.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.11.
+Get a Cluster object.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -643,7 +643,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse GetDmrClusterCertMatchingRule(ctx, dmrClusterName, ruleName, optional)
 Get a Certificate Matching Rule object.
 
-Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -682,7 +682,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse GetDmrClusterCertMatchingRuleAttributeFilter(ctx, dmrClusterName, ruleName, filterName, optional)
 Get a Certificate Matching Rule Attribute Filter object.
 
-Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -723,7 +723,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFiltersResponse GetDmrClusterCertMatchingRuleAttributeFilters(ctx, dmrClusterName, ruleName, optional)
 Get a list of Certificate Matching Rule Attribute Filter objects.
 
-Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -765,7 +765,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleConditionResponse GetDmrClusterCertMatchingRuleCondition(ctx, dmrClusterName, ruleName, source, optional)
 Get a Certificate Matching Rule Condition object.
 
-Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -806,7 +806,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleConditionsResponse GetDmrClusterCertMatchingRuleConditions(ctx, dmrClusterName, ruleName, optional)
 Get a list of Certificate Matching Rule Condition objects.
 
-Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -848,7 +848,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRulesResponse GetDmrClusterCertMatchingRules(ctx, dmrClusterName, optional)
 Get a list of Certificate Matching Rule objects.
 
-Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -888,7 +888,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse GetDmrClusterLink(ctx, dmrClusterName, remoteNodeName, optional)
 Get a Link object.
 
-Get a Link object.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.11.
+Get a Link object.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkAttributeResponse GetDmrClusterLinkAttribute(ctx, dmrClusterName, remoteNodeName, attributeName, attributeValue, optional)
 Get a Link Attribute object.
 
-Get a Link Attribute object.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Link Attribute object.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -970,7 +970,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkAttributesResponse GetDmrClusterLinkAttributes(ctx, dmrClusterName, remoteNodeName, optional)
 Get a list of Link Attribute objects.
 
-Get a list of Link Attribute objects.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Link Attribute objects.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -1012,7 +1012,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkRemoteAddressResponse GetDmrClusterLinkRemoteAddress(ctx, dmrClusterName, remoteNodeName, remoteAddress, optional)
 Get a Remote Address object.
 
-Get a Remote Address object.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.11.
+Get a Remote Address object.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -1053,7 +1053,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkRemoteAddressesResponse GetDmrClusterLinkRemoteAddresses(ctx, dmrClusterName, remoteNodeName, optional)
 Get a list of Remote Address objects.
 
-Get a list of Remote Address objects.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Remote Address objects.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1093,7 +1093,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkTlsTrustedCommonNameResponse GetDmrClusterLinkTlsTrustedCommonName(ctx, dmrClusterName, remoteNodeName, tlsTrustedCommonName, optional)
 Get a Trusted Common Name object.
 
-Get a Trusted Common Name object.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a Trusted Common Name object.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -1134,7 +1134,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkTlsTrustedCommonNamesResponse GetDmrClusterLinkTlsTrustedCommonNames(ctx, dmrClusterName, remoteNodeName, optional)
 Get a list of Trusted Common Name objects.
 
-Get a list of Trusted Common Name objects.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a list of Trusted Common Name objects.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -1174,7 +1174,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinksResponse GetDmrClusterLinks(ctx, dmrClusterName, optional)
 Get a list of Link objects.
 
-Get a list of Link objects.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Link objects.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1214,7 +1214,7 @@ Name | Type | Description  | Notes
 > DmrClustersResponse GetDmrClusters(ctx, optional)
 Get a list of Cluster objects.
 
-Get a list of Cluster objects.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Cluster objects.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1252,7 +1252,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse ReplaceDmrCluster(ctx, body, dmrClusterName, optional)
 Replace a Cluster object.
 
-Replace a Cluster object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Cluster object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1291,7 +1291,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse ReplaceDmrClusterCertMatchingRule(ctx, body, dmrClusterName, ruleName, optional)
 Replace a Certificate Matching Rule object.
 
-Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.28.
+Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1332,7 +1332,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse ReplaceDmrClusterCertMatchingRuleAttributeFilter(ctx, body, dmrClusterName, ruleName, filterName, optional)
 Replace a Certificate Matching Rule Attribute Filter object.
 
-Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.28.
+Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1375,7 +1375,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse ReplaceDmrClusterLink(ctx, body, dmrClusterName, remoteNodeName, optional)
 Replace a Link object.
 
-Replace a Link object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Link object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1416,7 +1416,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse UpdateDmrCluster(ctx, body, dmrClusterName, optional)
 Update a Cluster object.
 
-Update a Cluster object. Any attribute missing from the request will be left unchanged.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Cluster object. Any attribute missing from the request will be left unchanged.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1455,7 +1455,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse UpdateDmrClusterCertMatchingRule(ctx, body, dmrClusterName, ruleName, optional)
 Update a Certificate Matching Rule object.
 
-Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.28.
+Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1496,7 +1496,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse UpdateDmrClusterCertMatchingRuleAttributeFilter(ctx, body, dmrClusterName, ruleName, filterName, optional)
 Update a Certificate Matching Rule Attribute Filter object.
 
-Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.28.
+Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1539,7 +1539,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse UpdateDmrClusterLink(ctx, body, dmrClusterName, remoteNodeName, optional)
 Update a Link object.
 
-Update a Link object. Any attribute missing from the request will be left unchanged.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Link object. Any attribute missing from the request will be left unchanged.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

@@ -465,7 +465,7 @@ Method | HTTP request | Description
 > CertAuthorityResponse CreateCertAuthority(ctx, body, optional)
 Create a Certificate Authority object.
 
-Create a Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Required|Deprecated :---|:---:|:---:|:---:|:---: certAuthorityName|x|x|x|x certContent||||x crlDayList||||x crlTimeList||||x crlUrl||||x ocspNonResponderCertEnabled||||x ocspOverrideUrl||||x ocspTimeout||||x revocationCheckEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- CertAuthority|crlDayList|crlTimeList CertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
+Create a Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Required|Deprecated :---|:---:|:---:|:---:|:---: certAuthorityName|x|x|x|x certContent||||x crlDayList||||x crlTimeList||||x crlUrl||||x ocspNonResponderCertEnabled||||x ocspOverrideUrl||||x ocspTimeout||||x revocationCheckEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- CertAuthority|crlDayList|crlTimeList CertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by clientCertAuthorities and domainCertAuthorities.
 
 ### Required Parameters
 
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 > CertAuthorityOcspTlsTrustedCommonNameResponse CreateCertAuthorityOcspTlsTrustedCommonName(ctx, body, certAuthorityName, optional)
 Create an OCSP Responder Trusted Common Name object.
 
-Create an OCSP Responder Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: certAuthorityName|x|||x|x ocspTlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.19. Replaced by clientCertAuthorities.
+Create an OCSP Responder Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: certAuthorityName|x|||x|x ocspTlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by clientCertAuthorities.
 
 ### Required Parameters
 
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityResponse CreateClientCertAuthority(ctx, body, optional)
 Create a Client Certificate Authority object.
 
-Create a Client Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: certAuthorityName|x|x|x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- ClientCertAuthority|crlDayList|crlTimeList ClientCertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.19.
+Create a Client Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: certAuthorityName|x|x|x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- ClientCertAuthority|crlDayList|crlTimeList ClientCertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityOcspTlsTrustedCommonNameResponse CreateClientCertAuthorityOcspTlsTrustedCommonName(ctx, body, certAuthorityName, optional)
 Create an OCSP Responder Trusted Common Name object.
 
-Create an OCSP Responder Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: certAuthorityName|x|||x ocspTlsTrustedCommonName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.19.
+Create an OCSP Responder Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: certAuthorityName|x|||x ocspTlsTrustedCommonName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse CreateDmrCluster(ctx, body, optional)
 Create a Cluster object.
 
-Create a Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x authenticationClientCertContent|||||x||x authenticationClientCertPassword|||||x|| directOnlyEnabled||x||||| dmrClusterName|x|x|x|||| nodeName||||x||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x authenticationClientCertContent|||||x||x authenticationClientCertPassword|||||x|| directOnlyEnabled||x||||| dmrClusterName|x|x|x|||| nodeName||||x||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -654,7 +654,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse CreateDmrClusterCertMatchingRule(ctx, body, dmrClusterName, optional)
 Create a Certificate Matching Rule object.
 
-Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -693,7 +693,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse CreateDmrClusterCertMatchingRuleAttributeFilter(ctx, body, dmrClusterName, ruleName, optional)
 Create a Certificate Matching Rule Attribute Filter object.
 
-Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x filterName|x|x|x| ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x filterName|x|x|x| ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -734,7 +734,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleConditionResponse CreateDmrClusterCertMatchingRuleCondition(ctx, body, dmrClusterName, ruleName, optional)
 Create a Certificate Matching Rule Condition object.
 
-Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| dmrClusterName|x|||x expression||x|| ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| dmrClusterName|x|||x expression||x|| ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -775,7 +775,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse CreateDmrClusterLink(ctx, body, dmrClusterName, optional)
 Create a Link object.
 
-Create a Link object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x|||x||| remoteNodeName|x|x|x||||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Link object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x||x clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x|||x||| remoteNodeName|x|x|x||||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -814,7 +814,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkAttributeResponse CreateDmrClusterLinkAttribute(ctx, body, dmrClusterName, remoteNodeName, optional)
 Create a Link Attribute object.
 
-Create a Link Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| dmrClusterName|x|||x remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Link Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| dmrClusterName|x|||x remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -855,7 +855,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkRemoteAddressResponse CreateDmrClusterLinkRemoteAddress(ctx, body, dmrClusterName, remoteNodeName, optional)
 Create a Remote Address object.
 
-Create a Remote Address object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x remoteAddress|x|x|x| remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Remote Address object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: dmrClusterName|x|||x remoteAddress|x|x|x| remoteNodeName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -896,7 +896,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkTlsTrustedCommonNameResponse CreateDmrClusterLinkTlsTrustedCommonName(ctx, body, dmrClusterName, remoteNodeName, optional)
 Create a Trusted Common Name object.
 
-Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: dmrClusterName|x|||x|x remoteNodeName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: dmrClusterName|x|||x|x remoteNodeName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -937,7 +937,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse CreateDomainCertAuthority(ctx, body, optional)
 Create a Domain Certificate Authority object.
 
-Create a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: certAuthorityName|x|x|x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.19.
+Create a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: certAuthorityName|x|x|x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -974,7 +974,7 @@ Name | Type | Description  | Notes
 > MsgVpnResponse CreateMsgVpn(ctx, body, optional)
 Create a Message VPN object.
 
-Create a Message VPN object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Const|Required|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||||x| distributedCacheManagementEnabled|||||x| msgVpnName|x|x|x||| replicationBridgeAuthenticationBasicPassword||||x||x replicationBridgeAuthenticationClientCertContent||||x||x replicationBridgeAuthenticationClientCertPassword||||x|| replicationEnabledQueueBehavior||||x|| restTlsServerCertEnforceTrustedCommonNameEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpn|authenticationBasicProfileName|authenticationBasicType| MsgVpn|authorizationProfileName|authorizationType| MsgVpn|eventPublishTopicFormatMqttEnabled|eventPublishTopicFormatSmfEnabled| MsgVpn|eventPublishTopicFormatSmfEnabled|eventPublishTopicFormatMqttEnabled| MsgVpn|replicationBridgeAuthenticationBasicClientUsername|replicationBridgeAuthenticationBasicPassword| MsgVpn|replicationBridgeAuthenticationBasicPassword|replicationBridgeAuthenticationBasicClientUsername| MsgVpn|replicationBridgeAuthenticationClientCertPassword|replicationBridgeAuthenticationClientCertContent| MsgVpn|replicationEnabledQueueBehavior|replicationEnabled| MsgVpnEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressMsgRateThreshold|clearValue|setValue| MsgVpnEventEgressMsgRateThreshold|setValue|clearValue| MsgVpnEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressMsgRateThreshold|clearValue|setValue| MsgVpnEventIngressMsgRateThreshold|setValue|clearValue| MsgVpnEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Message VPN object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Const|Required|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||||x| distributedCacheManagementEnabled|||||x| msgVpnName|x|x|x||| replicationBridgeAuthenticationBasicPassword||||x||x replicationBridgeAuthenticationClientCertContent||||x||x replicationBridgeAuthenticationClientCertPassword||||x|| replicationEnabledQueueBehavior||||x|| restTlsServerCertEnforceTrustedCommonNameEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpn|authenticationBasicProfileName|authenticationBasicType| MsgVpn|authorizationProfileName|authorizationType| MsgVpn|eventPublishTopicFormatMqttEnabled|eventPublishTopicFormatSmfEnabled| MsgVpn|eventPublishTopicFormatSmfEnabled|eventPublishTopicFormatMqttEnabled| MsgVpn|replicationBridgeAuthenticationBasicClientUsername|replicationBridgeAuthenticationBasicPassword| MsgVpn|replicationBridgeAuthenticationBasicPassword|replicationBridgeAuthenticationBasicClientUsername| MsgVpn|replicationBridgeAuthenticationClientCertPassword|replicationBridgeAuthenticationClientCertContent| MsgVpn|replicationEnabledQueueBehavior|replicationEnabled| MsgVpnEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressMsgRateThreshold|clearValue|setValue| MsgVpnEventEgressMsgRateThreshold|setValue|clearValue| MsgVpnEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressMsgRateThreshold|clearValue|setValue| MsgVpnEventIngressMsgRateThreshold|setValue|clearValue| MsgVpnEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1011,7 +1011,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse CreateMsgVpnAclProfile(ctx, body, msgVpnName, optional)
 Create an ACL Profile object.
 
-Create an ACL Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create an ACL Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1050,7 +1050,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileClientConnectExceptionResponse CreateMsgVpnAclProfileClientConnectException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Client Connect Exception object.
 
-Create a Client Connect Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x clientConnectExceptionAddress|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Client Connect Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x clientConnectExceptionAddress|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1091,7 +1091,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishExceptionResponse CreateMsgVpnAclProfilePublishException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Publish Topic Exception object.
 
-Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x publishExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x publishExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -1132,7 +1132,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishTopicExceptionResponse CreateMsgVpnAclProfilePublishTopicException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Publish Topic Exception object.
 
-Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x publishTopicException|x|x|x| publishTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x publishTopicException|x|x|x| publishTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1173,7 +1173,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeExceptionResponse CreateMsgVpnAclProfileSubscribeException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Subscribe Topic Exception object.
 
-Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x subscribeExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x subscribeExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -1214,7 +1214,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeShareNameExceptionResponse CreateMsgVpnAclProfileSubscribeShareNameException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Subscribe Share Name Exception object.
 
-Create a Subscribe Share Name Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeShareNameException|x|x|x| subscribeShareNameExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Subscribe Share Name Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeShareNameException|x|x|x| subscribeShareNameExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1255,7 +1255,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeTopicExceptionResponse CreateMsgVpnAclProfileSubscribeTopicException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Subscribe Topic Exception object.
 
-Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeTopicException|x|x|x| subscribeTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeTopicException|x|x|x| subscribeTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1296,7 +1296,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationKerberosRealmResponse CreateMsgVpnAuthenticationKerberosRealm(ctx, body, msgVpnName, optional)
 Create a Realm object.
 
-Create a Realm object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Kerberos Realm.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: kerberosRealmName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.40.
+Create a Realm object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Kerberos Realm.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: kerberosRealmName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1335,7 +1335,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse CreateMsgVpnAuthenticationOauthProfile(ctx, body, msgVpnName, optional)
 Create an OAuth Profile object.
 
-Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientSecret|||||x|x msgVpnName|x|||x|| oauthProfileName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.25.
+Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientSecret|||||x|x msgVpnName|x|||x|| oauthProfileName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1374,7 +1374,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileClientRequiredClaimResponse CreateMsgVpnAuthenticationOauthProfileClientRequiredClaim(ctx, body, msgVpnName, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| msgVpnName|x|||x oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.25.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| msgVpnName|x|||x oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1415,7 +1415,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResourceServerRequiredClaimResponse CreateMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim(ctx, body, msgVpnName, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.25.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1456,7 +1456,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProviderResponse CreateMsgVpnAuthenticationOauthProvider(ctx, body, msgVpnName, optional)
 Create an OAuth Provider object.
 
-Create an OAuth Provider object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: audienceClaimName||||||x| audienceClaimSource||||||x| audienceClaimValue||||||x| audienceValidationEnabled||||||x| authorizationGroupClaimName||||||x| authorizationGroupClaimSource||||||x| authorizationGroupEnabled||||||x| disconnectOnTokenExpirationEnabled||||||x| enabled||||||x| jwksRefreshInterval||||||x| jwksUri||||||x| msgVpnName|x|||x||x| oauthProviderName|x|x|x|||x| tokenIgnoreTimeLimitsEnabled||||||x| tokenIntrospectionParameterName||||||x| tokenIntrospectionPassword|||||x|x|x tokenIntrospectionTimeout||||||x| tokenIntrospectionUri||||||x| tokenIntrospectionUsername||||||x| usernameClaimName||||||x| usernameClaimSource||||||x| usernameValidateEnabled||||||x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.25. Replaced by authenticationOauthProfiles.
+Create an OAuth Provider object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: audienceClaimName||||||x| audienceClaimSource||||||x| audienceClaimValue||||||x| audienceValidationEnabled||||||x| authorizationGroupClaimName||||||x| authorizationGroupClaimSource||||||x| authorizationGroupEnabled||||||x| disconnectOnTokenExpirationEnabled||||||x| enabled||||||x| jwksRefreshInterval||||||x| jwksUri||||||x| msgVpnName|x|||x||x| oauthProviderName|x|x|x|||x| tokenIgnoreTimeLimitsEnabled||||||x| tokenIntrospectionParameterName||||||x| tokenIntrospectionPassword|||||x|x|x tokenIntrospectionTimeout||||||x| tokenIntrospectionUri||||||x| tokenIntrospectionUsername||||||x| usernameClaimName||||||x| usernameClaimSource||||||x| usernameValidateEnabled||||||x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by authenticationOauthProfiles.
 
 ### Required Parameters
 
@@ -1495,7 +1495,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthorizationGroupResponse CreateMsgVpnAuthorizationGroup(ctx, body, msgVpnName, optional)
 Create an Authorization Group object.
 
-Create an Authorization Group object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Const|Required|Read-Only|Write-Only :---|:---:|:---:|:---:|:---:|:---: authorizationGroupName|x|x|x|| msgVpnName|x|||x| orderAfterAuthorizationGroupName|||||x orderBeforeAuthorizationGroupName|||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Conflicts :---|:---|:--- MsgVpnAuthorizationGroup|orderAfterAuthorizationGroupName|orderBeforeAuthorizationGroupName MsgVpnAuthorizationGroup|orderBeforeAuthorizationGroupName|orderAfterAuthorizationGroupName    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create an Authorization Group object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Const|Required|Read-Only|Write-Only :---|:---:|:---:|:---:|:---:|:---: authorizationGroupName|x|x|x|| msgVpnName|x|||x| orderAfterAuthorizationGroupName|||||x orderBeforeAuthorizationGroupName|||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Conflicts :---|:---|:--- MsgVpnAuthorizationGroup|orderAfterAuthorizationGroupName|orderBeforeAuthorizationGroupName MsgVpnAuthorizationGroup|orderBeforeAuthorizationGroupName|orderAfterAuthorizationGroupName    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1534,7 +1534,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse CreateMsgVpnBridge(ctx, body, msgVpnName, optional)
 Create a Bridge object.
 
-Create a Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|x||| bridgeVirtualRouter|x|x|x||| msgVpnName|x|||x|| remoteAuthenticationBasicPassword|||||x|x remoteAuthenticationClientCertContent|||||x|x remoteAuthenticationClientCertPassword|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|x||| bridgeVirtualRouter|x|x|x||| msgVpnName|x|||x|| remoteAuthenticationBasicPassword|||||x|x remoteAuthenticationClientCertContent|||||x|x remoteAuthenticationClientCertPassword|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1573,7 +1573,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse CreateMsgVpnBridgeRemoteMsgVpn(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Create a Remote Message VPN object.
 
-Create a Remote Message VPN object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|| bridgeVirtualRouter|x|||x|| msgVpnName|x|||x|| password|||||x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|x||| remoteMsgVpnName|x|x|x|||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Remote Message VPN object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|| bridgeVirtualRouter|x|||x|| msgVpnName|x|||x|| password|||||x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|x||| remoteMsgVpnName|x|x|x|||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1616,7 +1616,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteSubscriptionResponse CreateMsgVpnBridgeRemoteSubscription(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Create a Remote Subscription object.
 
-Create a Remote Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: bridgeName|x|||x bridgeVirtualRouter|x|||x deliverAlwaysEnabled||x|x| msgVpnName|x|||x remoteSubscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Remote Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: bridgeName|x|||x bridgeVirtualRouter|x|||x deliverAlwaysEnabled||x|x| msgVpnName|x|||x remoteSubscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1659,7 +1659,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeTlsTrustedCommonNameResponse CreateMsgVpnBridgeTlsTrustedCommonName(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Create a Trusted Common Name object.
 
-Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|x bridgeVirtualRouter|x|||x|x msgVpnName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|x bridgeVirtualRouter|x|||x|x msgVpnName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -1702,7 +1702,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse CreateMsgVpnCertMatchingRule(ctx, body, msgVpnName, optional)
 Create a Certificate Matching Rule object.
 
-Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1741,7 +1741,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse CreateMsgVpnCertMatchingRuleAttributeFilter(ctx, body, msgVpnName, ruleName, optional)
 Create a Certificate Matching Rule Attribute Filter object.
 
-Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: filterName|x|x|x| msgVpnName|x|||x ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: filterName|x|x|x| msgVpnName|x|||x ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1782,7 +1782,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleConditionResponse CreateMsgVpnCertMatchingRuleCondition(ctx, body, msgVpnName, ruleName, optional)
 Create a Certificate Matching Rule Condition object.
 
-Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| expression||x|| msgVpnName|x|||x ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| expression||x|| msgVpnName|x|||x ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1823,7 +1823,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientProfileResponse CreateMsgVpnClientProfile(ctx, body, msgVpnName, optional)
 Create a Client Profile object.
 
-Create a Client Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: allowCutThroughForwardingEnabled|||||x apiQueueManagementCopyFromOnCreateName|||||x apiTopicEndpointManagementCopyFromOnCreateName|||||x clientProfileName|x|x|x|| msgVpnName|x|||x| tcpCongestionWindowSize|||||x tcpMaxWindowSize|||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|clearPercent|setPercent| MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|setPercent|clearPercent| MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Client Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: allowCutThroughForwardingEnabled|||||x apiQueueManagementCopyFromOnCreateName|||||x apiTopicEndpointManagementCopyFromOnCreateName|||||x clientProfileName|x|x|x|| msgVpnName|x|||x| tcpCongestionWindowSize|||||x tcpMaxWindowSize|||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|clearPercent|setPercent| MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|setPercent|clearPercent| MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1862,7 +1862,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse CreateMsgVpnClientUsername(ctx, body, msgVpnName, optional)
 Create a Client Username object.
 
-Create a Client Username object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientUsername|x|x|x||| msgVpnName|x|||x|| password|||||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Client Username object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientUsername|x|x|x||| msgVpnName|x|||x|| password|||||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1901,7 +1901,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameAttributeResponse CreateMsgVpnClientUsernameAttribute(ctx, body, msgVpnName, clientUsername, optional)
 Create a Client Username Attribute object.
 
-Create a Client Username Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| clientUsername|x|||x msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Client Username Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| clientUsername|x|||x msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1942,7 +1942,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheResponse CreateMsgVpnDistributedCache(ctx, body, msgVpnName, optional)
 Create a Distributed Cache object.
 
-Create a Distributed Cache object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|x|x| cacheVirtualRouter||x|| msgVpnName|x|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCache|scheduledDeleteMsgDayList|scheduledDeleteMsgTimeList MsgVpnDistributedCache|scheduledDeleteMsgTimeList|scheduledDeleteMsgDayList    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Distributed Cache object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|x|x| cacheVirtualRouter||x|| msgVpnName|x|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCache|scheduledDeleteMsgDayList|scheduledDeleteMsgTimeList MsgVpnDistributedCache|scheduledDeleteMsgTimeList|scheduledDeleteMsgDayList    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -1981,7 +1981,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterResponse CreateMsgVpnDistributedCacheCluster(ctx, body, msgVpnName, cacheName, optional)
 Create a Cache Cluster object.
 
-Create a Cache Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|x|x| msgVpnName|x|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCacheClusterEventDataByteRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataByteRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventRequestRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|setValue|clearValue    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Cache Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|x|x| msgVpnName|x|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCacheClusterEventDataByteRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataByteRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventRequestRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|setValue|clearValue    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2022,7 +2022,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterGlobalCachingHomeClusterResponse CreateMsgVpnDistributedCacheClusterGlobalCachingHomeCluster(ctx, body, msgVpnName, cacheName, clusterName, optional)
 Create a Home Cache Cluster object.
 
-Create a Home Cache Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x homeClusterName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Home Cache Cluster object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x homeClusterName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2065,7 +2065,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefixResponse CreateMsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefix(ctx, body, msgVpnName, cacheName, clusterName, homeClusterName, optional)
 Create a Topic Prefix object.
 
-Create a Topic Prefix object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x homeClusterName|x|||x msgVpnName|x|||x topicPrefix|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Topic Prefix object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x homeClusterName|x|||x msgVpnName|x|||x topicPrefix|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2110,7 +2110,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterInstanceResponse CreateMsgVpnDistributedCacheClusterInstance(ctx, body, msgVpnName, cacheName, clusterName, optional)
 Create a Cache Instance object.
 
-Create a Cache Instance object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x instanceName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Cache Instance object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x instanceName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2153,7 +2153,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterTopicResponse CreateMsgVpnDistributedCacheClusterTopic(ctx, body, msgVpnName, cacheName, clusterName, optional)
 Create a Topic object.
 
-Create a Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x msgVpnName|x|||x topic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|||x clusterName|x|||x msgVpnName|x|||x topic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2196,7 +2196,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse CreateMsgVpnDmrBridge(ctx, body, msgVpnName, optional)
 Create a DMR Bridge object.
 
-Create a DMR Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x remoteNodeName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a DMR Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x remoteNodeName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2235,7 +2235,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse CreateMsgVpnJndiConnectionFactory(ctx, body, msgVpnName, optional)
 Create a JNDI Connection Factory object.
 
-Create a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: connectionFactoryName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.2.
+Create a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: connectionFactoryName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2274,7 +2274,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse CreateMsgVpnJndiQueue(ctx, body, msgVpnName, optional)
 Create a JNDI Queue object.
 
-Create a JNDI Queue object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.2.
+Create a JNDI Queue object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2313,7 +2313,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse CreateMsgVpnJndiTopic(ctx, body, msgVpnName, optional)
 Create a JNDI Topic object.
 
-Create a JNDI Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.2.
+Create a JNDI Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2352,7 +2352,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverResponse CreateMsgVpnKafkaReceiver(ctx, body, msgVpnName, optional)
 Create a Kafka Receiver object.
 
-Create a Kafka Receiver object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey|||||x| authenticationBasicPassword|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationKerberosKeytabContent|||||x| authenticationOauthClientSecret|||||x|x authenticationScramPassword|||||x|x kafkaReceiverName|x|x|x||| msgVpnName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaReceiver|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaReceiver|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaReceiver|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaReceiver|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.36.
+Create a Kafka Receiver object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey|||||x| authenticationBasicPassword|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationKerberosKeytabContent|||||x| authenticationOauthClientSecret|||||x|x authenticationScramPassword|||||x|x kafkaReceiverName|x|x|x||| msgVpnName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaReceiver|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaReceiver|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaReceiver|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaReceiver|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2391,7 +2391,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverTopicBindingResponse CreateMsgVpnKafkaReceiverTopicBinding(ctx, body, msgVpnName, kafkaReceiverName, optional)
 Create a Topic Binding object.
 
-Create a Topic Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: kafkaReceiverName|x|||x msgVpnName|x|||x topicName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.36.
+Create a Topic Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: kafkaReceiverName|x|||x msgVpnName|x|||x topicName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2432,7 +2432,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderResponse CreateMsgVpnKafkaSender(ctx, body, msgVpnName, optional)
 Create a Kafka Sender object.
 
-Create a Kafka Sender object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey|||||x| authenticationBasicPassword|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationKerberosKeytabContent|||||x| authenticationOauthClientSecret|||||x|x authenticationScramPassword|||||x|x kafkaSenderName|x|x|x||| msgVpnName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaSender|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaSender|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaSender|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaSender|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.36.
+Create a Kafka Sender object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey|||||x| authenticationBasicPassword|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationKerberosKeytabContent|||||x| authenticationOauthClientSecret|||||x|x authenticationScramPassword|||||x|x kafkaSenderName|x|x|x||| msgVpnName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaSender|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaSender|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaSender|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaSender|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2471,7 +2471,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderQueueBindingResponse CreateMsgVpnKafkaSenderQueueBinding(ctx, body, msgVpnName, kafkaSenderName, optional)
 Create a Queue Binding object.
 
-Create a Queue Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: kafkaSenderName|x|||x msgVpnName|x|||x queueName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.36.
+Create a Queue Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: kafkaSenderName|x|||x msgVpnName|x|||x queueName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2512,7 +2512,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttRetainCacheResponse CreateMsgVpnMqttRetainCache(ctx, body, msgVpnName, optional)
 Create an MQTT Retain Cache object.
 
-Create an MQTT Retain Cache object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create an MQTT Retain Cache object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: cacheName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2551,7 +2551,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionResponse CreateMsgVpnMqttSession(ctx, body, msgVpnName, optional)
 Create an MQTT Session object.
 
-Create an MQTT Session object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|x|x| mqttSessionVirtualRouter|x|x|x| msgVpnName|x|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnMqttSessionQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.1.
+Create an MQTT Session object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|x|x| mqttSessionVirtualRouter|x|x|x| msgVpnName|x|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnMqttSessionQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2590,7 +2590,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionSubscriptionResponse CreateMsgVpnMqttSessionSubscription(ctx, body, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, optional)
 Create a Subscription object.
 
-Create a Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|||x mqttSessionVirtualRouter|x|||x msgVpnName|x|||x subscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.1.
+Create a Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|||x mqttSessionVirtualRouter|x|||x msgVpnName|x|||x subscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2633,7 +2633,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse CreateMsgVpnProxy(ctx, body, msgVpnName, optional)
 Create a Proxy object.
 
-Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x|x msgVpnName|x|||x|| proxyName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.36.
+Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x|x msgVpnName|x|||x|| proxyName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2672,7 +2672,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueResponse CreateMsgVpnQueue(ctx, body, msgVpnName, optional)
 Create a Queue object.
 
-Create a Queue object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Queue object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2711,7 +2711,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueSubscriptionResponse CreateMsgVpnQueueSubscription(ctx, body, msgVpnName, queueName, optional)
 Create a Queue Subscription object.
 
-Create a Queue Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|||x subscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Queue Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|||x subscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2752,7 +2752,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueTemplateResponse CreateMsgVpnQueueTemplate(ctx, body, msgVpnName, optional)
 Create a Queue Template object.
 
-Create a Queue Template object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueTemplateName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Queue Template object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueTemplateName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2791,7 +2791,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse CreateMsgVpnReplayLog(ctx, body, msgVpnName, optional)
 Create a Replay Log object.
 
-Create a Replay Log object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.10.
+Create a Replay Log object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2830,7 +2830,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogTopicFilterSubscriptionResponse CreateMsgVpnReplayLogTopicFilterSubscription(ctx, body, msgVpnName, replayLogName, optional)
 Create a Topic Filter Subscription object.
 
-Create a Topic Filter Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|||x topicFilterSubscription|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Topic Filter Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|||x topicFilterSubscription|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2871,7 +2871,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplicatedTopicResponse CreateMsgVpnReplicatedTopic(ctx, body, msgVpnName, optional)
 Create a Replicated Topic object.
 
-Create a Replicated Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replicatedTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.1.
+Create a Replicated Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replicatedTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2910,7 +2910,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse CreateMsgVpnRestDeliveryPoint(ctx, body, msgVpnName, optional)
 Create a REST Delivery Point object.
 
-Create a REST Delivery Point object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x restDeliveryPointName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a REST Delivery Point object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x restDeliveryPointName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2949,7 +2949,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse CreateMsgVpnRestDeliveryPointQueueBinding(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Create a Queue Binding object.
 
-Create a Queue Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueBindingName|x|x|x| restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Queue Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueBindingName|x|x|x| restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -2990,7 +2990,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse CreateMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Create a Protected Request Header object.
 
-Create a Protected Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: headerName|x|x|x||| headerValue|||||x|x msgVpnName|x|||x|| queueBindingName|x|||x|| restDeliveryPointName|x|||x||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.30.
+Create a Protected Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: headerName|x|x|x||| headerValue|||||x|x msgVpnName|x|||x|| queueBindingName|x|||x|| restDeliveryPointName|x|||x||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3033,7 +3033,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse CreateMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Create a Request Header object.
 
-Create a Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: headerName|x|x|x| msgVpnName|x|||x queueBindingName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.23.
+Create a Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: headerName|x|x|x| msgVpnName|x|||x queueBindingName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3076,7 +3076,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse CreateMsgVpnRestDeliveryPointRestConsumer(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Create a REST Consumer object.
 
-Create a REST Consumer object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationHttpBasicPassword|||||x|x authenticationHttpHeaderValue|||||x|x authenticationOauthClientSecret|||||x|x authenticationOauthJwtSecretKey|||||x|x msgVpnName|x|||x|| restConsumerName|x|x|x||| restDeliveryPointName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a REST Consumer object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationHttpBasicPassword|||||x|x authenticationHttpHeaderValue|||||x|x authenticationOauthClientSecret|||||x|x authenticationOauthJwtSecretKey|||||x|x msgVpnName|x|||x|| restConsumerName|x|x|x||| restDeliveryPointName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3117,7 +3117,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerOauthJwtClaimResponse CreateMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Create a Claim object.
 
-Create a Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthJwtClaimName|x|x|x| oauthJwtClaimValue||x|x| restConsumerName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.21.
+Create a Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthJwtClaimName|x|x|x| oauthJwtClaimValue||x|x| restConsumerName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3160,7 +3160,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameResponse CreateMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Create a Trusted Common Name object.
 
-Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x|x restConsumerName|x|||x|x restDeliveryPointName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x|x restConsumerName|x|||x|x restDeliveryPointName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -3203,7 +3203,7 @@ Name | Type | Description  | Notes
 > MsgVpnSequencedTopicResponse CreateMsgVpnSequencedTopic(ctx, body, msgVpnName, optional)
 Create a Sequenced Topic object.
 
-Create a Sequenced Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x|x sequencedTopic|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.42. Primarily used by SolCache-RS which has been replaced by the Replay feature.
+Create a Sequenced Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x|x sequencedTopic|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Primarily used by SolCache-RS which has been replaced by the Replay feature.
 
 ### Required Parameters
 
@@ -3242,7 +3242,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileResponse CreateMsgVpnTelemetryProfile(ctx, body, msgVpnName, optional)
 Create a Telemetry Profile object.
 
-Create a Telemetry Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x| receiverTcpCongestionWindowSize|||||x receiverTcpMaxWindowSize|||||x telemetryProfileName|x|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.31.
+Create a Telemetry Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x| receiverTcpCongestionWindowSize|||||x receiverTcpMaxWindowSize|||||x telemetryProfileName|x|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3281,7 +3281,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileReceiverAclConnectExceptionResponse CreateMsgVpnTelemetryProfileReceiverAclConnectException(ctx, body, msgVpnName, telemetryProfileName, optional)
 Create a Receiver ACL Connect Exception object.
 
-Create a Receiver ACL Connect Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x receiverAclConnectExceptionAddress|x|x|x| telemetryProfileName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.31.
+Create a Receiver ACL Connect Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x receiverAclConnectExceptionAddress|x|x|x| telemetryProfileName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3322,7 +3322,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterResponse CreateMsgVpnTelemetryProfileTraceFilter(ctx, body, msgVpnName, telemetryProfileName, optional)
 Create a Trace Filter object.
 
-Create a Trace Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x telemetryProfileName|x|||x traceFilterName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.31.
+Create a Trace Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x telemetryProfileName|x|||x traceFilterName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3363,7 +3363,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterSubscriptionResponse CreateMsgVpnTelemetryProfileTraceFilterSubscription(ctx, body, msgVpnName, telemetryProfileName, traceFilterName, optional)
 Create a Telemetry Trace Filter Subscription object.
 
-Create a Telemetry Trace Filter Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Trace filter subscriptions control which messages will be attracted by the tracing filter.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x subscription|x|x|x| subscriptionSyntax|x|x|x| telemetryProfileName|x|||x traceFilterName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.31.
+Create a Telemetry Trace Filter Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Trace filter subscriptions control which messages will be attracted by the tracing filter.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x subscription|x|x|x| subscriptionSyntax|x|x|x| telemetryProfileName|x|||x traceFilterName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3406,7 +3406,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointResponse CreateMsgVpnTopicEndpoint(ctx, body, msgVpnName, optional)
 Create a Topic Endpoint object.
 
-Create a Topic Endpoint object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicEndpointName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.1.
+Create a Topic Endpoint object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicEndpointName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3445,7 +3445,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointTemplateResponse CreateMsgVpnTopicEndpointTemplate(ctx, body, msgVpnName, optional)
 Create a Topic Endpoint Template object.
 
-Create a Topic Endpoint Template object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicEndpointTemplateName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Topic Endpoint Template object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicEndpointTemplateName|x|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3484,7 +3484,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse CreateOauthProfile(ctx, body, optional)
 Create an OAuth Profile object.
 
-Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationClientCertContent||||x| authenticationClientCertPassword||||x| clientSecret||||x|x oauthProfileName|x|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationClientCertContent||||x| authenticationClientCertPassword||||x| clientSecret||||x|x oauthProfileName|x|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3521,7 +3521,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse CreateOauthProfileAccessLevelGroup(ctx, body, oauthProfileName, optional)
 Create a Group Access Level object.
 
-Create a Group Access Level object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes. An access scope/level of \"global/admin\" is required to create access level groups with a global access level greater than \"none\".  This has been available since 2.24.
+Create a Group Access Level object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes. An access scope/level of \"global/admin\" is required to create access level groups with a global access level greater than \"none\".
 
 ### Required Parameters
 
@@ -3560,7 +3560,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse CreateOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, body, oauthProfileName, groupName, optional)
 Create a Message VPN Access-Level Exception object.
 
-Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|||x msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|||x msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3601,7 +3601,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAllowedHostResponse CreateOauthProfileClientAllowedHost(ctx, body, oauthProfileName, optional)
 Create an Allowed Host Value object.
 
-Create an Allowed Host Value object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: allowedHost|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create an Allowed Host Value object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: allowedHost|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3640,7 +3640,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse CreateOauthProfileClientAuthorizationParameter(ctx, body, oauthProfileName, optional)
 Create an Authorization Parameter object.
 
-Create an Authorization Parameter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: authorizationParameterName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create an Authorization Parameter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: authorizationParameterName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3679,7 +3679,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientRequiredClaimResponse CreateOauthProfileClientRequiredClaim(ctx, body, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3718,7 +3718,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse CreateOauthProfileDefaultMsgVpnAccessLevelException(ctx, body, oauthProfileName, optional)
 Create a Message VPN Access-Level Exception object.
 
-Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3757,7 +3757,7 @@ Name | Type | Description  | Notes
 > OauthProfileResourceServerRequiredClaimResponse CreateOauthProfileResourceServerRequiredClaim(ctx, body, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3796,7 +3796,7 @@ Name | Type | Description  | Notes
 > ProxyResponse CreateProxy(ctx, body, optional)
 Create a Proxy object.
 
-Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x proxyName|x|x|x||    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.41.
+Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x proxyName|x|x|x||    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3833,7 +3833,7 @@ Name | Type | Description  | Notes
 > VirtualHostnameResponse CreateVirtualHostname(ctx, body, optional)
 Create a Virtual Hostname object.
 
-Create a Virtual Hostname object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: virtualHostname|x|x|x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.17.
+Create a Virtual Hostname object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: virtualHostname|x|x|x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -3870,7 +3870,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteCertAuthority(ctx, certAuthorityName)
 Delete a Certificate Authority object.
 
-Delete a Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
+Delete a Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.  The minimum access scope/level required to perform this operation is \"global/admin\".  Deprecated. Replaced by clientCertAuthorities and domainCertAuthorities.
 
 ### Required Parameters
 
@@ -3898,7 +3898,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteCertAuthorityOcspTlsTrustedCommonName(ctx, certAuthorityName, ocspTlsTrustedCommonName)
 Delete an OCSP Responder Trusted Common Name object.
 
-Delete an OCSP Responder Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been deprecated since 2.19. Replaced by clientCertAuthorities.
+Delete an OCSP Responder Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.  The minimum access scope/level required to perform this operation is \"global/admin\".  Deprecated. Replaced by clientCertAuthorities.
 
 ### Required Parameters
 
@@ -3927,7 +3927,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteClientCertAuthority(ctx, certAuthorityName)
 Delete a Client Certificate Authority object.
 
-Delete a Client Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.19.
+Delete a Client Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -3955,7 +3955,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteClientCertAuthorityOcspTlsTrustedCommonName(ctx, certAuthorityName, ocspTlsTrustedCommonName)
 Delete an OCSP Responder Trusted Common Name object.
 
-Delete an OCSP Responder Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.19.
+Delete an OCSP Responder Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -3984,7 +3984,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrCluster(ctx, dmrClusterName)
 Delete a Cluster object.
 
-Delete a Cluster object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a Cluster object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4012,7 +4012,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterCertMatchingRule(ctx, dmrClusterName, ruleName)
 Delete a Certificate Matching Rule object.
 
-Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4041,7 +4041,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterCertMatchingRuleAttributeFilter(ctx, dmrClusterName, ruleName, filterName)
 Delete a Certificate Matching Rule Attribute Filter object.
 
-Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4071,7 +4071,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterCertMatchingRuleCondition(ctx, dmrClusterName, ruleName, source)
 Delete a Certificate Matching Rule Condition object.
 
-Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4101,7 +4101,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLink(ctx, dmrClusterName, remoteNodeName)
 Delete a Link object.
 
-Delete a Link object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a Link object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4130,7 +4130,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLinkAttribute(ctx, dmrClusterName, remoteNodeName, attributeName, attributeValue)
 Delete a Link Attribute object.
 
-Delete a Link Attribute object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Link Attribute object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4161,7 +4161,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLinkRemoteAddress(ctx, dmrClusterName, remoteNodeName, remoteAddress)
 Delete a Remote Address object.
 
-Delete a Remote Address object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a Remote Address object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4191,7 +4191,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDmrClusterLinkTlsTrustedCommonName(ctx, dmrClusterName, remoteNodeName, tlsTrustedCommonName)
 Delete a Trusted Common Name object.
 
-Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -4221,7 +4221,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDomainCertAuthority(ctx, certAuthorityName)
 Delete a Domain Certificate Authority object.
 
-Delete a Domain Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.19.
+Delete a Domain Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -4249,7 +4249,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpn(ctx, msgVpnName)
 Delete a Message VPN object.
 
-Delete a Message VPN object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.  The minimum access scope/level required to perform this operation is \"global/read-write\".  This has been available since 2.0.
+Delete a Message VPN object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.  The minimum access scope/level required to perform this operation is \"global/read-write\".
 
 ### Required Parameters
 
@@ -4277,7 +4277,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfile(ctx, msgVpnName, aclProfileName)
 Delete an ACL Profile object.
 
-Delete an ACL Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete an ACL Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4306,7 +4306,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileClientConnectException(ctx, msgVpnName, aclProfileName, clientConnectExceptionAddress)
 Delete a Client Connect Exception object.
 
-Delete a Client Connect Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Client Connect Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4336,7 +4336,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfilePublishException(ctx, msgVpnName, aclProfileName, topicSyntax, publishExceptionTopic)
 Delete a Publish Topic Exception object.
 
-Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -4367,7 +4367,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfilePublishTopicException(ctx, msgVpnName, aclProfileName, publishTopicExceptionSyntax, publishTopicException)
 Delete a Publish Topic Exception object.
 
-Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4398,7 +4398,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileSubscribeException(ctx, msgVpnName, aclProfileName, topicSyntax, subscribeExceptionTopic)
 Delete a Subscribe Topic Exception object.
 
-Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -4429,7 +4429,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileSubscribeShareNameException(ctx, msgVpnName, aclProfileName, subscribeShareNameExceptionSyntax, subscribeShareNameException)
 Delete a Subscribe Share Name Exception object.
 
-Delete a Subscribe Share Name Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Subscribe Share Name Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4460,7 +4460,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileSubscribeTopicException(ctx, msgVpnName, aclProfileName, subscribeTopicExceptionSyntax, subscribeTopicException)
 Delete a Subscribe Topic Exception object.
 
-Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4491,7 +4491,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationKerberosRealm(ctx, msgVpnName, kerberosRealmName)
 Delete a Realm object.
 
-Delete a Realm object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Kerberos Realm.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.40.
+Delete a Realm object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Kerberos Realm.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4520,7 +4520,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProfile(ctx, msgVpnName, oauthProfileName)
 Delete an OAuth Profile object.
 
-Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.25.
+Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4549,7 +4549,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProfileClientRequiredClaim(ctx, msgVpnName, oauthProfileName, clientRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.25.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4579,7 +4579,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim(ctx, msgVpnName, oauthProfileName, resourceServerRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.25.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4609,7 +4609,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProvider(ctx, msgVpnName, oauthProviderName)
 Delete an OAuth Provider object.
 
-Delete an OAuth Provider object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.25. Replaced by authenticationOauthProfiles.
+Delete an OAuth Provider object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Replaced by authenticationOauthProfiles.
 
 ### Required Parameters
 
@@ -4638,7 +4638,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthorizationGroup(ctx, msgVpnName, authorizationGroupName)
 Delete an Authorization Group object.
 
-Delete an Authorization Group object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete an Authorization Group object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4667,7 +4667,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridge(ctx, msgVpnName, bridgeName, bridgeVirtualRouter)
 Delete a Bridge object.
 
-Delete a Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4697,7 +4697,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridgeRemoteMsgVpn(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface)
 Delete a Remote Message VPN object.
 
-Delete a Remote Message VPN object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Remote Message VPN object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4730,7 +4730,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridgeRemoteSubscription(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteSubscriptionTopic)
 Delete a Remote Subscription object.
 
-Delete a Remote Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Remote Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4761,7 +4761,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridgeTlsTrustedCommonName(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, tlsTrustedCommonName)
 Delete a Trusted Common Name object.
 
-Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -4792,7 +4792,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnCertMatchingRule(ctx, msgVpnName, ruleName)
 Delete a Certificate Matching Rule object.
 
-Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.27.
+Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4821,7 +4821,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnCertMatchingRuleAttributeFilter(ctx, msgVpnName, ruleName, filterName)
 Delete a Certificate Matching Rule Attribute Filter object.
 
-Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4851,7 +4851,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnCertMatchingRuleCondition(ctx, msgVpnName, ruleName, source)
 Delete a Certificate Matching Rule Condition object.
 
-Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.27.
+Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4881,7 +4881,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnClientProfile(ctx, msgVpnName, clientProfileName)
 Delete a Client Profile object.
 
-Delete a Client Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.0.
+Delete a Client Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -4910,7 +4910,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnClientUsername(ctx, msgVpnName, clientUsername)
 Delete a Client Username object.
 
-Delete a Client Username object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Client Username object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4939,7 +4939,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnClientUsernameAttribute(ctx, msgVpnName, clientUsername, attributeName, attributeValue)
 Delete a Client Username Attribute object.
 
-Delete a Client Username Attribute object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.27.
+Delete a Client Username Attribute object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4970,7 +4970,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDistributedCache(ctx, msgVpnName, cacheName)
 Delete a Distributed Cache object.
 
-Delete a Distributed Cache object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete a Distributed Cache object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -4999,7 +4999,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDistributedCacheCluster(ctx, msgVpnName, cacheName, clusterName)
 Delete a Cache Cluster object.
 
-Delete a Cache Cluster object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete a Cache Cluster object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5029,7 +5029,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDistributedCacheClusterGlobalCachingHomeCluster(ctx, msgVpnName, cacheName, clusterName, homeClusterName)
 Delete a Home Cache Cluster object.
 
-Delete a Home Cache Cluster object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete a Home Cache Cluster object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5060,7 +5060,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefix(ctx, msgVpnName, cacheName, clusterName, homeClusterName, topicPrefix)
 Delete a Topic Prefix object.
 
-Delete a Topic Prefix object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete a Topic Prefix object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5092,7 +5092,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDistributedCacheClusterInstance(ctx, msgVpnName, cacheName, clusterName, instanceName)
 Delete a Cache Instance object.
 
-Delete a Cache Instance object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete a Cache Instance object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5123,7 +5123,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDistributedCacheClusterTopic(ctx, msgVpnName, cacheName, clusterName, topic)
 Delete a Topic object.
 
-Delete a Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete a Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5154,7 +5154,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDmrBridge(ctx, msgVpnName, remoteNodeName)
 Delete a DMR Bridge object.
 
-Delete a DMR Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a DMR Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -5183,7 +5183,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnJndiConnectionFactory(ctx, msgVpnName, connectionFactoryName)
 Delete a JNDI Connection Factory object.
 
-Delete a JNDI Connection Factory object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.2.
+Delete a JNDI Connection Factory object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5212,7 +5212,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnJndiQueue(ctx, msgVpnName, queueName)
 Delete a JNDI Queue object.
 
-Delete a JNDI Queue object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.2.
+Delete a JNDI Queue object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5241,7 +5241,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnJndiTopic(ctx, msgVpnName, topicName)
 Delete a JNDI Topic object.
 
-Delete a JNDI Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.2.
+Delete a JNDI Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5270,7 +5270,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnKafkaReceiver(ctx, msgVpnName, kafkaReceiverName)
 Delete a Kafka Receiver object.
 
-Delete a Kafka Receiver object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Receiver receives messages from a Kafka Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.36.
+Delete a Kafka Receiver object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Receiver receives messages from a Kafka Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5299,7 +5299,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnKafkaReceiverTopicBinding(ctx, msgVpnName, kafkaReceiverName, topicName)
 Delete a Topic Binding object.
 
-Delete a Topic Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Binding receives messages from a remote Kafka Topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.36.
+Delete a Topic Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Binding receives messages from a remote Kafka Topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5329,7 +5329,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnKafkaSender(ctx, msgVpnName, kafkaSenderName)
 Delete a Kafka Sender object.
 
-Delete a Kafka Sender object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Sender sends messages to a Kafka Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.36.
+Delete a Kafka Sender object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Kafka Sender sends messages to a Kafka Cluster.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5358,7 +5358,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnKafkaSenderQueueBinding(ctx, msgVpnName, kafkaSenderName, queueName)
 Delete a Queue Binding object.
 
-Delete a Queue Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.36.
+Delete a Queue Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5388,7 +5388,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnMqttRetainCache(ctx, msgVpnName, cacheName)
 Delete an MQTT Retain Cache object.
 
-Delete an MQTT Retain Cache object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.11.
+Delete an MQTT Retain Cache object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5417,7 +5417,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnMqttSession(ctx, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter)
 Delete an MQTT Session object.
 
-Delete an MQTT Session object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.1.
+Delete an MQTT Session object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5447,7 +5447,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnMqttSessionSubscription(ctx, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, subscriptionTopic)
 Delete a Subscription object.
 
-Delete a Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.1.
+Delete a Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5478,7 +5478,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnProxy(ctx, msgVpnName, proxyName)
 Delete a Proxy object.
 
-Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.36.
+Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5507,7 +5507,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnQueue(ctx, msgVpnName, queueName)
 Delete a Queue object.
 
-Delete a Queue object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Queue object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5536,7 +5536,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnQueueSubscription(ctx, msgVpnName, queueName, subscriptionTopic)
 Delete a Queue Subscription object.
 
-Delete a Queue Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Queue Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5566,7 +5566,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnQueueTemplate(ctx, msgVpnName, queueTemplateName)
 Delete a Queue Template object.
 
-Delete a Queue Template object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Template provides a mechanism for specifying the initial state for client created queues.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Queue Template object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Template provides a mechanism for specifying the initial state for client created queues.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5595,7 +5595,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnReplayLog(ctx, msgVpnName, replayLogName)
 Delete a Replay Log object.
 
-Delete a Replay Log object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.10.
+Delete a Replay Log object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -5624,7 +5624,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnReplayLogTopicFilterSubscription(ctx, msgVpnName, replayLogName, topicFilterSubscription)
 Delete a Topic Filter Subscription object.
 
-Delete a Topic Filter Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.  The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\".  This has been available since 2.27.
+Delete a Topic Filter Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.  The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\".
 
 ### Required Parameters
 
@@ -5654,7 +5654,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnReplicatedTopic(ctx, msgVpnName, replicatedTopic)
 Delete a Replicated Topic object.
 
-Delete a Replicated Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.1.
+Delete a Replicated Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5683,7 +5683,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPoint(ctx, msgVpnName, restDeliveryPointName)
 Delete a REST Delivery Point object.
 
-Delete a REST Delivery Point object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a REST Delivery Point object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5712,7 +5712,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointQueueBinding(ctx, msgVpnName, restDeliveryPointName, queueBindingName)
 Delete a Queue Binding object.
 
-Delete a Queue Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Queue Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5742,7 +5742,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName)
 Delete a Protected Request Header object.
 
-Delete a Protected Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.30.
+Delete a Protected Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5773,7 +5773,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName)
 Delete a Request Header object.
 
-Delete a Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.23.
+Delete a Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5804,7 +5804,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointRestConsumer(ctx, msgVpnName, restDeliveryPointName, restConsumerName)
 Delete a REST Consumer object.
 
-Delete a REST Consumer object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a REST Consumer object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5834,7 +5834,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim(ctx, msgVpnName, restDeliveryPointName, restConsumerName, oauthJwtClaimName)
 Delete a Claim object.
 
-Delete a Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.21.
+Delete a Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5865,7 +5865,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(ctx, msgVpnName, restDeliveryPointName, restConsumerName, tlsTrustedCommonName)
 Delete a Trusted Common Name object.
 
-Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -5896,7 +5896,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnSequencedTopic(ctx, msgVpnName, sequencedTopic)
 Delete a Sequenced Topic object.
 
-Delete a Sequenced Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.42. Primarily used by SolCache-RS which has been replaced by the Replay feature.
+Delete a Sequenced Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Primarily used by SolCache-RS which has been replaced by the Replay feature.
 
 ### Required Parameters
 
@@ -5925,7 +5925,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnTelemetryProfile(ctx, msgVpnName, telemetryProfileName)
 Delete a Telemetry Profile object.
 
-Delete a Telemetry Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.31.
+Delete a Telemetry Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5954,7 +5954,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnTelemetryProfileReceiverAclConnectException(ctx, msgVpnName, telemetryProfileName, receiverAclConnectExceptionAddress)
 Delete a Receiver ACL Connect Exception object.
 
-Delete a Receiver ACL Connect Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.31.
+Delete a Receiver ACL Connect Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -5984,7 +5984,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnTelemetryProfileTraceFilter(ctx, msgVpnName, telemetryProfileName, traceFilterName)
 Delete a Trace Filter object.
 
-Delete a Trace Filter object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.31.
+Delete a Trace Filter object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -6014,7 +6014,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnTelemetryProfileTraceFilterSubscription(ctx, msgVpnName, telemetryProfileName, traceFilterName, subscription, subscriptionSyntax)
 Delete a Telemetry Trace Filter Subscription object.
 
-Delete a Telemetry Trace Filter Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Trace filter subscriptions control which messages will be attracted by the tracing filter.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.31.
+Delete a Telemetry Trace Filter Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Trace filter subscriptions control which messages will be attracted by the tracing filter.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -6046,7 +6046,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnTopicEndpoint(ctx, msgVpnName, topicEndpointName)
 Delete a Topic Endpoint object.
 
-Delete a Topic Endpoint object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.1.
+Delete a Topic Endpoint object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -6075,7 +6075,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnTopicEndpointTemplate(ctx, msgVpnName, topicEndpointTemplateName)
 Delete a Topic Endpoint Template object.
 
-Delete a Topic Endpoint Template object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Topic Endpoint Template object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -6104,7 +6104,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfile(ctx, oauthProfileName)
 Delete an OAuth Profile object.
 
-Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -6132,7 +6132,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileAccessLevelGroup(ctx, oauthProfileName, groupName)
 Delete a Group Access Level object.
 
-Delete a Group Access Level object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.  The minimum access scope/level required to perform this operation is \"global/read-write\". An access scope/level of \"global/admin\" is required to delete access level groups with a global access level greater than \"none\".  This has been available since 2.24.
+Delete a Group Access Level object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.  The minimum access scope/level required to perform this operation is \"global/read-write\". An access scope/level of \"global/admin\" is required to delete access level groups with a global access level greater than \"none\".
 
 ### Required Parameters
 
@@ -6161,7 +6161,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, oauthProfileName, groupName, msgVpnName)
 Delete a Message VPN Access-Level Exception object.
 
-Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.  The minimum access scope/level required to perform this operation is \"global/read-write\".  This has been available since 2.24.
+Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.  The minimum access scope/level required to perform this operation is \"global/read-write\".
 
 ### Required Parameters
 
@@ -6191,7 +6191,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileClientAllowedHost(ctx, oauthProfileName, allowedHost)
 Delete an Allowed Host Value object.
 
-Delete an Allowed Host Value object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete an Allowed Host Value object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -6220,7 +6220,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileClientAuthorizationParameter(ctx, oauthProfileName, authorizationParameterName)
 Delete an Authorization Parameter object.
 
-Delete an Authorization Parameter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete an Authorization Parameter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -6249,7 +6249,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileClientRequiredClaim(ctx, oauthProfileName, clientRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -6278,7 +6278,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileDefaultMsgVpnAccessLevelException(ctx, oauthProfileName, msgVpnName)
 Delete a Message VPN Access-Level Exception object.
 
-Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.  The minimum access scope/level required to perform this operation is \"global/read-write\".  This has been available since 2.24.
+Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.  The minimum access scope/level required to perform this operation is \"global/read-write\".
 
 ### Required Parameters
 
@@ -6307,7 +6307,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileResourceServerRequiredClaim(ctx, oauthProfileName, resourceServerRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -6336,7 +6336,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteProxy(ctx, proxyName)
 Delete a Proxy object.
 
-Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.41.
+Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -6364,7 +6364,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteVirtualHostname(ctx, virtualHostname)
 Delete a Virtual Hostname object.
 
-Delete a Virtual Hostname object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.  The minimum access scope/level required to perform this operation is \"global/read-write\".  This has been available since 2.17.
+Delete a Virtual Hostname object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.  The minimum access scope/level required to perform this operation is \"global/read-write\".
 
 ### Required Parameters
 
@@ -6392,7 +6392,7 @@ Name | Type | Description  | Notes
 > AboutResponse GetAbout(ctx, optional)
 Get an About object.
 
-Get an About object.  This provides metadata about the SEMP API, such as the version of the API supported by the broker.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.13.
+Get an About object.  This provides metadata about the SEMP API, such as the version of the API supported by the broker.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -6427,7 +6427,7 @@ Name | Type | Description  | Notes
 > AboutApiResponse GetAboutApi(ctx, optional)
 Get an API Description object.
 
-Get an API Description object.  The API Description object provides metadata about the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.2.
+Get an API Description object.  The API Description object provides metadata about the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -6462,7 +6462,7 @@ Name | Type | Description  | Notes
 > AboutUserResponse GetAboutUser(ctx, optional)
 Get a User object.
 
-Get a User object.  Session and access level information about the user accessing the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.2.
+Get a User object.  Session and access level information about the user accessing the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -6497,7 +6497,7 @@ Name | Type | Description  | Notes
 > AboutUserMsgVpnResponse GetAboutUserMsgVpn(ctx, msgVpnName, optional)
 Get a User Message VPN object.
 
-Get a User Message VPN object.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".  This has been available since 2.2.
+Get a User Message VPN object.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".
 
 ### Required Parameters
 
@@ -6534,7 +6534,7 @@ Name | Type | Description  | Notes
 > AboutUserMsgVpnsResponse GetAboutUserMsgVpns(ctx, optional)
 Get a list of User Message VPN objects.
 
-Get a list of User Message VPN objects.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of User Message VPN objects.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -6572,7 +6572,7 @@ Name | Type | Description  | Notes
 > BrokerResponse GetBroker(ctx, optional)
 Get a Broker object.
 
-Get a Broker object.  This object contains global configuration for the message broker.   Attribute|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---: configSyncAuthenticationClientCertMaxChainDepth||x| configSyncAuthenticationClientCertValidateDateEnabled||x| configSyncClientProfileTcpInitialCongestionWindow||x| configSyncClientProfileTcpMaxWindow||x| tlsServerCertContent|x||x tlsServerCertPassword|x|| tlsTicketLifetime||x|    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.13.
+Get a Broker object.  This object contains global configuration for the message broker.   Attribute|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---: configSyncAuthenticationClientCertMaxChainDepth||x| configSyncAuthenticationClientCertValidateDateEnabled||x| configSyncClientProfileTcpInitialCongestionWindow||x| configSyncClientProfileTcpMaxWindow||x| tlsServerCertContent|x||x tlsServerCertPassword|x|| tlsTicketLifetime||x|    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -6607,7 +6607,7 @@ Name | Type | Description  | Notes
 > CertAuthoritiesResponse GetCertAuthorities(ctx, optional)
 Get a list of Certificate Authority objects.
 
-Get a list of Certificate Authority objects.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x certContent||x crlDayList||x crlTimeList||x crlUrl||x ocspNonResponderCertEnabled||x ocspOverrideUrl||x ocspTimeout||x revocationCheckEnabled||x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
+Get a list of Certificate Authority objects.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x certContent||x crlDayList||x crlTimeList||x crlUrl||x ocspNonResponderCertEnabled||x ocspOverrideUrl||x ocspTimeout||x revocationCheckEnabled||x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Replaced by clientCertAuthorities and domainCertAuthorities.
 
 ### Required Parameters
 
@@ -6645,7 +6645,7 @@ Name | Type | Description  | Notes
 > CertAuthorityResponse GetCertAuthority(ctx, certAuthorityName, optional)
 Get a Certificate Authority object.
 
-Get a Certificate Authority object.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x certContent||x crlDayList||x crlTimeList||x crlUrl||x ocspNonResponderCertEnabled||x ocspOverrideUrl||x ocspTimeout||x revocationCheckEnabled||x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
+Get a Certificate Authority object.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x certContent||x crlDayList||x crlTimeList||x crlUrl||x ocspNonResponderCertEnabled||x ocspOverrideUrl||x ocspTimeout||x revocationCheckEnabled||x    The minimum access scope/level required to perform this operation is \"global/read-only\".  Deprecated. Replaced by clientCertAuthorities and domainCertAuthorities.
 
 ### Required Parameters
 
@@ -6682,7 +6682,7 @@ Name | Type | Description  | Notes
 > CertAuthorityOcspTlsTrustedCommonNameResponse GetCertAuthorityOcspTlsTrustedCommonName(ctx, certAuthorityName, ocspTlsTrustedCommonName, optional)
 Get an OCSP Responder Trusted Common Name object.
 
-Get an OCSP Responder Trusted Common Name object.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x ocspTlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been deprecated since 2.19. Replaced by clientCertAuthorities.
+Get an OCSP Responder Trusted Common Name object.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x ocspTlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  Deprecated. Replaced by clientCertAuthorities.
 
 ### Required Parameters
 
@@ -6721,7 +6721,7 @@ Name | Type | Description  | Notes
 > CertAuthorityOcspTlsTrustedCommonNamesResponse GetCertAuthorityOcspTlsTrustedCommonNames(ctx, certAuthorityName, optional)
 Get a list of OCSP Responder Trusted Common Name objects.
 
-Get a list of OCSP Responder Trusted Common Name objects.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x ocspTlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.19. Replaced by clientCertAuthorities.
+Get a list of OCSP Responder Trusted Common Name objects.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying|Deprecated :---|:---:|:---: certAuthorityName|x|x ocspTlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Replaced by clientCertAuthorities.
 
 ### Required Parameters
 
@@ -6759,7 +6759,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthoritiesResponse GetClientCertAuthorities(ctx, optional)
 Get a list of Client Certificate Authority objects.
 
-Get a list of Client Certificate Authority objects.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.19.
+Get a list of Client Certificate Authority objects.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -6797,7 +6797,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityResponse GetClientCertAuthority(ctx, certAuthorityName, optional)
 Get a Client Certificate Authority object.
 
-Get a Client Certificate Authority object.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.19.
+Get a Client Certificate Authority object.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -6834,7 +6834,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityOcspTlsTrustedCommonNameResponse GetClientCertAuthorityOcspTlsTrustedCommonName(ctx, certAuthorityName, ocspTlsTrustedCommonName, optional)
 Get an OCSP Responder Trusted Common Name object.
 
-Get an OCSP Responder Trusted Common Name object.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying :---|:---: certAuthorityName|x ocspTlsTrustedCommonName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.19.
+Get an OCSP Responder Trusted Common Name object.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying :---|:---: certAuthorityName|x ocspTlsTrustedCommonName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -6873,7 +6873,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityOcspTlsTrustedCommonNamesResponse GetClientCertAuthorityOcspTlsTrustedCommonNames(ctx, certAuthorityName, optional)
 Get a list of OCSP Responder Trusted Common Name objects.
 
-Get a list of OCSP Responder Trusted Common Name objects.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying :---|:---: certAuthorityName|x ocspTlsTrustedCommonName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.19.
+Get a list of OCSP Responder Trusted Common Name objects.  When an OCSP override URL is configured, the OCSP responder will be required to sign the OCSP responses with certificates issued to these Trusted Common Names. A maximum of 8 common names can be configured as valid response signers.   Attribute|Identifying :---|:---: certAuthorityName|x ocspTlsTrustedCommonName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -6911,7 +6911,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse GetDmrCluster(ctx, dmrClusterName, optional)
 Get a Cluster object.
 
-Get a Cluster object.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.11.
+Get a Cluster object.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -6948,7 +6948,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse GetDmrClusterCertMatchingRule(ctx, dmrClusterName, ruleName, optional)
 Get a Certificate Matching Rule object.
 
-Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -6987,7 +6987,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse GetDmrClusterCertMatchingRuleAttributeFilter(ctx, dmrClusterName, ruleName, filterName, optional)
 Get a Certificate Matching Rule Attribute Filter object.
 
-Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -7028,7 +7028,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFiltersResponse GetDmrClusterCertMatchingRuleAttributeFilters(ctx, dmrClusterName, ruleName, optional)
 Get a list of Certificate Matching Rule Attribute Filter objects.
 
-Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying :---|:---: dmrClusterName|x filterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -7070,7 +7070,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleConditionResponse GetDmrClusterCertMatchingRuleCondition(ctx, dmrClusterName, ruleName, source, optional)
 Get a Certificate Matching Rule Condition object.
 
-Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -7111,7 +7111,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleConditionsResponse GetDmrClusterCertMatchingRuleConditions(ctx, dmrClusterName, ruleName, optional)
 Get a list of Certificate Matching Rule Condition objects.
 
-Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a link attribute or an expression.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -7153,7 +7153,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRulesResponse GetDmrClusterCertMatchingRules(ctx, dmrClusterName, optional)
 Get a list of Certificate Matching Rule objects.
 
-Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying :---|:---: dmrClusterName|x ruleName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -7193,7 +7193,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse GetDmrClusterLink(ctx, dmrClusterName, remoteNodeName, optional)
 Get a Link object.
 
-Get a Link object.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.11.
+Get a Link object.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -7232,7 +7232,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkAttributeResponse GetDmrClusterLinkAttribute(ctx, dmrClusterName, remoteNodeName, attributeName, attributeValue, optional)
 Get a Link Attribute object.
 
-Get a Link Attribute object.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.28.
+Get a Link Attribute object.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -7275,7 +7275,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkAttributesResponse GetDmrClusterLinkAttributes(ctx, dmrClusterName, remoteNodeName, optional)
 Get a list of Link Attribute objects.
 
-Get a list of Link Attribute objects.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Link Attribute objects.  A Link Attribute is a key+value pair that can be used to locate a DMR Cluster Link, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x dmrClusterName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -7317,7 +7317,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkRemoteAddressResponse GetDmrClusterLinkRemoteAddress(ctx, dmrClusterName, remoteNodeName, remoteAddress, optional)
 Get a Remote Address object.
 
-Get a Remote Address object.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.11.
+Get a Remote Address object.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -7358,7 +7358,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkRemoteAddressesResponse GetDmrClusterLinkRemoteAddresses(ctx, dmrClusterName, remoteNodeName, optional)
 Get a list of Remote Address objects.
 
-Get a list of Remote Address objects.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Remote Address objects.  Each Remote Address, consisting of a FQDN or IP address and optional port, is used to connect to the remote node for this Link. Up to 4 addresses may be provided for each Link, and will be tried on a round-robin basis.   Attribute|Identifying :---|:---: dmrClusterName|x remoteAddress|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -7398,7 +7398,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkTlsTrustedCommonNameResponse GetDmrClusterLinkTlsTrustedCommonName(ctx, dmrClusterName, remoteNodeName, tlsTrustedCommonName, optional)
 Get a Trusted Common Name object.
 
-Get a Trusted Common Name object.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a Trusted Common Name object.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -7439,7 +7439,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkTlsTrustedCommonNamesResponse GetDmrClusterLinkTlsTrustedCommonNames(ctx, dmrClusterName, remoteNodeName, optional)
 Get a list of Trusted Common Name objects.
 
-Get a list of Trusted Common Name objects.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a list of Trusted Common Name objects.  The Trusted Common Names for the Link are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: dmrClusterName|x|x remoteNodeName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -7479,7 +7479,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinksResponse GetDmrClusterLinks(ctx, dmrClusterName, optional)
 Get a list of Link objects.
 
-Get a list of Link objects.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Link objects.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x clientProfileTcpCongestionWindowSize|||x| clientProfileTcpMaxWindowSize|||x| dmrClusterName|x||| remoteNodeName|x|||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -7519,7 +7519,7 @@ Name | Type | Description  | Notes
 > DmrClustersResponse GetDmrClusters(ctx, optional)
 Get a list of Cluster objects.
 
-Get a list of Cluster objects.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Cluster objects.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword||x||x authenticationClientCertContent||x||x authenticationClientCertPassword||x|| dmrClusterName|x||| tlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -7557,7 +7557,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthoritiesResponse GetDomainCertAuthorities(ctx, optional)
 Get a list of Domain Certificate Authority objects.
 
-Get a list of Domain Certificate Authority objects.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.19.
+Get a list of Domain Certificate Authority objects.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -7595,7 +7595,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse GetDomainCertAuthority(ctx, certAuthorityName, optional)
 Get a Domain Certificate Authority object.
 
-Get a Domain Certificate Authority object.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.19.
+Get a Domain Certificate Authority object.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -7632,7 +7632,7 @@ Name | Type | Description  | Notes
 > MsgVpnResponse GetMsgVpn(ctx, msgVpnName, optional)
 Get a Message VPN object.
 
-Get a Message VPN object.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||x| distributedCacheManagementEnabled|||x| msgVpnName|x||| replicationBridgeAuthenticationBasicPassword||x||x replicationBridgeAuthenticationClientCertContent||x||x replicationBridgeAuthenticationClientCertPassword||x|| replicationEnabledQueueBehavior||x|| restTlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Message VPN object.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||x| distributedCacheManagementEnabled|||x| msgVpnName|x||| replicationBridgeAuthenticationBasicPassword||x||x replicationBridgeAuthenticationClientCertContent||x||x replicationBridgeAuthenticationClientCertPassword||x|| replicationEnabledQueueBehavior||x|| restTlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -7669,7 +7669,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse GetMsgVpnAclProfile(ctx, msgVpnName, aclProfileName, optional)
 Get an ACL Profile object.
 
-Get an ACL Profile object.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get an ACL Profile object.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -7708,7 +7708,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileClientConnectExceptionResponse GetMsgVpnAclProfileClientConnectException(ctx, msgVpnName, aclProfileName, clientConnectExceptionAddress, optional)
 Get a Client Connect Exception object.
 
-Get a Client Connect Exception object.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Client Connect Exception object.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -7749,7 +7749,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileClientConnectExceptionsResponse GetMsgVpnAclProfileClientConnectExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Client Connect Exception objects.
 
-Get a list of Client Connect Exception objects.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Client Connect Exception objects.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -7791,7 +7791,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishExceptionResponse GetMsgVpnAclProfilePublishException(ctx, msgVpnName, aclProfileName, topicSyntax, publishExceptionTopic, optional)
 Get a Publish Topic Exception object.
 
-Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -7834,7 +7834,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishExceptionsResponse GetMsgVpnAclProfilePublishExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Publish Topic Exception objects.
 
-Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -7876,7 +7876,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishTopicExceptionResponse GetMsgVpnAclProfilePublishTopicException(ctx, msgVpnName, aclProfileName, publishTopicExceptionSyntax, publishTopicException, optional)
 Get a Publish Topic Exception object.
 
-Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -7919,7 +7919,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishTopicExceptionsResponse GetMsgVpnAclProfilePublishTopicExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Publish Topic Exception objects.
 
-Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.14.
+Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -7961,7 +7961,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeExceptionResponse GetMsgVpnAclProfileSubscribeException(ctx, msgVpnName, aclProfileName, topicSyntax, subscribeExceptionTopic, optional)
 Get a Subscribe Topic Exception object.
 
-Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -8004,7 +8004,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeExceptionsResponse GetMsgVpnAclProfileSubscribeExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Subscribe Topic Exception objects.
 
-Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -8046,7 +8046,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeShareNameExceptionResponse GetMsgVpnAclProfileSubscribeShareNameException(ctx, msgVpnName, aclProfileName, subscribeShareNameExceptionSyntax, subscribeShareNameException, optional)
 Get a Subscribe Share Name Exception object.
 
-Get a Subscribe Share Name Exception object.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Subscribe Share Name Exception object.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8089,7 +8089,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeShareNameExceptionsResponse GetMsgVpnAclProfileSubscribeShareNameExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Subscribe Share Name Exception objects.
 
-Get a list of Subscribe Share Name Exception objects.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.14.
+Get a list of Subscribe Share Name Exception objects.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8131,7 +8131,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeTopicExceptionResponse GetMsgVpnAclProfileSubscribeTopicException(ctx, msgVpnName, aclProfileName, subscribeTopicExceptionSyntax, subscribeTopicException, optional)
 Get a Subscribe Topic Exception object.
 
-Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8174,7 +8174,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeTopicExceptionsResponse GetMsgVpnAclProfileSubscribeTopicExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Subscribe Topic Exception objects.
 
-Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.14.
+Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8216,7 +8216,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilesResponse GetMsgVpnAclProfiles(ctx, msgVpnName, optional)
 Get a list of ACL Profile objects.
 
-Get a list of ACL Profile objects.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of ACL Profile objects.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8256,7 +8256,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationKerberosRealmResponse GetMsgVpnAuthenticationKerberosRealm(ctx, msgVpnName, kerberosRealmName, optional)
 Get a Realm object.
 
-Get a Realm object.  Kerberos Realm.   Attribute|Identifying :---|:---: kerberosRealmName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.40.
+Get a Realm object.  Kerberos Realm.   Attribute|Identifying :---|:---: kerberosRealmName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8295,7 +8295,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationKerberosRealmsResponse GetMsgVpnAuthenticationKerberosRealms(ctx, msgVpnName, optional)
 Get a list of Realm objects.
 
-Get a list of Realm objects.  Kerberos Realm.   Attribute|Identifying :---|:---: kerberosRealmName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.40.
+Get a list of Realm objects.  Kerberos Realm.   Attribute|Identifying :---|:---: kerberosRealmName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8335,7 +8335,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse GetMsgVpnAuthenticationOauthProfile(ctx, msgVpnName, oauthProfileName, optional)
 Get an OAuth Profile object.
 
-Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.25.
+Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8374,7 +8374,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileClientRequiredClaimResponse GetMsgVpnAuthenticationOauthProfileClientRequiredClaim(ctx, msgVpnName, oauthProfileName, clientRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.25.
+Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8415,7 +8415,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileClientRequiredClaimsResponse GetMsgVpnAuthenticationOauthProfileClientRequiredClaims(ctx, msgVpnName, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.25.
+Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -8457,7 +8457,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResourceServerRequiredClaimResponse GetMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim(ctx, msgVpnName, oauthProfileName, resourceServerRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.25.
+Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8498,7 +8498,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResourceServerRequiredClaimsResponse GetMsgVpnAuthenticationOauthProfileResourceServerRequiredClaims(ctx, msgVpnName, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.25.
+Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -8540,7 +8540,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfilesResponse GetMsgVpnAuthenticationOauthProfiles(ctx, msgVpnName, optional)
 Get a list of OAuth Profile objects.
 
-Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.25.
+Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -8580,7 +8580,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProviderResponse GetMsgVpnAuthenticationOauthProvider(ctx, msgVpnName, oauthProviderName, optional)
 Get an OAuth Provider object.
 
-Get an OAuth Provider object.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: audienceClaimName|||x| audienceClaimSource|||x| audienceClaimValue|||x| audienceValidationEnabled|||x| authorizationGroupClaimName|||x| authorizationGroupClaimSource|||x| authorizationGroupEnabled|||x| disconnectOnTokenExpirationEnabled|||x| enabled|||x| jwksRefreshInterval|||x| jwksUri|||x| msgVpnName|x||x| oauthProviderName|x||x| tokenIgnoreTimeLimitsEnabled|||x| tokenIntrospectionParameterName|||x| tokenIntrospectionPassword||x|x|x tokenIntrospectionTimeout|||x| tokenIntrospectionUri|||x| tokenIntrospectionUsername|||x| usernameClaimName|||x| usernameClaimSource|||x| usernameValidateEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.25. Replaced by authenticationOauthProfiles.
+Get an OAuth Provider object.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: audienceClaimName|||x| audienceClaimSource|||x| audienceClaimValue|||x| audienceValidationEnabled|||x| authorizationGroupClaimName|||x| authorizationGroupClaimSource|||x| authorizationGroupEnabled|||x| disconnectOnTokenExpirationEnabled|||x| enabled|||x| jwksRefreshInterval|||x| jwksUri|||x| msgVpnName|x||x| oauthProviderName|x||x| tokenIgnoreTimeLimitsEnabled|||x| tokenIntrospectionParameterName|||x| tokenIntrospectionPassword||x|x|x tokenIntrospectionTimeout|||x| tokenIntrospectionUri|||x| tokenIntrospectionUsername|||x| usernameClaimName|||x| usernameClaimSource|||x| usernameValidateEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Replaced by authenticationOauthProfiles.
 
 ### Required Parameters
 
@@ -8619,7 +8619,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProvidersResponse GetMsgVpnAuthenticationOauthProviders(ctx, msgVpnName, optional)
 Get a list of OAuth Provider objects.
 
-Get a list of OAuth Provider objects.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: audienceClaimName|||x| audienceClaimSource|||x| audienceClaimValue|||x| audienceValidationEnabled|||x| authorizationGroupClaimName|||x| authorizationGroupClaimSource|||x| authorizationGroupEnabled|||x| disconnectOnTokenExpirationEnabled|||x| enabled|||x| jwksRefreshInterval|||x| jwksUri|||x| msgVpnName|x||x| oauthProviderName|x||x| tokenIgnoreTimeLimitsEnabled|||x| tokenIntrospectionParameterName|||x| tokenIntrospectionPassword||x|x|x tokenIntrospectionTimeout|||x| tokenIntrospectionUri|||x| tokenIntrospectionUsername|||x| usernameClaimName|||x| usernameClaimSource|||x| usernameValidateEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been deprecated since 2.25. Replaced by authenticationOauthProfiles.
+Get a list of OAuth Provider objects.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: audienceClaimName|||x| audienceClaimSource|||x| audienceClaimValue|||x| audienceValidationEnabled|||x| authorizationGroupClaimName|||x| authorizationGroupClaimSource|||x| authorizationGroupEnabled|||x| disconnectOnTokenExpirationEnabled|||x| enabled|||x| jwksRefreshInterval|||x| jwksUri|||x| msgVpnName|x||x| oauthProviderName|x||x| tokenIgnoreTimeLimitsEnabled|||x| tokenIntrospectionParameterName|||x| tokenIntrospectionPassword||x|x|x tokenIntrospectionTimeout|||x| tokenIntrospectionUri|||x| tokenIntrospectionUsername|||x| usernameClaimName|||x| usernameClaimSource|||x| usernameValidateEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  Deprecated. Replaced by authenticationOauthProfiles.
 
 ### Required Parameters
 
@@ -8659,7 +8659,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthorizationGroupResponse GetMsgVpnAuthorizationGroup(ctx, msgVpnName, authorizationGroupName, optional)
 Get an Authorization Group object.
 
-Get an Authorization Group object.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Write-Only :---|:---:|:---: authorizationGroupName|x| msgVpnName|x| orderAfterAuthorizationGroupName||x orderBeforeAuthorizationGroupName||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get an Authorization Group object.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Write-Only :---|:---:|:---: authorizationGroupName|x| msgVpnName|x| orderAfterAuthorizationGroupName||x orderBeforeAuthorizationGroupName||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8698,7 +8698,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthorizationGroupsResponse GetMsgVpnAuthorizationGroups(ctx, msgVpnName, optional)
 Get a list of Authorization Group objects.
 
-Get a list of Authorization Group objects.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Write-Only :---|:---:|:---: authorizationGroupName|x| msgVpnName|x| orderAfterAuthorizationGroupName||x orderBeforeAuthorizationGroupName||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Authorization Group objects.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Write-Only :---|:---:|:---: authorizationGroupName|x| msgVpnName|x| orderAfterAuthorizationGroupName||x orderBeforeAuthorizationGroupName||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8738,7 +8738,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse GetMsgVpnBridge(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a Bridge object.
 
-Get a Bridge object.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Bridge object.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8779,7 +8779,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse GetMsgVpnBridgeRemoteMsgVpn(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface, optional)
 Get a Remote Message VPN object.
 
-Get a Remote Message VPN object.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Remote Message VPN object.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8826,7 +8826,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnsResponse GetMsgVpnBridgeRemoteMsgVpns(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a list of Remote Message VPN objects.
 
-Get a list of Remote Message VPN objects.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Remote Message VPN objects.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8868,7 +8868,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteSubscriptionResponse GetMsgVpnBridgeRemoteSubscription(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteSubscriptionTopic, optional)
 Get a Remote Subscription object.
 
-Get a Remote Subscription object.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Remote Subscription object.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -8911,7 +8911,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteSubscriptionsResponse GetMsgVpnBridgeRemoteSubscriptions(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a list of Remote Subscription objects.
 
-Get a list of Remote Subscription objects.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Remote Subscription objects.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -8955,7 +8955,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeTlsTrustedCommonNameResponse GetMsgVpnBridgeTlsTrustedCommonName(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, tlsTrustedCommonName, optional)
 Get a Trusted Common Name object.
 
-Get a Trusted Common Name object.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a Trusted Common Name object.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -8998,7 +8998,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeTlsTrustedCommonNamesResponse GetMsgVpnBridgeTlsTrustedCommonNames(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a list of Trusted Common Name objects.
 
-Get a list of Trusted Common Name objects.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a list of Trusted Common Name objects.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -9040,7 +9040,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgesResponse GetMsgVpnBridges(ctx, msgVpnName, optional)
 Get a list of Bridge objects.
 
-Get a list of Bridge objects.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Bridge objects.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -9080,7 +9080,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse GetMsgVpnCertMatchingRule(ctx, msgVpnName, ruleName, optional)
 Get a Certificate Matching Rule object.
 
-Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9119,7 +9119,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse GetMsgVpnCertMatchingRuleAttributeFilter(ctx, msgVpnName, ruleName, filterName, optional)
 Get a Certificate Matching Rule Attribute Filter object.
 
-Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9160,7 +9160,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFiltersResponse GetMsgVpnCertMatchingRuleAttributeFilters(ctx, msgVpnName, ruleName, optional)
 Get a list of Certificate Matching Rule Attribute Filter objects.
 
-Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -9202,7 +9202,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleConditionResponse GetMsgVpnCertMatchingRuleCondition(ctx, msgVpnName, ruleName, source, optional)
 Get a Certificate Matching Rule Condition object.
 
-Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9243,7 +9243,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleConditionsResponse GetMsgVpnCertMatchingRuleConditions(ctx, msgVpnName, ruleName, optional)
 Get a list of Certificate Matching Rule Condition objects.
 
-Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.27.
+Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -9285,7 +9285,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRulesResponse GetMsgVpnCertMatchingRules(ctx, msgVpnName, optional)
 Get a list of Certificate Matching Rule objects.
 
-Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.27.
+Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -9325,7 +9325,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientProfileResponse GetMsgVpnClientProfile(ctx, msgVpnName, clientProfileName, optional)
 Get a Client Profile object.
 
-Get a Client Profile object.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Deprecated :---|:---:|:---: allowCutThroughForwardingEnabled||x apiQueueManagementCopyFromOnCreateName||x apiTopicEndpointManagementCopyFromOnCreateName||x clientProfileName|x| msgVpnName|x| tcpCongestionWindowSize||x tcpMaxWindowSize||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Client Profile object.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Deprecated :---|:---:|:---: allowCutThroughForwardingEnabled||x apiQueueManagementCopyFromOnCreateName||x apiTopicEndpointManagementCopyFromOnCreateName||x clientProfileName|x| msgVpnName|x| tcpCongestionWindowSize||x tcpMaxWindowSize||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9364,7 +9364,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientProfilesResponse GetMsgVpnClientProfiles(ctx, msgVpnName, optional)
 Get a list of Client Profile objects.
 
-Get a list of Client Profile objects.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Deprecated :---|:---:|:---: allowCutThroughForwardingEnabled||x apiQueueManagementCopyFromOnCreateName||x apiTopicEndpointManagementCopyFromOnCreateName||x clientProfileName|x| msgVpnName|x| tcpCongestionWindowSize||x tcpMaxWindowSize||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Client Profile objects.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Deprecated :---|:---:|:---: allowCutThroughForwardingEnabled||x apiQueueManagementCopyFromOnCreateName||x apiTopicEndpointManagementCopyFromOnCreateName||x clientProfileName|x| msgVpnName|x| tcpCongestionWindowSize||x tcpMaxWindowSize||x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -9404,7 +9404,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse GetMsgVpnClientUsername(ctx, msgVpnName, clientUsername, optional)
 Get a Client Username object.
 
-Get a Client Username object.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Client Username object.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9443,7 +9443,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameAttributeResponse GetMsgVpnClientUsernameAttribute(ctx, msgVpnName, clientUsername, attributeName, attributeValue, optional)
 Get a Client Username Attribute object.
 
-Get a Client Username Attribute object.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Client Username Attribute object.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9486,7 +9486,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameAttributesResponse GetMsgVpnClientUsernameAttributes(ctx, msgVpnName, clientUsername, optional)
 Get a list of Client Username Attribute objects.
 
-Get a list of Client Username Attribute objects.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.27.
+Get a list of Client Username Attribute objects.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -9528,7 +9528,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernamesResponse GetMsgVpnClientUsernames(ctx, msgVpnName, optional)
 Get a list of Client Username objects.
 
-Get a list of Client Username objects.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Client Username objects.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -9568,7 +9568,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheResponse GetMsgVpnDistributedCache(ctx, msgVpnName, cacheName, optional)
 Get a Distributed Cache object.
 
-Get a Distributed Cache object.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a Distributed Cache object.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9607,7 +9607,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterResponse GetMsgVpnDistributedCacheCluster(ctx, msgVpnName, cacheName, clusterName, optional)
 Get a Cache Cluster object.
 
-Get a Cache Cluster object.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a Cache Cluster object.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9648,7 +9648,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterGlobalCachingHomeClusterResponse GetMsgVpnDistributedCacheClusterGlobalCachingHomeCluster(ctx, msgVpnName, cacheName, clusterName, homeClusterName, optional)
 Get a Home Cache Cluster object.
 
-Get a Home Cache Cluster object.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a Home Cache Cluster object.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9691,7 +9691,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefixResponse GetMsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefix(ctx, msgVpnName, cacheName, clusterName, homeClusterName, topicPrefix, optional)
 Get a Topic Prefix object.
 
-Get a Topic Prefix object.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x topicPrefix|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a Topic Prefix object.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x topicPrefix|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9736,7 +9736,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefixesResponse GetMsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefixes(ctx, msgVpnName, cacheName, clusterName, homeClusterName, optional)
 Get a list of Topic Prefix objects.
 
-Get a list of Topic Prefix objects.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x topicPrefix|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Topic Prefix objects.  A Topic Prefix is a prefix for a global topic that is available from the containing Home Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x topicPrefix|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -9782,7 +9782,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterGlobalCachingHomeClustersResponse GetMsgVpnDistributedCacheClusterGlobalCachingHomeClusters(ctx, msgVpnName, cacheName, clusterName, optional)
 Get a list of Home Cache Cluster objects.
 
-Get a list of Home Cache Cluster objects.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Home Cache Cluster objects.  A Home Cache Cluster is a Cache Cluster that is the \"definitive\" Cache Cluster for a given topic in the context of the Global Caching feature.   Attribute|Identifying :---|:---: cacheName|x clusterName|x homeClusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -9826,7 +9826,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterInstanceResponse GetMsgVpnDistributedCacheClusterInstance(ctx, msgVpnName, cacheName, clusterName, instanceName, optional)
 Get a Cache Instance object.
 
-Get a Cache Instance object.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x instanceName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a Cache Instance object.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x instanceName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9869,7 +9869,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterInstancesResponse GetMsgVpnDistributedCacheClusterInstances(ctx, msgVpnName, cacheName, clusterName, optional)
 Get a list of Cache Instance objects.
 
-Get a list of Cache Instance objects.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x instanceName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Cache Instance objects.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x instanceName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -9913,7 +9913,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterTopicResponse GetMsgVpnDistributedCacheClusterTopic(ctx, msgVpnName, cacheName, clusterName, topic, optional)
 Get a Topic object.
 
-Get a Topic object.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x topic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a Topic object.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x topic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -9956,7 +9956,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterTopicsResponse GetMsgVpnDistributedCacheClusterTopics(ctx, msgVpnName, cacheName, clusterName, optional)
 Get a list of Topic objects.
 
-Get a list of Topic objects.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x topic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Topic objects.  The Cache Instances that belong to the containing Cache Cluster will cache any messages published to topics that match a Topic Subscription.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x topic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10000,7 +10000,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClustersResponse GetMsgVpnDistributedCacheClusters(ctx, msgVpnName, cacheName, optional)
 Get a list of Cache Cluster objects.
 
-Get a list of Cache Cluster objects.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Cache Cluster objects.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying :---|:---: cacheName|x clusterName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10042,7 +10042,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCachesResponse GetMsgVpnDistributedCaches(ctx, msgVpnName, optional)
 Get a list of Distributed Cache objects.
 
-Get a list of Distributed Cache objects.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of Distributed Cache objects.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10082,7 +10082,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse GetMsgVpnDmrBridge(ctx, msgVpnName, remoteNodeName, optional)
 Get a DMR Bridge object.
 
-Get a DMR Bridge object.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a DMR Bridge object.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10121,7 +10121,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgesResponse GetMsgVpnDmrBridges(ctx, msgVpnName, optional)
 Get a list of DMR Bridge objects.
 
-Get a list of DMR Bridge objects.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.11.
+Get a list of DMR Bridge objects.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -10161,7 +10161,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoriesResponse GetMsgVpnJndiConnectionFactories(ctx, msgVpnName, optional)
 Get a list of JNDI Connection Factory objects.
 
-Get a list of JNDI Connection Factory objects.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of JNDI Connection Factory objects.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10201,7 +10201,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse GetMsgVpnJndiConnectionFactory(ctx, msgVpnName, connectionFactoryName, optional)
 Get a JNDI Connection Factory object.
 
-Get a JNDI Connection Factory object.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.2.
+Get a JNDI Connection Factory object.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10240,7 +10240,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse GetMsgVpnJndiQueue(ctx, msgVpnName, queueName, optional)
 Get a JNDI Queue object.
 
-Get a JNDI Queue object.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.2.
+Get a JNDI Queue object.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10279,7 +10279,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueuesResponse GetMsgVpnJndiQueues(ctx, msgVpnName, optional)
 Get a list of JNDI Queue objects.
 
-Get a list of JNDI Queue objects.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of JNDI Queue objects.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10319,7 +10319,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse GetMsgVpnJndiTopic(ctx, msgVpnName, topicName, optional)
 Get a JNDI Topic object.
 
-Get a JNDI Topic object.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.2.
+Get a JNDI Topic object.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10358,7 +10358,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicsResponse GetMsgVpnJndiTopics(ctx, msgVpnName, optional)
 Get a list of JNDI Topic objects.
 
-Get a list of JNDI Topic objects.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of JNDI Topic objects.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10398,7 +10398,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverResponse GetMsgVpnKafkaReceiver(ctx, msgVpnName, kafkaReceiverName, optional)
 Get a Kafka Receiver object.
 
-Get a Kafka Receiver object.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaReceiverName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.36.
+Get a Kafka Receiver object.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaReceiverName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10437,7 +10437,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverTopicBindingResponse GetMsgVpnKafkaReceiverTopicBinding(ctx, msgVpnName, kafkaReceiverName, topicName, optional)
 Get a Topic Binding object.
 
-Get a Topic Binding object.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying :---|:---: kafkaReceiverName|x msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.36.
+Get a Topic Binding object.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying :---|:---: kafkaReceiverName|x msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10478,7 +10478,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverTopicBindingsResponse GetMsgVpnKafkaReceiverTopicBindings(ctx, msgVpnName, kafkaReceiverName, optional)
 Get a list of Topic Binding objects.
 
-Get a list of Topic Binding objects.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying :---|:---: kafkaReceiverName|x msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.36.
+Get a list of Topic Binding objects.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying :---|:---: kafkaReceiverName|x msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10520,7 +10520,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiversResponse GetMsgVpnKafkaReceivers(ctx, msgVpnName, optional)
 Get a list of Kafka Receiver objects.
 
-Get a list of Kafka Receiver objects.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaReceiverName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.36.
+Get a list of Kafka Receiver objects.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaReceiverName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10560,7 +10560,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderResponse GetMsgVpnKafkaSender(ctx, msgVpnName, kafkaSenderName, optional)
 Get a Kafka Sender object.
 
-Get a Kafka Sender object.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaSenderName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.36.
+Get a Kafka Sender object.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaSenderName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10599,7 +10599,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderQueueBindingResponse GetMsgVpnKafkaSenderQueueBinding(ctx, msgVpnName, kafkaSenderName, queueName, optional)
 Get a Queue Binding object.
 
-Get a Queue Binding object.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying :---|:---: kafkaSenderName|x msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.36.
+Get a Queue Binding object.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying :---|:---: kafkaSenderName|x msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10640,7 +10640,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderQueueBindingsResponse GetMsgVpnKafkaSenderQueueBindings(ctx, msgVpnName, kafkaSenderName, optional)
 Get a list of Queue Binding objects.
 
-Get a list of Queue Binding objects.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying :---|:---: kafkaSenderName|x msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.36.
+Get a list of Queue Binding objects.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying :---|:---: kafkaSenderName|x msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10682,7 +10682,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSendersResponse GetMsgVpnKafkaSenders(ctx, msgVpnName, optional)
 Get a list of Kafka Sender objects.
 
-Get a list of Kafka Sender objects.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaSenderName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.36.
+Get a list of Kafka Sender objects.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsMskIamSecretAccessKey||x| authenticationBasicPassword||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationKerberosKeytabContent||x| authenticationOauthClientSecret||x|x authenticationScramPassword||x|x kafkaSenderName|x|| msgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10722,7 +10722,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttRetainCacheResponse GetMsgVpnMqttRetainCache(ctx, msgVpnName, cacheName, optional)
 Get an MQTT Retain Cache object.
 
-Get an MQTT Retain Cache object.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get an MQTT Retain Cache object.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10761,7 +10761,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttRetainCachesResponse GetMsgVpnMqttRetainCaches(ctx, msgVpnName, optional)
 Get a list of MQTT Retain Cache objects.
 
-Get a list of MQTT Retain Cache objects.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.11.
+Get a list of MQTT Retain Cache objects.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying :---|:---: cacheName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10801,7 +10801,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionResponse GetMsgVpnMqttSession(ctx, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, optional)
 Get an MQTT Session object.
 
-Get an MQTT Session object.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.1.
+Get an MQTT Session object.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10842,7 +10842,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionSubscriptionResponse GetMsgVpnMqttSessionSubscription(ctx, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, subscriptionTopic, optional)
 Get a Subscription object.
 
-Get a Subscription object.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.1.
+Get a Subscription object.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -10885,7 +10885,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionSubscriptionsResponse GetMsgVpnMqttSessionSubscriptions(ctx, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, optional)
 Get a list of Subscription objects.
 
-Get a list of Subscription objects.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.1.
+Get a list of Subscription objects.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10929,7 +10929,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionsResponse GetMsgVpnMqttSessions(ctx, msgVpnName, optional)
 Get a list of MQTT Session objects.
 
-Get a list of MQTT Session objects.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.1.
+Get a list of MQTT Session objects.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying :---|:---: mqttSessionClientId|x mqttSessionVirtualRouter|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -10969,7 +10969,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxiesResponse GetMsgVpnProxies(ctx, msgVpnName, optional)
 Get a list of Proxy objects.
 
-Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.36.
+Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -11009,7 +11009,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse GetMsgVpnProxy(ctx, msgVpnName, proxyName, optional)
 Get a Proxy object.
 
-Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.36.
+Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11048,7 +11048,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueResponse GetMsgVpnQueue(ctx, msgVpnName, queueName, optional)
 Get a Queue object.
 
-Get a Queue object.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Queue object.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11087,7 +11087,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueSubscriptionResponse GetMsgVpnQueueSubscription(ctx, msgVpnName, queueName, subscriptionTopic, optional)
 Get a Queue Subscription object.
 
-Get a Queue Subscription object.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Queue Subscription object.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11128,7 +11128,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueSubscriptionsResponse GetMsgVpnQueueSubscriptions(ctx, msgVpnName, queueName, optional)
 Get a list of Queue Subscription objects.
 
-Get a list of Queue Subscription objects.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Queue Subscription objects.  One or more Queue Subscriptions can be added to a durable queue so that Guaranteed messages published to matching topics are also delivered to and spooled by the queue.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x subscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -11170,7 +11170,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueTemplateResponse GetMsgVpnQueueTemplate(ctx, msgVpnName, queueTemplateName, optional)
 Get a Queue Template object.
 
-Get a Queue Template object.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying :---|:---: msgVpnName|x queueTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Queue Template object.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying :---|:---: msgVpnName|x queueTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11209,7 +11209,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueTemplatesResponse GetMsgVpnQueueTemplates(ctx, msgVpnName, optional)
 Get a list of Queue Template objects.
 
-Get a list of Queue Template objects.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying :---|:---: msgVpnName|x queueTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.14.
+Get a list of Queue Template objects.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying :---|:---: msgVpnName|x queueTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -11249,7 +11249,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueuesResponse GetMsgVpnQueues(ctx, msgVpnName, optional)
 Get a list of Queue objects.
 
-Get a list of Queue objects.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Queue objects.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -11289,7 +11289,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse GetMsgVpnReplayLog(ctx, msgVpnName, replayLogName, optional)
 Get a Replay Log object.
 
-Get a Replay Log object.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.10.
+Get a Replay Log object.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11328,7 +11328,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogTopicFilterSubscriptionResponse GetMsgVpnReplayLogTopicFilterSubscription(ctx, msgVpnName, replayLogName, topicFilterSubscription, optional)
 Get a Topic Filter Subscription object.
 
-Get a Topic Filter Subscription object.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Topic Filter Subscription object.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11369,7 +11369,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogTopicFilterSubscriptionsResponse GetMsgVpnReplayLogTopicFilterSubscriptions(ctx, msgVpnName, replayLogName, optional)
 Get a list of Topic Filter Subscription objects.
 
-Get a list of Topic Filter Subscription objects.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.27.
+Get a list of Topic Filter Subscription objects.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -11411,7 +11411,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogsResponse GetMsgVpnReplayLogs(ctx, msgVpnName, optional)
 Get a list of Replay Log objects.
 
-Get a list of Replay Log objects.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.10.
+Get a list of Replay Log objects.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -11451,7 +11451,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplicatedTopicResponse GetMsgVpnReplicatedTopic(ctx, msgVpnName, replicatedTopic, optional)
 Get a Replicated Topic object.
 
-Get a Replicated Topic object.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying :---|:---: msgVpnName|x replicatedTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.1.
+Get a Replicated Topic object.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying :---|:---: msgVpnName|x replicatedTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11490,7 +11490,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplicatedTopicsResponse GetMsgVpnReplicatedTopics(ctx, msgVpnName, optional)
 Get a list of Replicated Topic objects.
 
-Get a list of Replicated Topic objects.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying :---|:---: msgVpnName|x replicatedTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.1.
+Get a list of Replicated Topic objects.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying :---|:---: msgVpnName|x replicatedTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -11530,7 +11530,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse GetMsgVpnRestDeliveryPoint(ctx, msgVpnName, restDeliveryPointName, optional)
 Get a REST Delivery Point object.
 
-Get a REST Delivery Point object.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a REST Delivery Point object.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11569,7 +11569,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse GetMsgVpnRestDeliveryPointQueueBinding(ctx, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Get a Queue Binding object.
 
-Get a Queue Binding object.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Queue Binding object.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11610,7 +11610,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse GetMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Get a Protected Request Header object.
 
-Get a Protected Request Header object.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.30.
+Get a Protected Request Header object.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11653,7 +11653,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeadersResponse GetMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaders(ctx, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Get a list of Protected Request Header objects.
 
-Get a list of Protected Request Header objects.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.30.
+Get a list of Protected Request Header objects.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -11697,7 +11697,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse GetMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Get a Request Header object.
 
-Get a Request Header object.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.23.
+Get a Request Header object.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11740,7 +11740,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeadersResponse GetMsgVpnRestDeliveryPointQueueBindingRequestHeaders(ctx, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Get a list of Request Header objects.
 
-Get a list of Request Header objects.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.23.
+Get a list of Request Header objects.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -11784,7 +11784,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingsResponse GetMsgVpnRestDeliveryPointQueueBindings(ctx, msgVpnName, restDeliveryPointName, optional)
 Get a list of Queue Binding objects.
 
-Get a list of Queue Binding objects.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Queue Binding objects.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -11826,7 +11826,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse GetMsgVpnRestDeliveryPointRestConsumer(ctx, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Get a REST Consumer object.
 
-Get a REST Consumer object.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a REST Consumer object.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11867,7 +11867,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerOauthJwtClaimResponse GetMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim(ctx, msgVpnName, restDeliveryPointName, restConsumerName, oauthJwtClaimName, optional)
 Get a Claim object.
 
-Get a Claim object.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.21.
+Get a Claim object.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -11910,7 +11910,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerOauthJwtClaimsResponse GetMsgVpnRestDeliveryPointRestConsumerOauthJwtClaims(ctx, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Get a list of Claim objects.
 
-Get a list of Claim objects.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.21.
+Get a list of Claim objects.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -11954,7 +11954,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameResponse GetMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(ctx, msgVpnName, restDeliveryPointName, restConsumerName, tlsTrustedCommonName, optional)
 Get a Trusted Common Name object.
 
-Get a Trusted Common Name object.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Get a Trusted Common Name object.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -11997,7 +11997,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNamesResponse GetMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNames(ctx, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Get a list of Trusted Common Name objects.
 
-Get a list of Trusted Common Name objects.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Get a list of Trusted Common Name objects.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -12039,7 +12039,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumersResponse GetMsgVpnRestDeliveryPointRestConsumers(ctx, msgVpnName, restDeliveryPointName, optional)
 Get a list of REST Consumer objects.
 
-Get a list of REST Consumer objects.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of REST Consumer objects.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12081,7 +12081,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointsResponse GetMsgVpnRestDeliveryPoints(ctx, msgVpnName, optional)
 Get a list of REST Delivery Point objects.
 
-Get a list of REST Delivery Point objects.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of REST Delivery Point objects.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12121,7 +12121,7 @@ Name | Type | Description  | Notes
 > MsgVpnSequencedTopicResponse GetMsgVpnSequencedTopic(ctx, msgVpnName, sequencedTopic, optional)
 Get a Sequenced Topic object.
 
-Get a Sequenced Topic object.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x sequencedTopic|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.42. Primarily used by SolCache-RS which has been replaced by the Replay feature.
+Get a Sequenced Topic object.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x sequencedTopic|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Primarily used by SolCache-RS which has been replaced by the Replay feature.
 
 ### Required Parameters
 
@@ -12160,7 +12160,7 @@ Name | Type | Description  | Notes
 > MsgVpnSequencedTopicsResponse GetMsgVpnSequencedTopics(ctx, msgVpnName, optional)
 Get a list of Sequenced Topic objects.
 
-Get a list of Sequenced Topic objects.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x sequencedTopic|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.42. Primarily used by SolCache-RS which has been replaced by the Replay feature.
+Get a list of Sequenced Topic objects.  A Sequenced Topic is a topic subscription for which any matching messages received on the Message VPN are assigned a sequence number that is monotonically increased by a value of one per message.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x sequencedTopic|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Primarily used by SolCache-RS which has been replaced by the Replay feature.
 
 ### Required Parameters
 
@@ -12200,7 +12200,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileResponse GetMsgVpnTelemetryProfile(ctx, msgVpnName, telemetryProfileName, optional)
 Get a Telemetry Profile object.
 
-Get a Telemetry Profile object.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x| receiverTcpCongestionWindowSize||x receiverTcpMaxWindowSize||x telemetryProfileName|x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.31.
+Get a Telemetry Profile object.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x| receiverTcpCongestionWindowSize||x receiverTcpMaxWindowSize||x telemetryProfileName|x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -12239,7 +12239,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileReceiverAclConnectExceptionResponse GetMsgVpnTelemetryProfileReceiverAclConnectException(ctx, msgVpnName, telemetryProfileName, receiverAclConnectExceptionAddress, optional)
 Get a Receiver ACL Connect Exception object.
 
-Get a Receiver ACL Connect Exception object.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: msgVpnName|x receiverAclConnectExceptionAddress|x telemetryProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.31.
+Get a Receiver ACL Connect Exception object.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: msgVpnName|x receiverAclConnectExceptionAddress|x telemetryProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -12280,7 +12280,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileReceiverAclConnectExceptionsResponse GetMsgVpnTelemetryProfileReceiverAclConnectExceptions(ctx, msgVpnName, telemetryProfileName, optional)
 Get a list of Receiver ACL Connect Exception objects.
 
-Get a list of Receiver ACL Connect Exception objects.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: msgVpnName|x receiverAclConnectExceptionAddress|x telemetryProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.31.
+Get a list of Receiver ACL Connect Exception objects.  A Receiver ACL Connect Exception is an exception to the default action to take when a receiver connects to the broker. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: msgVpnName|x receiverAclConnectExceptionAddress|x telemetryProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12322,7 +12322,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterResponse GetMsgVpnTelemetryProfileTraceFilter(ctx, msgVpnName, telemetryProfileName, traceFilterName, optional)
 Get a Trace Filter object.
 
-Get a Trace Filter object.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying :---|:---: msgVpnName|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.31.
+Get a Trace Filter object.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying :---|:---: msgVpnName|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -12363,7 +12363,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterSubscriptionResponse GetMsgVpnTelemetryProfileTraceFilterSubscription(ctx, msgVpnName, telemetryProfileName, traceFilterName, subscription, subscriptionSyntax, optional)
 Get a Telemetry Trace Filter Subscription object.
 
-Get a Telemetry Trace Filter Subscription object.  Trace filter subscriptions control which messages will be attracted by the tracing filter.   Attribute|Identifying :---|:---: msgVpnName|x subscription|x subscriptionSyntax|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.31.
+Get a Telemetry Trace Filter Subscription object.  Trace filter subscriptions control which messages will be attracted by the tracing filter.   Attribute|Identifying :---|:---: msgVpnName|x subscription|x subscriptionSyntax|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -12408,7 +12408,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterSubscriptionsResponse GetMsgVpnTelemetryProfileTraceFilterSubscriptions(ctx, msgVpnName, telemetryProfileName, traceFilterName, optional)
 Get a list of Telemetry Trace Filter Subscription objects.
 
-Get a list of Telemetry Trace Filter Subscription objects.  Trace filter subscriptions control which messages will be attracted by the tracing filter.   Attribute|Identifying :---|:---: msgVpnName|x subscription|x subscriptionSyntax|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.31.
+Get a list of Telemetry Trace Filter Subscription objects.  Trace filter subscriptions control which messages will be attracted by the tracing filter.   Attribute|Identifying :---|:---: msgVpnName|x subscription|x subscriptionSyntax|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12452,7 +12452,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFiltersResponse GetMsgVpnTelemetryProfileTraceFilters(ctx, msgVpnName, telemetryProfileName, optional)
 Get a list of Trace Filter objects.
 
-Get a list of Trace Filter objects.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying :---|:---: msgVpnName|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.31.
+Get a list of Trace Filter objects.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying :---|:---: msgVpnName|x telemetryProfileName|x traceFilterName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12494,7 +12494,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfilesResponse GetMsgVpnTelemetryProfiles(ctx, msgVpnName, optional)
 Get a list of Telemetry Profile objects.
 
-Get a list of Telemetry Profile objects.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x| receiverTcpCongestionWindowSize||x receiverTcpMaxWindowSize||x telemetryProfileName|x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.31.
+Get a list of Telemetry Profile objects.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x| receiverTcpCongestionWindowSize||x receiverTcpMaxWindowSize||x telemetryProfileName|x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12534,7 +12534,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointResponse GetMsgVpnTopicEndpoint(ctx, msgVpnName, topicEndpointName, optional)
 Get a Topic Endpoint object.
 
-Get a Topic Endpoint object.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.1.
+Get a Topic Endpoint object.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -12573,7 +12573,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointTemplateResponse GetMsgVpnTopicEndpointTemplate(ctx, msgVpnName, topicEndpointTemplateName, optional)
 Get a Topic Endpoint Template object.
 
-Get a Topic Endpoint Template object.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Topic Endpoint Template object.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -12612,7 +12612,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointTemplatesResponse GetMsgVpnTopicEndpointTemplates(ctx, msgVpnName, optional)
 Get a list of Topic Endpoint Template objects.
 
-Get a list of Topic Endpoint Template objects.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.14.
+Get a list of Topic Endpoint Template objects.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointTemplateName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -12652,7 +12652,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointsResponse GetMsgVpnTopicEndpoints(ctx, msgVpnName, optional)
 Get a list of Topic Endpoint objects.
 
-Get a list of Topic Endpoint objects.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.1.
+Get a list of Topic Endpoint objects.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying :---|:---: msgVpnName|x topicEndpointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12692,7 +12692,7 @@ Name | Type | Description  | Notes
 > MsgVpnsResponse GetMsgVpns(ctx, optional)
 Get a list of Message VPN objects.
 
-Get a list of Message VPN objects.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||x| distributedCacheManagementEnabled|||x| msgVpnName|x||| replicationBridgeAuthenticationBasicPassword||x||x replicationBridgeAuthenticationClientCertContent||x||x replicationBridgeAuthenticationClientCertPassword||x|| replicationEnabledQueueBehavior||x|| restTlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Message VPN objects.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||x| distributedCacheManagementEnabled|||x| msgVpnName|x||| replicationBridgeAuthenticationBasicPassword||x||x replicationBridgeAuthenticationClientCertContent||x||x replicationBridgeAuthenticationClientCertPassword||x|| replicationEnabledQueueBehavior||x|| restTlsServerCertEnforceTrustedCommonNameEnabled|||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12730,7 +12730,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse GetOauthProfile(ctx, oauthProfileName, optional)
 Get an OAuth Profile object.
 
-Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -12767,7 +12767,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse GetOauthProfileAccessLevelGroup(ctx, oauthProfileName, groupName, optional)
 Get a Group Access Level object.
 
-Get a Group Access Level object.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Group Access Level object.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -12806,7 +12806,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse GetOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, oauthProfileName, groupName, msgVpnName, optional)
 Get a Message VPN Access-Level Exception object.
 
-Get a Message VPN Access-Level Exception object.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Message VPN Access-Level Exception object.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -12847,7 +12847,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionsResponse GetOauthProfileAccessLevelGroupMsgVpnAccessLevelExceptions(ctx, oauthProfileName, groupName, optional)
 Get a list of Message VPN Access-Level Exception objects.
 
-Get a list of Message VPN Access-Level Exception objects.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Message VPN Access-Level Exception objects.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12889,7 +12889,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupsResponse GetOauthProfileAccessLevelGroups(ctx, oauthProfileName, optional)
 Get a list of Group Access Level objects.
 
-Get a list of Group Access Level objects.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Group Access Level objects.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -12929,7 +12929,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAllowedHostResponse GetOauthProfileClientAllowedHost(ctx, oauthProfileName, allowedHost, optional)
 Get an Allowed Host Value object.
 
-Get an Allowed Host Value object.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get an Allowed Host Value object.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -12968,7 +12968,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAllowedHostsResponse GetOauthProfileClientAllowedHosts(ctx, oauthProfileName, optional)
 Get a list of Allowed Host Value objects.
 
-Get a list of Allowed Host Value objects.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Allowed Host Value objects.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -13008,7 +13008,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse GetOauthProfileClientAuthorizationParameter(ctx, oauthProfileName, authorizationParameterName, optional)
 Get an Authorization Parameter object.
 
-Get an Authorization Parameter object.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get an Authorization Parameter object.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -13047,7 +13047,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParametersResponse GetOauthProfileClientAuthorizationParameters(ctx, oauthProfileName, optional)
 Get a list of Authorization Parameter objects.
 
-Get a list of Authorization Parameter objects.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Authorization Parameter objects.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -13087,7 +13087,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientRequiredClaimResponse GetOauthProfileClientRequiredClaim(ctx, oauthProfileName, clientRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -13126,7 +13126,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientRequiredClaimsResponse GetOauthProfileClientRequiredClaims(ctx, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -13166,7 +13166,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse GetOauthProfileDefaultMsgVpnAccessLevelException(ctx, oauthProfileName, msgVpnName, optional)
 Get a Message VPN Access-Level Exception object.
 
-Get a Message VPN Access-Level Exception object.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Message VPN Access-Level Exception object.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -13205,7 +13205,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionsResponse GetOauthProfileDefaultMsgVpnAccessLevelExceptions(ctx, oauthProfileName, optional)
 Get a list of Message VPN Access-Level Exception objects.
 
-Get a list of Message VPN Access-Level Exception objects.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Message VPN Access-Level Exception objects.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -13245,7 +13245,7 @@ Name | Type | Description  | Notes
 > OauthProfileResourceServerRequiredClaimResponse GetOauthProfileResourceServerRequiredClaim(ctx, oauthProfileName, resourceServerRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -13284,7 +13284,7 @@ Name | Type | Description  | Notes
 > OauthProfileResourceServerRequiredClaimsResponse GetOauthProfileResourceServerRequiredClaims(ctx, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -13324,7 +13324,7 @@ Name | Type | Description  | Notes
 > OauthProfilesResponse GetOauthProfiles(ctx, optional)
 Get a list of OAuth Profile objects.
 
-Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -13362,7 +13362,7 @@ Name | Type | Description  | Notes
 > ProxiesResponse GetProxies(ctx, optional)
 Get a list of Proxy objects.
 
-Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.41.
+Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -13400,7 +13400,7 @@ Name | Type | Description  | Notes
 > ProxyResponse GetProxy(ctx, proxyName, optional)
 Get a Proxy object.
 
-Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.41.
+Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -13437,7 +13437,7 @@ Name | Type | Description  | Notes
 > SystemInformationResponse GetSystemInformation(ctx, optional)
 Get a System Information object.
 
-Get a System Information object.  The System Information object provides metadata about the SEMP API.   Attribute|Deprecated :---|:---: platform|x sempVersion|x    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been deprecated since 2.2. /systemInformation was replaced by /about/api.
+Get a System Information object.  The System Information object provides metadata about the SEMP API.   Attribute|Deprecated :---|:---: platform|x sempVersion|x    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  Deprecated. /systemInformation was replaced by /about/api.
 
 ### Required Parameters
 
@@ -13472,7 +13472,7 @@ Name | Type | Description  | Notes
 > VirtualHostnameResponse GetVirtualHostname(ctx, virtualHostname, optional)
 Get a Virtual Hostname object.
 
-Get a Virtual Hostname object.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying :---|:---: virtualHostname|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.17.
+Get a Virtual Hostname object.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying :---|:---: virtualHostname|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -13509,7 +13509,7 @@ Name | Type | Description  | Notes
 > VirtualHostnamesResponse GetVirtualHostnames(ctx, optional)
 Get a list of Virtual Hostname objects.
 
-Get a list of Virtual Hostname objects.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying :---|:---: virtualHostname|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.17.
+Get a list of Virtual Hostname objects.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying :---|:---: virtualHostname|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -13547,7 +13547,7 @@ Name | Type | Description  | Notes
 > CertAuthorityResponse ReplaceCertAuthority(ctx, body, certAuthorityName, optional)
 Replace a Certificate Authority object.
 
-Replace a Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable|Deprecated :---|:---:|:---:|:---:|:---: certAuthorityName|x|x||x certContent||||x crlDayList||||x crlTimeList||||x crlUrl|||x|x ocspNonResponderCertEnabled||||x ocspOverrideUrl||||x ocspTimeout||||x revocationCheckEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- CertAuthority|crlDayList|crlTimeList CertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
+Replace a Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable|Deprecated :---|:---:|:---:|:---:|:---: certAuthorityName|x|x||x certContent||||x crlDayList||||x crlTimeList||||x crlUrl|||x|x ocspNonResponderCertEnabled||||x ocspOverrideUrl||||x ocspTimeout||||x revocationCheckEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- CertAuthority|crlDayList|crlTimeList CertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  Deprecated. Replaced by clientCertAuthorities and domainCertAuthorities.
 
 ### Required Parameters
 
@@ -13586,7 +13586,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityResponse ReplaceClientCertAuthority(ctx, body, certAuthorityName, optional)
 Replace a Client Certificate Authority object.
 
-Replace a Client Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable :---|:---:|:---:|:---: certAuthorityName|x|x| crlUrl|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- ClientCertAuthority|crlDayList|crlTimeList ClientCertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.19.
+Replace a Client Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable :---|:---:|:---:|:---: certAuthorityName|x|x| crlUrl|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- ClientCertAuthority|crlDayList|crlTimeList ClientCertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13625,7 +13625,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse ReplaceDmrCluster(ctx, body, dmrClusterName, optional)
 Replace a Cluster object.
 
-Replace a Cluster object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Cluster object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13664,7 +13664,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse ReplaceDmrClusterCertMatchingRule(ctx, body, dmrClusterName, ruleName, optional)
 Replace a Certificate Matching Rule object.
 
-Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.28.
+Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13705,7 +13705,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse ReplaceDmrClusterCertMatchingRuleAttributeFilter(ctx, body, dmrClusterName, ruleName, filterName, optional)
 Replace a Certificate Matching Rule Attribute Filter object.
 
-Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.28.
+Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13748,7 +13748,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse ReplaceDmrClusterLink(ctx, body, dmrClusterName, remoteNodeName, optional)
 Replace a Link object.
 
-Replace a Link object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Link object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13789,7 +13789,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse ReplaceDomainCertAuthority(ctx, body, certAuthorityName, optional)
 Replace a Domain Certificate Authority object.
 
-Replace a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.19.
+Replace a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13828,7 +13828,7 @@ Name | Type | Description  | Notes
 > MsgVpnResponse ReplaceMsgVpn(ctx, body, msgVpnName, optional)
 Replace a Message VPN object.
 
-Replace a Message VPN object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Const|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||||x| distributedCacheManagementEnabled|||||x| msgVpnName|x|x|||| replicationBridgeAuthenticationBasicPassword|||x|||x replicationBridgeAuthenticationClientCertContent|||x|||x replicationBridgeAuthenticationClientCertPassword|||x||| replicationEnabledQueueBehavior|||x||| restTlsServerCertEnforceTrustedCommonNameEnabled|||||x| serviceAmqpPlainTextListenPort||||x|| serviceAmqpTlsListenPort||||x|| serviceMqttPlainTextListenPort||||x|| serviceMqttTlsListenPort||||x|| serviceMqttTlsWebSocketListenPort||||x|| serviceMqttWebSocketListenPort||||x|| serviceRestIncomingPlainTextListenPort||||x|| serviceRestIncomingTlsListenPort||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpn|authenticationBasicProfileName|authenticationBasicType| MsgVpn|authorizationProfileName|authorizationType| MsgVpn|eventPublishTopicFormatMqttEnabled|eventPublishTopicFormatSmfEnabled| MsgVpn|eventPublishTopicFormatSmfEnabled|eventPublishTopicFormatMqttEnabled| MsgVpn|replicationBridgeAuthenticationBasicClientUsername|replicationBridgeAuthenticationBasicPassword| MsgVpn|replicationBridgeAuthenticationBasicPassword|replicationBridgeAuthenticationBasicClientUsername| MsgVpn|replicationBridgeAuthenticationClientCertPassword|replicationBridgeAuthenticationClientCertContent| MsgVpn|replicationEnabledQueueBehavior|replicationEnabled| MsgVpnEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressMsgRateThreshold|clearValue|setValue| MsgVpnEventEgressMsgRateThreshold|setValue|clearValue| MsgVpnEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressMsgRateThreshold|clearValue|setValue| MsgVpnEventIngressMsgRateThreshold|setValue|clearValue| MsgVpnEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Message VPN object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Const|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||||x| distributedCacheManagementEnabled|||||x| msgVpnName|x|x|||| replicationBridgeAuthenticationBasicPassword|||x|||x replicationBridgeAuthenticationClientCertContent|||x|||x replicationBridgeAuthenticationClientCertPassword|||x||| replicationEnabledQueueBehavior|||x||| restTlsServerCertEnforceTrustedCommonNameEnabled|||||x| serviceAmqpPlainTextListenPort||||x|| serviceAmqpTlsListenPort||||x|| serviceMqttPlainTextListenPort||||x|| serviceMqttTlsListenPort||||x|| serviceMqttTlsWebSocketListenPort||||x|| serviceMqttWebSocketListenPort||||x|| serviceRestIncomingPlainTextListenPort||||x|| serviceRestIncomingTlsListenPort||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpn|authenticationBasicProfileName|authenticationBasicType| MsgVpn|authorizationProfileName|authorizationType| MsgVpn|eventPublishTopicFormatMqttEnabled|eventPublishTopicFormatSmfEnabled| MsgVpn|eventPublishTopicFormatSmfEnabled|eventPublishTopicFormatMqttEnabled| MsgVpn|replicationBridgeAuthenticationBasicClientUsername|replicationBridgeAuthenticationBasicPassword| MsgVpn|replicationBridgeAuthenticationBasicPassword|replicationBridgeAuthenticationBasicClientUsername| MsgVpn|replicationBridgeAuthenticationClientCertPassword|replicationBridgeAuthenticationClientCertContent| MsgVpn|replicationEnabledQueueBehavior|replicationEnabled| MsgVpnEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressMsgRateThreshold|clearValue|setValue| MsgVpnEventEgressMsgRateThreshold|setValue|clearValue| MsgVpnEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressMsgRateThreshold|clearValue|setValue| MsgVpnEventIngressMsgRateThreshold|setValue|clearValue| MsgVpnEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13867,7 +13867,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse ReplaceMsgVpnAclProfile(ctx, body, msgVpnName, aclProfileName, optional)
 Replace an ACL Profile object.
 
-Replace an ACL Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace an ACL Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13908,7 +13908,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationKerberosRealmResponse ReplaceMsgVpnAuthenticationKerberosRealm(ctx, body, msgVpnName, kerberosRealmName, optional)
 Replace a Realm object.
 
-Replace a Realm object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Kerberos Realm.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: kdcAddress||||x kerberosRealmName|x|x|| msgVpnName|x||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.40.
+Replace a Realm object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Kerberos Realm.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: kdcAddress||||x kerberosRealmName|x|x|| msgVpnName|x||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13949,7 +13949,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse ReplaceMsgVpnAuthenticationOauthProfile(ctx, body, msgVpnName, oauthProfileName, optional)
 Replace an OAuth Profile object.
 
-Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.25.
+Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -13990,7 +13990,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProviderResponse ReplaceMsgVpnAuthenticationOauthProvider(ctx, body, msgVpnName, oauthProviderName, optional)
 Replace an OAuth Provider object.
 
-Replace an OAuth Provider object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Const|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: audienceClaimName|||||x| audienceClaimSource|||||x| audienceClaimValue|||||x| audienceValidationEnabled|||||x| authorizationGroupClaimName|||||x| authorizationGroupClaimSource|||||x| authorizationGroupEnabled|||||x| disconnectOnTokenExpirationEnabled|||||x| enabled|||||x| jwksRefreshInterval|||||x| jwksUri|||||x| msgVpnName|x||x||x| oauthProviderName|x|x|||x| tokenIgnoreTimeLimitsEnabled|||||x| tokenIntrospectionParameterName|||||x| tokenIntrospectionPassword||||x|x|x tokenIntrospectionTimeout|||||x| tokenIntrospectionUri|||||x| tokenIntrospectionUsername|||||x| usernameClaimName|||||x| usernameClaimSource|||||x| usernameValidateEnabled|||||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been deprecated since 2.25. Replaced by authenticationOauthProfiles.
+Replace an OAuth Provider object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Const|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: audienceClaimName|||||x| audienceClaimSource|||||x| audienceClaimValue|||||x| audienceValidationEnabled|||||x| authorizationGroupClaimName|||||x| authorizationGroupClaimSource|||||x| authorizationGroupEnabled|||||x| disconnectOnTokenExpirationEnabled|||||x| enabled|||||x| jwksRefreshInterval|||||x| jwksUri|||||x| msgVpnName|x||x||x| oauthProviderName|x|x|||x| tokenIgnoreTimeLimitsEnabled|||||x| tokenIntrospectionParameterName|||||x| tokenIntrospectionPassword||||x|x|x tokenIntrospectionTimeout|||||x| tokenIntrospectionUri|||||x| tokenIntrospectionUsername|||||x| usernameClaimName|||||x| usernameClaimSource|||||x| usernameValidateEnabled|||||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  Deprecated. Replaced by authenticationOauthProfiles.
 
 ### Required Parameters
 
@@ -14031,7 +14031,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthorizationGroupResponse ReplaceMsgVpnAuthorizationGroup(ctx, body, msgVpnName, authorizationGroupName, optional)
 Replace an Authorization Group object.
 
-Replace an Authorization Group object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable :---|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x authorizationGroupName|x|x||| clientProfileName|||||x msgVpnName|x||x|| orderAfterAuthorizationGroupName||||x| orderBeforeAuthorizationGroupName||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Conflicts :---|:---|:--- MsgVpnAuthorizationGroup|orderAfterAuthorizationGroupName|orderBeforeAuthorizationGroupName MsgVpnAuthorizationGroup|orderBeforeAuthorizationGroupName|orderAfterAuthorizationGroupName    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace an Authorization Group object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable :---|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x authorizationGroupName|x|x||| clientProfileName|||||x msgVpnName|x||x|| orderAfterAuthorizationGroupName||||x| orderBeforeAuthorizationGroupName||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Conflicts :---|:---|:--- MsgVpnAuthorizationGroup|orderAfterAuthorizationGroupName|orderBeforeAuthorizationGroupName MsgVpnAuthorizationGroup|orderBeforeAuthorizationGroupName|orderAfterAuthorizationGroupName    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14072,7 +14072,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse ReplaceMsgVpnBridge(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Replace a Bridge object.
 
-Replace a Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14115,7 +14115,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse ReplaceMsgVpnBridgeRemoteMsgVpn(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface, optional)
 Replace a Remote Message VPN object.
 
-Replace a Remote Message VPN object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Remote Message VPN object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14164,7 +14164,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse ReplaceMsgVpnCertMatchingRule(ctx, body, msgVpnName, ruleName, optional)
 Replace a Certificate Matching Rule object.
 
-Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.27.
+Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14205,7 +14205,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse ReplaceMsgVpnCertMatchingRuleAttributeFilter(ctx, body, msgVpnName, ruleName, filterName, optional)
 Replace a Certificate Matching Rule Attribute Filter object.
 
-Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.28.
+Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14248,7 +14248,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientProfileResponse ReplaceMsgVpnClientProfile(ctx, body, msgVpnName, clientProfileName, optional)
 Replace a Client Profile object.
 
-Replace a Client Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: allowCutThroughForwardingEnabled||||x apiQueueManagementCopyFromOnCreateName||||x apiTopicEndpointManagementCopyFromOnCreateName||||x clientProfileName|x|x|| msgVpnName|x||x| tcpCongestionWindowSize||||x tcpMaxWindowSize||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|clearPercent|setPercent| MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|setPercent|clearPercent| MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Client Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: allowCutThroughForwardingEnabled||||x apiQueueManagementCopyFromOnCreateName||||x apiTopicEndpointManagementCopyFromOnCreateName||||x clientProfileName|x|x|| msgVpnName|x||x| tcpCongestionWindowSize||||x tcpMaxWindowSize||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|clearPercent|setPercent| MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|setPercent|clearPercent| MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14289,7 +14289,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse ReplaceMsgVpnClientUsername(ctx, body, msgVpnName, clientUsername, optional)
 Replace a Client Username object.
 
-Replace a Client Username object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Client Username object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14330,7 +14330,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheResponse ReplaceMsgVpnDistributedCache(ctx, body, msgVpnName, cacheName, optional)
 Replace a Distributed Cache object.
 
-Replace a Distributed Cache object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| cacheVirtualRouter||x| msgVpnName|x||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCache|scheduledDeleteMsgDayList|scheduledDeleteMsgTimeList MsgVpnDistributedCache|scheduledDeleteMsgTimeList|scheduledDeleteMsgDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Distributed Cache object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| cacheVirtualRouter||x| msgVpnName|x||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCache|scheduledDeleteMsgDayList|scheduledDeleteMsgTimeList MsgVpnDistributedCache|scheduledDeleteMsgTimeList|scheduledDeleteMsgDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14371,7 +14371,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterResponse ReplaceMsgVpnDistributedCacheCluster(ctx, body, msgVpnName, cacheName, clusterName, optional)
 Replace a Cache Cluster object.
 
-Replace a Cache Cluster object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: cacheName|x||x| clusterName|x|x|| deliverToOneOverrideEnabled||||x msgVpnName|x||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCacheClusterEventDataByteRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataByteRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventRequestRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|setValue|clearValue    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Cache Cluster object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: cacheName|x||x| clusterName|x|x|| deliverToOneOverrideEnabled||||x msgVpnName|x||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCacheClusterEventDataByteRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataByteRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventRequestRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|setValue|clearValue    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14414,7 +14414,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterInstanceResponse ReplaceMsgVpnDistributedCacheClusterInstance(ctx, body, msgVpnName, cacheName, clusterName, instanceName, optional)
 Replace a Cache Instance object.
 
-Replace a Cache Instance object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x||x clusterName|x||x instanceName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a Cache Instance object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x||x clusterName|x||x instanceName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14459,7 +14459,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse ReplaceMsgVpnDmrBridge(ctx, body, msgVpnName, remoteNodeName, optional)
 Replace a DMR Bridge object.
 
-Replace a DMR Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a DMR Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14500,7 +14500,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse ReplaceMsgVpnJndiConnectionFactory(ctx, body, msgVpnName, connectionFactoryName, optional)
 Replace a JNDI Connection Factory object.
 
-Replace a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.2.
+Replace a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14541,7 +14541,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse ReplaceMsgVpnJndiQueue(ctx, body, msgVpnName, queueName, optional)
 Replace a JNDI Queue object.
 
-Replace a JNDI Queue object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.2.
+Replace a JNDI Queue object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14582,7 +14582,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse ReplaceMsgVpnJndiTopic(ctx, body, msgVpnName, topicName, optional)
 Replace a JNDI Topic object.
 
-Replace a JNDI Topic object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.2.
+Replace a JNDI Topic object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14623,7 +14623,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverResponse ReplaceMsgVpnKafkaReceiver(ctx, body, msgVpnName, kafkaReceiverName, optional)
 Replace a Kafka Receiver object.
 
-Replace a Kafka Receiver object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| groupId|||||x| groupKeepaliveInterval|||||x| groupKeepaliveTimeout|||||x| groupMembershipType|||||x| groupPartitionSchemeList|||||x| kafkaReceiverName|x|x|||| metadataTopicExcludeList|||||x| metadataTopicRefreshInterval|||||x| msgVpnName|x||x||| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaReceiver|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaReceiver|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaReceiver|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaReceiver|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.36.
+Replace a Kafka Receiver object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| groupId|||||x| groupKeepaliveInterval|||||x| groupKeepaliveTimeout|||||x| groupMembershipType|||||x| groupPartitionSchemeList|||||x| kafkaReceiverName|x|x|||| metadataTopicExcludeList|||||x| metadataTopicRefreshInterval|||||x| msgVpnName|x||x||| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaReceiver|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaReceiver|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaReceiver|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaReceiver|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14664,7 +14664,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverTopicBindingResponse ReplaceMsgVpnKafkaReceiverTopicBinding(ctx, body, msgVpnName, kafkaReceiverName, topicName, optional)
 Replace a Topic Binding object.
 
-Replace a Topic Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: initialOffset||||x kafkaReceiverName|x||x| localKey||||x localTopic||||x msgVpnName|x||x| topicName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.36.
+Replace a Topic Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: initialOffset||||x kafkaReceiverName|x||x| localKey||||x localTopic||||x msgVpnName|x||x| topicName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14707,7 +14707,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderResponse ReplaceMsgVpnKafkaSender(ctx, body, msgVpnName, kafkaSenderName, optional)
 Replace a Kafka Sender object.
 
-Replace a Kafka Sender object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxMsgCount|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| idempotenceEnabled|||||x| kafkaSenderName|x|x|||| msgVpnName|x||x||| transportCompressionEnabled|||||x| transportCompressionLevel|||||x| transportCompressionType|||||x| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaSender|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaSender|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaSender|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaSender|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.36.
+Replace a Kafka Sender object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxMsgCount|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| idempotenceEnabled|||||x| kafkaSenderName|x|x|||| msgVpnName|x||x||| transportCompressionEnabled|||||x| transportCompressionLevel|||||x| transportCompressionType|||||x| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaSender|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaSender|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaSender|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaSender|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14748,7 +14748,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderQueueBindingResponse ReplaceMsgVpnKafkaSenderQueueBinding(ctx, body, msgVpnName, kafkaSenderName, queueName, optional)
 Replace a Queue Binding object.
 
-Replace a Queue Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: ackMode||||x kafkaSenderName|x||x| msgVpnName|x||x| partitionConsistentHash||||x partitionExplicitNumber||||x partitionRandomFallbackEnabled||||x partitionScheme||||x queueName|x|x|| remoteKey||||x remoteTopic||||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.36.
+Replace a Queue Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: ackMode||||x kafkaSenderName|x||x| msgVpnName|x||x| partitionConsistentHash||||x partitionExplicitNumber||||x partitionRandomFallbackEnabled||||x partitionScheme||||x queueName|x|x|| remoteKey||||x remoteTopic||||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14791,7 +14791,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttRetainCacheResponse ReplaceMsgVpnMqttRetainCache(ctx, body, msgVpnName, cacheName, optional)
 Replace an MQTT Retain Cache object.
 
-Replace an MQTT Retain Cache object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.11.
+Replace an MQTT Retain Cache object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14832,7 +14832,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionResponse ReplaceMsgVpnMqttSession(ctx, body, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, optional)
 Replace an MQTT Session object.
 
-Replace an MQTT Session object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|x|| mqttSessionVirtualRouter|x|x|| msgVpnName|x||x| owner||||x queueRejectMsgToSenderOnDiscardBehavior||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnMqttSessionQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.1.
+Replace an MQTT Session object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|x|| mqttSessionVirtualRouter|x|x|| msgVpnName|x||x| owner||||x queueRejectMsgToSenderOnDiscardBehavior||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnMqttSessionQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14875,7 +14875,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionSubscriptionResponse ReplaceMsgVpnMqttSessionSubscription(ctx, body, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, subscriptionTopic, optional)
 Replace a Subscription object.
 
-Replace a Subscription object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: mqttSessionClientId|x||x mqttSessionVirtualRouter|x||x msgVpnName|x||x subscriptionTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.1.
+Replace a Subscription object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: mqttSessionClientId|x||x mqttSessionVirtualRouter|x||x msgVpnName|x||x subscriptionTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14920,7 +14920,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse ReplaceMsgVpnProxy(ctx, body, msgVpnName, proxyName, optional)
 Replace a Proxy object.
 
-Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.36.
+Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -14961,7 +14961,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueResponse ReplaceMsgVpnQueue(ctx, body, msgVpnName, queueName, optional)
 Replace a Queue object.
 
-Replace a Queue object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x queueName|x|x|| redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Queue object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x queueName|x|x|| redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15002,7 +15002,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueTemplateResponse ReplaceMsgVpnQueueTemplate(ctx, body, msgVpnName, queueTemplateName, optional)
 Replace a Queue Template object.
 
-Replace a Queue Template object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.14.
+Replace a Queue Template object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15043,7 +15043,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse ReplaceMsgVpnReplayLog(ctx, body, msgVpnName, replayLogName, optional)
 Replace a Replay Log object.
 
-Replace a Replay Log object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.10.
+Replace a Replay Log object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15084,7 +15084,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplicatedTopicResponse ReplaceMsgVpnReplicatedTopic(ctx, body, msgVpnName, replicatedTopic, optional)
 Replace a Replicated Topic object.
 
-Replace a Replicated Topic object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replicatedTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.1.
+Replace a Replicated Topic object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replicatedTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15125,7 +15125,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse ReplaceMsgVpnRestDeliveryPoint(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Replace a REST Delivery Point object.
 
-Replace a REST Delivery Point object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a REST Delivery Point object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15166,7 +15166,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse ReplaceMsgVpnRestDeliveryPointQueueBinding(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Replace a Queue Binding object.
 
-Replace a Queue Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Queue Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15209,7 +15209,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse ReplaceMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Replace a Protected Request Header object.
 
-Replace a Protected Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.30.
+Replace a Protected Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15254,7 +15254,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse ReplaceMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Replace a Request Header object.
 
-Replace a Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.23.
+Replace a Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15299,7 +15299,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse ReplaceMsgVpnRestDeliveryPointRestConsumer(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Replace a REST Consumer object.
 
-Replace a REST Consumer object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a REST Consumer object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15342,7 +15342,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileResponse ReplaceMsgVpnTelemetryProfile(ctx, body, msgVpnName, telemetryProfileName, optional)
 Replace a Telemetry Profile object.
 
-Replace a Telemetry Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: msgVpnName|x||x| receiverTcpCongestionWindowSize||||x receiverTcpMaxWindowSize||||x telemetryProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.31.
+Replace a Telemetry Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: msgVpnName|x||x| receiverTcpCongestionWindowSize||||x receiverTcpMaxWindowSize||||x telemetryProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15383,7 +15383,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterResponse ReplaceMsgVpnTelemetryProfileTraceFilter(ctx, body, msgVpnName, telemetryProfileName, traceFilterName, optional)
 Replace a Trace Filter object.
 
-Replace a Trace Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x telemetryProfileName|x||x traceFilterName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.31.
+Replace a Trace Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x telemetryProfileName|x||x traceFilterName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15426,7 +15426,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointResponse ReplaceMsgVpnTopicEndpoint(ctx, body, msgVpnName, topicEndpointName, optional)
 Replace a Topic Endpoint object.
 
-Replace a Topic Endpoint object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x topicEndpointName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.1.
+Replace a Topic Endpoint object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x topicEndpointName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15467,7 +15467,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointTemplateResponse ReplaceMsgVpnTopicEndpointTemplate(ctx, body, msgVpnName, topicEndpointTemplateName, optional)
 Replace a Topic Endpoint Template object.
 
-Replace a Topic Endpoint Template object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicEndpointTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.14.
+Replace a Topic Endpoint Template object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicEndpointTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15508,7 +15508,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse ReplaceOauthProfile(ctx, body, oauthProfileName, optional)
 Replace an OAuth Profile object.
 
-Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.24.
+Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15547,7 +15547,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse ReplaceOauthProfileAccessLevelGroup(ctx, body, oauthProfileName, groupName, optional)
 Replace a Group Access Level object.
 
-Replace a Group Access Level object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.24.
+Replace a Group Access Level object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15588,7 +15588,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse ReplaceOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, body, oauthProfileName, groupName, msgVpnName, optional)
 Replace a Message VPN Access-Level Exception object.
 
-Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.24.
+Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15631,7 +15631,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse ReplaceOauthProfileClientAuthorizationParameter(ctx, body, oauthProfileName, authorizationParameterName, optional)
 Replace an Authorization Parameter object.
 
-Replace an Authorization Parameter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.24.
+Replace an Authorization Parameter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15672,7 +15672,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse ReplaceOauthProfileDefaultMsgVpnAccessLevelException(ctx, body, oauthProfileName, msgVpnName, optional)
 Replace a Message VPN Access-Level Exception object.
 
-Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.24.
+Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15713,7 +15713,7 @@ Name | Type | Description  | Notes
 > ProxyResponse ReplaceProxy(ctx, body, proxyName, optional)
 Replace a Proxy object.
 
-Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.41.
+Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15752,7 +15752,7 @@ Name | Type | Description  | Notes
 > VirtualHostnameResponse ReplaceVirtualHostname(ctx, body, virtualHostname, optional)
 Replace a Virtual Hostname object.
 
-Replace a Virtual Hostname object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying|Const :---|:---:|:---: virtualHostname|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.17.
+Replace a Virtual Hostname object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying|Const :---|:---:|:---: virtualHostname|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -15791,7 +15791,7 @@ Name | Type | Description  | Notes
 > BrokerResponse UpdateBroker(ctx, body, optional)
 Update a Broker object.
 
-Update a Broker object. Any attribute missing from the request will be left unchanged.  This object contains global configuration for the message broker.   Attribute|Write-Only|Requires-Disable|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---: configSyncAuthenticationClientCertMaxChainDepth||||x| configSyncAuthenticationClientCertValidateDateEnabled||||x| configSyncClientProfileTcpInitialCongestionWindow||||x| configSyncClientProfileTcpMaxWindow||||x| serviceAmqpTlsListenPort|||x|| serviceHealthCheckListenPort|||x|| serviceHealthCheckTlsListenPort|||x|| serviceMateLinkListenPort|||x|| serviceRedundancyFirstListenPort|||x|| serviceSempPlainTextListenPort||x||| serviceSempTlsListenPort||x||| serviceSmfCompressionListenPort|||x|| serviceSmfPlainTextListenPort|||x|| serviceSmfRoutingControlListenPort|||x|| serviceSmfTlsListenPort|||x|| serviceWebTransportPlainTextListenPort|||x|| serviceWebTransportTlsListenPort|||x|| serviceWebTransportWebUrlSuffix|||x|| tlsServerCertContent|x||||x tlsServerCertPassword|x|||| tlsTicketLifetime||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- Broker|tlsServerCertPassword|tlsServerCertContent| BrokerGuaranteedMsgingEventCacheUsageThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventCacheUsageThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventCacheUsageThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventCacheUsageThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventDeliveredUnackedThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventDeliveredUnackedThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventDiskUsageThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventDiskUsageThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventMsgCountThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventMsgCountThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventMsgSpoolFileCountThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventMsgSpoolFileCountThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactedSessionResourceCountThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventTransactedSessionResourceCountThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceRestEventOutgoingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceRestEventOutgoingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceRestEventOutgoingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceRestEventOutgoingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceSmfEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceSmfEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceSmfEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceSmfEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceTlsEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceTlsEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceTlsEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceTlsEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.13.
+Update a Broker object. Any attribute missing from the request will be left unchanged.  This object contains global configuration for the message broker.   Attribute|Write-Only|Requires-Disable|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---: configSyncAuthenticationClientCertMaxChainDepth||||x| configSyncAuthenticationClientCertValidateDateEnabled||||x| configSyncClientProfileTcpInitialCongestionWindow||||x| configSyncClientProfileTcpMaxWindow||||x| serviceAmqpTlsListenPort|||x|| serviceHealthCheckListenPort|||x|| serviceHealthCheckTlsListenPort|||x|| serviceMateLinkListenPort|||x|| serviceRedundancyFirstListenPort|||x|| serviceSempPlainTextListenPort||x||| serviceSempTlsListenPort||x||| serviceSmfCompressionListenPort|||x|| serviceSmfPlainTextListenPort|||x|| serviceSmfRoutingControlListenPort|||x|| serviceSmfTlsListenPort|||x|| serviceWebTransportPlainTextListenPort|||x|| serviceWebTransportTlsListenPort|||x|| serviceWebTransportWebUrlSuffix|||x|| tlsServerCertContent|x||||x tlsServerCertPassword|x|||| tlsTicketLifetime||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- Broker|tlsServerCertPassword|tlsServerCertContent| BrokerGuaranteedMsgingEventCacheUsageThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventCacheUsageThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventCacheUsageThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventCacheUsageThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventDeliveredUnackedThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventDeliveredUnackedThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventDiskUsageThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventDiskUsageThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventMsgCountThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventMsgCountThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventMsgSpoolFileCountThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventMsgSpoolFileCountThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactedSessionResourceCountThreshold|clearPercent|setPercent| BrokerGuaranteedMsgingEventTransactedSessionResourceCountThreshold|setPercent|clearPercent| BrokerGuaranteedMsgingEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerGuaranteedMsgingEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerGuaranteedMsgingEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceRestEventOutgoingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceRestEventOutgoingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceRestEventOutgoingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceRestEventOutgoingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceSmfEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceSmfEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceSmfEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceSmfEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent BrokerServiceTlsEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue BrokerServiceTlsEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent BrokerServiceTlsEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue BrokerServiceTlsEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -15828,7 +15828,7 @@ Name | Type | Description  | Notes
 > CertAuthorityResponse UpdateCertAuthority(ctx, body, certAuthorityName, optional)
 Update a Certificate Authority object.
 
-Update a Certificate Authority object. Any attribute missing from the request will be left unchanged.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable|Deprecated :---|:---:|:---:|:---:|:---: certAuthorityName|x|x||x certContent||||x crlDayList||||x crlTimeList||||x crlUrl|||x|x ocspNonResponderCertEnabled||||x ocspOverrideUrl||||x ocspTimeout||||x revocationCheckEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- CertAuthority|crlDayList|crlTimeList CertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
+Update a Certificate Authority object. Any attribute missing from the request will be left unchanged.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable|Deprecated :---|:---:|:---:|:---:|:---: certAuthorityName|x|x||x certContent||||x crlDayList||||x crlTimeList||||x crlUrl|||x|x ocspNonResponderCertEnabled||||x ocspOverrideUrl||||x ocspTimeout||||x revocationCheckEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- CertAuthority|crlDayList|crlTimeList CertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  Deprecated. Replaced by clientCertAuthorities and domainCertAuthorities.
 
 ### Required Parameters
 
@@ -15867,7 +15867,7 @@ Name | Type | Description  | Notes
 > ClientCertAuthorityResponse UpdateClientCertAuthority(ctx, body, certAuthorityName, optional)
 Update a Client Certificate Authority object.
 
-Update a Client Certificate Authority object. Any attribute missing from the request will be left unchanged.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable :---|:---:|:---:|:---: certAuthorityName|x|x| crlUrl|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- ClientCertAuthority|crlDayList|crlTimeList ClientCertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.19.
+Update a Client Certificate Authority object. Any attribute missing from the request will be left unchanged.  Clients can authenticate with the message broker over TLS by presenting a valid client certificate. The message broker authenticates the client certificate by constructing a full certificate chain (from the client certificate to intermediate CAs to a configured root CA). The intermediate CAs in this chain can be provided by the client, or configured in the message broker. The root CA must be configured on the message broker.   Attribute|Identifying|Const|Auto-Disable :---|:---:|:---:|:---: certAuthorityName|x|x| crlUrl|||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- ClientCertAuthority|crlDayList|crlTimeList ClientCertAuthority|crlTimeList|crlDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -15906,7 +15906,7 @@ Name | Type | Description  | Notes
 > DmrClusterResponse UpdateDmrCluster(ctx, body, dmrClusterName, optional)
 Update a Cluster object.
 
-Update a Cluster object. Any attribute missing from the request will be left unchanged.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Cluster object. Any attribute missing from the request will be left unchanged.  A Cluster is a provisioned object on a message broker that contains global DMR configuration parameters.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationClientCertContent||||x|x||x authenticationClientCertPassword||||x|x|| directOnlyEnabled||x||||| dmrClusterName|x|x||||| nodeName|||x|||| tlsServerCertEnforceTrustedCommonNameEnabled||||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- DmrCluster|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -15945,7 +15945,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleResponse UpdateDmrClusterCertMatchingRule(ctx, body, dmrClusterName, ruleName, optional)
 Update a Certificate Matching Rule object.
 
-Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.28.
+Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given link.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -15986,7 +15986,7 @@ Name | Type | Description  | Notes
 > DmrClusterCertMatchingRuleAttributeFilterResponse UpdateDmrClusterCertMatchingRuleAttributeFilter(ctx, body, dmrClusterName, ruleName, filterName, optional)
 Update a Certificate Matching Rule Attribute Filter object.
 
-Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.28.
+Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a link attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: dmrClusterName|x||x filterName|x|x| ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16029,7 +16029,7 @@ Name | Type | Description  | Notes
 > DmrClusterLinkResponse UpdateDmrClusterLink(ctx, body, dmrClusterName, remoteNodeName, optional)
 Update a Link object.
 
-Update a Link object. Any attribute missing from the request will be left unchanged.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Link object. Any attribute missing from the request will be left unchanged.  A Link connects nodes (either within a Cluster or between two different Clusters) and allows them to exchange topology information, subscriptions and data.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x||x authenticationScheme|||||x|| clientProfileTcpCongestionWindowSize||||||x| clientProfileTcpMaxWindowSize||||||x| dmrClusterName|x||x|||| egressFlowWindowSize|||||x|| initiator|||||x|| remoteNodeName|x|x||||| span|||||x|| transportCompressedEnabled|||||x|| transportTlsEnabled|||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- DmrClusterLinkQueueEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent DmrClusterLinkQueueEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue DmrClusterLinkQueueEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16070,7 +16070,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse UpdateDomainCertAuthority(ctx, body, certAuthorityName, optional)
 Update a Domain Certificate Authority object.
 
-Update a Domain Certificate Authority object. Any attribute missing from the request will be left unchanged.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.19.
+Update a Domain Certificate Authority object. Any attribute missing from the request will be left unchanged.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16109,7 +16109,7 @@ Name | Type | Description  | Notes
 > MsgVpnResponse UpdateMsgVpn(ctx, body, msgVpnName, optional)
 Update a Message VPN object.
 
-Update a Message VPN object. Any attribute missing from the request will be left unchanged.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Const|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||||x| distributedCacheManagementEnabled|||||x| msgVpnName|x|x|||| replicationBridgeAuthenticationBasicPassword|||x|||x replicationBridgeAuthenticationClientCertContent|||x|||x replicationBridgeAuthenticationClientCertPassword|||x||| replicationEnabledQueueBehavior|||x||| restTlsServerCertEnforceTrustedCommonNameEnabled|||||x| serviceAmqpPlainTextListenPort||||x|| serviceAmqpTlsListenPort||||x|| serviceMqttPlainTextListenPort||||x|| serviceMqttTlsListenPort||||x|| serviceMqttTlsWebSocketListenPort||||x|| serviceMqttWebSocketListenPort||||x|| serviceRestIncomingPlainTextListenPort||||x|| serviceRestIncomingTlsListenPort||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpn|authenticationBasicProfileName|authenticationBasicType| MsgVpn|authorizationProfileName|authorizationType| MsgVpn|eventPublishTopicFormatMqttEnabled|eventPublishTopicFormatSmfEnabled| MsgVpn|eventPublishTopicFormatSmfEnabled|eventPublishTopicFormatMqttEnabled| MsgVpn|replicationBridgeAuthenticationBasicClientUsername|replicationBridgeAuthenticationBasicPassword| MsgVpn|replicationBridgeAuthenticationBasicPassword|replicationBridgeAuthenticationBasicClientUsername| MsgVpn|replicationBridgeAuthenticationClientCertPassword|replicationBridgeAuthenticationClientCertContent| MsgVpn|replicationEnabledQueueBehavior|replicationEnabled| MsgVpnEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressMsgRateThreshold|clearValue|setValue| MsgVpnEventEgressMsgRateThreshold|setValue|clearValue| MsgVpnEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressMsgRateThreshold|clearValue|setValue| MsgVpnEventIngressMsgRateThreshold|setValue|clearValue| MsgVpnEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Message VPN object. Any attribute missing from the request will be left unchanged.  Message VPNs (Virtual Private Networks) allow for the segregation of topic space and clients. They also group clients connecting to a network of message brokers, such that messages published within a particular group are only visible to that group's clients.   Attribute|Identifying|Const|Write-Only|Auto-Disable|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationOauthDefaultProviderName|||||x| bridgingTlsServerCertEnforceTrustedCommonNameEnabled|||||x| distributedCacheManagementEnabled|||||x| msgVpnName|x|x|||| replicationBridgeAuthenticationBasicPassword|||x|||x replicationBridgeAuthenticationClientCertContent|||x|||x replicationBridgeAuthenticationClientCertPassword|||x||| replicationEnabledQueueBehavior|||x||| restTlsServerCertEnforceTrustedCommonNameEnabled|||||x| serviceAmqpPlainTextListenPort||||x|| serviceAmqpTlsListenPort||||x|| serviceMqttPlainTextListenPort||||x|| serviceMqttTlsListenPort||||x|| serviceMqttTlsWebSocketListenPort||||x|| serviceMqttWebSocketListenPort||||x|| serviceRestIncomingPlainTextListenPort||||x|| serviceRestIncomingTlsListenPort||||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpn|authenticationBasicProfileName|authenticationBasicType| MsgVpn|authorizationProfileName|authorizationType| MsgVpn|eventPublishTopicFormatMqttEnabled|eventPublishTopicFormatSmfEnabled| MsgVpn|eventPublishTopicFormatSmfEnabled|eventPublishTopicFormatMqttEnabled| MsgVpn|replicationBridgeAuthenticationBasicClientUsername|replicationBridgeAuthenticationBasicPassword| MsgVpn|replicationBridgeAuthenticationBasicPassword|replicationBridgeAuthenticationBasicClientUsername| MsgVpn|replicationBridgeAuthenticationClientCertPassword|replicationBridgeAuthenticationClientCertContent| MsgVpn|replicationEnabledQueueBehavior|replicationEnabled| MsgVpnEventConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventEgressMsgRateThreshold|clearValue|setValue| MsgVpnEventEgressMsgRateThreshold|setValue|clearValue| MsgVpnEventEndpointCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventEndpointCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventEndpointCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventIngressMsgRateThreshold|clearValue|setValue| MsgVpnEventIngressMsgRateThreshold|setValue|clearValue| MsgVpnEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceAmqpConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceAmqpConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceMqttConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceMqttConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceRestIncomingConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceRestIncomingConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceSmfConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceSmfConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventServiceWebConnectionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventServiceWebConnectionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16148,7 +16148,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse UpdateMsgVpnAclProfile(ctx, body, msgVpnName, aclProfileName, optional)
 Update an ACL Profile object.
 
-Update an ACL Profile object. Any attribute missing from the request will be left unchanged.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update an ACL Profile object. Any attribute missing from the request will be left unchanged.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16189,7 +16189,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationKerberosRealmResponse UpdateMsgVpnAuthenticationKerberosRealm(ctx, body, msgVpnName, kerberosRealmName, optional)
 Update a Realm object.
 
-Update a Realm object. Any attribute missing from the request will be left unchanged.  Kerberos Realm.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: kdcAddress||||x kerberosRealmName|x|x|| msgVpnName|x||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.40.
+Update a Realm object. Any attribute missing from the request will be left unchanged.  Kerberos Realm.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: kdcAddress||||x kerberosRealmName|x|x|| msgVpnName|x||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16230,7 +16230,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse UpdateMsgVpnAuthenticationOauthProfile(ctx, body, msgVpnName, oauthProfileName, optional)
 Update an OAuth Profile object.
 
-Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.25.
+Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16271,7 +16271,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProviderResponse UpdateMsgVpnAuthenticationOauthProvider(ctx, body, msgVpnName, oauthProviderName, optional)
 Update an OAuth Provider object.
 
-Update an OAuth Provider object. Any attribute missing from the request will be left unchanged.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Const|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: audienceClaimName|||||x| audienceClaimSource|||||x| audienceClaimValue|||||x| audienceValidationEnabled|||||x| authorizationGroupClaimName|||||x| authorizationGroupClaimSource|||||x| authorizationGroupEnabled|||||x| disconnectOnTokenExpirationEnabled|||||x| enabled|||||x| jwksRefreshInterval|||||x| jwksUri|||||x| msgVpnName|x||x||x| oauthProviderName|x|x|||x| tokenIgnoreTimeLimitsEnabled|||||x| tokenIntrospectionParameterName|||||x| tokenIntrospectionPassword||||x|x|x tokenIntrospectionTimeout|||||x| tokenIntrospectionUri|||||x| tokenIntrospectionUsername|||||x| usernameClaimName|||||x| usernameClaimSource|||||x| usernameValidateEnabled|||||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been deprecated since 2.25. Replaced by authenticationOauthProfiles.
+Update an OAuth Provider object. Any attribute missing from the request will be left unchanged.  OAuth Providers contain information about the issuer of an OAuth token that is needed to validate the token and derive a client username from it.   Attribute|Identifying|Const|Read-Only|Write-Only|Deprecated|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: audienceClaimName|||||x| audienceClaimSource|||||x| audienceClaimValue|||||x| audienceValidationEnabled|||||x| authorizationGroupClaimName|||||x| authorizationGroupClaimSource|||||x| authorizationGroupEnabled|||||x| disconnectOnTokenExpirationEnabled|||||x| enabled|||||x| jwksRefreshInterval|||||x| jwksUri|||||x| msgVpnName|x||x||x| oauthProviderName|x|x|||x| tokenIgnoreTimeLimitsEnabled|||||x| tokenIntrospectionParameterName|||||x| tokenIntrospectionPassword||||x|x|x tokenIntrospectionTimeout|||||x| tokenIntrospectionUri|||||x| tokenIntrospectionUsername|||||x| usernameClaimName|||||x| usernameClaimSource|||||x| usernameValidateEnabled|||||x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  Deprecated. Replaced by authenticationOauthProfiles.
 
 ### Required Parameters
 
@@ -16312,7 +16312,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthorizationGroupResponse UpdateMsgVpnAuthorizationGroup(ctx, body, msgVpnName, authorizationGroupName, optional)
 Update an Authorization Group object.
 
-Update an Authorization Group object. Any attribute missing from the request will be left unchanged.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable :---|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x authorizationGroupName|x|x||| clientProfileName|||||x msgVpnName|x||x|| orderAfterAuthorizationGroupName||||x| orderBeforeAuthorizationGroupName||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Conflicts :---|:---|:--- MsgVpnAuthorizationGroup|orderAfterAuthorizationGroupName|orderBeforeAuthorizationGroupName MsgVpnAuthorizationGroup|orderBeforeAuthorizationGroupName|orderAfterAuthorizationGroupName    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update an Authorization Group object. Any attribute missing from the request will be left unchanged.  To use client authorization groups configured on an external server to provide client authorizations, Authorization Group objects must be created on the Message VPN that match the authorization groups provisioned on the external server. These objects must be configured with the client profiles and ACL profiles that will be assigned to the clients that belong to those authorization groups. A newly created group is placed at the end of the group list which is the lowest priority.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable :---|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x authorizationGroupName|x|x||| clientProfileName|||||x msgVpnName|x||x|| orderAfterAuthorizationGroupName||||x| orderBeforeAuthorizationGroupName||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Conflicts :---|:---|:--- MsgVpnAuthorizationGroup|orderAfterAuthorizationGroupName|orderBeforeAuthorizationGroupName MsgVpnAuthorizationGroup|orderBeforeAuthorizationGroupName|orderAfterAuthorizationGroupName    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16353,7 +16353,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse UpdateMsgVpnBridge(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Update a Bridge object.
 
-Update a Bridge object. Any attribute missing from the request will be left unchanged.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Bridge object. Any attribute missing from the request will be left unchanged.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16396,7 +16396,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse UpdateMsgVpnBridgeRemoteMsgVpn(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface, optional)
 Update a Remote Message VPN object.
 
-Update a Remote Message VPN object. Any attribute missing from the request will be left unchanged.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Remote Message VPN object. Any attribute missing from the request will be left unchanged.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16445,7 +16445,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse UpdateMsgVpnCertMatchingRule(ctx, body, msgVpnName, ruleName, optional)
 Update a Certificate Matching Rule object.
 
-Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.27.
+Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16486,7 +16486,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse UpdateMsgVpnCertMatchingRuleAttributeFilter(ctx, body, msgVpnName, ruleName, filterName, optional)
 Update a Certificate Matching Rule Attribute Filter object.
 
-Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.28.
+Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16529,7 +16529,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientProfileResponse UpdateMsgVpnClientProfile(ctx, body, msgVpnName, clientProfileName, optional)
 Update a Client Profile object.
 
-Update a Client Profile object. Any attribute missing from the request will be left unchanged.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: allowCutThroughForwardingEnabled||||x apiQueueManagementCopyFromOnCreateName||||x apiTopicEndpointManagementCopyFromOnCreateName||||x clientProfileName|x|x|| msgVpnName|x||x| tcpCongestionWindowSize||||x tcpMaxWindowSize||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|clearPercent|setPercent| MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|setPercent|clearPercent| MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Client Profile object. Any attribute missing from the request will be left unchanged.  Client Profiles are used to assign common configuration properties to clients that have been successfully authorized.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: allowCutThroughForwardingEnabled||||x apiQueueManagementCopyFromOnCreateName||||x apiTopicEndpointManagementCopyFromOnCreateName||||x clientProfileName|x|x|| msgVpnName|x||x| tcpCongestionWindowSize||||x tcpMaxWindowSize||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|clearPercent|setPercent| MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold|setPercent|clearPercent| MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEgressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEgressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventIngressFlowCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventIngressFlowCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventSubscriptionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventSubscriptionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactedSessionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactedSessionCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnClientProfileEventTransactionCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnClientProfileEventTransactionCountThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16570,7 +16570,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse UpdateMsgVpnClientUsername(ctx, body, msgVpnName, clientUsername, optional)
 Update a Client Username object.
 
-Update a Client Username object. Any attribute missing from the request will be left unchanged.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Client Username object. Any attribute missing from the request will be left unchanged.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16611,7 +16611,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheResponse UpdateMsgVpnDistributedCache(ctx, body, msgVpnName, cacheName, optional)
 Update a Distributed Cache object.
 
-Update a Distributed Cache object. Any attribute missing from the request will be left unchanged.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| cacheVirtualRouter||x| msgVpnName|x||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCache|scheduledDeleteMsgDayList|scheduledDeleteMsgTimeList MsgVpnDistributedCache|scheduledDeleteMsgTimeList|scheduledDeleteMsgDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Distributed Cache object. Any attribute missing from the request will be left unchanged.  A Distributed Cache is a collection of one or more Cache Clusters that belong to the same Message VPN. Each Cache Cluster in a Distributed Cache is configured to subscribe to a different set of topics. This effectively divides up the configured topic space, to provide scaling to very large topic spaces or very high cached message throughput.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| cacheVirtualRouter||x| msgVpnName|x||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCache|scheduledDeleteMsgDayList|scheduledDeleteMsgTimeList MsgVpnDistributedCache|scheduledDeleteMsgTimeList|scheduledDeleteMsgDayList    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16652,7 +16652,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterResponse UpdateMsgVpnDistributedCacheCluster(ctx, body, msgVpnName, cacheName, clusterName, optional)
 Update a Cache Cluster object.
 
-Update a Cache Cluster object. Any attribute missing from the request will be left unchanged.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: cacheName|x||x| clusterName|x|x|| deliverToOneOverrideEnabled||||x msgVpnName|x||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCacheClusterEventDataByteRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataByteRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventRequestRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|setValue|clearValue    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Cache Cluster object. Any attribute missing from the request will be left unchanged.  A Cache Cluster is a collection of one or more Cache Instances that subscribe to exactly the same topics. Cache Instances are grouped together in a Cache Cluster for the purpose of fault tolerance and load balancing. As published messages are received, the message broker message bus sends these live data messages to the Cache Instances in the Cache Cluster. This enables client cache requests to be served by any of Cache Instances in the Cache Cluster.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: cacheName|x||x| clusterName|x|x|| deliverToOneOverrideEnabled||||x msgVpnName|x||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnDistributedCacheClusterEventDataByteRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataByteRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventDataMsgRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxMemoryThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventMaxTopicsThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|clearPercent|setPercent MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold|setPercent|clearPercent MsgVpnDistributedCacheClusterEventRequestRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventRequestRateThreshold|setValue|clearValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|clearValue|setValue MsgVpnDistributedCacheClusterEventResponseRateThreshold|setValue|clearValue    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16695,7 +16695,7 @@ Name | Type | Description  | Notes
 > MsgVpnDistributedCacheClusterInstanceResponse UpdateMsgVpnDistributedCacheClusterInstance(ctx, body, msgVpnName, cacheName, clusterName, instanceName, optional)
 Update a Cache Instance object.
 
-Update a Cache Instance object. Any attribute missing from the request will be left unchanged.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x||x clusterName|x||x instanceName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a Cache Instance object. Any attribute missing from the request will be left unchanged.  A Cache Instance is a single Cache process that belongs to a single Cache Cluster. A Cache Instance object provisioned on the broker is used to disseminate configuration information to the Cache process. Cache Instances listen for and cache live data messages that match the topic subscriptions configured for their parent Cache Cluster.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x||x clusterName|x||x instanceName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16740,7 +16740,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse UpdateMsgVpnDmrBridge(ctx, body, msgVpnName, remoteNodeName, optional)
 Update a DMR Bridge object.
 
-Update a DMR Bridge object. Any attribute missing from the request will be left unchanged.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a DMR Bridge object. Any attribute missing from the request will be left unchanged.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16781,7 +16781,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse UpdateMsgVpnJndiConnectionFactory(ctx, body, msgVpnName, connectionFactoryName, optional)
 Update a JNDI Connection Factory object.
 
-Update a JNDI Connection Factory object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.2.
+Update a JNDI Connection Factory object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16822,7 +16822,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse UpdateMsgVpnJndiQueue(ctx, body, msgVpnName, queueName, optional)
 Update a JNDI Queue object.
 
-Update a JNDI Queue object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.2.
+Update a JNDI Queue object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16863,7 +16863,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse UpdateMsgVpnJndiTopic(ctx, body, msgVpnName, topicName, optional)
 Update a JNDI Topic object.
 
-Update a JNDI Topic object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.2.
+Update a JNDI Topic object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16904,7 +16904,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverResponse UpdateMsgVpnKafkaReceiver(ctx, body, msgVpnName, kafkaReceiverName, optional)
 Update a Kafka Receiver object.
 
-Update a Kafka Receiver object. Any attribute missing from the request will be left unchanged.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| groupId|||||x| groupKeepaliveInterval|||||x| groupKeepaliveTimeout|||||x| groupMembershipType|||||x| groupPartitionSchemeList|||||x| kafkaReceiverName|x|x|||| metadataTopicExcludeList|||||x| metadataTopicRefreshInterval|||||x| msgVpnName|x||x||| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaReceiver|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaReceiver|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaReceiver|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaReceiver|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.36.
+Update a Kafka Receiver object. Any attribute missing from the request will be left unchanged.  A Kafka Receiver receives messages from a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| groupId|||||x| groupKeepaliveInterval|||||x| groupKeepaliveTimeout|||||x| groupMembershipType|||||x| groupPartitionSchemeList|||||x| kafkaReceiverName|x|x|||| metadataTopicExcludeList|||||x| metadataTopicRefreshInterval|||||x| msgVpnName|x||x||| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaReceiver|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaReceiver|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaReceiver|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaReceiver|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaReceiver|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16945,7 +16945,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaReceiverTopicBindingResponse UpdateMsgVpnKafkaReceiverTopicBinding(ctx, body, msgVpnName, kafkaReceiverName, topicName, optional)
 Update a Topic Binding object.
 
-Update a Topic Binding object. Any attribute missing from the request will be left unchanged.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: initialOffset||||x kafkaReceiverName|x||x| localKey||||x localTopic||||x msgVpnName|x||x| topicName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.36.
+Update a Topic Binding object. Any attribute missing from the request will be left unchanged.  A Topic Binding receives messages from a remote Kafka Topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: initialOffset||||x kafkaReceiverName|x||x| localKey||||x localTopic||||x msgVpnName|x||x| topicName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -16988,7 +16988,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderResponse UpdateMsgVpnKafkaSender(ctx, body, msgVpnName, kafkaSenderName, optional)
 Update a Kafka Sender object.
 
-Update a Kafka Sender object. Any attribute missing from the request will be left unchanged.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxMsgCount|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| idempotenceEnabled|||||x| kafkaSenderName|x|x|||| msgVpnName|x||x||| transportCompressionEnabled|||||x| transportCompressionLevel|||||x| transportCompressionType|||||x| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaSender|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaSender|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaSender|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaSender|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.36.
+Update a Kafka Sender object. Any attribute missing from the request will be left unchanged.  A Kafka Sender sends messages to a Kafka Cluster.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsMskIamAccessKeyId|||||x| authenticationAwsMskIamRegion|||||x| authenticationAwsMskIamSecretAccessKey||||x|x| authenticationAwsMskIamStsExternalId|||||x| authenticationAwsMskIamStsRoleArn|||||x| authenticationAwsMskIamStsRoleSessionName|||||x| authenticationBasicPassword||||x|x|x authenticationBasicUsername|||||x| authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationKerberosKeytabContent||||x|x| authenticationKerberosKeytabFileName|||||x| authenticationKerberosServiceName|||||x| authenticationKerberosUserPrincipalName|||||x| authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationScheme|||||x| authenticationScramHash|||||x| authenticationScramPassword||||x|x|x authenticationScramUsername|||||x| batchDelay|||||x| batchMaxMsgCount|||||x| batchMaxSize|||||x| bootstrapAddressList|||||x| idempotenceEnabled|||||x| kafkaSenderName|x|x|||| msgVpnName|x||x||| transportCompressionEnabled|||||x| transportCompressionLevel|||||x| transportCompressionType|||||x| transportTlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnKafkaSender|authenticationBasicPassword|authenticationBasicUsername MsgVpnKafkaSender|authenticationClientCertPassword|authenticationClientCertContent MsgVpnKafkaSender|authenticationKerberosKeytabContent|authenticationKerberosKeytabFileName, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosKeytabFileName|authenticationKerberosKeytabContent, authenticationKerberosUserPrincipalName MsgVpnKafkaSender|authenticationKerberosUserPrincipalName|authenticationKerberosKeytabContent, authenticationKerberosKeytabFileName MsgVpnKafkaSender|authenticationScramPassword|authenticationScramUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17029,7 +17029,7 @@ Name | Type | Description  | Notes
 > MsgVpnKafkaSenderQueueBindingResponse UpdateMsgVpnKafkaSenderQueueBinding(ctx, body, msgVpnName, kafkaSenderName, queueName, optional)
 Update a Queue Binding object.
 
-Update a Queue Binding object. Any attribute missing from the request will be left unchanged.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: ackMode||||x kafkaSenderName|x||x| msgVpnName|x||x| partitionConsistentHash||||x partitionExplicitNumber||||x partitionRandomFallbackEnabled||||x partitionScheme||||x queueName|x|x|| remoteKey||||x remoteTopic||||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.36.
+Update a Queue Binding object. Any attribute missing from the request will be left unchanged.  A Queue Binding sends messages from a local Solace Queue to a remote Kafka topic.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: ackMode||||x kafkaSenderName|x||x| msgVpnName|x||x| partitionConsistentHash||||x partitionExplicitNumber||||x partitionRandomFallbackEnabled||||x partitionScheme||||x queueName|x|x|| remoteKey||||x remoteTopic||||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17072,7 +17072,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttRetainCacheResponse UpdateMsgVpnMqttRetainCache(ctx, body, msgVpnName, cacheName, optional)
 Update an MQTT Retain Cache object.
 
-Update an MQTT Retain Cache object. Any attribute missing from the request will be left unchanged.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update an MQTT Retain Cache object. Any attribute missing from the request will be left unchanged.  Using MQTT retained messages allows publishing MQTT clients to indicate that a message must be stored for later delivery to subscribing clients when those subscribing clients add subscriptions matching the retained message's topic. An MQTT Retain Cache processes all retained messages for a Message VPN.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: cacheName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17113,7 +17113,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionResponse UpdateMsgVpnMqttSession(ctx, body, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, optional)
 Update an MQTT Session object.
 
-Update an MQTT Session object. Any attribute missing from the request will be left unchanged.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|x|| mqttSessionVirtualRouter|x|x|| msgVpnName|x||x| owner||||x queueRejectMsgToSenderOnDiscardBehavior||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnMqttSessionQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.1.
+Update an MQTT Session object. Any attribute missing from the request will be left unchanged.  An MQTT Session object is a virtual representation of an MQTT client connection. An MQTT session holds the state of an MQTT client (that is, it is used to contain a client's QoS 0 and QoS 1 subscription sets and any undelivered QoS 1 messages).   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: mqttSessionClientId|x|x|| mqttSessionVirtualRouter|x|x|| msgVpnName|x||x| owner||||x queueRejectMsgToSenderOnDiscardBehavior||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnMqttSessionQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17156,7 +17156,7 @@ Name | Type | Description  | Notes
 > MsgVpnMqttSessionSubscriptionResponse UpdateMsgVpnMqttSessionSubscription(ctx, body, msgVpnName, mqttSessionClientId, mqttSessionVirtualRouter, subscriptionTopic, optional)
 Update a Subscription object.
 
-Update a Subscription object. Any attribute missing from the request will be left unchanged.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: mqttSessionClientId|x||x mqttSessionVirtualRouter|x||x msgVpnName|x||x subscriptionTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.1.
+Update a Subscription object. Any attribute missing from the request will be left unchanged.  An MQTT session contains a client's QoS 0 and QoS 1 subscription sets. On creation, a subscription defaults to QoS 0.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: mqttSessionClientId|x||x mqttSessionVirtualRouter|x||x msgVpnName|x||x subscriptionTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17201,7 +17201,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse UpdateMsgVpnProxy(ctx, body, msgVpnName, proxyName, optional)
 Update a Proxy object.
 
-Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.36.
+Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17242,7 +17242,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueResponse UpdateMsgVpnQueue(ctx, body, msgVpnName, queueName, optional)
 Update a Queue object.
 
-Update a Queue object. Any attribute missing from the request will be left unchanged.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x queueName|x|x|| redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Queue object. Any attribute missing from the request will be left unchanged.  A Queue acts as both a destination that clients can publish messages to, and as an endpoint that clients can bind consumers to and consume messages from.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x queueName|x|x|| redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17283,7 +17283,7 @@ Name | Type | Description  | Notes
 > MsgVpnQueueTemplateResponse UpdateMsgVpnQueueTemplate(ctx, body, msgVpnName, queueTemplateName, optional)
 Update a Queue Template object.
 
-Update a Queue Template object. Any attribute missing from the request will be left unchanged.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.14.
+Update a Queue Template object. Any attribute missing from the request will be left unchanged.  A Queue Template provides a mechanism for specifying the initial state for client created queues.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnQueueTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17324,7 +17324,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse UpdateMsgVpnReplayLog(ctx, body, msgVpnName, replayLogName, optional)
 Update a Replay Log object.
 
-Update a Replay Log object. Any attribute missing from the request will be left unchanged.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.10.
+Update a Replay Log object. Any attribute missing from the request will be left unchanged.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17365,7 +17365,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplicatedTopicResponse UpdateMsgVpnReplicatedTopic(ctx, body, msgVpnName, replicatedTopic, optional)
 Update a Replicated Topic object.
 
-Update a Replicated Topic object. Any attribute missing from the request will be left unchanged.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replicatedTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.1.
+Update a Replicated Topic object. Any attribute missing from the request will be left unchanged.  To indicate which messages should be replicated between the active and standby site, a Replicated Topic subscription must be configured on a Message VPN. If a published message matches both a replicated topic and an endpoint on the active site, then the message is replicated to the standby site.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replicatedTopic|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17406,7 +17406,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse UpdateMsgVpnRestDeliveryPoint(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Update a REST Delivery Point object.
 
-Update a REST Delivery Point object. Any attribute missing from the request will be left unchanged.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a REST Delivery Point object. Any attribute missing from the request will be left unchanged.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17447,7 +17447,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse UpdateMsgVpnRestDeliveryPointQueueBinding(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Update a Queue Binding object.
 
-Update a Queue Binding object. Any attribute missing from the request will be left unchanged.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Queue Binding object. Any attribute missing from the request will be left unchanged.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17490,7 +17490,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse UpdateMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Update a Protected Request Header object.
 
-Update a Protected Request Header object. Any attribute missing from the request will be left unchanged.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.30.
+Update a Protected Request Header object. Any attribute missing from the request will be left unchanged.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17535,7 +17535,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse UpdateMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Update a Request Header object.
 
-Update a Request Header object. Any attribute missing from the request will be left unchanged.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.23.
+Update a Request Header object. Any attribute missing from the request will be left unchanged.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17580,7 +17580,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse UpdateMsgVpnRestDeliveryPointRestConsumer(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Update a REST Consumer object.
 
-Update a REST Consumer object. Any attribute missing from the request will be left unchanged.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a REST Consumer object. Any attribute missing from the request will be left unchanged.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17623,7 +17623,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileResponse UpdateMsgVpnTelemetryProfile(ctx, body, msgVpnName, telemetryProfileName, optional)
 Update a Telemetry Profile object.
 
-Update a Telemetry Profile object. Any attribute missing from the request will be left unchanged.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: msgVpnName|x||x| receiverTcpCongestionWindowSize||||x receiverTcpMaxWindowSize||||x telemetryProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.31.
+Update a Telemetry Profile object. Any attribute missing from the request will be left unchanged.  Using the Telemetry Profile allows trace spans to be generated as messages are processed by the broker. The generated spans are stored persistently on the broker and may be consumed by the Solace receiver component of an OpenTelemetry Collector.   Attribute|Identifying|Const|Read-Only|Deprecated :---|:---:|:---:|:---:|:---: msgVpnName|x||x| receiverTcpCongestionWindowSize||||x receiverTcpMaxWindowSize||||x telemetryProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17664,7 +17664,7 @@ Name | Type | Description  | Notes
 > MsgVpnTelemetryProfileTraceFilterResponse UpdateMsgVpnTelemetryProfileTraceFilter(ctx, body, msgVpnName, telemetryProfileName, traceFilterName, optional)
 Update a Trace Filter object.
 
-Update a Trace Filter object. Any attribute missing from the request will be left unchanged.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x telemetryProfileName|x||x traceFilterName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.31.
+Update a Trace Filter object. Any attribute missing from the request will be left unchanged.  A Trace Filter controls which messages received by the broker will be traced. If an incoming message matches an enabled tracing filter's subscription, the message will be traced as it passes through the broker.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x telemetryProfileName|x||x traceFilterName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17707,7 +17707,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointResponse UpdateMsgVpnTopicEndpoint(ctx, body, msgVpnName, topicEndpointName, optional)
 Update a Topic Endpoint object.
 
-Update a Topic Endpoint object. Any attribute missing from the request will be left unchanged.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x topicEndpointName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.1.
+Update a Topic Endpoint object. Any attribute missing from the request will be left unchanged.  A Topic Endpoint attracts messages published to a topic for which the Topic Endpoint has a matching topic subscription. The topic subscription for the Topic Endpoint is specified in the client request to bind a Flow to that Topic Endpoint. Queues are significantly more flexible than Topic Endpoints and are the recommended approach for most applications. The use of Topic Endpoints should be restricted to JMS applications.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: accessType||||x msgVpnName|x||x| owner||||x permission||||x redeliveryDelayEnabled||||x redeliveryDelayInitialInterval||||x redeliveryDelayMaxInterval||||x redeliveryDelayMultiplier||||x rejectMsgToSenderOnDiscardBehavior||||x respectMsgPriorityEnabled||||x topicEndpointName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointEventSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointEventSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17748,7 +17748,7 @@ Name | Type | Description  | Notes
 > MsgVpnTopicEndpointTemplateResponse UpdateMsgVpnTopicEndpointTemplate(ctx, body, msgVpnName, topicEndpointTemplateName, optional)
 Update a Topic Endpoint Template object.
 
-Update a Topic Endpoint Template object. Any attribute missing from the request will be left unchanged.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicEndpointTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.14.
+Update a Topic Endpoint Template object. Any attribute missing from the request will be left unchanged.  A Topic Endpoint Template provides a mechanism for specifying the initial state for client created topic endpoints.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicEndpointTemplateName|x|x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires|Conflicts :---|:---|:---|:--- MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventBindCountThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventBindCountThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold|setValue|clearValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearPercent|setPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|clearValue|setValue|clearPercent, setPercent MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setPercent|clearPercent|clearValue, setValue MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold|setValue|clearValue|clearPercent, setPercent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17789,7 +17789,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse UpdateOauthProfile(ctx, body, oauthProfileName, optional)
 Update an OAuth Profile object.
 
-Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17828,7 +17828,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse UpdateOauthProfileAccessLevelGroup(ctx, body, oauthProfileName, groupName, optional)
 Update a Group Access Level object.
 
-Update a Group Access Level object. Any attribute missing from the request will be left unchanged.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update a Group Access Level object. Any attribute missing from the request will be left unchanged.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17869,7 +17869,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse UpdateOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, body, oauthProfileName, groupName, msgVpnName, optional)
 Update a Message VPN Access-Level Exception object.
 
-Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17912,7 +17912,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse UpdateOauthProfileClientAuthorizationParameter(ctx, body, oauthProfileName, authorizationParameterName, optional)
 Update an Authorization Parameter object.
 
-Update an Authorization Parameter object. Any attribute missing from the request will be left unchanged.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update an Authorization Parameter object. Any attribute missing from the request will be left unchanged.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17953,7 +17953,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse UpdateOauthProfileDefaultMsgVpnAccessLevelException(ctx, body, oauthProfileName, msgVpnName, optional)
 Update a Message VPN Access-Level Exception object.
 
-Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -17994,7 +17994,7 @@ Name | Type | Description  | Notes
 > ProxyResponse UpdateProxy(ctx, body, proxyName, optional)
 Update a Proxy object.
 
-Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.41.
+Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -18033,7 +18033,7 @@ Name | Type | Description  | Notes
 > VirtualHostnameResponse UpdateVirtualHostname(ctx, body, virtualHostname, optional)
 Update a Virtual Hostname object.
 
-Update a Virtual Hostname object. Any attribute missing from the request will be left unchanged.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying|Const :---|:---:|:---: virtualHostname|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.17.
+Update a Virtual Hostname object. Any attribute missing from the request will be left unchanged.  A Virtual Hostname is a provisioned object on a message broker that contains a Virtual Hostname to Message VPN mapping.  Clients which connect to a global (as opposed to per Message VPN) port and provides this hostname will be directed to its corresponding Message VPN. A case-insentive match is performed on the full client-provided hostname against the configured virtual-hostname.  This mechanism is only supported for hostnames provided through the Server Name Indication (SNI) extension of TLS.   Attribute|Identifying|Const :---|:---:|:---: virtualHostname|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

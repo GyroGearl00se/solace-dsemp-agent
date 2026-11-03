@@ -10,7 +10,7 @@ Method | HTTP request | Description
 > SystemInformationResponse GetSystemInformation(ctx, optional)
 Get a System Information object.
 
-Get a System Information object.  The System Information object provides metadata about the SEMP API.   Attribute|Deprecated :---|:---: platform|x sempVersion|x    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been deprecated since 2.2. /systemInformation was replaced by /about/api.
+Get a System Information object.  The System Information object provides metadata about the SEMP API.   Attribute|Deprecated :---|:---: platform|x sempVersion|x    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  Deprecated. /systemInformation was replaced by /about/api.
 
 ### Required Parameters
 

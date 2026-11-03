@@ -21,7 +21,7 @@ Method | HTTP request | Description
 > MsgVpnProxyResponse CreateMsgVpnProxy(ctx, body, msgVpnName, optional)
 Create a Proxy object.
 
-Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x|x msgVpnName|x|||x|| proxyName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.36.
+Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword|||||x|x msgVpnName|x|||x|| proxyName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 > ProxyResponse CreateProxy(ctx, body, optional)
 Create a Proxy object.
 
-Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x proxyName|x|x|x||    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.41.
+Create a Proxy object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x proxyName|x|x|x||    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnProxy(ctx, msgVpnName, proxyName)
 Delete a Proxy object.
 
-Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.36.
+Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteProxy(ctx, proxyName)
 Delete a Proxy object.
 
-Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.41.
+Delete a Proxy object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxiesResponse GetMsgVpnProxies(ctx, msgVpnName, optional)
 Get a list of Proxy objects.
 
-Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.36.
+Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse GetMsgVpnProxy(ctx, msgVpnName, proxyName, optional)
 Get a Proxy object.
 
-Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.36.
+Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x msgVpnName|x|| proxyName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 > ProxiesResponse GetProxies(ctx, optional)
 Get a list of Proxy objects.
 
-Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.41.
+Get a list of Proxy objects.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 > ProxyResponse GetProxy(ctx, proxyName, optional)
 Get a Proxy object.
 
-Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.41.
+Get a Proxy object.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationBasicPassword||x|x proxyName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse ReplaceMsgVpnProxy(ctx, body, msgVpnName, proxyName, optional)
 Replace a Proxy object.
 
-Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.36.
+Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 > ProxyResponse ReplaceProxy(ctx, body, proxyName, optional)
 Replace a Proxy object.
 
-Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.41.
+Replace a Proxy object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 > MsgVpnProxyResponse UpdateMsgVpnProxy(ctx, body, msgVpnName, proxyName, optional)
 Update a Proxy object.
 
-Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.36.
+Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a REST Consumer, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationBasicPassword||||x|x msgVpnName|x||x|| proxyName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 > ProxyResponse UpdateProxy(ctx, body, proxyName, optional)
 Update a Proxy object.
 
-Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.41.
+Update a Proxy object. Any attribute missing from the request will be left unchanged.  Proxy objects define the connection parameters for a proxy server. To use a proxy for a particular connection such as a OAuth Provider, select the proxy by name in the configuration for that object.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationBasicPassword|||x|x proxyName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 > MsgVpnDmrBridgeResponse CreateMsgVpnDmrBridge(ctx, body, msgVpnName, optional)
 Create a DMR Bridge object.
 
-Create a DMR Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x remoteNodeName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.11.
+Create a DMR Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x remoteNodeName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnDmrBridge(ctx, msgVpnName, remoteNodeName)
 Delete a DMR Bridge object.
 
-Delete a DMR Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.11.
+Delete a DMR Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse GetMsgVpnDmrBridge(ctx, msgVpnName, remoteNodeName, optional)
 Get a DMR Bridge object.
 
-Get a DMR Bridge object.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.11.
+Get a DMR Bridge object.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgesResponse GetMsgVpnDmrBridges(ctx, msgVpnName, optional)
 Get a list of DMR Bridge objects.
 
-Get a list of DMR Bridge objects.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.11.
+Get a list of DMR Bridge objects.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying :---|:---: msgVpnName|x remoteNodeName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse ReplaceMsgVpnDmrBridge(ctx, body, msgVpnName, remoteNodeName, optional)
 Replace a DMR Bridge object.
 
-Replace a DMR Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.11.
+Replace a DMR Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 > MsgVpnDmrBridgeResponse UpdateMsgVpnDmrBridge(ctx, body, msgVpnName, remoteNodeName, optional)
 Update a DMR Bridge object.
 
-Update a DMR Bridge object. Any attribute missing from the request will be left unchanged.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.11.
+Update a DMR Bridge object. Any attribute missing from the request will be left unchanged.  A DMR Bridge is required to establish a data channel over a corresponding external link to the remote node for a given Message VPN. Each DMR Bridge identifies which external link the Message VPN should use, and what the name of the equivalent Message VPN at the remote node is.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x remoteNodeName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

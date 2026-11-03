@@ -27,7 +27,7 @@ Method | HTTP request | Description
 > MsgVpnJndiConnectionFactoryResponse CreateMsgVpnJndiConnectionFactory(ctx, body, msgVpnName, optional)
 Create a JNDI Connection Factory object.
 
-Create a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: connectionFactoryName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.2.
+Create a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: connectionFactoryName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse CreateMsgVpnJndiQueue(ctx, body, msgVpnName, optional)
 Create a JNDI Queue object.
 
-Create a JNDI Queue object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.2.
+Create a JNDI Queue object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse CreateMsgVpnJndiTopic(ctx, body, msgVpnName, optional)
 Create a JNDI Topic object.
 
-Create a JNDI Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.2.
+Create a JNDI Topic object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x topicName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnJndiConnectionFactory(ctx, msgVpnName, connectionFactoryName)
 Delete a JNDI Connection Factory object.
 
-Delete a JNDI Connection Factory object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.2.
+Delete a JNDI Connection Factory object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnJndiQueue(ctx, msgVpnName, queueName)
 Delete a JNDI Queue object.
 
-Delete a JNDI Queue object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.2.
+Delete a JNDI Queue object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnJndiTopic(ctx, msgVpnName, topicName)
 Delete a JNDI Topic object.
 
-Delete a JNDI Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.2.
+Delete a JNDI Topic object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoriesResponse GetMsgVpnJndiConnectionFactories(ctx, msgVpnName, optional)
 Get a list of JNDI Connection Factory objects.
 
-Get a list of JNDI Connection Factory objects.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of JNDI Connection Factory objects.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse GetMsgVpnJndiConnectionFactory(ctx, msgVpnName, connectionFactoryName, optional)
 Get a JNDI Connection Factory object.
 
-Get a JNDI Connection Factory object.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.2.
+Get a JNDI Connection Factory object.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: connectionFactoryName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse GetMsgVpnJndiQueue(ctx, msgVpnName, queueName, optional)
 Get a JNDI Queue object.
 
-Get a JNDI Queue object.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.2.
+Get a JNDI Queue object.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueuesResponse GetMsgVpnJndiQueues(ctx, msgVpnName, optional)
 Get a list of JNDI Queue objects.
 
-Get a list of JNDI Queue objects.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of JNDI Queue objects.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x queueName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse GetMsgVpnJndiTopic(ctx, msgVpnName, topicName, optional)
 Get a JNDI Topic object.
 
-Get a JNDI Topic object.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.2.
+Get a JNDI Topic object.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicsResponse GetMsgVpnJndiTopics(ctx, msgVpnName, optional)
 Get a list of JNDI Topic objects.
 
-Get a list of JNDI Topic objects.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of JNDI Topic objects.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying :---|:---: msgVpnName|x topicName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -468,7 +468,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse ReplaceMsgVpnJndiConnectionFactory(ctx, body, msgVpnName, connectionFactoryName, optional)
 Replace a JNDI Connection Factory object.
 
-Replace a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.2.
+Replace a JNDI Connection Factory object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse ReplaceMsgVpnJndiQueue(ctx, body, msgVpnName, queueName, optional)
 Replace a JNDI Queue object.
 
-Replace a JNDI Queue object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.2.
+Replace a JNDI Queue object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -550,7 +550,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse ReplaceMsgVpnJndiTopic(ctx, body, msgVpnName, topicName, optional)
 Replace a JNDI Topic object.
 
-Replace a JNDI Topic object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.2.
+Replace a JNDI Topic object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -591,7 +591,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiConnectionFactoryResponse UpdateMsgVpnJndiConnectionFactory(ctx, body, msgVpnName, connectionFactoryName, optional)
 Update a JNDI Connection Factory object.
 
-Update a JNDI Connection Factory object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.2.
+Update a JNDI Connection Factory object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Connection Factory objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: connectionFactoryName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiQueueResponse UpdateMsgVpnJndiQueue(ctx, body, msgVpnName, queueName, optional)
 Update a JNDI Queue object.
 
-Update a JNDI Queue object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.2.
+Update a JNDI Queue object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Queue objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -673,7 +673,7 @@ Name | Type | Description  | Notes
 > MsgVpnJndiTopicResponse UpdateMsgVpnJndiTopic(ctx, body, msgVpnName, topicName, optional)
 Update a JNDI Topic object.
 
-Update a JNDI Topic object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.2.
+Update a JNDI Topic object. Any attribute missing from the request will be left unchanged.  The message broker provides an internal JNDI store for provisioned Topic objects that clients can access through JNDI lookups.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x topicName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

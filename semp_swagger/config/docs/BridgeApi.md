@@ -29,7 +29,7 @@ Method | HTTP request | Description
 > MsgVpnBridgeResponse CreateMsgVpnBridge(ctx, body, msgVpnName, optional)
 Create a Bridge object.
 
-Create a Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|x||| bridgeVirtualRouter|x|x|x||| msgVpnName|x|||x|| remoteAuthenticationBasicPassword|||||x|x remoteAuthenticationClientCertContent|||||x|x remoteAuthenticationClientCertPassword|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Bridge object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|x||| bridgeVirtualRouter|x|x|x||| msgVpnName|x|||x|| remoteAuthenticationBasicPassword|||||x|x remoteAuthenticationClientCertContent|||||x|x remoteAuthenticationClientCertPassword|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse CreateMsgVpnBridgeRemoteMsgVpn(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Create a Remote Message VPN object.
 
-Create a Remote Message VPN object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|| bridgeVirtualRouter|x|||x|| msgVpnName|x|||x|| password|||||x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|x||| remoteMsgVpnName|x|x|x|||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Remote Message VPN object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|| bridgeVirtualRouter|x|||x|| msgVpnName|x|||x|| password|||||x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|x||| remoteMsgVpnName|x|x|x|||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteSubscriptionResponse CreateMsgVpnBridgeRemoteSubscription(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Create a Remote Subscription object.
 
-Create a Remote Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: bridgeName|x|||x bridgeVirtualRouter|x|||x deliverAlwaysEnabled||x|x| msgVpnName|x|||x remoteSubscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Remote Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: bridgeName|x|||x bridgeVirtualRouter|x|||x deliverAlwaysEnabled||x|x| msgVpnName|x|||x remoteSubscriptionTopic|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeTlsTrustedCommonNameResponse CreateMsgVpnBridgeTlsTrustedCommonName(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Create a Trusted Common Name object.
 
-Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|x bridgeVirtualRouter|x|||x|x msgVpnName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: bridgeName|x|||x|x bridgeVirtualRouter|x|||x|x msgVpnName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridge(ctx, msgVpnName, bridgeName, bridgeVirtualRouter)
 Delete a Bridge object.
 
-Delete a Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Bridge object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridgeRemoteMsgVpn(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface)
 Delete a Remote Message VPN object.
 
-Delete a Remote Message VPN object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Remote Message VPN object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Remote Message VPN is the Message VPN that the Bridge connects to.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridgeRemoteSubscription(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteSubscriptionTopic)
 Delete a Remote Subscription object.
 
-Delete a Remote Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Remote Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnBridgeTlsTrustedCommonName(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, tlsTrustedCommonName)
 Delete a Trusted Common Name object.
 
-Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse GetMsgVpnBridge(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a Bridge object.
 
-Get a Bridge object.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Bridge object.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse GetMsgVpnBridgeRemoteMsgVpn(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface, optional)
 Get a Remote Message VPN object.
 
-Get a Remote Message VPN object.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Remote Message VPN object.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnsResponse GetMsgVpnBridgeRemoteMsgVpns(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a list of Remote Message VPN objects.
 
-Get a list of Remote Message VPN objects.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Remote Message VPN objects.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| password||x|x remoteMsgVpnInterface|x|| remoteMsgVpnLocation|x|| remoteMsgVpnName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteSubscriptionResponse GetMsgVpnBridgeRemoteSubscription(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, remoteSubscriptionTopic, optional)
 Get a Remote Subscription object.
 
-Get a Remote Subscription object.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Remote Subscription object.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteSubscriptionsResponse GetMsgVpnBridgeRemoteSubscriptions(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a list of Remote Subscription objects.
 
-Get a list of Remote Subscription objects.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Remote Subscription objects.  A Remote Subscription is a topic subscription used by the Message VPN Bridge to attract messages from the remote message broker.   Attribute|Identifying :---|:---: bridgeName|x bridgeVirtualRouter|x msgVpnName|x remoteSubscriptionTopic|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeTlsTrustedCommonNameResponse GetMsgVpnBridgeTlsTrustedCommonName(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, tlsTrustedCommonName, optional)
 Get a Trusted Common Name object.
 
-Get a Trusted Common Name object.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a Trusted Common Name object.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeTlsTrustedCommonNamesResponse GetMsgVpnBridgeTlsTrustedCommonNames(ctx, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Get a list of Trusted Common Name objects.
 
-Get a list of Trusted Common Name objects.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+Get a list of Trusted Common Name objects.  The Trusted Common Names for the Bridge are used by encrypted transports to verify the name in the certificate presented by the remote node. They must include the common name of the remote node's server certificate or client certificate, depending upon the initiator of the connection.   Attribute|Identifying|Deprecated :---|:---:|:---: bridgeName|x|x bridgeVirtualRouter|x|x msgVpnName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgesResponse GetMsgVpnBridges(ctx, msgVpnName, optional)
 Get a list of Bridge objects.
 
-Get a list of Bridge objects.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Bridge objects.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: bridgeName|x|| bridgeVirtualRouter|x|| msgVpnName|x|| remoteAuthenticationBasicPassword||x|x remoteAuthenticationClientCertContent||x|x remoteAuthenticationClientCertPassword||x|    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -664,7 +664,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse ReplaceMsgVpnBridge(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Replace a Bridge object.
 
-Replace a Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Bridge object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse ReplaceMsgVpnBridgeRemoteMsgVpn(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface, optional)
 Replace a Remote Message VPN object.
 
-Replace a Remote Message VPN object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Remote Message VPN object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -756,7 +756,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeResponse UpdateMsgVpnBridge(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, optional)
 Update a Bridge object.
 
-Update a Bridge object. Any attribute missing from the request will be left unchanged.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Bridge object. Any attribute missing from the request will be left unchanged.  Bridges can be used to link two Message VPNs so that messages published to one Message VPN that match the topic subscriptions set for the bridge are also delivered to the linked Message VPN.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x|x|||| bridgeVirtualRouter|x|x|||| maxTtl|||||x| msgVpnName|x||x||| remoteAuthenticationBasicClientUsername|||||x| remoteAuthenticationBasicPassword||||x|x|x remoteAuthenticationClientCertContent||||x|x|x remoteAuthenticationClientCertPassword||||x|x| remoteAuthenticationScheme|||||x| remoteDeliverToOnePriority|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridge|remoteAuthenticationBasicClientUsername|remoteAuthenticationBasicPassword MsgVpnBridge|remoteAuthenticationBasicPassword|remoteAuthenticationBasicClientUsername MsgVpnBridge|remoteAuthenticationClientCertPassword|remoteAuthenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -799,7 +799,7 @@ Name | Type | Description  | Notes
 > MsgVpnBridgeRemoteMsgVpnResponse UpdateMsgVpnBridgeRemoteMsgVpn(ctx, body, msgVpnName, bridgeName, bridgeVirtualRouter, remoteMsgVpnName, remoteMsgVpnLocation, remoteMsgVpnInterface, optional)
 Update a Remote Message VPN object.
 
-Update a Remote Message VPN object. Any attribute missing from the request will be left unchanged.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Remote Message VPN object. Any attribute missing from the request will be left unchanged.  The Remote Message VPN is the Message VPN that the Bridge connects to.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: bridgeName|x||x||| bridgeVirtualRouter|x||x||| clientUsername|||||x| compressedDataEnabled|||||x| egressFlowWindowSize|||||x| msgVpnName|x||x||| password||||x|x|x remoteMsgVpnInterface|x|x|||| remoteMsgVpnLocation|x|x|||| remoteMsgVpnName|x|x|||| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnBridgeRemoteMsgVpn|clientUsername|password MsgVpnBridgeRemoteMsgVpn|password|clientUsername    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

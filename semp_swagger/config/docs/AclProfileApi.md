@@ -39,7 +39,7 @@ Method | HTTP request | Description
 > MsgVpnAclProfileResponse CreateMsgVpnAclProfile(ctx, body, msgVpnName, optional)
 Create an ACL Profile object.
 
-Create an ACL Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create an ACL Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileClientConnectExceptionResponse CreateMsgVpnAclProfileClientConnectException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Client Connect Exception object.
 
-Create a Client Connect Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x clientConnectExceptionAddress|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Client Connect Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x clientConnectExceptionAddress|x|x|x| msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishExceptionResponse CreateMsgVpnAclProfilePublishException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Publish Topic Exception object.
 
-Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x publishExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x publishExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishTopicExceptionResponse CreateMsgVpnAclProfilePublishTopicException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Publish Topic Exception object.
 
-Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x publishTopicException|x|x|x| publishTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Publish Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x publishTopicException|x|x|x| publishTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeExceptionResponse CreateMsgVpnAclProfileSubscribeException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Subscribe Topic Exception object.
 
-Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x subscribeExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: aclProfileName|x|||x|x msgVpnName|x|||x|x subscribeExceptionTopic|x|x|x||x topicSyntax|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeShareNameExceptionResponse CreateMsgVpnAclProfileSubscribeShareNameException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Subscribe Share Name Exception object.
 
-Create a Subscribe Share Name Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeShareNameException|x|x|x| subscribeShareNameExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Subscribe Share Name Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeShareNameException|x|x|x| subscribeShareNameExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeTopicExceptionResponse CreateMsgVpnAclProfileSubscribeTopicException(ctx, body, msgVpnName, aclProfileName, optional)
 Create a Subscribe Topic Exception object.
 
-Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeTopicException|x|x|x| subscribeTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.14.
+Create a Subscribe Topic Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: aclProfileName|x|||x msgVpnName|x|||x subscribeTopicException|x|x|x| subscribeTopicExceptionSyntax|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfile(ctx, msgVpnName, aclProfileName)
 Delete an ACL Profile object.
 
-Delete an ACL Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete an ACL Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileClientConnectException(ctx, msgVpnName, aclProfileName, clientConnectExceptionAddress)
 Delete a Client Connect Exception object.
 
-Delete a Client Connect Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Client Connect Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfilePublishException(ctx, msgVpnName, aclProfileName, topicSyntax, publishExceptionTopic)
 Delete a Publish Topic Exception object.
 
-Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfilePublishTopicException(ctx, msgVpnName, aclProfileName, publishTopicExceptionSyntax, publishTopicException)
 Delete a Publish Topic Exception object.
 
-Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Publish Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileSubscribeException(ctx, msgVpnName, aclProfileName, topicSyntax, subscribeExceptionTopic)
 Delete a Subscribe Topic Exception object.
 
-Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileSubscribeShareNameException(ctx, msgVpnName, aclProfileName, subscribeShareNameExceptionSyntax, subscribeShareNameException)
 Delete a Subscribe Share Name Exception object.
 
-Delete a Subscribe Share Name Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Subscribe Share Name Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAclProfileSubscribeTopicException(ctx, msgVpnName, aclProfileName, subscribeTopicExceptionSyntax, subscribeTopicException)
 Delete a Subscribe Topic Exception object.
 
-Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.14.
+Delete a Subscribe Topic Exception object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse GetMsgVpnAclProfile(ctx, msgVpnName, aclProfileName, optional)
 Get an ACL Profile object.
 
-Get an ACL Profile object.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get an ACL Profile object.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileClientConnectExceptionResponse GetMsgVpnAclProfileClientConnectException(ctx, msgVpnName, aclProfileName, clientConnectExceptionAddress, optional)
 Get a Client Connect Exception object.
 
-Get a Client Connect Exception object.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Client Connect Exception object.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileClientConnectExceptionsResponse GetMsgVpnAclProfileClientConnectExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Client Connect Exception objects.
 
-Get a list of Client Connect Exception objects.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Client Connect Exception objects.  A Client Connect Exception is an exception to the default action to take when a client using the ACL Profile connects to the Message VPN. Exceptions must be expressed as an IP address/netmask in CIDR form.   Attribute|Identifying :---|:---: aclProfileName|x clientConnectExceptionAddress|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -660,7 +660,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishExceptionResponse GetMsgVpnAclProfilePublishException(ctx, msgVpnName, aclProfileName, topicSyntax, publishExceptionTopic, optional)
 Get a Publish Topic Exception object.
 
-Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishExceptionsResponse GetMsgVpnAclProfilePublishExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Publish Topic Exception objects.
 
-Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.14. Replaced by publishTopicExceptions.
+Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x publishExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Replaced by publishTopicExceptions.
 
 ### Required Parameters
 
@@ -745,7 +745,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishTopicExceptionResponse GetMsgVpnAclProfilePublishTopicException(ctx, msgVpnName, aclProfileName, publishTopicExceptionSyntax, publishTopicException, optional)
 Get a Publish Topic Exception object.
 
-Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Publish Topic Exception object.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -788,7 +788,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilePublishTopicExceptionsResponse GetMsgVpnAclProfilePublishTopicExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Publish Topic Exception objects.
 
-Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.14.
+Get a list of Publish Topic Exception objects.  A Publish Topic Exception is an exception to the default action to take when a client using the ACL Profile publishes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x publishTopicException|x publishTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -830,7 +830,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeExceptionResponse GetMsgVpnAclProfileSubscribeException(ctx, msgVpnName, aclProfileName, topicSyntax, subscribeExceptionTopic, optional)
 Get a Subscribe Topic Exception object.
 
-Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -873,7 +873,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeExceptionsResponse GetMsgVpnAclProfileSubscribeExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Subscribe Topic Exception objects.
 
-Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.14. Replaced by subscribeTopicExceptions.
+Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying|Deprecated :---|:---:|:---: aclProfileName|x|x msgVpnName|x|x subscribeExceptionTopic|x|x topicSyntax|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Replaced by subscribeTopicExceptions.
 
 ### Required Parameters
 
@@ -915,7 +915,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeShareNameExceptionResponse GetMsgVpnAclProfileSubscribeShareNameException(ctx, msgVpnName, aclProfileName, subscribeShareNameExceptionSyntax, subscribeShareNameException, optional)
 Get a Subscribe Share Name Exception object.
 
-Get a Subscribe Share Name Exception object.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Subscribe Share Name Exception object.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -958,7 +958,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeShareNameExceptionsResponse GetMsgVpnAclProfileSubscribeShareNameExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Subscribe Share Name Exception objects.
 
-Get a list of Subscribe Share Name Exception objects.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.14.
+Get a list of Subscribe Share Name Exception objects.  A Subscribe Share Name Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeShareNameException|x subscribeShareNameExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1000,7 +1000,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeTopicExceptionResponse GetMsgVpnAclProfileSubscribeTopicException(ctx, msgVpnName, aclProfileName, subscribeTopicExceptionSyntax, subscribeTopicException, optional)
 Get a Subscribe Topic Exception object.
 
-Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.14.
+Get a Subscribe Topic Exception object.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -1043,7 +1043,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileSubscribeTopicExceptionsResponse GetMsgVpnAclProfileSubscribeTopicExceptions(ctx, msgVpnName, aclProfileName, optional)
 Get a list of Subscribe Topic Exception objects.
 
-Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.14.
+Get a list of Subscribe Topic Exception objects.  A Subscribe Topic Exception is an exception to the default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN. Exceptions must be expressed as a topic.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x subscribeTopicException|x subscribeTopicExceptionSyntax|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1085,7 +1085,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfilesResponse GetMsgVpnAclProfiles(ctx, msgVpnName, optional)
 Get a list of ACL Profile objects.
 
-Get a list of ACL Profile objects.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of ACL Profile objects.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying :---|:---: aclProfileName|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1125,7 +1125,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse ReplaceMsgVpnAclProfile(ctx, body, msgVpnName, aclProfileName, optional)
 Replace an ACL Profile object.
 
-Replace an ACL Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace an ACL Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1166,7 +1166,7 @@ Name | Type | Description  | Notes
 > MsgVpnAclProfileResponse UpdateMsgVpnAclProfile(ctx, body, msgVpnName, aclProfileName, optional)
 Update an ACL Profile object.
 
-Update an ACL Profile object. Any attribute missing from the request will be left unchanged.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update an ACL Profile object. Any attribute missing from the request will be left unchanged.  An ACL Profile controls whether an authenticated client is permitted to establish a connection with the message broker or permitted to publish and subscribe to specific topics.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: aclProfileName|x|x| msgVpnName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

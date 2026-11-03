@@ -25,7 +25,7 @@ Method | HTTP request | Description
 > MsgVpnCertMatchingRuleResponse CreateMsgVpnCertMatchingRule(ctx, body, msgVpnName, optional)
 Create a Certificate Matching Rule object.
 
-Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x ruleName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse CreateMsgVpnCertMatchingRuleAttributeFilter(ctx, body, msgVpnName, ruleName, optional)
 Create a Certificate Matching Rule Attribute Filter object.
 
-Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: filterName|x|x|x| msgVpnName|x|||x ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.28.
+Create a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: filterName|x|x|x| msgVpnName|x|||x ruleName|x|||x    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleConditionResponse CreateMsgVpnCertMatchingRuleCondition(ctx, body, msgVpnName, ruleName, optional)
 Create a Certificate Matching Rule Condition object.
 
-Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| expression||x|| msgVpnName|x|||x ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Certificate Matching Rule Condition object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attribute||x|| expression||x|| msgVpnName|x|||x ruleName|x|||x source|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnCertMatchingRule(ctx, msgVpnName, ruleName)
 Delete a Certificate Matching Rule object.
 
-Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.27.
+Delete a Certificate Matching Rule object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnCertMatchingRuleAttributeFilter(ctx, msgVpnName, ruleName, filterName)
 Delete a Certificate Matching Rule Attribute Filter object.
 
-Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.28.
+Delete a Certificate Matching Rule Attribute Filter object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnCertMatchingRuleCondition(ctx, msgVpnName, ruleName, source)
 Delete a Certificate Matching Rule Condition object.
 
-Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.27.
+Delete a Certificate Matching Rule Condition object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse GetMsgVpnCertMatchingRule(ctx, msgVpnName, ruleName, optional)
 Get a Certificate Matching Rule object.
 
-Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Certificate Matching Rule object.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse GetMsgVpnCertMatchingRuleAttributeFilter(ctx, msgVpnName, ruleName, filterName, optional)
 Get a Certificate Matching Rule Attribute Filter object.
 
-Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.28.
+Get a Certificate Matching Rule Attribute Filter object.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFiltersResponse GetMsgVpnCertMatchingRuleAttributeFilters(ctx, msgVpnName, ruleName, optional)
 Get a list of Certificate Matching Rule Attribute Filter objects.
 
-Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.28.
+Get a list of Certificate Matching Rule Attribute Filter objects.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying :---|:---: filterName|x msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleConditionResponse GetMsgVpnCertMatchingRuleCondition(ctx, msgVpnName, ruleName, source, optional)
 Get a Certificate Matching Rule Condition object.
 
-Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Certificate Matching Rule Condition object.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -398,7 +398,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleConditionsResponse GetMsgVpnCertMatchingRuleConditions(ctx, msgVpnName, ruleName, optional)
 Get a list of Certificate Matching Rule Condition objects.
 
-Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.27.
+Get a list of Certificate Matching Rule Condition objects.  A Cert Matching Rule Condition compares data extracted from a certificate to a username attribute or an expression.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x source|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRulesResponse GetMsgVpnCertMatchingRules(ctx, msgVpnName, optional)
 Get a list of Certificate Matching Rule objects.
 
-Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.27.
+Get a list of Certificate Matching Rule objects.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying :---|:---: msgVpnName|x ruleName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse ReplaceMsgVpnCertMatchingRule(ctx, body, msgVpnName, ruleName, optional)
 Replace a Certificate Matching Rule object.
 
-Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.27.
+Replace a Certificate Matching Rule object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -521,7 +521,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse ReplaceMsgVpnCertMatchingRuleAttributeFilter(ctx, body, msgVpnName, ruleName, filterName, optional)
 Replace a Certificate Matching Rule Attribute Filter object.
 
-Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.28.
+Replace a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -564,7 +564,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleResponse UpdateMsgVpnCertMatchingRule(ctx, body, msgVpnName, ruleName, optional)
 Update a Certificate Matching Rule object.
 
-Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.27.
+Update a Certificate Matching Rule object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule is a collection of conditions and attribute filters that all have to be satisfied for certificate to be acceptable as authentication for a given username.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x ruleName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -605,7 +605,7 @@ Name | Type | Description  | Notes
 > MsgVpnCertMatchingRuleAttributeFilterResponse UpdateMsgVpnCertMatchingRuleAttributeFilter(ctx, body, msgVpnName, ruleName, filterName, optional)
 Update a Certificate Matching Rule Attribute Filter object.
 
-Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.28.
+Update a Certificate Matching Rule Attribute Filter object. Any attribute missing from the request will be left unchanged.  A Cert Matching Rule Attribute Filter compares a username attribute to a string.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: filterName|x|x| msgVpnName|x||x ruleName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

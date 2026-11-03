@@ -19,7 +19,7 @@ Method | HTTP request | Description
 > MsgVpnReplayLogResponse CreateMsgVpnReplayLog(ctx, body, msgVpnName, optional)
 Create a Replay Log object.
 
-Create a Replay Log object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.10.
+Create a Replay Log object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogTopicFilterSubscriptionResponse CreateMsgVpnReplayLogTopicFilterSubscription(ctx, body, msgVpnName, replayLogName, optional)
 Create a Topic Filter Subscription object.
 
-Create a Topic Filter Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|||x topicFilterSubscription|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Topic Filter Subscription object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x replayLogName|x|||x topicFilterSubscription|x|x|x|    The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnReplayLog(ctx, msgVpnName, replayLogName)
 Delete a Replay Log object.
 
-Delete a Replay Log object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".  This has been available since 2.10.
+Delete a Replay Log object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.  The minimum access scope/level required to perform this operation is \"global/mesh-manager\".
 
 ### Required Parameters
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnReplayLogTopicFilterSubscription(ctx, msgVpnName, replayLogName, topicFilterSubscription)
 Delete a Topic Filter Subscription object.
 
-Delete a Topic Filter Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.  The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\".  This has been available since 2.27.
+Delete a Topic Filter Subscription object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.  The minimum access scope/level required to perform this operation is \"global/mesh-manager or vpn/read-write\".
 
 ### Required Parameters
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse GetMsgVpnReplayLog(ctx, msgVpnName, replayLogName, optional)
 Get a Replay Log object.
 
-Get a Replay Log object.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.10.
+Get a Replay Log object.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogTopicFilterSubscriptionResponse GetMsgVpnReplayLogTopicFilterSubscription(ctx, msgVpnName, replayLogName, topicFilterSubscription, optional)
 Get a Topic Filter Subscription object.
 
-Get a Topic Filter Subscription object.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Topic Filter Subscription object.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogTopicFilterSubscriptionsResponse GetMsgVpnReplayLogTopicFilterSubscriptions(ctx, msgVpnName, replayLogName, optional)
 Get a list of Topic Filter Subscription objects.
 
-Get a list of Topic Filter Subscription objects.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.27.
+Get a list of Topic Filter Subscription objects.  One or more Subscriptions can be added to a replay-log so that only guaranteed messages published to matching topics are stored in the Replay Log.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x topicFilterSubscription|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogsResponse GetMsgVpnReplayLogs(ctx, msgVpnName, optional)
 Get a list of Replay Log objects.
 
-Get a list of Replay Log objects.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.10.
+Get a list of Replay Log objects.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying :---|:---: msgVpnName|x replayLogName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse ReplaceMsgVpnReplayLog(ctx, body, msgVpnName, replayLogName, optional)
 Replace a Replay Log object.
 
-Replace a Replay Log object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.  This has been available since 2.10.
+Replace a Replay Log object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/mesh-manager\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 > MsgVpnReplayLogResponse UpdateMsgVpnReplayLog(ctx, body, msgVpnName, replayLogName, optional)
 Update a Replay Log object.
 
-Update a Replay Log object. Any attribute missing from the request will be left unchanged.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.10.
+Update a Replay Log object. Any attribute missing from the request will be left unchanged.  When the Message Replay feature is enabled, message brokers store persistent messages in a Replay Log. These messages are kept until the log is full, after which the oldest messages are removed to free up space for new messages.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x replayLogName|x|x|    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

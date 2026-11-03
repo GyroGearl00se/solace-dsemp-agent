@@ -14,7 +14,7 @@ Method | HTTP request | Description
 > AboutResponse GetAbout(ctx, optional)
 Get an About object.
 
-Get an About object.  This provides metadata about the SEMP API, such as the version of the API supported by the broker.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.13.
+Get an About object.  This provides metadata about the SEMP API, such as the version of the API supported by the broker.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 > AboutApiResponse GetAboutApi(ctx, optional)
 Get an API Description object.
 
-Get an API Description object.  The API Description object provides metadata about the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.2.
+Get an API Description object.  The API Description object provides metadata about the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 > AboutUserResponse GetAboutUser(ctx, optional)
 Get a User object.
 
-Get a User object.  Session and access level information about the user accessing the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.  This has been available since 2.2.
+Get a User object.  Session and access level information about the user accessing the SEMP API.    The minimum access scope/level required to perform this operation is determined by the attributes retrieved.
 
 ### Required Parameters
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 > AboutUserMsgVpnResponse GetAboutUserMsgVpn(ctx, msgVpnName, optional)
 Get a User Message VPN object.
 
-Get a User Message VPN object.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".  This has been available since 2.2.
+Get a User Message VPN object.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".
 
 ### Required Parameters
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 > AboutUserMsgVpnsResponse GetAboutUserMsgVpns(ctx, optional)
 Get a list of User Message VPN objects.
 
-Get a list of User Message VPN objects.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.2.
+Get a list of User Message VPN objects.  This provides information about the Message VPN access level for the username used to access the SEMP API.   Attribute|Identifying :---|:---: msgVpnName|x    The minimum access scope/level required to perform this operation is \"global/none\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 > MsgVpnClientUsernameResponse CreateMsgVpnClientUsername(ctx, body, msgVpnName, optional)
 Create a Client Username object.
 
-Create a Client Username object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientUsername|x|x|x||| msgVpnName|x|||x|| password|||||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Client Username object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientUsername|x|x|x||| msgVpnName|x|||x|| password|||||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameAttributeResponse CreateMsgVpnClientUsernameAttribute(ctx, body, msgVpnName, clientUsername, optional)
 Create a Client Username Attribute object.
 
-Create a Client Username Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| clientUsername|x|||x msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.27.
+Create a Client Username Attribute object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: attributeName|x|x|x| attributeValue|x|x|x| clientUsername|x|||x msgVpnName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnClientUsername(ctx, msgVpnName, clientUsername)
 Delete a Client Username object.
 
-Delete a Client Username object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Client Username object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnClientUsernameAttribute(ctx, msgVpnName, clientUsername, attributeName, attributeValue)
 Delete a Client Username Attribute object.
 
-Delete a Client Username Attribute object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.27.
+Delete a Client Username Attribute object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse GetMsgVpnClientUsername(ctx, msgVpnName, clientUsername, optional)
 Get a Client Username object.
 
-Get a Client Username object.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Client Username object.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameAttributeResponse GetMsgVpnClientUsernameAttribute(ctx, msgVpnName, clientUsername, attributeName, attributeValue, optional)
 Get a Client Username Attribute object.
 
-Get a Client Username Attribute object.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.27.
+Get a Client Username Attribute object.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameAttributesResponse GetMsgVpnClientUsernameAttributes(ctx, msgVpnName, clientUsername, optional)
 Get a list of Client Username Attribute objects.
 
-Get a list of Client Username Attribute objects.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.27.
+Get a list of Client Username Attribute objects.  A ClientUsername Attribute is a key+value pair that can be used to locate a client username, for example when using client certificate mapping.   Attribute|Identifying :---|:---: attributeName|x attributeValue|x clientUsername|x msgVpnName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernamesResponse GetMsgVpnClientUsernames(ctx, msgVpnName, optional)
 Get a list of Client Username objects.
 
-Get a list of Client Username objects.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Client Username objects.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientUsername|x|| msgVpnName|x|| password||x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse ReplaceMsgVpnClientUsername(ctx, body, msgVpnName, clientUsername, optional)
 Replace a Client Username object.
 
-Replace a Client Username object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Client Username object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 > MsgVpnClientUsernameResponse UpdateMsgVpnClientUsername(ctx, body, msgVpnName, clientUsername, optional)
 Update a Client Username object.
 
-Update a Client Username object. Any attribute missing from the request will be left unchanged.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Client Username object. Any attribute missing from the request will be left unchanged.  A client is only authorized to connect to a Message VPN that is associated with a Client Username that the client has been assigned.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: aclProfileName|||||x| clientProfileName|||||x| clientUsername|x|x|||| msgVpnName|x||x||| password||||x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 > DomainCertAuthorityResponse CreateDomainCertAuthority(ctx, body, optional)
 Create a Domain Certificate Authority object.
 
-Create a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: certAuthorityName|x|x|x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.19.
+Create a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const|Required :---|:---:|:---:|:---: certAuthorityName|x|x|x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteDomainCertAuthority(ctx, certAuthorityName)
 Delete a Domain Certificate Authority object.
 
-Delete a Domain Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.19.
+Delete a Domain Certificate Authority object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Certificate Authorities trusted for domain verification.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthoritiesResponse GetDomainCertAuthorities(ctx, optional)
 Get a list of Domain Certificate Authority objects.
 
-Get a list of Domain Certificate Authority objects.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.19.
+Get a list of Domain Certificate Authority objects.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse GetDomainCertAuthority(ctx, certAuthorityName, optional)
 Get a Domain Certificate Authority object.
 
-Get a Domain Certificate Authority object.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.19.
+Get a Domain Certificate Authority object.  Certificate Authorities trusted for domain verification.   Attribute|Identifying :---|:---: certAuthorityName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse ReplaceDomainCertAuthority(ctx, body, certAuthorityName, optional)
 Replace a Domain Certificate Authority object.
 
-Replace a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.19.
+Replace a Domain Certificate Authority object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 > DomainCertAuthorityResponse UpdateDomainCertAuthority(ctx, body, certAuthorityName, optional)
 Update a Domain Certificate Authority object.
 
-Update a Domain Certificate Authority object. Any attribute missing from the request will be left unchanged.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.19.
+Update a Domain Certificate Authority object. Any attribute missing from the request will be left unchanged.  Certificate Authorities trusted for domain verification.   Attribute|Identifying|Const :---|:---:|:---: certAuthorityName|x|x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

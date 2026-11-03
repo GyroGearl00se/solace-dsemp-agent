@@ -23,7 +23,7 @@ Method | HTTP request | Description
 > MsgVpnAuthenticationOauthProfileResponse CreateMsgVpnAuthenticationOauthProfile(ctx, body, msgVpnName, optional)
 Create an OAuth Profile object.
 
-Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientSecret|||||x|x msgVpnName|x|||x|| oauthProfileName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.25.
+Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: clientSecret|||||x|x msgVpnName|x|||x|| oauthProfileName|x|x|x|||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileClientRequiredClaimResponse CreateMsgVpnAuthenticationOauthProfileClientRequiredClaim(ctx, body, msgVpnName, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| msgVpnName|x|||x oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.25.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| msgVpnName|x|||x oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResourceServerRequiredClaimResponse CreateMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim(ctx, body, msgVpnName, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.25.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProfile(ctx, msgVpnName, oauthProfileName)
 Delete an OAuth Profile object.
 
-Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.25.
+Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProfileClientRequiredClaim(ctx, msgVpnName, oauthProfileName, clientRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.25.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim(ctx, msgVpnName, oauthProfileName, resourceServerRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.25.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse GetMsgVpnAuthenticationOauthProfile(ctx, msgVpnName, oauthProfileName, optional)
 Get an OAuth Profile object.
 
-Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.25.
+Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileClientRequiredClaimResponse GetMsgVpnAuthenticationOauthProfileClientRequiredClaim(ctx, msgVpnName, oauthProfileName, clientRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.25.
+Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileClientRequiredClaimsResponse GetMsgVpnAuthenticationOauthProfileClientRequiredClaims(ctx, msgVpnName, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.25.
+Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResourceServerRequiredClaimResponse GetMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim(ctx, msgVpnName, oauthProfileName, resourceServerRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.25.
+Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResourceServerRequiredClaimsResponse GetMsgVpnAuthenticationOauthProfileResourceServerRequiredClaims(ctx, msgVpnName, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.25.
+Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfilesResponse GetMsgVpnAuthenticationOauthProfiles(ctx, msgVpnName, optional)
 Get a list of OAuth Profile objects.
 
-Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.25.
+Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: clientSecret||x|x msgVpnName|x|| oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -478,7 +478,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse ReplaceMsgVpnAuthenticationOauthProfile(ctx, body, msgVpnName, oauthProfileName, optional)
 Replace an OAuth Profile object.
 
-Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.25.
+Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 > MsgVpnAuthenticationOauthProfileResponse UpdateMsgVpnAuthenticationOauthProfile(ctx, body, msgVpnName, oauthProfileName, optional)
 Update an OAuth Profile object.
 
-Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.25.
+Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: clientSecret||||x|x msgVpnName|x||x|| oauthProfileName|x|x|||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

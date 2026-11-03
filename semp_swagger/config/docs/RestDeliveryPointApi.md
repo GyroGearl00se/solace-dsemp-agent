@@ -47,7 +47,7 @@ Method | HTTP request | Description
 > MsgVpnRestDeliveryPointResponse CreateMsgVpnRestDeliveryPoint(ctx, body, msgVpnName, optional)
 Create a REST Delivery Point object.
 
-Create a REST Delivery Point object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x restDeliveryPointName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a REST Delivery Point object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x restDeliveryPointName|x|x|x|    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse CreateMsgVpnRestDeliveryPointQueueBinding(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Create a Queue Binding object.
 
-Create a Queue Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueBindingName|x|x|x| restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a Queue Binding object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x queueBindingName|x|x|x| restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse CreateMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Create a Protected Request Header object.
 
-Create a Protected Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: headerName|x|x|x||| headerValue|||||x|x msgVpnName|x|||x|| queueBindingName|x|||x|| restDeliveryPointName|x|||x||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.30.
+Create a Protected Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: headerName|x|x|x||| headerValue|||||x|x msgVpnName|x|||x|| queueBindingName|x|||x|| restDeliveryPointName|x|||x||    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse CreateMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Create a Request Header object.
 
-Create a Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: headerName|x|x|x| msgVpnName|x|||x queueBindingName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.23.
+Create a Request Header object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: headerName|x|x|x| msgVpnName|x|||x queueBindingName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse CreateMsgVpnRestDeliveryPointRestConsumer(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Create a REST Consumer object.
 
-Create a REST Consumer object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationHttpBasicPassword|||||x|x authenticationHttpHeaderValue|||||x|x authenticationOauthClientSecret|||||x|x authenticationOauthJwtSecretKey|||||x|x msgVpnName|x|||x|| restConsumerName|x|x|x||| restDeliveryPointName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.0.
+Create a REST Consumer object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Required|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey|||||x|x authenticationClientCertContent|||||x|x authenticationClientCertPassword|||||x| authenticationHttpBasicPassword|||||x|x authenticationHttpHeaderValue|||||x|x authenticationOauthClientSecret|||||x|x authenticationOauthJwtSecretKey|||||x|x msgVpnName|x|||x|| restConsumerName|x|x|x||| restDeliveryPointName|x|||x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerOauthJwtClaimResponse CreateMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Create a Claim object.
 
-Create a Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthJwtClaimName|x|x|x| oauthJwtClaimValue||x|x| restConsumerName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.21.
+Create a Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|||x oauthJwtClaimName|x|x|x| oauthJwtClaimValue||x|x| restConsumerName|x|||x restDeliveryPointName|x|||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameResponse CreateMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Create a Trusted Common Name object.
 
-Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x|x restConsumerName|x|||x|x restDeliveryPointName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Create a Trusted Common Name object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Const|Required|Read-Only|Deprecated :---|:---:|:---:|:---:|:---:|:---: msgVpnName|x|||x|x restConsumerName|x|||x|x restDeliveryPointName|x|||x|x tlsTrustedCommonName|x|x|x||x    The minimum access scope/level required to perform this operation is \"vpn/read-write\". A different access scope/level may also be required when providing values for specific attributes.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPoint(ctx, msgVpnName, restDeliveryPointName)
 Delete a REST Delivery Point object.
 
-Delete a REST Delivery Point object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a REST Delivery Point object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointQueueBinding(ctx, msgVpnName, restDeliveryPointName, queueBindingName)
 Delete a Queue Binding object.
 
-Delete a Queue Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a Queue Binding object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName)
 Delete a Protected Request Header object.
 
-Delete a Protected Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.30.
+Delete a Protected Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -430,7 +430,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName)
 Delete a Request Header object.
 
-Delete a Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.23.
+Delete a Request Header object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A request header to be added to the HTTP request.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointRestConsumer(ctx, msgVpnName, restDeliveryPointName, restConsumerName)
 Delete a REST Consumer object.
 
-Delete a REST Consumer object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.0.
+Delete a REST Consumer object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim(ctx, msgVpnName, restDeliveryPointName, restConsumerName, oauthJwtClaimName)
 Delete a Claim object.
 
-Delete a Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been available since 2.21.
+Delete a Claim object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  A Claim is added to the JWT sent to the OAuth token request endpoint.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".
 
 ### Required Parameters
 
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(ctx, msgVpnName, restDeliveryPointName, restConsumerName, tlsTrustedCommonName)
 Delete a Trusted Common Name object.
 
-Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Delete a Trusted Common Name object. The deletion of instances of this object are synchronized to HA mates and replication sites via config-sync.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.  The minimum access scope/level required to perform this operation is \"vpn/read-write\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse GetMsgVpnRestDeliveryPoint(ctx, msgVpnName, restDeliveryPointName, optional)
 Get a REST Delivery Point object.
 
-Get a REST Delivery Point object.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a REST Delivery Point object.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse GetMsgVpnRestDeliveryPointQueueBinding(ctx, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Get a Queue Binding object.
 
-Get a Queue Binding object.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a Queue Binding object.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -633,7 +633,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse GetMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Get a Protected Request Header object.
 
-Get a Protected Request Header object.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.30.
+Get a Protected Request Header object.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -676,7 +676,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeadersResponse GetMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaders(ctx, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Get a list of Protected Request Header objects.
 
-Get a list of Protected Request Header objects.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.30.
+Get a list of Protected Request Header objects.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: headerName|x|| headerValue||x|x msgVpnName|x|| queueBindingName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -720,7 +720,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse GetMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Get a Request Header object.
 
-Get a Request Header object.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.23.
+Get a Request Header object.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -763,7 +763,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeadersResponse GetMsgVpnRestDeliveryPointQueueBindingRequestHeaders(ctx, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Get a list of Request Header objects.
 
-Get a list of Request Header objects.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.23.
+Get a list of Request Header objects.  A request header to be added to the HTTP request.   Attribute|Identifying :---|:---: headerName|x msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -807,7 +807,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingsResponse GetMsgVpnRestDeliveryPointQueueBindings(ctx, msgVpnName, restDeliveryPointName, optional)
 Get a list of Queue Binding objects.
 
-Get a list of Queue Binding objects.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of Queue Binding objects.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying :---|:---: msgVpnName|x queueBindingName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse GetMsgVpnRestDeliveryPointRestConsumer(ctx, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Get a REST Consumer object.
 
-Get a REST Consumer object.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.0.
+Get a REST Consumer object.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerOauthJwtClaimResponse GetMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim(ctx, msgVpnName, restDeliveryPointName, restConsumerName, oauthJwtClaimName, optional)
 Get a Claim object.
 
-Get a Claim object.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been available since 2.21.
+Get a Claim object.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".
 
 ### Required Parameters
 
@@ -933,7 +933,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerOauthJwtClaimsResponse GetMsgVpnRestDeliveryPointRestConsumerOauthJwtClaims(ctx, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Get a list of Claim objects.
 
-Get a list of Claim objects.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.  This has been available since 2.21.
+Get a list of Claim objects.  A Claim is added to the JWT sent to the OAuth token request endpoint.   Attribute|Identifying :---|:---: msgVpnName|x oauthJwtClaimName|x restConsumerName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 500.
 
 ### Required Parameters
 
@@ -977,7 +977,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameResponse GetMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(ctx, msgVpnName, restDeliveryPointName, restConsumerName, tlsTrustedCommonName, optional)
 Get a Trusted Common Name object.
 
-Get a Trusted Common Name object.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Get a Trusted Common Name object.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -1020,7 +1020,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNamesResponse GetMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNames(ctx, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Get a list of Trusted Common Name objects.
 
-Get a list of Trusted Common Name objects.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
+Get a list of Trusted Common Name objects.  The Trusted Common Names for the REST Consumer are used by encrypted transports to verify the name in the certificate presented by the remote REST consumer. They must include the common name of the remote REST consumer's server certificate.   Attribute|Identifying|Deprecated :---|:---:|:---: msgVpnName|x|x restConsumerName|x|x restDeliveryPointName|x|x tlsTrustedCommonName|x|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  Deprecated. Common Name validation has been replaced by Server Certificate Name validation.
 
 ### Required Parameters
 
@@ -1062,7 +1062,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumersResponse GetMsgVpnRestDeliveryPointRestConsumers(ctx, msgVpnName, restDeliveryPointName, optional)
 Get a list of REST Consumer objects.
 
-Get a list of REST Consumer objects.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of REST Consumer objects.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationAwsSecretAccessKey||x|x authenticationClientCertContent||x|x authenticationClientCertPassword||x| authenticationHttpBasicPassword||x|x authenticationHttpHeaderValue||x|x authenticationOauthClientSecret||x|x authenticationOauthJwtSecretKey||x|x msgVpnName|x|| restConsumerName|x|| restDeliveryPointName|x||    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1104,7 +1104,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointsResponse GetMsgVpnRestDeliveryPoints(ctx, msgVpnName, optional)
 Get a list of REST Delivery Point objects.
 
-Get a list of REST Delivery Point objects.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.0.
+Get a list of REST Delivery Point objects.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying :---|:---: msgVpnName|x restDeliveryPointName|x    The minimum access scope/level required to perform this operation is \"vpn/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1144,7 +1144,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse ReplaceMsgVpnRestDeliveryPoint(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Replace a REST Delivery Point object.
 
-Replace a REST Delivery Point object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a REST Delivery Point object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1185,7 +1185,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse ReplaceMsgVpnRestDeliveryPointQueueBinding(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Replace a Queue Binding object.
 
-Replace a Queue Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a Queue Binding object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1228,7 +1228,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse ReplaceMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Replace a Protected Request Header object.
 
-Replace a Protected Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.30.
+Replace a Protected Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1273,7 +1273,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse ReplaceMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Replace a Request Header object.
 
-Replace a Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.23.
+Replace a Request Header object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1318,7 +1318,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse ReplaceMsgVpnRestDeliveryPointRestConsumer(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Replace a REST Consumer object.
 
-Replace a REST Consumer object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.  This has been available since 2.0.
+Replace a REST Consumer object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"vpn/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1361,7 +1361,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointResponse UpdateMsgVpnRestDeliveryPoint(ctx, body, msgVpnName, restDeliveryPointName, optional)
 Update a REST Delivery Point object.
 
-Update a REST Delivery Point object. Any attribute missing from the request will be left unchanged.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a REST Delivery Point object. Any attribute missing from the request will be left unchanged.  A REST Delivery Point manages delivery of messages from queues to a named list of REST Consumers.   Attribute|Identifying|Const|Read-Only|Auto-Disable :---|:---:|:---:|:---:|:---: clientProfileName||||x msgVpnName|x||x| restDeliveryPointName|x|x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1402,7 +1402,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingResponse UpdateMsgVpnRestDeliveryPointQueueBinding(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, optional)
 Update a Queue Binding object.
 
-Update a Queue Binding object. Any attribute missing from the request will be left unchanged.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a Queue Binding object. Any attribute missing from the request will be left unchanged.  A Queue Binding for a REST Delivery Point attracts messages to be delivered to REST consumers. If the queue does not exist it can be created subsequently, and once the queue is operational the broker performs the queue binding. Removing the queue binding does not delete the queue itself. Similarly, removing the queue does not remove the queue binding, which fails until the queue is recreated or the queue binding is deleted.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x||x queueBindingName|x|x| restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1445,7 +1445,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeaderResponse UpdateMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Update a Protected Request Header object.
 
-Update a Protected Request Header object. Any attribute missing from the request will be left unchanged.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.30.
+Update a Protected Request Header object. Any attribute missing from the request will be left unchanged.  A protected request header to be added to the HTTP request. Unlike a non-protected request header, the header value cannot be displayed after it is set.   Attribute|Identifying|Const|Read-Only|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: headerName|x|x||| headerValue||||x|x msgVpnName|x||x|| queueBindingName|x||x|| restDeliveryPointName|x||x||    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1490,7 +1490,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointQueueBindingRequestHeaderResponse UpdateMsgVpnRestDeliveryPointQueueBindingRequestHeader(ctx, body, msgVpnName, restDeliveryPointName, queueBindingName, headerName, optional)
 Update a Request Header object.
 
-Update a Request Header object. Any attribute missing from the request will be left unchanged.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.23.
+Update a Request Header object. Any attribute missing from the request will be left unchanged.  A request header to be added to the HTTP request.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: headerName|x|x| msgVpnName|x||x queueBindingName|x||x restDeliveryPointName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1535,7 +1535,7 @@ Name | Type | Description  | Notes
 > MsgVpnRestDeliveryPointRestConsumerResponse UpdateMsgVpnRestDeliveryPointRestConsumer(ctx, body, msgVpnName, restDeliveryPointName, restConsumerName, optional)
 Update a REST Consumer object.
 
-Update a REST Consumer object. Any attribute missing from the request will be left unchanged.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.0.
+Update a REST Consumer object. Any attribute missing from the request will be left unchanged.  REST Consumer objects establish HTTP connectivity to REST consumer applications who wish to receive messages from a broker.   Attribute|Identifying|Const|Read-Only|Write-Only|Auto-Disable|Opaque :---|:---:|:---:|:---:|:---:|:---:|:---: authenticationAwsSecretAccessKey||||x||x authenticationClientCertContent||||x|x|x authenticationClientCertPassword||||x|x| authenticationHttpBasicPassword||||x|x|x authenticationHttpBasicUsername|||||x| authenticationHttpHeaderValue||||x||x authenticationOauthClientId|||||x| authenticationOauthClientScope|||||x| authenticationOauthClientSecret||||x|x|x authenticationOauthClientTokenEndpoint|||||x| authenticationOauthClientTokenExpiryDefault|||||x| authenticationOauthJwtSecretKey||||x|x|x authenticationOauthJwtTokenEndpoint|||||x| authenticationOauthJwtTokenExpiryDefault|||||x| authenticationScheme|||||x| msgVpnName|x||x||| outgoingConnectionCount|||||x| remoteHost|||||x| remotePort|||||x| restConsumerName|x|x|||| restDeliveryPointName|x||x||| tlsCipherSuiteList|||||x| tlsEnabled|||||x|    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- MsgVpnRestDeliveryPointRestConsumer|authenticationClientCertPassword|authenticationClientCertContent MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicPassword|authenticationHttpBasicUsername MsgVpnRestDeliveryPointRestConsumer|authenticationHttpBasicUsername|authenticationHttpBasicPassword MsgVpnRestDeliveryPointRestConsumer|remotePort|tlsEnabled MsgVpnRestDeliveryPointRestConsumer|tlsEnabled|remotePort    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

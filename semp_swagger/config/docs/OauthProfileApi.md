@@ -51,7 +51,7 @@ Method | HTTP request | Description
 > OauthProfileResponse CreateOauthProfile(ctx, body, optional)
 Create an OAuth Profile object.
 
-Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationClientCertContent||||x| authenticationClientCertPassword||||x| clientSecret||||x|x oauthProfileName|x|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create an OAuth Profile object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Required|Write-Only|Opaque :---|:---:|:---:|:---:|:---:|:---: authenticationClientCertContent||||x| authenticationClientCertPassword||||x| clientSecret||||x|x oauthProfileName|x|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse CreateOauthProfileAccessLevelGroup(ctx, body, oauthProfileName, optional)
 Create a Group Access Level object.
 
-Create a Group Access Level object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes. An access scope/level of \"global/admin\" is required to create access level groups with a global access level greater than \"none\".  This has been available since 2.24.
+Create a Group Access Level object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes. An access scope/level of \"global/admin\" is required to create access level groups with a global access level greater than \"none\".
 
 ### Required Parameters
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse CreateOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, body, oauthProfileName, groupName, optional)
 Create a Message VPN Access-Level Exception object.
 
-Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|||x msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: groupName|x|||x msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAllowedHostResponse CreateOauthProfileClientAllowedHost(ctx, body, oauthProfileName, optional)
 Create an Allowed Host Value object.
 
-Create an Allowed Host Value object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: allowedHost|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create an Allowed Host Value object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: allowedHost|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse CreateOauthProfileClientAuthorizationParameter(ctx, body, oauthProfileName, optional)
 Create an Authorization Parameter object.
 
-Create an Authorization Parameter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: authorizationParameterName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create an Authorization Parameter object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: authorizationParameterName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientRequiredClaimResponse CreateOauthProfileClientRequiredClaim(ctx, body, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: clientRequiredClaimName|x|x|x| clientRequiredClaimValue||x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse CreateOauthProfileDefaultMsgVpnAccessLevelException(ctx, body, oauthProfileName, optional)
 Create a Message VPN Access-Level Exception object.
 
-Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: msgVpnName|x|x|x| oauthProfileName|x|||x    The minimum access scope/level required to perform this operation is \"global/read-write\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 > OauthProfileResourceServerRequiredClaimResponse CreateOauthProfileResourceServerRequiredClaim(ctx, body, oauthProfileName, optional)
 Create a Required Claim object.
 
-Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.  This has been available since 2.24.
+Create a Required Claim object. Any attribute missing from the request will be set to its default value. The creation of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.   Attribute|Identifying|Const|Required|Read-Only :---|:---:|:---:|:---:|:---: oauthProfileName|x|||x resourceServerRequiredClaimName|x|x|x| resourceServerRequiredClaimValue||x|x|    The minimum access scope/level required to perform this operation is \"global/admin\". A different access scope/level may also be required when providing values for specific attributes.
 
 ### Required Parameters
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfile(ctx, oauthProfileName)
 Delete an OAuth Profile object.
 
-Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete an OAuth Profile object. The deletion of instances of this object are synchronized to HA mates via config-sync.  OAuth profiles specify how to securely authenticate to an OAuth provider.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileAccessLevelGroup(ctx, oauthProfileName, groupName)
 Delete a Group Access Level object.
 
-Delete a Group Access Level object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.  The minimum access scope/level required to perform this operation is \"global/read-write\". An access scope/level of \"global/admin\" is required to delete access level groups with a global access level greater than \"none\".  This has been available since 2.24.
+Delete a Group Access Level object. The deletion of instances of this object are synchronized to HA mates via config-sync.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.  The minimum access scope/level required to perform this operation is \"global/read-write\". An access scope/level of \"global/admin\" is required to delete access level groups with a global access level greater than \"none\".
 
 ### Required Parameters
 
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, oauthProfileName, groupName, msgVpnName)
 Delete a Message VPN Access-Level Exception object.
 
-Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.  The minimum access scope/level required to perform this operation is \"global/read-write\".  This has been available since 2.24.
+Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Message VPN access-level exceptions for members of this group.  The minimum access scope/level required to perform this operation is \"global/read-write\".
 
 ### Required Parameters
 
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileClientAllowedHost(ctx, oauthProfileName, allowedHost)
 Delete an Allowed Host Value object.
 
-Delete an Allowed Host Value object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete an Allowed Host Value object. The deletion of instances of this object are synchronized to HA mates via config-sync.  A valid hostname for this broker in OAuth redirects.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileClientAuthorizationParameter(ctx, oauthProfileName, authorizationParameterName)
 Delete an Authorization Parameter object.
 
-Delete an Authorization Parameter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete an Authorization Parameter object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional parameters to be passed to the OAuth authorization endpoint.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileClientRequiredClaim(ctx, oauthProfileName, clientRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the ID token.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileDefaultMsgVpnAccessLevelException(ctx, oauthProfileName, msgVpnName)
 Delete a Message VPN Access-Level Exception object.
 
-Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.  The minimum access scope/level required to perform this operation is \"global/read-write\".  This has been available since 2.24.
+Delete a Message VPN Access-Level Exception object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Default message VPN access-level exceptions.  The minimum access scope/level required to perform this operation is \"global/read-write\".
 
 ### Required Parameters
 
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 > SempMetaOnlyResponse DeleteOauthProfileResourceServerRequiredClaim(ctx, oauthProfileName, resourceServerRequiredClaimName)
 Delete a Required Claim object.
 
-Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"global/admin\".  This has been available since 2.24.
+Delete a Required Claim object. The deletion of instances of this object are synchronized to HA mates via config-sync.  Additional claims to be verified in the access token.  The minimum access scope/level required to perform this operation is \"global/admin\".
 
 ### Required Parameters
 
@@ -595,7 +595,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse GetOauthProfile(ctx, oauthProfileName, optional)
 Get an OAuth Profile object.
 
-Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get an OAuth Profile object.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse GetOauthProfileAccessLevelGroup(ctx, oauthProfileName, groupName, optional)
 Get a Group Access Level object.
 
-Get a Group Access Level object.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Group Access Level object.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -671,7 +671,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse GetOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, oauthProfileName, groupName, msgVpnName, optional)
 Get a Message VPN Access-Level Exception object.
 
-Get a Message VPN Access-Level Exception object.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Message VPN Access-Level Exception object.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -712,7 +712,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionsResponse GetOauthProfileAccessLevelGroupMsgVpnAccessLevelExceptions(ctx, oauthProfileName, groupName, optional)
 Get a list of Message VPN Access-Level Exception objects.
 
-Get a list of Message VPN Access-Level Exception objects.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Message VPN Access-Level Exception objects.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying :---|:---: groupName|x msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -754,7 +754,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupsResponse GetOauthProfileAccessLevelGroups(ctx, oauthProfileName, optional)
 Get a list of Group Access Level objects.
 
-Get a list of Group Access Level objects.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Group Access Level objects.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying :---|:---: groupName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -794,7 +794,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAllowedHostResponse GetOauthProfileClientAllowedHost(ctx, oauthProfileName, allowedHost, optional)
 Get an Allowed Host Value object.
 
-Get an Allowed Host Value object.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get an Allowed Host Value object.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -833,7 +833,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAllowedHostsResponse GetOauthProfileClientAllowedHosts(ctx, oauthProfileName, optional)
 Get a list of Allowed Host Value objects.
 
-Get a list of Allowed Host Value objects.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Allowed Host Value objects.  A valid hostname for this broker in OAuth redirects.   Attribute|Identifying :---|:---: allowedHost|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -873,7 +873,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse GetOauthProfileClientAuthorizationParameter(ctx, oauthProfileName, authorizationParameterName, optional)
 Get an Authorization Parameter object.
 
-Get an Authorization Parameter object.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get an Authorization Parameter object.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -912,7 +912,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParametersResponse GetOauthProfileClientAuthorizationParameters(ctx, oauthProfileName, optional)
 Get a list of Authorization Parameter objects.
 
-Get a list of Authorization Parameter objects.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Authorization Parameter objects.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying :---|:---: authorizationParameterName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -952,7 +952,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientRequiredClaimResponse GetOauthProfileClientRequiredClaim(ctx, oauthProfileName, clientRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Required Claim object.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -991,7 +991,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientRequiredClaimsResponse GetOauthProfileClientRequiredClaims(ctx, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Required Claim objects.  Additional claims to be verified in the ID token.   Attribute|Identifying :---|:---: clientRequiredClaimName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1031,7 +1031,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse GetOauthProfileDefaultMsgVpnAccessLevelException(ctx, oauthProfileName, msgVpnName, optional)
 Get a Message VPN Access-Level Exception object.
 
-Get a Message VPN Access-Level Exception object.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Message VPN Access-Level Exception object.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -1070,7 +1070,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionsResponse GetOauthProfileDefaultMsgVpnAccessLevelExceptions(ctx, oauthProfileName, optional)
 Get a list of Message VPN Access-Level Exception objects.
 
-Get a list of Message VPN Access-Level Exception objects.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Message VPN Access-Level Exception objects.  Default message VPN access-level exceptions.   Attribute|Identifying :---|:---: msgVpnName|x oauthProfileName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1110,7 +1110,7 @@ Name | Type | Description  | Notes
 > OauthProfileResourceServerRequiredClaimResponse GetOauthProfileResourceServerRequiredClaim(ctx, oauthProfileName, resourceServerRequiredClaimName, optional)
 Get a Required Claim object.
 
-Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  This has been available since 2.24.
+Get a Required Claim object.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".
 
 ### Required Parameters
 
@@ -1149,7 +1149,7 @@ Name | Type | Description  | Notes
 > OauthProfileResourceServerRequiredClaimsResponse GetOauthProfileResourceServerRequiredClaims(ctx, oauthProfileName, optional)
 Get a list of Required Claim objects.
 
-Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of Required Claim objects.  Additional claims to be verified in the access token.   Attribute|Identifying :---|:---: oauthProfileName|x resourceServerRequiredClaimName|x    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1189,7 +1189,7 @@ Name | Type | Description  | Notes
 > OauthProfilesResponse GetOauthProfiles(ctx, optional)
 Get a list of OAuth Profile objects.
 
-Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.  This has been available since 2.24.
+Get a list of OAuth Profile objects.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Write-Only|Opaque :---|:---:|:---:|:---: authenticationClientCertContent||x| authenticationClientCertPassword||x| clientSecret||x|x oauthProfileName|x||    The minimum access scope/level required to perform this operation is \"global/read-only\".  The maximum number of objects that can be returned in a single page is 100.
 
 ### Required Parameters
 
@@ -1227,7 +1227,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse ReplaceOauthProfile(ctx, body, oauthProfileName, optional)
 Replace an OAuth Profile object.
 
-Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.24.
+Replace an OAuth Profile object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1266,7 +1266,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse ReplaceOauthProfileAccessLevelGroup(ctx, body, oauthProfileName, groupName, optional)
 Replace a Group Access Level object.
 
-Replace a Group Access Level object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.24.
+Replace a Group Access Level object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1307,7 +1307,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse ReplaceOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, body, oauthProfileName, groupName, msgVpnName, optional)
 Replace a Message VPN Access-Level Exception object.
 
-Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.24.
+Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1350,7 +1350,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse ReplaceOauthProfileClientAuthorizationParameter(ctx, body, oauthProfileName, authorizationParameterName, optional)
 Replace an Authorization Parameter object.
 
-Replace an Authorization Parameter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.  This has been available since 2.24.
+Replace an Authorization Parameter object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/admin\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1391,7 +1391,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse ReplaceOauthProfileDefaultMsgVpnAccessLevelException(ctx, body, oauthProfileName, msgVpnName, optional)
 Replace a Message VPN Access-Level Exception object.
 
-Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.  This has been available since 2.24.
+Replace a Message VPN Access-Level Exception object. Any attribute missing from the request will be set to its default value, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods).  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request. In addition, a minimum access scope/level of \"global/read-write\" is required if this operation creates an object.
 
 ### Required Parameters
 
@@ -1432,7 +1432,7 @@ Name | Type | Description  | Notes
 > OauthProfileResponse UpdateOauthProfile(ctx, body, oauthProfileName, optional)
 Update an OAuth Profile object.
 
-Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update an OAuth Profile object. Any attribute missing from the request will be left unchanged.  OAuth profiles specify how to securely authenticate to an OAuth provider.   Attribute|Identifying|Const|Write-Only|Opaque :---|:---:|:---:|:---:|:---: authenticationClientCertContent|||x| authenticationClientCertPassword|||x| clientSecret|||x|x oauthProfileName|x|x||    The following attributes in the request may only be provided in certain combinations with other attributes:   Class|Attribute|Requires :---|:---|:--- OauthProfile|authenticationClientCertPassword|authenticationClientCertContent    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1471,7 +1471,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupResponse UpdateOauthProfileAccessLevelGroup(ctx, body, oauthProfileName, groupName, optional)
 Update a Group Access Level object.
 
-Update a Group Access Level object. Any attribute missing from the request will be left unchanged.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update a Group Access Level object. Any attribute missing from the request will be left unchanged.  The name of a group as it exists on the OAuth server being used to authenticate SEMP users.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1512,7 +1512,7 @@ Name | Type | Description  | Notes
 > OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse UpdateOauthProfileAccessLevelGroupMsgVpnAccessLevelException(ctx, body, oauthProfileName, groupName, msgVpnName, optional)
 Update a Message VPN Access-Level Exception object.
 
-Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Message VPN access-level exceptions for members of this group.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: groupName|x||x msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1555,7 +1555,7 @@ Name | Type | Description  | Notes
 > OauthProfileClientAuthorizationParameterResponse UpdateOauthProfileClientAuthorizationParameter(ctx, body, oauthProfileName, authorizationParameterName, optional)
 Update an Authorization Parameter object.
 
-Update an Authorization Parameter object. Any attribute missing from the request will be left unchanged.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update an Authorization Parameter object. Any attribute missing from the request will be left unchanged.  Additional parameters to be passed to the OAuth authorization endpoint.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: authorizationParameterName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 
@@ -1596,7 +1596,7 @@ Name | Type | Description  | Notes
 > OauthProfileDefaultMsgVpnAccessLevelExceptionResponse UpdateOauthProfileDefaultMsgVpnAccessLevelException(ctx, body, oauthProfileName, msgVpnName, optional)
 Update a Message VPN Access-Level Exception object.
 
-Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.  This has been available since 2.24.
+Update a Message VPN Access-Level Exception object. Any attribute missing from the request will be left unchanged.  Default message VPN access-level exceptions.   Attribute|Identifying|Const|Read-Only :---|:---:|:---:|:---: msgVpnName|x|x| oauthProfileName|x||x    The minimum access scope/level required to perform this operation is determined by the attributes provided in the request.
 
 ### Required Parameters
 

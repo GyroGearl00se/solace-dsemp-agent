@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributeFiltersUri** | **string** | The URI of this Certificate Matching Rule&#x27;s collection of Certificate Matching Rule Attribute Filter objects. Available since 2.28. | [optional] [default to null]
+**AttributeFiltersUri** | **string** | The URI of this Certificate Matching Rule&#x27;s collection of Certificate Matching Rule Attribute Filter objects. | [optional] [default to null]
 **ConditionsUri** | **string** | The URI of this Certificate Matching Rule&#x27;s collection of Certificate Matching Rule Condition objects. | [optional] [default to null]
 **Uri** | **string** | The URI of this Certificate Matching Rule object. | [optional] [default to null]
 

@@ -12,7 +12,7 @@ jobs:
     
     - name: Docker meta
       id: meta
-      uses: crazy-max/ghaction-docker-meta@v5
+      uses: crazy-max/ghaction-docker-meta@v6
       with:
         images: gyrogearl00se/solace-dsemp-agent
         tags: |

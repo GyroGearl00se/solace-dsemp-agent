@@ -7,7 +7,7 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/sirupsen/logrus v1.10.2
 	github.com/spf13/viper v1.21.0
-	golang.org/x/oauth2 v0.37.0
+	golang.org/x/oauth2 v0.38.0
 	solace.dev/go/messaging v1.10.1
 )
 
